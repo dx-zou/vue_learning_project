@@ -13,8 +13,6 @@
             :value="item.value">
             </el-option>
         </el-select>
-        <!-- <h3>日期时间范围：</h3> -->
-        <!-- <p>{{dateRange.start_time}}----{{dateRange.end_time}}</p> -->
     </div>
 </template>
 
@@ -133,11 +131,7 @@ export default {
         latestTime(value,flag) {
             let date = new Date()
             this.dateRange.end_time = this.dateFormate(date)
-            if (flag) {
-                date.setMonth(date.getMonth()-value)
-            } else {
-                date.setDate(date.getDate()-value)
-            }
+            flag ? date.setMonth(date.getMonth() - value) : date.setDate(date.getDate() - value)
             this.dateRange.start_time = this.dateFormate(date)
         },
         //未来一段时间
@@ -146,11 +140,7 @@ export default {
             date.setDate(date.getDate()+1)
             this.setTime(date,'start')
             this.dateRange.start_time = this.dateFormate(date)
-            if (flag) {
-                date.setMonth(date.getMonth()+value)
-            } else {
-                date.setDate(date.getDate()+value)
-            }
+            flag ? date.setMonth(date.getMonth() + value) : date.setDate(date.getDate() + value)
             this.setTime(date)
             this.dateRange.end_time = this.dateFormate(date)
         },
