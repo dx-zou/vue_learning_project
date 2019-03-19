@@ -17,6 +17,16 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "home" */ './views/home/home.vue')
+    },
+    {
+      path: '/cart',
+      name: '购物车',
+      component: (resolve) => require(['@/views/cart/cart.vue'],resolve),
+      meta: {
+        title: '',
+        requireAuth: true
+      }
     }
+
   ]
 })

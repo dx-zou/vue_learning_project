@@ -50,4 +50,9 @@ export default {
 </script>
 
 <style lang="less">
+    .home-container {
+        .el-row {
+            margin-right: 0!important;
+        }
+    }
 </style>
