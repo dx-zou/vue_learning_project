@@ -26,6 +26,11 @@ export default new Router({
         title: '',
         requireAuth: true
       }
+    },
+    {
+      path: '/todolist',
+      name: '代办事项',
+      component: () => import('./views/todo/todolist.vue')
     }
 
   ]

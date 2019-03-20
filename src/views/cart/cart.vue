@@ -14,6 +14,14 @@
         <div class="cart-wrap">
             <div class="num" ref="count">{{num}}</div>
         </div>
+
+        <el-alert
+        title="成功提示的文案"
+        type="success"
+        description="文字说明文字说明文字说明文字说明文字说明文字说明"
+        show-icon
+        >
+        </el-alert>
     </div>
 </template>
 

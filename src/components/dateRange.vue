@@ -13,11 +13,13 @@
             :value="item.value">
             </el-option>
         </el-select>
+        <slot name="range" v-bind:dateRange="dateRange"></slot>
     </div>
 </template>
 
 <script>
 export default {
+    name: 'fnDateRange',
     data() {
         return {
             dateRangeValue: '',

@@ -4,7 +4,7 @@
       <el-header>
         <el-button type="primary" @click="$router.push('/home')">首页</el-button>
         <el-button type="primary" @click="$router.push('/cart')">购物车</el-button>
-        <el-button type="primary">点击</el-button>
+        <el-button type="primary" @click="$router.push('/todolist')">todo</el-button>
         <el-button type="primary">点击</el-button>
       </el-header>
       <el-container>
@@ -49,7 +49,7 @@
   }
   .app-enter-active,
   .app-leave-active {
-    transition: all 0.5s;
+    transition: all .5s;
   }
 }
 </style>
