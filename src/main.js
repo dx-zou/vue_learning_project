@@ -5,6 +5,17 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/css/normalize.css'
+//全局注册组件
+import Alert from './components/alert/index'
+import DateRange from './components/dateRange/index'
+import ToDo from './components/todo/index';
+const components = [
+  Alert,
+  DateRange,
+  ToDo
+]
+components.forEach(component => Vue.use(component))
+Vue.use(Alert)
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 new Vue({

@@ -8,14 +8,13 @@
         <el-button type="primary">点击</el-button>
       </el-header>
       <el-container>
-        <el-aside width="200px">Aside</el-aside>
+        <el-aside width="200px"></el-aside>
         <el-container>
           <el-main>
             <transition name="app">
               <router-view/>
             </transition>
           </el-main>
-          <el-footer>Footer</el-footer>
         </el-container>
       </el-container>
     </el-container>
@@ -27,6 +26,7 @@
   overflow-x: hidden;
   .el-header {
     border-bottom: 1px solid #ccc;
+    line-height: 60px;
   }
   .el-aside {
     border-right: 1px solid #ccc;
@@ -35,7 +35,7 @@
     border-top: 1px solid #ccc;
   }
   .el-main {
-    height: 500px;
+    height: 660px;
     overflow-x: hidden;
   }
   .app-enter {

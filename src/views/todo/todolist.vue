@@ -9,10 +9,9 @@
     </div>
 </template>
 <script>
-import fnTodo from '@/components/todo.vue'
 export default {
     components: {
-        fnTodo
+        
     },
     data() {
         return {

@@ -8,10 +8,10 @@
                             <fn-date-range @getRange="getDateRange">
                                 <!-- 自定义插槽内容 -->
                                 <!-- <template v-slot:range="slotProps"> -->
-                                <template #range="slotProps">
+                                <template #range="{dateRange}">
                                     <h3>选择的时间范围：</h3>
-                                    <p>开始时间：{{slotProps.dateRange.start_time}}</p>
-                                    <p>结束时间：{{slotProps.dateRange.end_time}}</p>
+                                    <p>开始时间：{{dateRange.start_time}}</p>
+                                    <p>结束时间：{{dateRange.end_time}}</p>
                                 </template>
                             </fn-date-range>
                         </el-form-item>
@@ -33,12 +33,9 @@
 </template>
 
 <script>
-import fnDateRange from '@/components/dateRange.vue'
-import fnAlert from '@/components/alert.vue'
 export default {
     components: {
-        fnDateRange,
-        fnAlert
+        // fnDateRange,
     },
     data() {
         return {

@@ -13,7 +13,7 @@
             :value="item.value">
             </el-option>
         </el-select>
-        <slot name="range" v-bind:dateRange="dateRange"></slot>
+        <slot name="range" :dateRange="dateRange"></slot>
     </div>
 </template>
 
