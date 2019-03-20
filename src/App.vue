@@ -3,7 +3,7 @@
     <el-container>
       <el-header>
         <el-button type="primary" @click="$router.push('/home')">首页</el-button>
-        <el-button type="primary" @click="$router.push('/cart')">购物车</el-button>
+        <el-button type="primary" @click="$router.push('/cart')">小球动画</el-button>
         <el-button type="primary" @click="$router.push('/todolist')">todo</el-button>
         <el-button type="primary">点击</el-button>
       </el-header>

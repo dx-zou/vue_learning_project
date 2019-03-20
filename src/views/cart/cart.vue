@@ -11,10 +11,10 @@
                 <div class="ball" ref="ball" v-show="show"></div>
             </transition>
         </div>
+        <fn-alert type="success" showIcon title="这是成功的提示" closeText="关闭"></fn-alert>
         <div class="cart-wrap">
             <div class="num" ref="count">{{num}}</div>
         </div>
-        <fn-alert type="success" showIcon title="这是成功的提示" closeText="关闭"></fn-alert>
     </div>
 </template>
 
@@ -68,11 +68,12 @@ export default {
         z-index: 99;
     }
     .cart-wrap {
-        margin-top: 300px;
+        margin-top: 200px;
         .num {
-            width: 60px;
+            width: 30px;
             height: 30px;
             line-height: 30px;
+            border-radius: 50%;
             text-align: center;
             background-color: #ccc;
         }
