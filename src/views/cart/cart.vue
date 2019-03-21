@@ -11,7 +11,6 @@
                 <div class="ball" ref="ball" v-show="show"></div>
             </transition>
         </div>
-        <fn-alert type="success" showIcon title="这是成功的提示" closeText="关闭"></fn-alert>
         <div class="cart-wrap">
             <div class="num" ref="count">{{num}}</div>
         </div>

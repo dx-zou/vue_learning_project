@@ -5,6 +5,8 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/css/normalize.css'
+import axios from 'axios'
+Vue.prototype.axios = axios
 //全局注册组件
 import Alert from './components/alert/index'
 import DateRange from './components/dateRange/index'
