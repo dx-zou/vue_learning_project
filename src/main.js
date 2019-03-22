@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/css/normalize.css'
 import axios from 'axios'
 Vue.prototype.axios = axios
+axios.defaults.baseURL = 'https://easy-mock.com/mock/5c949a926811807c6b28d8c0/feng/'
 //全局注册组件
 import Alert from './components/alert/index'
 import DateRange from './components/dateRange/index'

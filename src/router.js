@@ -31,6 +31,11 @@ export default new Router({
       path: '/todolist',
       name: '代办事项',
       component: () => import('./views/todo/todolist.vue')
+    },
+    {
+      path: '/user',
+      name: '用户',
+      component: () => import('./views/user/index.vue')
     }
 
   ]
