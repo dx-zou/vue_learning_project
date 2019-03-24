@@ -5,9 +5,7 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/css/normalize.css'
-import axios from 'axios'
-Vue.prototype.axios = axios
-axios.defaults.baseURL = 'https://easy-mock.com/mock/5c949a926811807c6b28d8c0/feng/'
+import './plugins/api/api.js'
 //全局注册组件
 import Alert from './components/alert/index'
 import DateRange from './components/dateRange/index'
@@ -15,12 +13,11 @@ import ToDo from './components/todo/index';
 const components = [
   Alert,
   DateRange,
-  ToDo
+  ToDo,
+  ElementUI
 ]
 components.forEach(component => Vue.use(component))
-Vue.use(Alert)
 Vue.config.productionTip = false
-Vue.use(ElementUI);
 new Vue({
   router,
   store,

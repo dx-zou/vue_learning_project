@@ -31,9 +31,11 @@ export default {
   },
   methods: {
     getUserlist() {
+      console.log(this.axios);
+      
         this.axios.get('getUserList')
         .then(res => {
-            this.tableData = res.data.data
+            this.tableData = res.data
             
         })
     }

@@ -35,7 +35,6 @@
 <script>
 export default {
     components: {
-        
     },
     data() {
         return {
@@ -55,9 +54,9 @@ export default {
     },
     methods: {
         getOrgTree() {
-            this.axios({
+            this.$ajax({
                 method: 'post',
-                url: 'http://umapdev.dfmc.com.cn:8090/smart/pc-org/getOrgTree',
+                url: 'http://umapdev.dfmc.com.cn/smart/pc-org/getOrgTree',
             })
             .then((res) => {
                 console.log(res.data.data);
