@@ -50,7 +50,7 @@ export default {
         }
     },
     created() {
-        this.getOrgTree()
+        // this.getOrgTree()
     },
     methods: {
         getOrgTree() {

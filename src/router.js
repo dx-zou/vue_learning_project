@@ -33,11 +33,21 @@ export default new Router({
       component: () => import('./views/todo/todolist')
     },
     {
+      path: '/nav',
+      name: '路由导航',
+      component: () => import('./views/routeNav/navigation')
+    },
+    {
       path: '/user/:id',
       name: '用户',
       component: () => import('./views/user/user'),
       props:{name: 'feng'}
     }
 
-  ]
+  ],
+  //滚动行为，
+  scrollBehavior (to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+    return {x:0,y:0}
+  }
 })

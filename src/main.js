@@ -18,6 +18,12 @@ const components = [
 ]
 components.forEach(component => Vue.use(component))
 Vue.config.productionTip = false
+
+//全局前置守卫
+router.beforeEach((to,from,next) => {
+  // console.log(to);
+  next()
+})
 new Vue({
   router,
   store,

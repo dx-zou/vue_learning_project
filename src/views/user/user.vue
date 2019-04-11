@@ -35,22 +35,22 @@ export default {
   },
   created() {
     this.getUserlist()
-    console.log(this.id);
-    console.log(this.name);
+    // console.log(this.id);
+    // console.log(this.name);
     
-    console.log(this.$route.params);
+    // console.log(this.$route.params);
     
   },
   methods: {
     getUserlist() {
-        this.$http.get('getUserList')
-        .then(res => {
-            this.tableData = res.data
-            
-        })
+      this.$http.get('getUserList')
+      .then(res => {
+          this.tableData = res.data
+          
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="less">
