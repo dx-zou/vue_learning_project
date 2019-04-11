@@ -21,19 +21,29 @@
 
 <script>
 export default {
+  props: {
+    id: '',
+    name: {
+      default: '',
+      type: String
+    }
+  },
   data() {
     return {
         tableData: []
     };
   },
   created() {
-      this.getUserlist()
+    this.getUserlist()
+    console.log(this.id);
+    console.log(this.name);
+    
+    console.log(this.$route.params);
+    
   },
   methods: {
     getUserlist() {
-      console.log(this.axios);
-      
-        this.axios.get('getUserList')
+        this.$http.get('getUserList')
         .then(res => {
             this.tableData = res.data
             

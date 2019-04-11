@@ -1,7 +1,7 @@
 <template>
     <div class="date-range">
         <el-select
-        v-model="dateRangeValue" 
+        v-model="dateRangeValue"
         placeholder="请选择"
         clearable
         style="width:100%"
@@ -47,6 +47,9 @@ export default {
     created() {
 
     },
+    computed: {
+
+    },
     watch: {
         dateRangeValue() {
             switch (this.dateRangeValue) {
@@ -67,7 +70,7 @@ export default {
                     break;
                 case 6:
                     this.latestTime(12,'month')   //最近一年
-                    break;  
+                    break;
                 case 7:
                     this.futureTime(6)          //未来七天
                     break;
@@ -121,7 +124,7 @@ export default {
             if (start) {
                 date.setHours(0)
                 date.setMinutes(0)
-                date.setSeconds(0) 
+                date.setSeconds(0)
             } else {
                 date.setHours(23)
                 date.setMinutes(59)
@@ -210,7 +213,7 @@ export default {
                 this.quarterRange(1)    //本年第一个季度
             } else if (month < 10) {
                 this.quarterRange(2)    //本年第二个季度
-            } else {    
+            } else {
                 this.quarterRange(3)    //本年第三个季度
             }
         }

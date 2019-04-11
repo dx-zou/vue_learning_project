@@ -16,12 +16,12 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "home" */ './views/home/home.vue')
+      component: () => import(/* webpackChunkName: "home" */ './views/home/home')
     },
     {
       path: '/cart',
       name: '购物车',
-      component: (resolve) => require(['@/views/cart/cart.vue'],resolve),
+      component: (resolve) => require(['@/views/cart/cart'],resolve),
       meta: {
         title: '',
         requireAuth: true
@@ -30,12 +30,13 @@ export default new Router({
     {
       path: '/todolist',
       name: '代办事项',
-      component: () => import('./views/todo/todolist.vue')
+      component: () => import('./views/todo/todolist')
     },
     {
-      path: '/user',
+      path: '/user/:id',
       name: '用户',
-      component: () => import('./views/user/index.vue')
+      component: () => import('./views/user/user'),
+      props:{name: 'feng'}
     }
 
   ]

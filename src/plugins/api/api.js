@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import config from './config.js'
 //在vue原型上挂载axios
-Vue.prototype.axios = axios
+Vue.prototype.$http = axios
 //设置请求的根路径
 axios.defaults.baseURL = config.baseURL
 //设置跨域请求需要携带cookie

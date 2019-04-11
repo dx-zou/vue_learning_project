@@ -54,12 +54,11 @@ export default {
     },
     methods: {
         getOrgTree() {
-            this.$ajax({
+            this.$http({
                 method: 'post',
                 url: 'http://umapdev.dfmc.com.cn/smart/pc-org/getOrgTree',
             })
             .then((res) => {
-                console.log(res.data.data);
                 this.data = res.data.data
                 
             })
@@ -67,7 +66,6 @@ export default {
         //
         handleExpand(data,node,obj) {
             this.checkList = data.children
-            console.log(data);
         }
     },
 }

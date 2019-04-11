@@ -5,13 +5,14 @@
         <el-button type="primary" @click="$router.push('/home')">首页</el-button>
         <el-button type="primary" @click="$router.push('/cart')">小球动画</el-button>
         <el-button type="primary" @click="$router.push('/todolist')">todo</el-button>
-        <el-button type="primary" @click="$router.push('/user')">user</el-button>
+        <el-button type="primary" @click="$router.push({path:'/user/101'})">user</el-button>
       </el-header>
       <el-container>
         <el-aside width="200px"></el-aside>
         <el-container>
           <el-main>
             <transition name="app">
+              <!-- 路由组件 -->
               <router-view/>
             </transition>
           </el-main>
