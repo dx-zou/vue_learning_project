@@ -11,8 +11,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
-import { mapGetters } from "vuex";
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -46,7 +45,9 @@ export default {
     addTotalCount(number) {
       this.INCREMENT(number);
       this.add(number);
-    }
+      this.increment(number);
+    },
+    ...mapActions(["increment"])
   }
 };
 </script>
