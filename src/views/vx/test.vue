@@ -38,13 +38,13 @@ export default {
   methods: {
     //1.this.add() 映射为 this.$store.commit('increment')
     ...mapMutations({
-      add: "increment"
+      add: "INCREMENT"
     }),
     //2.将this.increment(count) 映射为 this.$store.commit('increment',count)
-    ...mapMutations(["increment"]),
+    ...mapMutations(["INCREMENT"]),
     //在组件内部的方法中调用映射过来的方法，也就是commit 了mutations中的方法
     addTotalCount(number) {
-      this.increment(number);
+      this.INCREMENT(number);
       this.add(number);
     }
   }
