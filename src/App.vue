@@ -7,6 +7,7 @@
         <el-button type="primary" @click="$router.push('/todolist')">todo</el-button>
         <el-button type="primary" @click="$router.push({path:'/user/101'})">user</el-button>
         <el-button type="primary" @click="$router.push('/nav')">路由导航守卫</el-button>
+        <el-button type="primary" @click="$router.push('/vx')">vuex的使用</el-button>
       </el-header>
       <el-container>
         <el-aside width="200px"></el-aside>
@@ -51,7 +52,7 @@
   }
   .app-enter-active,
   .app-leave-active {
-    transition: all .5s;
+    transition: all 0.5s;
   }
 }
 </style>

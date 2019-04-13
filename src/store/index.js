@@ -5,7 +5,7 @@ import actions from './actions/actions'
 import getters from './getters/getters'
 Vue.use(Vuex)
 const state = {
-  name: localStorage.getItem('name') || 'feng',
+  name: localStorage.getItem('name') || '哈哈',
   age: localStorage.getItem('age') || 28
 }
 export default new Vuex.Store({
