@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import mutations from './mutations/mutations'
-import actions from './actions/actions'
-import getters from './getters/getters'
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
 Vue.use(Vuex)
 const state = {
-  name: localStorage.getItem('name') || '哈哈',
-  age: localStorage.getItem('age') || 28
+  name: localStorage.getItem('name') || 'who are you ?',
+  age: localStorage.getItem('age') || 28,
+  count: 100,
 }
 export default new Vuex.Store({
   state,
