@@ -1,8 +1,15 @@
 import {
-  INCREMENT
+  INCREMENT,
+  STATUS
 } from './mutation-types'
 export default {
-  increment: ({
-    commit,
-  }, number) => commit(INCREMENT, number)
+  //异步函数
+  increment({
+    commit
+  }, number) {
+    setTimeout(() => {
+      commit(INCREMENT, number)
+      commit(STATUS)
+    }, 3000);
+  }
 }

@@ -6,7 +6,13 @@
     <h1>{{myName}}</h1>
     <hr>
     <button @click="addTotalCount({count:1})">增加</button>
-    <p>总数量：{{count}}</p>
+    <p>
+      总数量：
+      <span class="count">{{count}}</span>
+      <transition name="tip">
+        <span v-show="show" class="tip">等待三秒钟。。。</span>
+      </transition>
+    </p>
   </div>
 </template>
 
@@ -28,10 +34,10 @@ export default {
     }
   }),
   //将this.age this.name 映射为 this.$store.state.age / name
-  computed: mapState(["age", "name"]),
+  computed: mapState(["age", "name", "show"]),
   //2.将state，getters 混入到局部计算属性中
   computed: {
-    ...mapState(["age", "name", "count"]),
+    ...mapState(["age", "name", "count", "show"]),
     ...mapGetters(["myName"])
   },
   methods: {
@@ -40,11 +46,14 @@ export default {
       add: "INCREMENT"
     }),
     //2.将this.increment(count) 映射为 this.$store.commit('increment',count)
-    ...mapMutations(["INCREMENT"]),
+    ...mapMutations(["INCREMENT", "STATUS"]),
     //在组件内部的方法中调用映射过来的方法，也就是commit 了mutations中的方法
     addTotalCount(number) {
       this.INCREMENT(number);
       this.add(number);
+      setTimeout(() => {
+        this.STATUS();
+      }, 300);
       this.increment(number);
     },
     ...mapActions(["increment"])
@@ -53,4 +62,16 @@ export default {
 </script>
 
 <style lang="less">
+.count {
+  font-size: 30px;
+  color: red;
+}
+.tip-enter,
+.tip-leave-to {
+  opacity: 0;
+}
+.tip-enter-active,
+.tip-leave-active {
+  transition: all 0.3s;
+}
 </style>
