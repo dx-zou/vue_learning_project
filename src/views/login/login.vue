@@ -9,7 +9,7 @@
       class="login-form"
     >
       <el-form-item>
-        <h1>登录</h1>
+        <h1>系统登录</h1>
       </el-form-item>
       <el-form-item label="账号" prop="pass">
         <el-input type="text" v-model="account"></el-input>
@@ -31,21 +31,38 @@ export default {
     return {
       formData: {},
       account: "",
-      password: ""
+      password: "",
+      accounts: [
+        { name: "admin", password: "123456", role: "admin" },
+        { name: "css", password: "654321", role: "ordinary" }
+      ]
     };
   },
   methods: {
     login() {
-      if (this.account === "admin" && this.password === "123456") {
-        this.$notify({
-          duration: 2000,
-          type: "success",
-          message: "登录成功"
-        });
-        localStorage.setItem("token", this.account + Math.random());
-        this.$router.push("/home");
+      //添加loading效果
+      const loading = this.$loading({
+        lock: true,
+        text: "Loading",
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.7)"
+      });
+      //验证账号密码
+      var res = this.accounts.some(
+        item => this.account === item.name && this.password === item.password
+      );
+      if (res) {
+        setTimeout(() => {
+          this.$toast("success", "登陆成功");
+          localStorage.setItem("token", this.account + Math.random());
+          this.$router.push("/home");
+          loading.close();
+        }, 500);
       } else {
-        this.$toast("error", "账号或密码错误");
+        loading.close();
+        setTimeout(() => {
+          this.$toast("error", "账号或密码错误");
+        }, 300);
       }
     }
   }
@@ -54,12 +71,24 @@ export default {
 
 <style lang="less" scoped>
 .login-container {
-  width: 600px;
-  margin: 100px auto 0;
+  width: 300px;
+  margin-top: 300px;
+  margin-left: 900px;
   padding: 20px 20px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #eee;
+  &::before {
+    z-index: -999;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/login.png");
+    background-size: cover;
+  }
   h1 {
     text-align: center;
   }

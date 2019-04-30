@@ -3,6 +3,11 @@ import Router from 'vue-router'
 import login from './views/login/login'
 Vue.use(Router)
 
+export const constantRouterMap = [{
+  path: '/login',
+  name: 'login',
+  component: login
+}]
 export default new Router({
   routes: [{
       path: '/',

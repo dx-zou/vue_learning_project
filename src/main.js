@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
 
 function toast(type, message) {
   const toast = this.$notify({
-    duration: 2000,
+    duration: 1500,
     type,
     message
   })
