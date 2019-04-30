@@ -19,7 +19,14 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="login">登录</el-button>
-        <el-button>获取账号密码</el-button>
+        <el-popover
+          placement="bottom"
+          width="200"
+          trigger="click"
+          content="admin/123456;css/654321"
+        >
+          <el-button slot="reference">获取账号密码</el-button>
+        </el-popover>
       </el-form-item>
     </el-form>
   </div>
