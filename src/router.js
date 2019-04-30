@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import login from './views/login/login'
 Vue.use(Router)
 
 export default new Router({
   routes: [{
       path: '/',
-      name: 'home',
+      name: 'Home',
       redirect: '/home',
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/home',
@@ -15,12 +20,15 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import( /* webpackChunkName: "home" */ './views/home/home')
+      component: () => import( /* webpackChunkName: "home" */ '@/views/home/home'),
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/cart',
       name: '购物车',
-      component: (resolve) => require(['@/views/cart/cart'], resolve),
+      component: () => import( /* webpackChunkName: "cart" */ '@/views/cart/cart'),
       meta: {
         title: '',
         requireAuth: true
@@ -29,12 +37,18 @@ export default new Router({
     {
       path: '/todolist',
       name: '代办事项',
-      component: () => import('./views/todo/todolist')
+      component: () => import('./views/todo/todolist'),
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/nav',
       name: '路由导航',
-      component: () => import('./views/routeNav/navigation')
+      component: () => import('./views/routeNav/navigation'),
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/user/:id',
@@ -42,12 +56,18 @@ export default new Router({
       component: () => import('./views/user/user'),
       props: {
         name: 'feng'
+      },
+      meta: {
+        requireAuth: true
       }
     },
     {
       path: '/vx',
       name: 'vuex',
       component: () => import('./views/vx/test'),
+      meta: {
+        requireAuth: true
+      }
     }
 
   ],
@@ -56,8 +76,6 @@ export default new Router({
     // return 期望滚动到哪个的位置
     // return {x:0,y:0}
     if (savedPosition) {
-      console.log(savedPosition);
-
       return savedPosition
     } else {
       return {
