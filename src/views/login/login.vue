@@ -22,7 +22,7 @@
         <el-popover
           placement="bottom"
           width="200"
-          trigger="click"
+          trigger="hover"
           content="admin/123456;css/654321"
         >
           <el-button slot="reference">获取账号密码</el-button>

@@ -3,13 +3,21 @@
 //同时把这些常量放在单独的文件中可以让你的代码合作者对整个 app 包含的 mutation 一目了然：
 import {
   INCREMENT,
-  STATUS
+  STATUS,
 } from './mutation-types'
+
+import {
+  constantRouterMap
+} from '@/router.js'
 export default {
   [INCREMENT](state, number) {
     state.count += number.count
   },
   [STATUS](state) {
     state.show = !state.show
+  },
+  SET_ROUTERS: (state, routers) => {
+    state.addRouters = routers;
+    state.routers = constantRouterMap.concat(routers);
   }
 }
