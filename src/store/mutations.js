@@ -16,7 +16,7 @@ export default {
   [STATUS](state) {
     state.show = !state.show
   },
-  SET_ROUTERS: (state, routers) => {
+  SET_ROUTES: (state, routers) => {
     state.addRouters = routers;
     state.routers = constantRouterMap.concat(routers);
   }

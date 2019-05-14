@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
+
 export default {
   data() {
     return {
@@ -59,6 +61,7 @@ export default {
         item => this.account === item.name && this.password === item.password
       );
       if (res) {
+        Cookies.set("token", "Admin-Token");
         setTimeout(() => {
           this.$toast("success", "登陆成功");
           localStorage.setItem("token", this.account + Math.random());

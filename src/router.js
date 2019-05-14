@@ -12,22 +12,22 @@ export const constantRouterMap = [{
   path: '/vx',
   name: 'vuex',
   component: () => import('./views/vx/test'),
-  meta: {
-    requireAuth: true
-  }
 }]
 //根据登录权限动态加载的路由表
-export const asyncRouterMap = [{
+export const asyncRoutes = [{
     path: '/',
     name: 'Home',
     redirect: '/home',
+    meta: {
+      role: ['admin', 'normal']
+    }
   }, {
     path: '/home',
     name: '首页',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import( /* webpackChunkName: "home" */ '@/views/home/home'),
+    component: () => import('@/views/home/home'),
     meta: {
       requireAuth: true,
       role: ['admin', 'normal']
@@ -36,7 +36,7 @@ export const asyncRouterMap = [{
   {
     path: '/cart',
     name: '购物车',
-    component: () => import( /* webpackChunkName: "cart" */ '@/views/cart/cart'),
+    component: () => import('@/views/cart/cart'),
     meta: {
       title: '',
       requireAuth: true,

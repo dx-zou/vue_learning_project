@@ -2,7 +2,7 @@
   <div id="app">
     <el-container class="main-container">
       <el-scrollbar class="side-bar" ref="sidebar" v-if="show">
-        <el-menu>
+        <el-menu :collapse="isCollapse">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>导航
@@ -35,7 +35,7 @@
       </el-scrollbar>
       <el-main>
         <header class="nx-header" v-if="show">
-          <div class="left-menu">切换</div>
+          <div class="left-menu" @click="changeWidth">切换</div>
           <el-menu class="right-menu">
             <el-submenu index="1">
               <template slot="title">我的账户</template>
@@ -55,7 +55,8 @@
 export default {
   data() {
     return {
-      show: false
+      show: false,
+      isCollapse: false
     };
   },
   created() {},
@@ -70,6 +71,9 @@ export default {
       localStorage.removeItem("token");
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
+    },
+    changeWidth() {
+      this.isCollapse = !this.isCollapse;
     }
   }
 };
@@ -77,19 +81,22 @@ export default {
 <style lang="less">
 #app {
   overflow-x: hidden;
-  height: 800px;
+  height: 700px;
   .main-container {
     height: 100%;
   }
   .side-bar {
     position: fixed;
-    width: 210px;
+    // width: 210px;
     bottom: 0;
     left: 0;
     top: 0;
     z-index: 999;
     transition: width 0.3s ease;
     border-right: 1px solid #ccc;
+  }
+  .el-menu:not(.el-menu--collapse) {
+    width: 200px;
   }
   .nx-header {
     height: 50px;
