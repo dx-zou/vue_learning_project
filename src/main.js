@@ -30,56 +30,37 @@ components.forEach(component => Vue.use(component))
 Vue.prototype.$toast = toast
 Vue.config.productionTip = false
 
-const whiteList = ['/login', '/vx'] // no redirect whitelist
+const whiteList = ['/login', '/vx']
 
 //全局前置守卫
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  let hasToken = getToken()
-  console.log(hasToken)
+  let hasToken = sessionStorage.getItem('token')
   if (hasToken) {
-    if (to.path == '/login') {
-      next('/vx')
+    //如果登录了角色存在就放行
+    //否则就生成路由
+    if (store.getters.role) {
+      next()
       NProgress.done()
     } else {
-      // const hasRoles = store.getters.roles && store.getters.roles.length > 0
-      const hasRoles = false
-      if (hasRoles) {
-        next()
-      } else {
-        try {
-          // const {
-          //   roles
-          // } = await store.dispatch('user/getInfo')
-
-          const roles = ['admin']
-          const accessRoutes = store.dispatch('generateRoutes', roles)
-          router.addRoutes(accessRoutes)
-          console.log(router)
-          // hack method to ensure that addRoutes is complete
-          // set the replace: true, so the navigation will not leave a history record
-          next({
-            ...to,
-            replace: true
-          })
-          console.log(...to)
-        } catch (error) {
-          // remove token and go to login page to re-login
-          // await store.dispatch('user/resetToken')
-          // next(`/login?redirect=${to.path}`)
-          NProgress.done()
-        }
-      }
+      const role = sessionStorage.getItem('role')
+      store.dispatch('generateRoutes', role)
+      router.addRoutes(store.getters.addRouters)
+      store.commit('SET_ROLE',role)
+      // hack method to ensure that addRoutes is complete
+      // set the replace: true, so the navigation will not leave a history record
+      next({
+        ...to,
+        replace: true
+      })
+      NProgress.done()
     }
   } else {
-    /* has no token*/
-
-    if (whiteList.indexOf(to.path) !== -1) {
-      // in the free login whitelist, go directly
+    if (to.path == '/login') {
       next()
+      NProgress.done()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`)
+      next('/login')
       NProgress.done()
     }
   }

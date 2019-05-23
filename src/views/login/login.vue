@@ -23,7 +23,7 @@
           placement="bottom"
           width="200"
           trigger="hover"
-          content="admin/123456;css/654321"
+          content="admin/123456;normal/654321"
         >
           <el-button slot="reference">获取账号密码</el-button>
         </el-popover>
@@ -34,7 +34,8 @@
 
 <script>
 import Cookies from "js-cookie";
-
+import router from "@/router"
+import { mapActions, mapMutations,mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -43,11 +44,16 @@ export default {
       password: "",
       accounts: [
         { name: "admin", password: "123456", role: "admin" },
-        { name: "css", password: "654321", role: "ordinary" }
+        { name: "normal", password: "654321", role: "ordinary" }
       ]
-    };
+    }
+  },
+  computed: {
+    ...mapGetters(['addRouters'])
   },
   methods: {
+    ...mapActions(["generateRoutes"]),
+    ...mapMutations(["SET_ROUTES"]),
     login() {
       //添加loading效果
       const loading = this.$loading({
@@ -61,13 +67,21 @@ export default {
         item => this.account === item.name && this.password === item.password
       );
       if (res) {
-        Cookies.set("token", "Admin-Token");
+        // Cookies.set("token", "Admin-Token");
+        sessionStorage.setItem('token', this.account+Math.random())
         setTimeout(() => {
-          this.$toast("success", "登陆成功");
-          localStorage.setItem("token", this.account + Math.random());
-          this.$router.push("/home");
           loading.close();
-        }, 500);
+          this.$toast("success", "登陆成功");
+          //登录成功设置token
+          sessionStorage.setItem("role", this.account);
+          //设置role
+          this.$store.commit("SET_ROLE", this.account);
+          //提交action生成动态路由
+          this.$store.dispatch("generateRoutes", this.account);
+          router.addRoutes(this.addRouters)
+          this.$router.push("/home");
+
+        }, 400);
       } else {
         loading.close();
         setTimeout(() => {

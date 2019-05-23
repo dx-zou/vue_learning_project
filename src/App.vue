@@ -68,7 +68,8 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem('role')
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
     },

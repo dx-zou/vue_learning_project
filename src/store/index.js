@@ -10,31 +10,6 @@ import {
 
 Vue.use(Vuex)
 
-//判断是否有权限
-function hasPermission(roles, route) {
-  if (route.meta && route.meta.role) {
-    return roles.some(role => route.meta.role.indexOf(role) >= 0)
-  } else {
-    return true
-  }
-}
-//过滤异步路由
-export function filterAsyncRoutes(routes, roles) {
-  const res = []
-
-  routes.forEach(route => {
-    const tmp = {
-      ...route
-    }
-    if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      res.push(tmp)
-    }
-  })
-  return res
-}
 const state = {
   name: localStorage.getItem('name') || 'who are you ?',
   age: localStorage.getItem('age') || 28,
@@ -42,7 +17,8 @@ const state = {
   show: false,
   routers: constantRouterMap,
   addRouters: [],
-  routes: []
+  routes: [],
+  role: ''
 }
 export default new Vuex.Store({
   state,

@@ -7,7 +7,7 @@ import {
 } from './mutation-types'
 
 import {
-  constantRouterMap
+  constantRouterMap,
 } from '@/router.js'
 export default {
   [INCREMENT](state, number) {
@@ -18,6 +18,9 @@ export default {
   },
   SET_ROUTES: (state, routers) => {
     state.addRouters = routers;
-    state.routers = constantRouterMap.concat(routers);
-  }
+    // state.routers = constantRouterMap.concat(routers);
+  },
+  SET_ROLE: (state, role) => {
+    state.role = role
+  },
 }

@@ -19,7 +19,7 @@ export const asyncRoutes = [{
     name: 'Home',
     redirect: '/home',
     meta: {
-      role: ['admin', 'normal']
+      roles: ['admin', 'normal']
     }
   }, {
     path: '/home',
@@ -30,7 +30,7 @@ export const asyncRoutes = [{
     component: () => import('@/views/home/home'),
     meta: {
       requireAuth: true,
-      role: ['admin', 'normal']
+      roles: ['admin', 'normal']
     }
   },
   {
@@ -40,7 +40,7 @@ export const asyncRoutes = [{
     meta: {
       title: '',
       requireAuth: true,
-      role: ['admin', 'normal']
+      roles: ['admin', 'normal']
     }
   },
   {
@@ -49,7 +49,7 @@ export const asyncRoutes = [{
     component: () => import('./views/todo/todolist'),
     meta: {
       requireAuth: true,
-      role: ['admin']
+      roles: ['admin']
     }
   },
   {
@@ -58,7 +58,7 @@ export const asyncRoutes = [{
     component: () => import('./views/routeNav/navigation'),
     meta: {
       requireAuth: true,
-      role: ['admin', 'normal']
+      roles: ['admin', 'normal']
     }
   },
   {
@@ -70,11 +70,11 @@ export const asyncRoutes = [{
     },
     meta: {
       requireAuth: true,
-      role: ['admin', 'normal']
+      roles: ['admin', 'normal']
     }
   },
 ]
-export default new Router({
+const router = new Router({
   routes: constantRouterMap,
   //滚动行为，
   scrollBehavior(to, from, savedPosition) {
@@ -90,3 +90,5 @@ export default new Router({
     }
   }
 })
+
+export default router
