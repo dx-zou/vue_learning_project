@@ -8,7 +8,7 @@ import {
 
 import {
   constantRouterMap,
-} from '@/router.js'
+} from '@/route/router'
 export default {
   [INCREMENT](state, number) {
     state.count += number.count

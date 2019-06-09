@@ -4,7 +4,7 @@ import {
 } from './mutation-types'
 import {
   asyncRoutes
-} from '@/router.js'
+} from '@/route/router'
 
 //判断role是否拥有route对应的权限
 function hasPermission(role, route) {

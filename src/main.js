@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './route/index'
 import store from './store/index'
 import {
   getToken
@@ -16,9 +16,9 @@ NProgress.configure({
 }) // NProgress Configuration
 
 //全局注册组件
-import Alert from './components/alert/index'
-import DateRange from './components/dateRange/index'
-import ToDo from './components/todo/index';
+import Alert from './components/alert'
+import DateRange from './components/dateRange'
+import ToDo from './components/todo';
 const components = [
   Alert,
   DateRange,
@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
       const role = sessionStorage.getItem('role')
       store.dispatch('generateRoutes', role)
       router.addRoutes(store.getters.addRouters)
-      store.commit('SET_ROLE',role)
+      store.commit('SET_ROLE', role)
       // hack method to ensure that addRoutes is complete
       // set the replace: true, so the navigation will not leave a history record
       next({

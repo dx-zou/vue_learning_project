@@ -34,7 +34,7 @@
 
 <script>
 import Cookies from "js-cookie";
-import router from "@/router"
+import router from "@/route"
 import { mapActions, mapMutations,mapGetters } from "vuex";
 export default {
   data() {

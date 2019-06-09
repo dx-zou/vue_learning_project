@@ -6,7 +6,7 @@ import getters from './getters'
 import {
   asyncRoutes,
   constantRouterMap
-} from '@/router'
+} from '@/route/router'
 
 Vue.use(Vuex)
 
