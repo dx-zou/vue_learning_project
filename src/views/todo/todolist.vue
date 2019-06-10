@@ -10,19 +10,7 @@
       </fn-todo>
       <h3>父组件的count：{{count}}</h3>
     </div>
-    <div>
-      <!-- <h3>树形组件的使用</h3> -->
-      <!-- <el-row>
-        <el-col :span="12">
-          <el-tree :data="data" :highlight-current="true" @node-expand="handleExpand"></el-tree>
-        </el-col>
-        <el-col :span="12">
-          <el-checkbox-group v-model="checkList">
-            <el-checkbox label="复选框 A"></el-checkbox>
-          </el-checkbox-group>
-        </el-col>
-      </el-row>-->
-    </div>
+    <div></div>
   </div>
 </template>
 <script>
@@ -49,9 +37,7 @@ export default {
       this.$http({
         method: "post",
         url: "http://umapdev.dfmc.com.cn/smart/pc-org/getOrgTree"
-      }).then(res => {
-        this.data = res.data.data;
-      });
+      }).then(res => (this.data = res.data.data));
     },
     //
     handleExpand(data, node, obj) {
