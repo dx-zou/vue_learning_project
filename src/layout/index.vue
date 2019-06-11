@@ -4,7 +4,9 @@
     <el-main>
       <app-header></app-header>
       <transition name="app">
-        <router-view/>
+        <div class="app-main">
+          <router-view/>
+        </div>
       </transition>
     </el-main>
   </el-container>
