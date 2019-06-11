@@ -15,6 +15,15 @@ export const constantRouterMap = [{
       name: 'vuex',
       component: () => import('@/views/vx/test'),
     }],
+  },
+  {
+    path: '/date-select',
+    component: layout,
+    children: [{
+      path: '',
+      name: '日期选择',
+      component: () => import('@/views/dateSelect'),
+    }],
   }
 ]
 //根据登录权限动态加载的路由表

@@ -34,6 +34,9 @@
           <el-menu-item index="2-3">
             <span @click="$router.push('/vx')">vuex</span>
           </el-menu-item>
+          <el-menu-item index="2-4">
+            <span @click="$router.push('/date-select')">日期选择</span>
+          </el-menu-item>
         </el-submenu>
       </el-menu>
     </el-scrollbar>

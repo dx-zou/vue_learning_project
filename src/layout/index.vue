@@ -30,6 +30,7 @@ export default {
   height: 100%;
 }
 .el-main {
+  padding: 0;
   overflow-x: hidden;
 }
 .app-enter {

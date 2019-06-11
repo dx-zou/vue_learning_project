@@ -38,5 +38,3 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-//对外暴露axios对象
-export default axios;
