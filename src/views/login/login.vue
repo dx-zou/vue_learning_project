@@ -1,41 +1,41 @@
 <template>
-  <div class="login-container">
-    <el-form
-      :model="formData"
-      status-icon
-      ref="ruleForm"
-      label-position="left"
-      label-width="60px"
-      class="login-form"
-    >
-      <el-form-item>
+  <div class="login-wrapper">
+    <div class="login-container">
+      <el-form
+        :model="formData"
+        status-icon
+        ref="ruleForm"
+        label-position="left"
+        label-width="60px"
+        class="login-form"
+      >
         <h1>系统登录</h1>
-      </el-form-item>
-      <el-form-item label="账号" prop="pass">
-        <el-input type="text" v-model="account"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="password"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="login">登录</el-button>
-        <el-popover
-          placement="bottom"
-          width="200"
-          trigger="hover"
-          content="admin/123456;normal/654321"
-        >
-          <el-button slot="reference">获取账号密码</el-button>
-        </el-popover>
-      </el-form-item>
-    </el-form>
+        <el-form-item label="账号" prop="pass">
+          <el-input type="text" v-model="account"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="pass">
+          <el-input type="password" v-model="password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="login">登录</el-button>
+          <el-popover
+            placement="bottom"
+            width="200"
+            trigger="hover"
+            content="admin/123456;normal/654321"
+          >
+            <el-button slot="reference">获取账号密码</el-button>
+          </el-popover>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
 <script>
 import Cookies from "js-cookie";
-import router from "@/route"
-import { mapActions, mapMutations,mapGetters } from "vuex";
+import router from "@/route";
+import { mapActions, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -46,10 +46,10 @@ export default {
         { name: "admin", password: "123456", role: "admin" },
         { name: "normal", password: "654321", role: "ordinary" }
       ]
-    }
+    };
   },
   computed: {
-    ...mapGetters(['addRouters'])
+    ...mapGetters(["addRouters"])
   },
   methods: {
     ...mapActions(["generateRoutes"]),
@@ -68,7 +68,7 @@ export default {
       );
       if (res) {
         // Cookies.set("token", "Admin-Token");
-        sessionStorage.setItem('token', this.account+Math.random())
+        sessionStorage.setItem("token", this.account + Math.random());
         setTimeout(() => {
           loading.close();
           this.$toast("success", "登陆成功");
@@ -78,9 +78,8 @@ export default {
           this.$store.commit("SET_ROLE", this.account);
           //提交action生成动态路由
           this.$store.dispatch("generateRoutes", this.account);
-          router.addRoutes(this.addRouters)
+          router.addRoutes(this.addRouters);
           this.$router.push("/home");
-
         }, 400);
       } else {
         loading.close();
@@ -94,27 +93,34 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login-container {
-  width: 300px;
-  margin-top: 300px;
-  margin-left: 900px;
-  padding: 20px 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #eee;
-  &::before {
-    z-index: -999;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../../assets/login.png");
-    background-size: cover;
-  }
-  h1 {
-    text-align: center;
+.login-wrapper {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/login.png");
+  background-size: cover;
+  .login-container {
+    position: fixed;
+    width: 300px;
+    right: 15%;
+    bottom: 20%;
+    padding: 20px 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #ddd;
+    // &::before {
+    //   position: absolute;
+    //   content: "";
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-image: url("../../assets/login.png");
+    //   background-size: cover;
+    //   z-index: -999;
+    // }
+    h1 {
+      text-align: center;
+    }
   }
 }
 </style>

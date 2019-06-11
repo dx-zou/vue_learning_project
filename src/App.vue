@@ -8,7 +8,10 @@ export default {};
 </script>
 <style lang="less">
 #app {
-  overflow-x: hidden;
+  position: relative;
+  width: 100%;
   height: 100vh;
+  margin: auto;
+  overflow-x: hidden;
 }
 </style>
