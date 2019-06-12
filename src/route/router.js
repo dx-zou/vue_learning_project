@@ -88,11 +88,11 @@ export const asyncRoutes = [{
     }]
   },
   {
-    path: '/user/:id',
+    path: '/third-party',
     component: layout,
     children: [{
-      name: '用户',
-      path: '',
+      name: 'easy-mock',
+      path: 'user/:id',
       component: () => import('@/views/user/user'),
       props: {
         name: 'feng'
@@ -103,4 +103,8 @@ export const asyncRoutes = [{
       }
     }]
   },
+  {
+    path: '*',
+    component: () => import('@/views/404')
+  }
 ]

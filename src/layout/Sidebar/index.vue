@@ -51,7 +51,7 @@
             <i class="iconfont icon-lianjie"></i>第三方
           </template>
           <el-menu-item index="5-1">
-            <span @click="$router.push({path:'/user/101'})">easy-mock</span>
+            <span @click="$router.push({path:'third-party/user/101'})">easy-mock</span>
           </el-menu-item>
         </el-submenu>
       </el-menu>
