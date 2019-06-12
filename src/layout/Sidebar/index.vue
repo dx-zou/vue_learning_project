@@ -9,33 +9,49 @@
       >
         <el-submenu index="1">
           <template slot="title">
-            <i class="el-icon-message"></i>导航
+            <i class="iconfont icon-shangpinliebiao1"></i>导航
           </template>
           <el-menu-item index="1-1">
+            <!-- <router-link to="/home">首页</router-link> -->
             <span @click="$router.push('/home')">首页</span>
-          </el-menu-item>
-          <el-menu-item index="1-2">
-            <span @click="$router.push('/cart')">小球动画</span>
-          </el-menu-item>
-          <el-menu-item index="1-3">
-            <span @click="$router.push('/todolist')">slot</span>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-menu"></i>组件
+            <i class="iconfont icon-vuejs"></i>vue
           </template>
           <el-menu-item index="2-1">
-            <span @click="$router.push({path:'/user/101'})">easy-mock</span>
-          </el-menu-item>
-          <el-menu-item index="2-2">
             <span @click="$router.push('/nav')">路由导航守卫</span>
           </el-menu-item>
-          <el-menu-item index="2-3">
+          <el-menu-item index="2-2">
             <span @click="$router.push('/vx')">vuex</span>
           </el-menu-item>
-          <el-menu-item index="2-4">
+          <el-menu-item index="2-3">
+            <span @click="$router.push('/todolist')">slot</span>
+          </el-menu-item>
+        </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="iconfont icon-changyong"></i>常用
+          </template>
+          <el-menu-item index="3-1">
+            <span @click="$router.push('/cart')">小球动画</span>
+          </el-menu-item>
+        </el-submenu>
+        <el-submenu index="4">
+          <template slot="title">
+            <i class="iconfont icon-zujian"></i>组件
+          </template>
+          <el-menu-item index="4-1">
             <span @click="$router.push('/date-select')">日期选择</span>
+          </el-menu-item>
+        </el-submenu>
+        <el-submenu index="5">
+          <template slot="title">
+            <i class="iconfont icon-lianjie"></i>第三方
+          </template>
+          <el-menu-item index="5-1">
+            <span @click="$router.push({path:'/user/101'})">easy-mock</span>
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -74,6 +90,10 @@ export default {
     .el-menu {
       height: 100%;
     }
+  }
+  .iconfont {
+    margin-right: 10px;
+    font-size: 18px;
   }
 }
 .el-menu:not(.el-menu--collapse) {

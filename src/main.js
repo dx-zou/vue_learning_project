@@ -3,9 +3,7 @@ import App from './App.vue'
 import router from './route/index'
 import store from './store/index'
 import './plugins/api/api'
-import {
-  getToken
-} from "@/utils/auth";
+import './assets/fontIcon/iconfont.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets

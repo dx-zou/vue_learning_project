@@ -176,7 +176,6 @@ export default {
 <style lang="less">
 .home-wrapper {
   width: 100%;
-  padding: 20px;
   box-sizing: border-box;
   #myChart {
     width: 100%;

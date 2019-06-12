@@ -35,6 +35,10 @@ export default {
   padding: 0;
   overflow-x: hidden;
 }
+.app-main {
+  padding: 20px;
+  box-sizing: border-box;
+}
 .app-enter {
   opacity: 0;
   transform: translateX(100%);
