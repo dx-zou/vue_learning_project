@@ -3,29 +3,10 @@ import layout from '../layout'
 
 //不需要登录权限的路由
 export const constantRouterMap = [{
-    path: '/login',
-    name: 'login',
-    component: login
-  },
-  {
-    path: '/vx',
-    component: layout,
-    children: [{
-      path: '',
-      name: 'vuex',
-      component: () => import('@/views/vx/test'),
-    }],
-  },
-  {
-    path: '/date-select',
-    component: layout,
-    children: [{
-      path: '',
-      name: '日期选择',
-      component: () => import('@/views/dateSelect'),
-    }],
-  }
-]
+  path: '/login',
+  name: 'login',
+  component: login
+}, ]
 //根据登录权限动态加载的路由表
 export const asyncRoutes = [{
     path: '/',
@@ -34,6 +15,7 @@ export const asyncRoutes = [{
       roles: ['admin', 'normal']
     }
   },
+  // 首页
   {
     path: '/home',
     component: layout,
@@ -47,13 +29,28 @@ export const asyncRoutes = [{
       }
     }]
   },
+  // 我的组件
   {
-    path: '/cart',
+    path: '/my-components',
+    component: layout,
+    children: [{
+      path: 'date-select',
+      name: '日期选择',
+      component: () => import('@/views/my-components/dateSelect'),
+      meta: {
+        requireAuth: true,
+        roles: ['admin', 'normal']
+      }
+    }],
+  },
+  // 常用
+  {
+    path: '/normal-use',
     component: layout,
     children: [{
       name: '购物车',
-      path: '',
-      component: () => import('@/views/cart/cart'),
+      path: 'cart',
+      component: () => import('@/views/normal-use/cart'),
       meta: {
         title: '',
         requireAuth: true,
@@ -61,39 +58,45 @@ export const asyncRoutes = [{
       }
     }],
   },
+  // vue 学习
   {
-    path: '/todolist',
+    path: '/vue',
     component: layout,
     children: [{
-      path: '',
-      name: '代办事项',
-      component: () => import('@/views/todo/todolist'),
-      meta: {
-        requireAuth: true,
-        roles: ['admin']
+        name: '路由导航',
+        path: 'route-nav',
+        component: () => import('@/views/vue/routeNav'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
+      },
+      {
+        path: 'vuex',
+        component: () => import('@/views/vue/vuex'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
+      },
+      {
+        path: 'slot',
+        component: () => import('@/views/vue/todo'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
       }
-    }]
+    ]
   },
-  {
-    path: '/nav',
-    component: layout,
-    children: [{
-      name: '路由导航',
-      path: '',
-      component: () => import('@/views/routeNav/navigation'),
-      meta: {
-        requireAuth: true,
-        roles: ['admin', 'normal']
-      }
-    }]
-  },
+  // 第三方插件
   {
     path: '/third-party',
     component: layout,
     children: [{
       name: 'easy-mock',
       path: 'user/:id',
-      component: () => import('@/views/user/user'),
+      component: () => import('@/views/easy-mock'),
       props: {
         name: 'feng'
       },
@@ -103,6 +106,7 @@ export const asyncRoutes = [{
       }
     }]
   },
+  // 404
   {
     path: '*',
     component: () => import('@/views/404')

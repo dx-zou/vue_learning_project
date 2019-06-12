@@ -21,13 +21,13 @@
             <i class="iconfont icon-vuejs"></i>vue
           </template>
           <el-menu-item index="2-1">
-            <span @click="$router.push('/nav')">路由导航守卫</span>
+            <span @click="$router.push('/vue/route-nav')">路由导航守卫</span>
           </el-menu-item>
           <el-menu-item index="2-2">
-            <span @click="$router.push('/vx')">vuex</span>
+            <span @click="$router.push('/vue/vuex')">vuex</span>
           </el-menu-item>
           <el-menu-item index="2-3">
-            <span @click="$router.push('/todolist')">slot</span>
+            <span @click="$router.push('/vue/slot')">slot</span>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="3">
@@ -35,7 +35,7 @@
             <i class="iconfont icon-changyong"></i>常用
           </template>
           <el-menu-item index="3-1">
-            <span @click="$router.push('/cart')">小球动画</span>
+            <span @click="$router.push('/normal-use/cart')">小球动画</span>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="4">
@@ -43,7 +43,7 @@
             <i class="iconfont icon-zujian"></i>组件
           </template>
           <el-menu-item index="4-1">
-            <span @click="$router.push('/date-select')">日期选择</span>
+            <span @click="$router.push('/my-components/date-select')">日期选择</span>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="5">
@@ -51,7 +51,7 @@
             <i class="iconfont icon-lianjie"></i>第三方
           </template>
           <el-menu-item index="5-1">
-            <span @click="$router.push({path:'third-party/user/101'})">easy-mock</span>
+            <span @click="$router.push({path:'/third-party/user/101'})">easy-mock</span>
           </el-menu-item>
         </el-submenu>
       </el-menu>
