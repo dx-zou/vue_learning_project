@@ -18,7 +18,10 @@ const state = {
   routers: constantRouterMap,
   addRouters: [],
   routes: [],
-  role: ''
+  role: '',
+  sidebar: {
+    isCollapse: false
+  }
 }
 export default new Vuex.Store({
   state,

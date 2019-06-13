@@ -11,20 +11,20 @@
       >
         <h1>系统登录</h1>
         <el-form-item label="账号" prop="pass">
-          <el-input type="text" v-model="account"></el-input>
+          <el-input type="text" v-model="account" placeholder="请输入用户名" autofocus></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input type="password" v-model="password"></el-input>
+          <el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="login">登录</el-button>
+          <el-button type="primary" @click.enter="login">登录</el-button>
           <el-popover
             placement="bottom"
             width="200"
             trigger="hover"
             content="admin/123456;normal/654321"
           >
-            <el-button slot="reference">获取账号密码</el-button>
+            <!-- <el-button slot="reference">获取账号密码</el-button> -->
           </el-popover>
         </el-form-item>
       </el-form>

@@ -13,14 +13,14 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "AppHeader",
   data() {
-    return {
-      isCollapse:false
-    };
+    return {};
   },
   methods: {
+    // ...mapMutations([SET_SIDEBAR]),
     logout() {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("role");
@@ -28,7 +28,7 @@ export default {
       this.$toast("success", "已退出登录");
     },
     changeWidth() {
-      this.isCollapse = !this.isCollapse;
+      this.$store.commit("SET_SIDEBAR");
     }
   }
 };

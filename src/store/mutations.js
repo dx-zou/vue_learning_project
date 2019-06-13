@@ -4,11 +4,9 @@
 import {
   INCREMENT,
   STATUS,
+  SET_SIDEBAR
 } from './mutation-types'
 
-import {
-  constantRouterMap,
-} from '@/route/router'
 export default {
   [INCREMENT](state, number) {
     state.count += number.count
@@ -18,9 +16,12 @@ export default {
   },
   SET_ROUTES: (state, routers) => {
     state.addRouters = routers;
-    // state.routers = constantRouterMap.concat(routers);
   },
   SET_ROLE: (state, role) => {
     state.role = role
   },
+  // 切换sidebar的折叠
+  [SET_SIDEBAR](state) {
+    state.sidebar.isCollapse = !state.sidebar.isCollapse
+  }
 }

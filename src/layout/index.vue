@@ -3,11 +3,11 @@
     <side-bar></side-bar>
     <el-main>
       <app-header></app-header>
-      <transition name="app">
-        <div class="app-main">
-          <router-view/>
-        </div>
-      </transition>
+      <!-- <transition name="app"> -->
+      <div class="app-main">
+        <router-view/>
+      </div>
+      <!-- </transition> -->
     </el-main>
   </el-container>
 </template>

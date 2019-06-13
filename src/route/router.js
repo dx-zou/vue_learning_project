@@ -65,7 +65,7 @@ export const asyncRoutes = [{
     children: [{
         name: '路由导航',
         path: 'route-nav',
-        component: () => import('@/views/vue/routeNav'),
+        component: () => import('@/views/vue/route-nav'),
         meta: {
           requireAuth: true,
           roles: ['admin', 'normal']
@@ -80,6 +80,7 @@ export const asyncRoutes = [{
         }
       },
       {
+        name: '插槽',
         path: 'slot',
         component: () => import('@/views/vue/todo'),
         meta: {
@@ -94,17 +95,24 @@ export const asyncRoutes = [{
     path: '/third-party',
     component: layout,
     children: [{
-      name: 'easy-mock',
-      path: 'user/:id',
-      component: () => import('@/views/easy-mock'),
-      props: {
-        name: 'feng'
+        name: 'easy-mock',
+        path: 'user/:id',
+        component: () => import('@/views/third-party/easy-mock'),
+        props: {
+          name: 'feng'
+        },
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
       },
-      meta: {
-        requireAuth: true,
-        roles: ['admin', 'normal']
+      {
+        name: "富文本编辑器",
+        path: 'editor',
+        component: () => import('@/views/third-party/quill-editor'),
       }
-    }]
+
+    ]
   },
   // 404
   {

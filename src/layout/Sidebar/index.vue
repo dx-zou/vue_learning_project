@@ -53,6 +53,9 @@
           <el-menu-item index="5-1">
             <span @click="$router.push({path:'/third-party/user/101'})">easy-mock</span>
           </el-menu-item>
+          <el-menu-item index="5-2">
+            <span @click="$router.push({path:'/third-party/editor'})">富文本编辑器</span>
+          </el-menu-item>
         </el-submenu>
       </el-menu>
     </el-scrollbar>
@@ -60,12 +63,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "SideBar",
   data() {
-    return {
-      isCollapse: false
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters(["isCollapse"])
   },
   methods: {
     changeWidth() {
