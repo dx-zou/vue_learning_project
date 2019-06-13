@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
 import getters from './getters'
+import Cookies from 'js-cookie'
 import {
-  asyncRoutes,
   constantRouterMap
 } from '@/route/router'
 
@@ -20,7 +20,7 @@ const state = {
   routes: [],
   role: '',
   sidebar: {
-    isCollapse: false
+    isCollapse: Cookies.get('sidebarStatus') ? !!+Cookies.get('sidebarStatus') : false
   }
 }
 export default new Vuex.Store({

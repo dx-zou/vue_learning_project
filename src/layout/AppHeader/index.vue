@@ -1,7 +1,8 @@
 <template>
   <div class="app-header">
     <header class="nx-header">
-      <div class="left-menu" @click="changeWidth">切换</div>
+      <span class="iconfont iconfengqiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span>
+      <span class="iconfont iconfengqiehuan toggle-icon" @click="toggleSidebar" v-else></span>
       <el-menu class="right-menu">
         <el-submenu index="1">
           <template slot="title">我的账户</template>
@@ -13,22 +14,26 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 export default {
   name: "AppHeader",
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters(["isCollapse"])
+  },
   methods: {
-    // ...mapMutations([SET_SIDEBAR]),
+    ...mapMutations(["TOGGLE_SIDEBAR"]),
     logout() {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("role");
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
     },
-    changeWidth() {
-      this.$store.commit("SET_SIDEBAR");
+    // 切换侧边栏
+    toggleSidebar() {
+      this.TOGGLE_SIDEBAR();
     }
   }
 };
@@ -49,6 +54,12 @@ export default {
     width: 120px;
     height: 50px;
     border: none;
+  }
+  .toggle-icon {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 23px;
+    cursor: pointer;
   }
 }
 </style>

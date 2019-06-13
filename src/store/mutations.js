@@ -4,14 +4,14 @@
 import {
   INCREMENT,
   STATUS,
-  SET_SIDEBAR
+  TOGGLE_SIDEBAR
 } from './mutation-types'
-
+import Cookies from 'js-cookie'
 export default {
-  [INCREMENT](state, number) {
+  [INCREMENT]: (state, number) => {
     state.count += number.count
   },
-  [STATUS](state) {
+  [STATUS]: (state) => {
     state.show = !state.show
   },
   SET_ROUTES: (state, routers) => {
@@ -21,7 +21,8 @@ export default {
     state.role = role
   },
   // 切换sidebar的折叠
-  [SET_SIDEBAR](state) {
+  [TOGGLE_SIDEBAR]: (state) => {
     state.sidebar.isCollapse = !state.sidebar.isCollapse
+    state.sidebar.isCollapse ? Cookies.set('sidebarStatus', 1) : Cookies.set('sidebarStatus', 0)
   }
 }

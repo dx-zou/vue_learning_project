@@ -6,19 +6,21 @@
         background-color="#293c55"
         text-color="#fff"
         active-text-color="#ffd04b"
+        class="my-menu"
       >
         <el-submenu index="1">
           <template slot="title">
-            <i class="iconfont icon-shangpinliebiao1"></i>导航
+            <i class="iconfont iconfengshouye1"></i>
+            <span slot="title">导航</span>
           </template>
           <el-menu-item index="1-1">
-            <!-- <router-link to="/home">首页</router-link> -->
             <span @click="$router.push('/home')">首页</span>
           </el-menu-item>
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="iconfont icon-vuejs"></i>vue
+            <i class="iconfont iconfengvuejs"></i>
+            <span slot="title">VUE</span>
           </template>
           <el-menu-item index="2-1">
             <span @click="$router.push('/vue/route-nav')">路由导航守卫</span>
@@ -32,7 +34,8 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
-            <i class="iconfont icon-changyong"></i>常用
+            <i class="iconfont iconfengchangyong"></i>
+            <span slot="title">常用</span>
           </template>
           <el-menu-item index="3-1">
             <span @click="$router.push('/normal-use/cart')">小球动画</span>
@@ -40,7 +43,8 @@
         </el-submenu>
         <el-submenu index="4">
           <template slot="title">
-            <i class="iconfont icon-zujian"></i>组件
+            <i class="iconfont iconfengzujian"></i>
+            <span slot="title">组件</span>
           </template>
           <el-menu-item index="4-1">
             <span @click="$router.push('/my-components/date-select')">日期选择</span>
@@ -48,7 +52,8 @@
         </el-submenu>
         <el-submenu index="5">
           <template slot="title">
-            <i class="iconfont icon-lianjie"></i>第三方
+            <i class="iconfont iconfengdisanfang"></i>
+            <span slot="title">第三方</span>
           </template>
           <el-menu-item index="5-1">
             <span @click="$router.push({path:'/third-party/user/101'})">easy-mock</span>
@@ -72,11 +77,7 @@ export default {
   computed: {
     ...mapGetters(["isCollapse"])
   },
-  methods: {
-    changeWidth() {
-      this.isCollapse = !this.isCollapse;
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -101,7 +102,10 @@ export default {
     font-size: 18px;
   }
 }
-.el-menu:not(.el-menu--collapse) {
-  width: 200px;
+.my-menu:not(.el-menu--collapse) {
+  width: 180px;
+}
+.el-menu--collapse {
+  width: 60px;
 }
 </style>
