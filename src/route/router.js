@@ -87,6 +87,15 @@ export const asyncRoutes = [{
           requireAuth: true,
           roles: ['admin', 'normal']
         }
+      },
+      {
+        name: '计算属性',
+        path: 'watch-computed',
+        component: () => import('@/views/vue/computed'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
       }
     ]
   },

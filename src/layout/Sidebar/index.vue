@@ -31,6 +31,9 @@
           <el-menu-item index="2-3">
             <span @click="$router.push('/vue/slot')">slot</span>
           </el-menu-item>
+          <el-menu-item index="2-4">
+            <span @click="$router.push('/vue/watch-computed')">watch/computed</span>
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
