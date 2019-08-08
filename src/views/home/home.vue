@@ -6,193 +6,168 @@
 
 <script>
 // 引入基本模板
-import { dateList, codeNum, timeNum } from './data'
-let echarts = require('echarts/lib/echarts')
+import { dateList, codeNum, timeNum } from "./data";
+import option from "./chartOption";
+let echarts = require("echarts/lib/echarts");
 // 引入柱状图组件
-require('echarts/lib/chart/bar')
-require('echarts/lib/chart/line')
+require("echarts/lib/chart/bar");
+require("echarts/lib/chart/line");
 // 引入提示框和title组件
-require('echarts/lib/component/title')
-require('echarts/lib/component/toolbox')
-require('echarts/lib/component/tooltip')
-require('echarts/lib/component/legend')
+require("echarts/lib/component/title");
+require("echarts/lib/component/dataZoom");
+require("echarts/lib/component/toolbox");
+require("echarts/lib/component/tooltip");
+require("echarts/lib/component/legend");
 export default {
   components: {},
-  data () {
+  data() {
     return {
       dateList,
       codeNum,
       timeNum
-    }
+    };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
-      this.initCharts()
-    })
+      this.initCharts();
+    });
   },
   methods: {
-    initCharts () {
+    initCharts() {
       // 基于准备好的dom，初始化echarts实例
       let opts = {
-        width: '80%',
-        height: '80%'
-      }
-      let myChart = echarts.init(document.getElementById('myChart'), opts)
-      // 绘制图表
-      myChart.setOption({
+        width: "80%",
+        height: "80%"
+      };
+      let myChart = echarts.init(document.getElementById("myChart"), opts);
+      let option = {
         title: {
-          text: '最近七天代码记录表',
-          subtext: '纯属虚构'
+          text: "动态数据",
+          subtext: "纯属虚构"
         },
-        backgroundColor: '#f9f9f9',
         tooltip: {
-          confine: true,
-          trigger: 'axis',
+          trigger: "axis",
           axisPointer: {
-            type: 'cross',
-            crossStyle: {
-              color: '#999'
+            type: "cross",
+            label: {
+              backgroundColor: "#283b56"
             }
-          },
-          showContent: true
-          // formatter: "{a0}: {c0}<br />{a1}: {c1}"
-        },
-        toolbox: {
-          feature: {
-            dataView: { show: true, readOnly: false },
-            magicType: { show: true, type: ['line', 'bar'] },
-            restore: { show: true },
-            saveAsImage: { show: true }
           }
         },
-        grid: {
-          containLabel: true
-        },
         legend: {
-          data: ['代码量', '时间量'],
-          itemGap: 20
+          data: ["最新成交价", "预购队列"]
         },
-        axisPointer: {
+        toolbox: {
           show: true,
-          type: 'line'
+          feature: {
+            dataView: { readOnly: false },
+            restore: {},
+            saveAsImage: {}
+          }
+        },
+        dataZoom: {
+          show: false,
+          start: 0,
+          end: 100
         },
         xAxis: [
           {
-            type: 'category',
-            name: '日期',
-            data: this.dateList,
-            axisLine: {
-              lineStyle: {
-                color: '#666'
+            type: "category",
+            boundaryGap: true,
+            data: (function() {
+              var now = new Date();
+              var res = [];
+              var len = 10;
+              while (len--) {
+                res.unshift(now.toLocaleTimeString().replace(/^\D*/, ""));
+                now = new Date(now - 2000);
               }
-            },
-            axisPointer: {
-              type: 'shadow',
-              label: {
-                formatter: function (params) {
-                  return '日期  ' + params.value
-                }
+              return res;
+            })()
+          },
+          {
+            type: "category",
+            boundaryGap: true,
+            data: (function() {
+              var res = [];
+              var len = 10;
+              while (len--) {
+                res.push(10 - len - 1);
               }
-            }
+              return res;
+            })()
           }
         ],
         yAxis: [
           {
-            type: 'value',
-            // splitLine: { show: false }, //去除网格线
-            name: '代码(行)',
-            // min: 0,
-            axisLabel: {
-              formatter: '{value}'
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#666'
-              }
-            }
-          },
-          {
-            type: 'value',
-            name: '时间(分)',
+            type: "value",
+            scale: true,
+            name: "价格",
+            max: 30,
             min: 0,
-            axisLabel: {
-              formatter: '{value}'
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#666'
-              }
-            }
-          }
-        ],
-        dataZoom: [
-          {
-            show: true,
-            start: 94,
-            end: 100
+            boundaryGap: [0.2, 0.2]
           },
           {
-            type: 'inside',
-            start: 94,
-            end: 100
-          },
-          {
-            show: true,
-            yAxisIndex: 0,
-            filterMode: 'empty',
-            width: 30,
-            height: '20%',
-            showDataShadow: false,
-            left: '93%'
+            type: "value",
+            scale: true,
+            name: "预购量",
+            max: 1200,
+            min: 0,
+            boundaryGap: [0.2, 0.2]
           }
         ],
         series: [
           {
-            name: '代码量',
-            type: 'bar',
-            barWidth: 35,
-            data: this.codeNum,
-            label: {
-              normal: {
-                show: true,
-                position: 'top',
-                fontSize: 16
+            name: "预购队列",
+            type: "bar",
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data: (function() {
+              var res = [];
+              var len = 10;
+              while (len--) {
+                res.push(Math.round(Math.random() * 1000));
               }
-            }
+              return res;
+            })()
           },
-
           {
-            name: '时间量',
-            type: 'bar',
-            barWidth: 35,
-            data: this.timeNum,
-            barStyle: { color: '0FD8C0' },
-            label: {
-              normal: {
-                show: true,
-                position: 'top',
-                fontSize: 16
+            name: "最新成交价",
+            type: "line",
+            data: (function() {
+              var res = [];
+              var len = 0;
+              while (len < 10) {
+                res.push((Math.random() * 10 + 5).toFixed(1) - 0);
+                len++;
               }
-            }
-          },
-          {
-            name: '单词曲线',
-            type: 'line',
-            data: this.codeNum,
-            smooth: true
-          },
-          {
-            name: '时间曲线',
-            type: 'line',
-            data: this.timeNum,
-            smooth: true
+              return res;
+            })()
           }
-        ],
-        color: ['#334b5c', '#b34038', '#e43c59 ', '#54a2d5']
-      })
+        ]
+      };
+      // 绘制图表
+      app.count = 11;
+      setInterval(function() {
+        let axisData = new Date().toLocaleTimeString().replace(/^\D*/, "");
+
+        var data0 = option.series[0].data;
+        var data1 = option.series[1].data;
+        data0.shift();
+        data0.push(Math.round(Math.random() * 1000));
+        data1.shift();
+        data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+
+        option.xAxis[0].data.shift();
+        option.xAxis[0].data.push(axisData);
+        option.xAxis[1].data.shift();
+        option.xAxis[1].data.push(app.count++);
+
+        myChart.setOption(option);
+      }, 2100);
     }
   }
-}
+};
 </script>
 
 <style lang="less">
