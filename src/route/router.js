@@ -89,6 +89,15 @@ export const asyncRoutes = [{
         }
       },
       {
+        name: '过渡动画',
+        path: 'transition',
+        component: () => import('@/views/vue/transition'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin', 'normal']
+        }
+      },
+      {
         name: '计算属性',
         path: 'watch-computed',
         component: () => import('@/views/vue/computed'),

@@ -16,6 +16,17 @@
   </noscript>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <script>
+    windowResize()
+    window.onresize = windowResize
+
+    function windowResize() {
+      var width = document.documentElement.clientWidth;
+      if (width > 1920) width = 1920;
+      if (width < 320) width = 320;
+      document.querySelector('html').style.fontSize = width / 1920 * 100 + 'px';
+    }
+  </script>
 </body>
 
 </html>

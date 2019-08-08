@@ -41,8 +41,10 @@ export default {
 
 <style lang="less" scoped>
 .nx-header {
-  height: 50px;
-  line-height: 50px;
+  display: flex;
+  height: 8vh;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #ccc;
   .left-menu {
     float: left;
