@@ -55,6 +55,9 @@
           <el-menu-item index="4-1">
             <span @click="$router.push('/my-components/date-select')">日期选择</span>
           </el-menu-item>
+          <el-menu-item index="4-2">
+            <span @click="$router.push('/my-components/my-table')">表格组件</span>
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="5">
           <template slot="title">

@@ -34,29 +34,45 @@
       :width="operateWidth"
     >
       <template slot-scope="scope">
-        <slot :scope="scope" name="default">
-          <el-button
-            @click="changeRow(scope.row.id)"
-            type="primary"
-            size="small"
-            v-if="showEdit"
-            >修改</el-button
-          >
-          <el-button
-            @click="goToDel(scope.row.id)"
-            type="danger"
-            size="small"
-            v-if="showDelete"
-            >删除</el-button
-          >
-        </slot>
-        <slot :scope="scope" name="more"></slot>
+        <el-popover
+          placement="bottom-start"
+          width="200"
+          trigger="hover"
+          :open-delay="300"
+        >
+          <slot :scope="scope" name="default">
+            <el-button
+              @click="changeRow(scope.row.id)"
+              type="primary"
+              size="small"
+              v-if="showEdit"
+              @hover="showSth"
+              >修改</el-button
+            >
+            <el-button
+              @click="goToDel(scope.row.id)"
+              type="danger"
+              size="small"
+              v-if="showDelete"
+              >删除</el-button
+            >
+          </slot>
+          <slot :scope="scope" name="more"></slot>
+          <img
+            src="../../assets/images/dot.png"
+            slot="reference"
+            alt="导航图标"
+            class="nav-dot"
+          />
+        </el-popover>
       </template>
     </el-table-column>
   </el-table>
 </template>
 
 <script>
+import login from "../../views/login/login";
+
 export default {
   name: "CommonTable",
   data() {
@@ -115,6 +131,9 @@ export default {
     }
   },
   methods: {
+    showSth() {
+      console.log(123)
+    },
     // 多选框多选
     handleSelectionChange(val) {
       this.multipleSelection = val;
@@ -137,3 +156,10 @@ export default {
   }
 };
 </script>
+<style>
+.nav-dot {
+  width: 0.2rem;
+  height: 0.2rem;
+  cursor: pointer;
+}
+</style>
