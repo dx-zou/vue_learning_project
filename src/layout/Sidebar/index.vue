@@ -10,7 +10,7 @@
       >
         <el-submenu index="1">
           <template slot="title">
-            <i class="iconfont iconfengshouye1"></i>
+            <i class="iconfont icon-shouye1"></i>
             <span slot="title">导航</span>
           </template>
           <el-menu-item index="1-1">
@@ -19,7 +19,7 @@
         </el-submenu>
         <el-submenu index="2">
           <template slot="title">
-            <i class="iconfont iconfengvuejs"></i>
+            <i class="iconfont icon-vuejs"></i>
             <span slot="title">VUE</span>
           </template>
           <el-menu-item index="2-1">
@@ -40,16 +40,19 @@
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
-            <i class="iconfont iconfengchangyong"></i>
+            <i class="iconfont icon-changyong"></i>
             <span slot="title">常用</span>
           </template>
           <el-menu-item index="3-1">
             <span @click="$router.push('/normal-use/cart')">小球动画</span>
           </el-menu-item>
+          <el-menu-item index="3-2">
+            <span @click="$router.push('/normal-use/css-world')">css特效</span>
+          </el-menu-item>
         </el-submenu>
         <el-submenu index="4">
           <template slot="title">
-            <i class="iconfont iconfengzujian"></i>
+            <i class="iconfont icon-zujian"></i>
             <span slot="title">组件</span>
           </template>
           <el-menu-item index="4-1">
@@ -61,7 +64,7 @@
         </el-submenu>
         <el-submenu index="5">
           <template slot="title">
-            <i class="iconfont iconfengdisanfang"></i>
+            <i class="iconfont icon-disanfang"></i>
             <span slot="title">第三方</span>
           </template>
           <el-menu-item index="5-1">

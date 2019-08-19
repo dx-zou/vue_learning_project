@@ -14,10 +14,10 @@
           <el-input type="text" v-model="account" placeholder="请输入用户名" autofocus></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="pass">
-          <el-input type="password" v-model="password" placeholder="请输入密码"></el-input>
+          <el-input type="password" v-model="password" @keyup.enter="login" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click.enter="login">登录</el-button>
+          <el-button type="primary" @click="login">登录</el-button>
           <el-popover
             placement="bottom"
             width="200"

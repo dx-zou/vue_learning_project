@@ -1,8 +1,8 @@
 <template>
   <div class="app-header">
     <header class="nx-header">
-      <span class="iconfont iconfengqiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span>
-      <span class="iconfont iconfengqiehuan toggle-icon" @click="toggleSidebar" v-else></span>
+      <span class="iconfont icon-qiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span>
+      <span class="iconfont icon-qiehuan toggle-icon" @click="toggleSidebar" v-else></span>
       <el-menu class="right-menu">
         <el-submenu index="1">
           <template slot="title">我的账户</template>
