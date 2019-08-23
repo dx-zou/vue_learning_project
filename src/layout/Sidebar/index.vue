@@ -1,22 +1,20 @@
 <template>
-  <div class="app-sidebar">
+  <div class="sidebar-container">
     <el-scrollbar class="side-bar" ref="sidebar">
+      <sidebar-logo :collapse="isCollapse"></sidebar-logo>
       <el-menu
         :collapse="isCollapse"
-        background-color="#293c55"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-        class="my-menu"
+        :background-color="variables.menuBg"
+        :text-color="variables.menuText"
+        :unique-opened="false"
+        :active-text-color="variables.menuActiveText"
+        :collapse-transition="false"
+        class="menu-container"
       >
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="iconfont icon-shouye1"></i>
-            <span slot="title">导航</span>
-          </template>
-          <el-menu-item index="1-1">
-            <span @click="$router.push('/home')">首页</span>
-          </el-menu-item>
-        </el-submenu>
+        <el-menu-item index="1">
+          <i class="iconfont icon-shouye1"></i>
+          <span @click="$router.push('/home')">首页</span>
+        </el-menu-item>
         <el-submenu index="2">
           <template slot="title">
             <i class="iconfont icon-vuejs"></i>
@@ -81,43 +79,25 @@
 
 <script>
 import { mapGetters } from "vuex";
+import variables from "@/styles/variables.scss";
+import SidebarLogo from "./Logo";
 export default {
   name: "SideBar",
   data() {
     return {};
   },
+  components: {
+    SidebarLogo
+  },
   computed: {
-    ...mapGetters(["isCollapse"])
+    ...mapGetters(["isCollapse"]),
+    variables() {
+      return variables;
+    }
   },
   methods: {}
 };
 </script>
 
 <style lang="less" >
-.side-bar {
-  position: fixed;
-  height: 100%;
-  bottom: 0;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  transition: width 0.3s ease;
-  border-right: 1px solid #ccc;
-  .el-scrollbar__view {
-    height: 100%;
-    .el-menu {
-      height: 100%;
-    }
-  }
-  .iconfont {
-    margin-right: 10px;
-    font-size: 18px;
-  }
-}
-.my-menu:not(.el-menu--collapse) {
-  width: 180px;
-}
-.el-menu--collapse {
-  width: 60px;
-}
 </style>

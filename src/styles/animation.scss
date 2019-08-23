@@ -1,0 +1,16 @@
+/* 组件过渡效果 */
+.app-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.app-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+  position: absolute;
+}
+
+.app-enter-active,
+.app-leave-active {
+  transition: all 0.5s;
+}

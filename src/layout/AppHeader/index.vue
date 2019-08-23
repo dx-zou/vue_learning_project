@@ -1,16 +1,18 @@
 <template>
-  <div class="app-header">
-    <header class="nx-header">
-      <span class="iconfont icon-qiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span>
-      <span class="iconfont icon-qiehuan toggle-icon" @click="toggleSidebar" v-else></span>
-      <el-menu class="right-menu">
-        <el-submenu index="1">
-          <template slot="title">我的账户</template>
-          <el-menu-item @click="logout">退出登录</el-menu-item>
-        </el-submenu>
-      </el-menu>
-    </header>
-  </div>
+  <header class="app-header">
+    <!-- <span class="iconfont icon-qiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span> -->
+    <span
+      class="iconfont icon-qiehuan toggle-icon"
+      :class="[ isCollapse ? '' : 'is-collapse']"
+      @click="toggleSidebar"
+    ></span>
+    <el-menu class="right-menu">
+      <el-submenu index="1">
+        <template slot="title">我的账户</template>
+        <el-menu-item @click="logout">退出登录</el-menu-item>
+      </el-submenu>
+    </el-menu>
+  </header>
 </template>
 
 <script>
@@ -26,8 +28,7 @@ export default {
   methods: {
     ...mapMutations(["TOGGLE_SIDEBAR"]),
     logout() {
-      sessionStorage.removeItem("token");
-      sessionStorage.removeItem("role");
+      sessionStorage.clear();
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
     },
@@ -40,28 +41,23 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.nx-header {
+.app-header {
   display: flex;
-  height: 8vh;
+  height: 0.6rem;
+  padding: 0 0.2rem;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
-  .left-menu {
-    float: left;
-    width: 200px;
-    cursor: pointer;
-  }
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   .right-menu {
-    float: right;
-    width: 120px;
-    height: 50px;
+    line-height: 0.6rem;
     border: none;
   }
   .toggle-icon {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 23px;
+    font-size: 0.2rem;
     cursor: pointer;
+  }
+  .is-collapse {
+    transform: rotate(180deg);
   }
 }
 </style>

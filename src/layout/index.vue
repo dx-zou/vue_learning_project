@@ -1,15 +1,13 @@
 <template>
-  <el-container class="app-wrapper">
+  <div :class="classObj" class="app-wrapper">
     <side-bar></side-bar>
-    <el-main>
-      <app-header></app-header>
-      <!-- <transition name="app"> -->
+    <div class="main-container">
+      <app-header :class="{'fixed-header':fixedHeader}"></app-header>
       <div class="app-main">
-        <router-view/>
+        <router-view />
       </div>
-      <!-- </transition> -->
-    </el-main>
-  </el-container>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,33 +21,25 @@ export default {
   components: {
     AppHeader,
     SideBar
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.getters.isCollapse;
+    },
+    device() {
+      return this.$store.state.app.device;
+    },
+    fixedHeader() {
+      return this.$store.state.settings.fixedHeader;
+    },
+    classObj() {
+      return {
+        hideSidebar: this.isCollapse,
+        openSidebar: !this.isCollapse,
+        // withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === "mobile"
+      };
+    }
   }
 };
 </script>
-
-<style lang="less" scoped>
-.app-wrapper {
-  height: 100%;
-}
-.el-main {
-  padding: 0;
-  overflow-x: hidden;
-}
-.app-main {
-  padding: 20px;
-  box-sizing: border-box;
-}
-.app-enter {
-  opacity: 0;
-  transform: translateX(100%);
-}
-.app-leave-to {
-  opacity: 0;
-  transform: translateX(-100%);
-  position: absolute;
-}
-.app-enter-active,
-.app-leave-active {
-  transition: all 0.5s;
-}
-</style>
