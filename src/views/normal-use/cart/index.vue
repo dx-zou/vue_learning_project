@@ -15,38 +15,38 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       num: 1,
       show: false
-    };
+    }
   },
   methods: {
-    beforeEnter(el) {
-      //设置小球的初始位置始终位于自身的原点
-      el.style.transform = "translate(0,0)";
+    beforeEnter (el) {
+      // 设置小球的初始位置始终位于自身的原点
+      el.style.transform = 'translate(0,0)'
     },
-    enter(el, done) {
+    enter (el, done) {
       // el.offsetWidth
-      //分别获取小球元素及商品数量元素相对视口的距离
-      var ballPosition = this.$refs.ball.getBoundingClientRect();
-      var countPosition = this.$refs.count.getBoundingClientRect();
-      var x = countPosition.left - ballPosition.left;
-      var y = countPosition.top - ballPosition.top;
-      el.style.transform = `translate(${x}px,${y}px)`;
-      el.style.transition = `all .4s cubic-bezier(.8,-0.4,1,.89)`;
-      done();
+      // 分别获取小球元素及商品数量元素相对视口的距离
+      var ballPosition = this.$refs.ball.getBoundingClientRect()
+      var countPosition = this.$refs.count.getBoundingClientRect()
+      var x = countPosition.left - ballPosition.left
+      var y = countPosition.top - ballPosition.top
+      el.style.transform = `translate(${x}px,${y}px)`
+      el.style.transition = `all .4s cubic-bezier(.8,-0.4,1,.89)`
+      done()
     },
-    afterEnter(el) {
-      //动画结束就隐藏小球
-      this.show = !this.show;
+    afterEnter (el) {
+      // 动画结束就隐藏小球
+      this.show = !this.show
     },
-    toCart() {
-      this.num++;
-      this.show = !this.show;
+    toCart () {
+      this.num++
+      this.show = !this.show
     }
   }
-};
+}
 </script>
 
 <style lang="less">
@@ -75,4 +75,3 @@ export default {
   }
 }
 </style>
-

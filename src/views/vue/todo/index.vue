@@ -16,33 +16,33 @@
 <script>
 export default {
   components: {},
-  data() {
+  data () {
     return {
       todolist: [
-        { id: 1, content: "111", isCompleted: false },
-        { id: 2, content: "222", isCompleted: false },
-        { id: 3, content: "333", isCompleted: false },
-        { id: 4, content: "444", isCompleted: true }
+        { id: 1, content: '111', isCompleted: false },
+        { id: 2, content: '222', isCompleted: false },
+        { id: 3, content: '333', isCompleted: false },
+        { id: 4, content: '444', isCompleted: true }
       ],
       data: [],
       checkList: [],
       count: 1
-    };
+    }
   },
-  created() {
+  created () {
     // this.getOrgTree()
   },
   methods: {
-    getOrgTree() {
+    getOrgTree () {
       this.$http({
-        method: "post",
-        url: "http://umapdev.dfmc.com.cn/smart/pc-org/getOrgTree"
-      }).then(res => (this.data = res.data.data));
+        method: 'post',
+        url: 'http://umapdev.dfmc.com.cn/smart/pc-org/getOrgTree'
+      }).then(res => (this.data = res.data.data))
     },
     //
-    handleExpand(data, node, obj) {
-      this.checkList = data.children;
+    handleExpand (data, node, obj) {
+      this.checkList = data.children
     }
   }
-};
+}
 </script>

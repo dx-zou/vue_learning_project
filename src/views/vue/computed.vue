@@ -31,39 +31,39 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       obj: {
         age: 20
       },
       age: 0
-    };
+    }
   },
   computed: {
     fullName: {
       // getter
-      get: function() {
-        return this.firstName + " " + this.lastName;
+      get: function () {
+        return this.firstName + ' ' + this.lastName
       },
       // setter
-      set: function(newValue) {
-        //this.fullName = newValue 这种写法会报错
-        var names = newValue.split(" ");
-        this.firstName = names[0]; //对它的依赖进行赋值
-        this.lastName = names[names.length - 1];
+      set: function (newValue) {
+        // this.fullName = newValue 这种写法会报错
+        var names = newValue.split(' ')
+        this.firstName = names[0] // 对它的依赖进行赋值
+        this.lastName = names[names.length - 1]
       }
     }
   },
   watch: {
     obj: {
-      handler: function(newVal, oldVla) {
-        this.age = newVal.age;
+      handler: function (newVal, oldVla) {
+        this.age = newVal.age
       },
       deep: true,
       immediate: true
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

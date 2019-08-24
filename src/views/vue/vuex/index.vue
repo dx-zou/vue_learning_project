@@ -17,48 +17,48 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       number: 12
-    };
+    }
   },
-  created() {},
-  //1.将state映射到computed 局部计算属性中
+  created () {},
+  // 1.将state映射到computed 局部计算属性中
   computed: mapState({
     name: state => state.name,
-    age: "age", //字符串参数 等同于 state => state.age
-    plusAge(state) {
-      return state.age + this.number;
+    age: 'age', // 字符串参数 等同于 state => state.age
+    plusAge (state) {
+      return state.age + this.number
     }
   }),
-  //将this.age this.name 映射为 this.$store.state.age / name
-  computed: mapState(["age", "name", "show"]),
-  //2.将state，getters 混入到局部计算属性中
+  // 将this.age this.name 映射为 this.$store.state.age / name
+  computed: mapState(['age', 'name', 'show']),
+  // 2.将state，getters 混入到局部计算属性中
   computed: {
-    ...mapState(["age", "name", "count", "show"]),
-    ...mapGetters(["myName"])
+    ...mapState(['age', 'name', 'count', 'show']),
+    ...mapGetters(['myName'])
   },
   methods: {
-    //1.this.add() 映射为 this.$store.commit('increment')
+    // 1.this.add() 映射为 this.$store.commit('increment')
     ...mapMutations({
-      add: "INCREMENT"
+      add: 'INCREMENT'
     }),
-    //2.将this.increment(count) 映射为 this.$store.commit('increment',count)
-    ...mapMutations(["INCREMENT", "STATUS"]),
-    //在组件内部的方法中调用映射过来的方法，也就是commit 了mutations中的方法
-    addTotalCount(number) {
-      this.INCREMENT(number);
-      this.add(number);
+    // 2.将this.increment(count) 映射为 this.$store.commit('increment',count)
+    ...mapMutations(['INCREMENT', 'STATUS']),
+    // 在组件内部的方法中调用映射过来的方法，也就是commit 了mutations中的方法
+    addTotalCount (number) {
+      this.INCREMENT(number)
+      this.add(number)
       setTimeout(() => {
-        this.STATUS();
-      }, 300);
-      this.increment(number);
+        this.STATUS()
+      }, 300)
+      this.increment(number)
     },
-    ...mapActions(["increment"])
+    ...mapActions(['increment'])
   }
-};
+}
 </script>
 
 <style lang="less">

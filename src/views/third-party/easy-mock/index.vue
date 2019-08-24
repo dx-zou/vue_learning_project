@@ -19,28 +19,28 @@
 <script>
 export default {
   props: {
-    id: "",
+    id: ,
     name: {
-      default: "",
+      default: '',
       type: String
     }
   },
-  data() {
+  data () {
     return {
       tableData: []
-    };
+    }
   },
-  created() {
-    this.getUserlist();
+  created () {
+    this.getUserlist()
   },
   methods: {
-    getUserlist() {
-      this.$http.get("getUserList").then(res => {
-        this.tableData = res.data;
+    getUserlist () {
+      this.$http.get('getUserList').then(res => {
+        this.tableData = res.data
       });
     }
   }
-};
+}
 </script>
 
 <style lang="less">

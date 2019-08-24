@@ -1,72 +1,72 @@
 <template>
     <transition name="alert">
-        <div 
+        <div
         class="fn-alert"
         :class=[typeClass]
         v-show="visible"
         >
-            <i :class="[iconClass]" v-if="showIcon"></i> 
+            <i :class="[iconClass]" v-if="showIcon"></i>
             <div class="fn-alert-content">
                 <span class="fn-alert-title" :class="1" v-if="title">
                     <slot name="title">{{title}}</slot>
                 </span>
                 <p class="fn-alert-description" v-if="description">{{description}}</p>
                 <i class="el-alert__closebtn" :class="{ 'is-customed': closeText !== '', 'el-icon-close': closeText === '' }" v-show="closable" @click="close()">{{closeText}}</i>
-            </div>  
+            </div>
         </div>
     </transition>
 </template>
 <script>
 const ICON_CLASSES_MAP = {
-    'success': 'el-icon-success',
-    'error': 'el-icon-error',
-    'warning': 'el-icon-warning',
+  'success': 'el-icon-success',
+  'error': 'el-icon-error',
+  'warning': 'el-icon-warning'
 }
 export default {
-    name: 'fnAlert',
-    props: {
-        showIcon: Boolean,
-        type: {
-            type: String,
-            default: 'info'
-        },
-        title: {
-            type: String,
-            default: ''
-        },
-        description: {
-            type: String,
-            default: ''
-        },
-        closable: {
-            type: Boolean,
-            default: true
-        },
-        closeText: {
-            type: String,
-            default: ''
-        }
+  name: 'fnAlert',
+  props: {
+    showIcon: Boolean,
+    type: {
+      type: String,
+      default: 'info'
     },
-    data() {
-        return {
-            visible: true,
-        }
+    title: {
+      type: String,
+      default: ''
     },
-    computed: {
-        typeClass() {
-            return `fn-alert-${this.type}`
-        },
-        iconClass() {
-            return ICON_CLASSES_MAP[this.type] || 'el-icon-info'
-        },
+    description: {
+      type: String,
+      default: ''
+    },
+    closable: {
+      type: Boolean,
+      default: true
+    },
+    closeText: {
+      type: String,
+      default: ''
+    }
+  },
+  data () {
+    return {
+      visible: true
+    }
+  },
+  computed: {
+    typeClass () {
+      return `fn-alert-${this.type}`
+    },
+    iconClass () {
+      return ICON_CLASSES_MAP[this.type] || 'el-icon-info'
+    }
 
-    },
-    methods: {
-        close() {
-            this.visible = false
-            this.$emit('close')
-        }
-    },
+  },
+  methods: {
+    close () {
+      this.visible = false
+      this.$emit('close')
+    }
+  }
 }
 </script>
 

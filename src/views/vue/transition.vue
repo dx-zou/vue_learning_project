@@ -11,13 +11,13 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       show: false
-    };
+    }
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="less" scoped>

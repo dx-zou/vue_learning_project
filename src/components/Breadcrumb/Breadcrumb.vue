@@ -12,26 +12,26 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       // breadList: null
-    };
+    }
   },
   computed: {
-    breadList() {
-      return this.$route.meta.breadcrumbs;
+    breadList () {
+      return this.$route.meta.breadcrumbs
     }
   },
   methods: {
-    handleLink(item, index) {
+    handleLink (item, index) {
       if (index === 0) {
-        this.$router.push({ name: this.breadList[1] });
-        return;
+        this.$router.push({ name: this.breadList[1] })
+        return
       }
-      this.$router.push({ name: item });
+      this.$router.push({ name: item })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

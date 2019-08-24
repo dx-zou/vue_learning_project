@@ -35,25 +35,25 @@ export default {
   components: {
     // fnDateRange,
   },
-  data() {
+  data () {
     return {
       dateRange: {
-        start_time: "",
-        end_time: ""
+        start_time: '',
+        end_time: ''
       }
-    };
+    }
   },
-  created() {},
+  created () {},
   methods: {
-    getDateRange(start, end) {
-      this.dateRange.start_time = start;
-      this.dateRange.end_time = end;
+    getDateRange (start, end) {
+      this.dateRange.start_time = start
+      this.dateRange.end_time = end
     },
-    closeAlert() {
-      this.visible = !this.visible;
+    closeAlert () {
+      this.visible = !this.visible
     }
   }
-};
+}
 </script>
 
 <style lang="less">

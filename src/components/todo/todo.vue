@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "fnTodo",
+  name: 'fnTodo',
   props: {
     todolist: {
       type: Array
@@ -23,18 +23,18 @@ export default {
       default: 0
     }
   },
-  data() {
+  data () {
     return {
       count: this.value
-    };
+    }
   },
   methods: {
-    add() {
-      this.count++;
-      this.$emit("input", this.count);
+    add () {
+      this.count++
+      this.$emit('input', this.count)
     }
   }
-};
+}
 </script>
 
 <style lang="less">

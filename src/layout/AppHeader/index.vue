@@ -53,46 +53,46 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import { mapMutations, mapGetters } from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 export default {
-  name: "AppHeader",
-  data() {
+  name: 'AppHeader',
+  data () {
     return {
       showDialog: false,
       settingForm: {}
-    };
+    }
   },
   components: {
     Breadcrumb
   },
   computed: {
-    ...mapGetters(["isCollapse"])
+    ...mapGetters(['isCollapse'])
   },
   methods: {
-    ...mapMutations(["TOGGLE_SIDEBAR"]),
-    logout() {
-      sessionStorage.clear();
-      this.$router.push("/login");
-      this.$toast("success", "已退出登录");
+    ...mapMutations(['TOGGLE_SIDEBAR']),
+    logout () {
+      sessionStorage.clear()
+      this.$router.push('/login')
+      this.$toast('success', '已退出登录')
     },
     // 切换侧边栏
-    toggleSidebar() {
-      this.TOGGLE_SIDEBAR();
+    toggleSidebar () {
+      this.TOGGLE_SIDEBAR()
     },
     // 点击下拉菜单项的回调
-    handleCommand(command) {
-      if (command === "set") {
-        this.showDialog = true;
+    handleCommand (command) {
+      if (command === 'set') {
+        this.showDialog = true
       }
     },
     // 保存用户设置
-    saveSettings() {
+    saveSettings () {
       this.showDialog = false
-      this.$toast('success','修改成功')
+      this.$toast('success', '修改成功')
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

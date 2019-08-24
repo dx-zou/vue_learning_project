@@ -86,25 +86,25 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import variables from "@/styles/variables.scss";
-import SidebarLogo from "./Logo";
+import { mapGetters } from 'vuex'
+import variables from '@/styles/variables.scss'
+import SidebarLogo from './Logo'
 export default {
-  name: "SideBar",
-  data() {
-    return {};
+  name: 'SideBar',
+  data () {
+    return {}
   },
   components: {
     SidebarLogo
   },
   computed: {
-    ...mapGetters(["isCollapse"]),
-    variables() {
-      return variables;
+    ...mapGetters(['isCollapse']),
+    variables () {
+      return variables
     }
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="less" >

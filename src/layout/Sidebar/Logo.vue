@@ -19,19 +19,19 @@
 
 <script>
 export default {
-  name: "SidebarLogo",
+  name: 'SidebarLogo',
   props: {
     collapse: {
       type: Boolean,
       required: true
     }
   },
-  data() {
+  data () {
     return {
-      title: "admin pro",
-    };
+      title: 'admin pro'
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +52,6 @@ export default {
   background: #2b2f3a;
   text-align: center;
   overflow: hidden;
-
 
   & .sidebar-logo-link {
     height: 100%;

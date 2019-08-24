@@ -11,35 +11,35 @@
 </template>
 
 <script>
-import AppHeader from "./AppHeader";
-import SideBar from "./Sidebar";
+import AppHeader from './AppHeader'
+import SideBar from './Sidebar'
 export default {
-  name: "layout",
-  data() {
-    return {};
+  name: 'layout',
+  data () {
+    return {}
   },
   components: {
     AppHeader,
     SideBar
   },
   computed: {
-    isCollapse() {
-      return this.$store.getters.isCollapse;
+    isCollapse () {
+      return this.$store.getters.isCollapse
     },
-    device() {
-      return this.$store.state.app.device;
+    device () {
+      return this.$store.state.app.device
     },
-    fixedHeader() {
-      return this.$store.state.settings.fixedHeader;
+    fixedHeader () {
+      return this.$store.state.settings.fixedHeader
     },
-    classObj() {
+    classObj () {
       return {
         hideSidebar: this.isCollapse,
         openSidebar: !this.isCollapse
         // withoutAnimation: this.sidebar.withoutAnimation,
         // mobile: this.device === "mobile"
-      };
+      }
     }
   }
-};
+}
 </script>

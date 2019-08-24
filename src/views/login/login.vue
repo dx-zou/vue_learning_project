@@ -33,63 +33,63 @@
 </template>
 
 <script>
-import Cookies from "js-cookie";
-import router from "@/route";
-import { mapActions, mapMutations, mapGetters } from "vuex";
+import Cookies from 'js-cookie'
+import router from '@/route'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       formData: {},
-      account: "",
-      password: "",
+      account: '',
+      password: '',
       accounts: [
-        { name: "admin", password: "123456", role: "admin" },
-        { name: "normal", password: "654321", role: "ordinary" }
+        { name: 'admin', password: '123456', role: 'admin' },
+        { name: 'normal', password: '654321', role: 'ordinary' }
       ]
-    };
+    }
   },
   computed: {
-    ...mapGetters(["addRouters"])
+    ...mapGetters(['addRouters'])
   },
   methods: {
-    ...mapActions(["generateRoutes"]),
-    ...mapMutations(["SET_ROUTES"]),
-    login() {
-      //添加loading效果
+    ...mapActions(['generateRoutes']),
+    ...mapMutations(['SET_ROUTES']),
+    login () {
+      // 添加loading效果
       const loading = this.$loading({
         lock: true,
-        text: "拼命加载中。。。",
-        spinner: "el-icon-loading",
-        background: "rgba(0, 0, 0, 0.7)"
-      });
-      //验证账号密码
+        text: '拼命加载中。。。',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
+      // 验证账号密码
       var res = this.accounts.some(
         item => this.account === item.name && this.password === item.password
-      );
+      )
       if (res) {
         // Cookies.set("token", "Admin-Token");
-        sessionStorage.setItem("token", this.account + Math.random());
+        sessionStorage.setItem('token', this.account + Math.random())
         setTimeout(() => {
-          loading.close();
-          this.$toast("success", "登陆成功");
-          //登录成功设置token
-          sessionStorage.setItem("role", this.account);
-          //设置role
-          this.$store.commit("SET_ROLE", this.account);
-          //提交action生成动态路由
-          this.$store.dispatch("generateRoutes", this.account);
-          router.addRoutes(this.addRouters);
-          this.$router.push("/home");
-        }, 400);
+          loading.close()
+          this.$toast('success', '登陆成功')
+          // 登录成功设置token
+          sessionStorage.setItem('role', this.account)
+          // 设置role
+          this.$store.commit('SET_ROLE', this.account)
+          // 提交action生成动态路由
+          this.$store.dispatch('generateRoutes', this.account)
+          router.addRoutes(this.addRouters)
+          this.$router.push('/home')
+        }, 400)
       } else {
-        loading.close();
+        loading.close()
         setTimeout(() => {
-          this.$toast("error", "账号或密码错误");
-        }, 300);
+          this.$toast('error', '账号或密码错误')
+        }, 300)
       }
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
