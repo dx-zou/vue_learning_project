@@ -8,23 +8,47 @@
       ></span>
       <breadcrumb></breadcrumb>
     </div>
-    <el-dropdown :hide-on-click="false" placement="bottom-start">
+    <el-dropdown
+      :hide-on-click="false"
+      placement="bottom-start"
+      @command="handleCommand"
+    >
       <div class="el-dropdown-link">
-        <img src="../../assets/images/avatar.gif" alt="头像" class="avatar">
+        <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
         <i class="el-icon-caret-bottom "></i>
       </div>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item icon="el-icon-s-custom">个人中心</el-dropdown-item>
-        <el-dropdown-item icon="el-icon-s-tools">项目配置</el-dropdown-item>
-        <el-dropdown-item icon="el-icon-eleme">退出登录</el-dropdown-item>
+        <el-dropdown-item icon="el-icon-s-custom" command="user"
+          >个人中心</el-dropdown-item
+        >
+        <el-dropdown-item icon="el-icon-s-tools" command="set"
+          >项目配置</el-dropdown-item
+        >
+        <el-dropdown-item icon="el-icon-eleme" divided command="logout"
+          >退出登录</el-dropdown-item
+        >
       </el-dropdown-menu>
     </el-dropdown>
-    <!--    <el-menu class="right-menu">-->
-    <!--      <el-submenu index="1">-->
-    <!--        <template slot="title">我的账户</template>-->
-    <!--        <el-menu-item @click="logout">退出登录</el-menu-item>-->
-    <!--      </el-submenu>-->
-    <!--    </el-menu>-->
+    <common-dialog :show-dialog.sync="showDialog" title="项目配置" @handleConfirm="saveSettings">
+      <el-form
+        label-width="100px"
+        :model="settingForm"
+        ref="settingForm"
+      >
+       <el-form-item label="显示Logo" >
+          <el-radio-group v-model="settingForm.showLogo">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item label="旋转Logo" >
+          <el-radio-group v-model="settingForm.allowDel">
+            <el-radio :label="1">是</el-radio>
+            <el-radio :label="0">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+      </el-form>
+    </common-dialog>
   </header>
 </template>
 
@@ -34,7 +58,10 @@ import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 export default {
   name: "AppHeader",
   data() {
-    return {};
+    return {
+      showDialog: false,
+      settingForm: {}
+    };
   },
   components: {
     Breadcrumb
@@ -52,6 +79,17 @@ export default {
     // 切换侧边栏
     toggleSidebar() {
       this.TOGGLE_SIDEBAR();
+    },
+    // 点击下拉菜单项的回调
+    handleCommand(command) {
+      if (command === "set") {
+        this.showDialog = true;
+      }
+    },
+    // 保存用户设置
+    saveSettings() {
+      this.showDialog = false
+      this.$toast('success','修改成功')
     }
   }
 };
