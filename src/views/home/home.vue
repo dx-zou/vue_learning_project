@@ -1,5 +1,5 @@
 <template>
-  <div class="home-wrapper">
+  <div class="home-wrapper" v-loading="isLoading">
     <div ref="myChart" id="myChart"></div>
   </div>
 </template>
@@ -19,12 +19,12 @@ require("echarts/lib/component/toolbox");
 require("echarts/lib/component/tooltip");
 require("echarts/lib/component/legend");
 export default {
-  components: {},
   data() {
     return {
       dateList,
       codeNum,
-      timeNum
+      timeNum,
+      isLoading: true
     };
   },
   mounted() {
@@ -148,6 +148,7 @@ export default {
       };
       // 绘制图表
       app.count = 11;
+      this.isLoading = false;
       setInterval(function() {
         let axisData = new Date().toLocaleTimeString().replace(/^\D*/, "");
 

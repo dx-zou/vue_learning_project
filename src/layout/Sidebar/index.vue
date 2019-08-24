@@ -4,6 +4,7 @@
       <sidebar-logo :collapse="isCollapse"></sidebar-logo>
       <el-menu
         :collapse="isCollapse"
+        default-active="1"
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
@@ -13,8 +14,8 @@
       >
         <el-menu-item index="1">
           <i class="iconfont icon-shouye1"></i>
-          <!-- <router-link to="/home">home</router-link> -->
-          <span @click="$router.push('/dashboard')">首页</span>
+          <router-link to="/dashboard" tag="span">dashboard</router-link>
+          <!-- <span @click="$router.push('/dashboard')">首页</span> -->
         </el-menu-item>
         <el-submenu index="2">
           <template slot="title">

@@ -1,7 +1,5 @@
 #app {
 
-
-
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
@@ -14,6 +12,16 @@
     z-index: 1001;
     overflow: hidden;
     background-color: $menuBg;
+
+    .router-link-exact-active {
+      color: $menuActiveText
+    }
+
+    .is-active {
+      i {
+        color: $menuActiveText;
+      }
+    }
 
     // reset element-ui css
     .horizontal-collapse-transition {
