@@ -35,9 +35,9 @@ export default {
     classObj() {
       return {
         hideSidebar: this.isCollapse,
-        openSidebar: !this.isCollapse,
+        openSidebar: !this.isCollapse
         // withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === "mobile"
+        // mobile: this.device === "mobile"
       };
     }
   }

@@ -13,16 +13,23 @@
       >
         <el-menu-item index="1">
           <i class="iconfont icon-shouye1"></i>
-          <span @click="$router.push('/home')">首页</span>
+          <!-- <router-link to="/home">home</router-link> -->
+          <span @click="$router.push('/dashboard')">首页</span>
         </el-menu-item>
         <el-submenu index="2">
           <template slot="title">
             <i class="iconfont icon-vuejs"></i>
             <span slot="title">VUE</span>
           </template>
-          <el-menu-item index="2-1">
-            <span @click="$router.push('/vue/route-nav')">路由导航守卫</span>
-          </el-menu-item>
+          <el-submenu index="2-1">
+            <template slot="title">
+              <i class="iconfont icon-vuejs"></i>
+              <span slot="title">VUE</span>
+            </template>
+            <el-menu-item index="2-1-1">
+              <span @click="$router.push('/vue/route-nav')">路由导航守卫</span>
+            </el-menu-item>
+          </el-submenu>
           <el-menu-item index="2-2">
             <span @click="$router.push('/vue/vuex')">vuex</span>
           </el-menu-item>

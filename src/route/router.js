@@ -13,18 +13,18 @@ export const constantRouterMap = [
 export const asyncRoutes = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/dashboard',
     meta: {
       roles: ['admin', 'normal']
     }
   },
   // 首页
   {
-    path: '/home',
+    path: '/dashboard',
     component: layout,
     children: [
       {
-        name: '首页',
+        name: 'dashboard',
         path: '',
         component: () => import('@/views/home/home'),
         meta: {
@@ -38,23 +38,27 @@ export const asyncRoutes = [
   {
     path: '/my-components',
     component: layout,
+    redirect: '/my-components/date-select',
+    meta: { title: 'components' },
     children: [
       {
         path: 'date-select',
-        name: '日期选择',
+        name: 'date',
         component: () => import('@/views/my-components/dateSelect'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['components', 'date']
         }
       },
       {
         path: 'my-table',
-        name: '表格',
+        name: 'table',
         component: () => import('@/views/my-components/my-table'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['components', 'table']
         }
       }
     ]
@@ -65,21 +69,21 @@ export const asyncRoutes = [
     component: layout,
     children: [
       {
-        name: '购物车',
+        name: 'cart',
         path: 'cart',
         component: () => import('@/views/normal-use/cart'),
         meta: {
-          title: '',
+          breadcrumbs: ['normal', 'cart'],
           requireAuth: true,
           roles: ['admin', 'normal']
         }
       },
       {
-        name: 'cssWorld',
+        name: 'css',
         path: 'css-world',
         component: () => import('../views/normal-use/css-world'),
         meta: {
-          title: '',
+          breadcrumbs: ['normal', 'css'],
           requireAuth: true,
           roles: ['admin', 'normal']
         }
@@ -92,12 +96,13 @@ export const asyncRoutes = [
     component: layout,
     children: [
       {
-        name: '路由导航',
+        name: 'route',
         path: 'route-nav',
         component: () => import('@/views/vue/route-nav'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['vue', 'route']
         }
       },
       {
@@ -105,34 +110,38 @@ export const asyncRoutes = [
         component: () => import('@/views/vue/vuex'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['vue', 'vuex']
         }
       },
       {
-        name: '插槽',
+        name: 'slot',
         path: 'slot',
         component: () => import('@/views/vue/todo'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['vue', 'slot']
         }
       },
       {
-        name: '过渡动画',
+        name: 'transiton',
         path: 'transition',
         component: () => import('@/views/vue/transition'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['vue', 'transiton']
         }
       },
       {
-        name: '计算属性',
+        name: 'computed',
         path: 'watch-computed',
         component: () => import('@/views/vue/computed'),
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['vue', 'computed']
         }
       }
     ]
@@ -143,7 +152,7 @@ export const asyncRoutes = [
     component: layout,
     children: [
       {
-        name: 'easy-mock',
+        name: 'mock',
         path: 'user/:id',
         component: () => import('@/views/third-party/easy-mock'),
         props: {
@@ -151,13 +160,19 @@ export const asyncRoutes = [
         },
         meta: {
           requireAuth: true,
-          roles: ['admin', 'normal']
+          roles: ['admin', 'normal'],
+          breadcrumbs: ['third-party', 'mock']
         }
       },
       {
-        name: '富文本编辑器',
+        name: 'editor',
         path: 'editor',
-        component: () => import('@/views/third-party/quill-editor')
+        component: () => import('@/views/third-party/quill-editor'),
+        meta: {
+          requireAuth: true,
+          roles: ['admin'],
+          breadcrumbs: ['third-party', 'editor']
+        }
       }
     ]
   },

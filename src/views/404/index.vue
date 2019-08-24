@@ -10,10 +10,10 @@
       <span class="wavecz">苦海无涯，回头是岸</span>
       <div class="waveqcz"></div>
       <div class="wavegohome waveinput">
-        <router-link to="/home">回到起点</router-link>
+        <router-link to="/dashboard">回到起点</router-link>
       </div>
       <div class="wavegohome waveinput">
-        <router-link to="/home">去到终点</router-link>
+        <router-link to="/dashboard">去到终点</router-link>
       </div>
       <div class="waveqcz"></div>
       <div class="waveqczfd"></div>

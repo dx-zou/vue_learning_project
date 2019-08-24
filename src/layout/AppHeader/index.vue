@@ -1,11 +1,13 @@
 <template>
   <header class="app-header">
-    <!-- <span class="iconfont icon-qiehuan1 toggle-icon" @click="toggleSidebar" v-if="!isCollapse"></span> -->
-    <span
-      class="iconfont icon-qiehuan toggle-icon"
-      :class="[ isCollapse ? '' : 'is-collapse']"
-      @click="toggleSidebar"
-    ></span>
+    <div class="bread-container">
+      <span
+        class="iconfont icon-qiehuan toggle-icon"
+        :class="[isCollapse ? '' : 'is-collapse']"
+        @click="toggleSidebar"
+      ></span>
+      <breadcrumb></breadcrumb>
+    </div>
     <el-menu class="right-menu">
       <el-submenu index="1">
         <template slot="title">我的账户</template>
@@ -17,10 +19,14 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 export default {
   name: "AppHeader",
   data() {
     return {};
+  },
+  components: {
+    Breadcrumb
   },
   computed: {
     ...mapGetters(["isCollapse"])
@@ -48,11 +54,16 @@ export default {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  .bread-container {
+    display: flex;
+    align-items: center;
+  }
   .right-menu {
     line-height: 0.6rem;
     border: none;
   }
   .toggle-icon {
+    margin-right: 0.1rem;
     font-size: 0.2rem;
     cursor: pointer;
   }
