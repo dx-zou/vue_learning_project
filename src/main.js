@@ -2,12 +2,13 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./route/index";
 import store from "./store/index";
-import "./plugins/api/api";
+import request from "./plugins/http/request"
+import api from "./plugins/http/api"
 import ElementUI from "element-ui";
+import NProgress from "nprogress";
+import "./plugins/http/request";
 import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
-import "./plugins/api/api.js";
-import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import components from "./components";
 NProgress.configure({
@@ -18,9 +19,9 @@ Vue.use(ElementUI);
 components.forEach(component => Vue.use(component));
 // 挂载提示方法
 Vue.prototype.$toast = toast;
+Vue.prototype.$http = request;
+Vue.prototype.$api = api;
 Vue.config.productionTip = false;
-
-// // const whiteList = ['/login', '/vx']
 
 // 全局前置守卫
 router.beforeEach((to, from, next) => {

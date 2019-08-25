@@ -1,6 +1,6 @@
 <template>
   <div class="user-container">
-    <el-table :data="tableData" style="width: 100%">
+    <el-table :data="tableData" style="idth: 100%">
       <el-table-column prop="date" label="编号" width="80" type="index" align="center"></el-table-column>
       <el-table-column prop="name" label="姓名" align="center"></el-table-column>
       <el-table-column prop="city" label="城市" align="center"></el-table-column>
@@ -35,9 +35,11 @@ export default {
   },
   methods: {
     getUserlist () {
-      this.$http.get('getUserList').then(res => {
+      this.$http({
+        url: this.$api.getUserList
+      }).then(res => {
         this.tableData = res.data
-      });
+      })
     }
   }
 }

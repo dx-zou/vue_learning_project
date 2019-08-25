@@ -168,11 +168,11 @@
   // mobile responsive
   .mobile {
     .main-container {
-      margin-left: 0px;
+      margin-left: 0;
     }
 
     .sidebar-container {
-      transition: transform 0.28s;
+      transition: transform .3s;
       width: $sideBarWidth !important;
     }
 
@@ -180,7 +180,7 @@
       .sidebar-container {
         pointer-events: none;
         transition-duration: 0.3s;
-        transform: translate3d(-$sideBarWidth, 0, 0);
+        transform: translateX(-$sideBarWidth);
       }
     }
     .drawer-bg {
