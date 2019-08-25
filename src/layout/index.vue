@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import AppHeader from './AppHeader'
-import SideBar from './Sidebar'
+  import AppHeader from "./AppHeader/AppHeader";
+  import SideBar from './Sidebar/Sidebar'
 export default {
   name: 'layout',
   data () {
@@ -23,8 +23,8 @@ export default {
     SideBar
   },
   computed: {
-    isCollapse () {
-      return this.$store.getters.isCollapse
+    sidebarCollapse () {
+      return this.$store.getters.sidebarCollapse
     },
     device () {
       return this.$store.state.app.device
@@ -34,8 +34,8 @@ export default {
     },
     classObj () {
       return {
-        hideSidebar: this.isCollapse,
-        openSidebar: !this.isCollapse
+        hideSidebar: this.sidebarCollapse,
+        openSidebar: !this.sidebarCollapse
         // withoutAnimation: this.sidebar.withoutAnimation,
         // mobile: this.device === "mobile"
       }

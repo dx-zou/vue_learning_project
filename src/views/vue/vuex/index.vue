@@ -1,14 +1,14 @@
 <template>
   <div class="xx-container">
-    <h1>姓名：{{name}}</h1>
-    <h1>年龄：{{age}}</h1>
-    <h1>大一旬：{{age+number}}而不惑</h1>
-    <h1>{{myName}}</h1>
-    <hr>
-    <button @click="addTotalCount({count:1})">增加</button>
+    <h1>姓名：{{ name }}</h1>
+    <h1>年龄：{{ age }}</h1>
+    <h1>大一旬：{{ age + number }}而不惑</h1>
+    <h1>{{ myName }}</h1>
+    <hr />
+    <button @click="addTotalCount({ count: 1 })">增加</button>
     <p>
       总数量：
-      <span class="count">{{count}}</span>
+      <span class="count">{{ count }}</span>
       <transition name="tip">
         <span v-show="show" class="tip">等待三秒钟。。。</span>
       </transition>
@@ -17,48 +17,48 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
 export default {
-  data () {
+  data() {
     return {
       number: 12
-    }
+    };
   },
-  created () {},
+  created() {},
   // 1.将state映射到computed 局部计算属性中
   computed: mapState({
     name: state => state.name,
-    age: 'age', // 字符串参数 等同于 state => state.age
-    plusAge (state) {
-      return state.age + this.number
+    age: "age", // 字符串参数 等同于 state => state.age
+    plusAge(state) {
+      return state.age + this.number;
     }
   }),
   // 将this.age this.name 映射为 this.$store.state.age / name
-  computed: mapState(['age', 'name', 'show']),
+  computed: mapState(["age", "name", "show"]),
   // 2.将state，getters 混入到局部计算属性中
   computed: {
-    ...mapState(['age', 'name', 'count', 'show']),
-    ...mapGetters(['myName'])
+    ...mapState(["age", "name", "count", "show"]),
+    ...mapGetters(["myName"])
   },
   methods: {
     // 1.this.add() 映射为 this.$store.commit('increment')
     ...mapMutations({
-      add: 'INCREMENT'
+      add: "INCREMENT"
     }),
     // 2.将this.increment(count) 映射为 this.$store.commit('increment',count)
-    ...mapMutations(['INCREMENT', 'STATUS']),
+    ...mapMutations(["INCREMENT", "STATUS"]),
     // 在组件内部的方法中调用映射过来的方法，也就是commit 了mutations中的方法
-    addTotalCount (number) {
-      this.INCREMENT(number)
-      this.add(number)
+    addTotalCount(number) {
+      this.INCREMENT(number);
+      this.add(number);
       setTimeout(() => {
-        this.STATUS()
-      }, 300)
-      this.increment(number)
+        this.STATUS();
+      }, 300);
+      this.increment(number);
     },
-    ...mapActions(['increment'])
+    ...mapActions(["increment"])
   }
-}
+};
 </script>
 
 <style lang="less">

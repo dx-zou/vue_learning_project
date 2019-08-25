@@ -3,7 +3,7 @@
     <div class="bread-container">
       <span
         class="iconfont icon-qiehuan toggle-icon"
-        :class="[isCollapse ? '' : 'is-collapse']"
+        :class="[sidebarCollapse ? '' : 'is-collapse']"
         @click="toggleSidebar"
       ></span>
       <breadcrumb></breadcrumb>
@@ -29,20 +29,20 @@
         >
       </el-dropdown-menu>
     </el-dropdown>
-    <common-dialog :show-dialog.sync="showDialog" title="项目配置" @handleConfirm="saveSettings">
-      <el-form
-        label-width="100px"
-        :model="settingForm"
-        ref="settingForm"
-      >
-       <el-form-item label="显示Logo" >
+    <common-dialog
+      :show-dialog.sync="showDialog"
+      title="项目配置"
+      @handleConfirm="saveSettings"
+    >
+      <el-form label-width="100px" :model="settingForm" ref="settingForm">
+        <el-form-item label="显示Logo">
           <el-radio-group v-model="settingForm.showLogo">
             <el-radio :label="1">是</el-radio>
             <el-radio :label="0">否</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="旋转Logo" >
-          <el-radio-group v-model="settingForm.allowDel">
+        <el-form-item label="旋转Logo">
+          <el-radio-group v-model="settingForm.rotateLogo">
             <el-radio :label="1">是</el-radio>
             <el-radio :label="0">否</el-radio>
           </el-radio-group>
@@ -53,46 +53,58 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
+import { mapGetters } from "vuex";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 export default {
-  name: 'AppHeader',
-  data () {
+  name: "AppHeader",
+  data() {
     return {
       showDialog: false,
-      settingForm: {}
-    }
+      settingForm: {
+        showLogo: this.showLogo ? 0 : 1,
+        rotateLogo: this.rotateLogo ? 0 : 1
+      }
+    };
   },
   components: {
     Breadcrumb
   },
   computed: {
-    ...mapGetters(['isCollapse'])
+    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
+  },
+  created() {
+    console.log(this.showLogo);
   },
   methods: {
-    ...mapMutations(['TOGGLE_SIDEBAR']),
-    logout () {
-      sessionStorage.clear()
-      this.$router.push('/login')
-      this.$toast('success', '已退出登录')
+    logout() {
+      sessionStorage.clear();
+      this.$router.push("/login");
+      this.$toast("success", "已退出登录");
     },
     // 切换侧边栏
-    toggleSidebar () {
-      this.TOGGLE_SIDEBAR()
+    toggleSidebar() {
+      this.$store.dispatch("settings/changeSetting", {
+        key: "sidebarCollapse"
+      });
     },
     // 点击下拉菜单项的回调
-    handleCommand (command) {
-      if (command === 'set') {
-        this.showDialog = true
+    handleCommand(command) {
+      if (command === "set") {
+        this.showDialog = true;
+      } else if (command === "logout") {
+        this.logout();
       }
     },
     // 保存用户设置
-    saveSettings () {
-      this.showDialog = false
-      this.$toast('success', '修改成功')
+    saveSettings() {
+      this.showDialog = false;
+      this.$store.dispatch("settings/changeSetting", {
+        key: "showLogo"
+      });
+      this.$toast("success", "修改成功");
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>

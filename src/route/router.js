@@ -1,16 +1,11 @@
 import login from '@/views/login/login'
 import layout from '../layout'
-
-// 不需要登录权限的路由
-export const constantRouterMap = [
-  {
+  const constantRouterMap = [
+   {
     path: '/login',
     name: 'login',
     component: login
-  }
-]
-// 根据登录权限动态加载的路由表
-export const asyncRoutes = [
+  },
   {
     path: '/',
     redirect: '/dashboard',
@@ -105,15 +100,15 @@ export const asyncRoutes = [
           breadcrumbs: ['vue', 'route']
         }
       },
-      {
-        path: 'vuex',
-        component: () => import('@/views/vue/vuex'),
-        meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
-          breadcrumbs: ['vue', 'vuex']
-        }
-      },
+      // {
+      //   path: 'vuex',
+      //   component: () => import('@/views/vue/vuex'),
+      //   meta: {
+      //     requireAuth: true,
+      //     roles: ['admin', 'normal'],
+      //     breadcrumbs: ['vue', 'vuex']
+      //   }
+      // },
       {
         name: 'slot',
         path: 'slot',
@@ -182,3 +177,4 @@ export const asyncRoutes = [
     component: () => import('@/views/404')
   }
 ]
+ export default constantRouterMap

@@ -1,9 +1,9 @@
 <template>
-  <div class="sidebar-container">
+  <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
     <el-scrollbar class="side-bar" ref="sidebar">
-      <sidebar-logo :collapse="isCollapse"></sidebar-logo>
+      <sidebar-logo :collapse="sidebarCollapse" v-if="showLogo"></sidebar-logo>
       <el-menu
-        :collapse="isCollapse"
+        :collapse="sidebarCollapse"
         default-active="1"
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
@@ -31,14 +31,16 @@
               <span @click="$router.push('/vue/route-nav')">路由导航守卫</span>
             </el-menu-item>
           </el-submenu>
-          <el-menu-item index="2-2">
-            <span @click="$router.push('/vue/vuex')">vuex</span>
-          </el-menu-item>
+          <!--          <el-menu-item index="2-2">-->
+          <!--            <span @click="$router.push('/vue/vuex')">vuex</span>-->
+          <!--          </el-menu-item>-->
           <el-menu-item index="2-3">
             <span @click="$router.push('/vue/slot')">slot</span>
           </el-menu-item>
           <el-menu-item index="2-4">
-            <span @click="$router.push('/vue/watch-computed')">watch/computed</span>
+            <span @click="$router.push('/vue/watch-computed')"
+              >watch/computed</span
+            >
           </el-menu-item>
           <el-menu-item index="2-5">
             <span @click="$router.push('/vue/transition')">transition</span>
@@ -62,10 +64,14 @@
             <span slot="title">组件</span>
           </template>
           <el-menu-item index="4-1">
-            <span @click="$router.push('/my-components/date-select')">日期选择</span>
+            <span @click="$router.push('/my-components/date-select')"
+              >日期选择</span
+            >
           </el-menu-item>
           <el-menu-item index="4-2">
-            <span @click="$router.push('/my-components/my-table')">表格组件</span>
+            <span @click="$router.push('/my-components/my-table')"
+              >表格组件</span
+            >
           </el-menu-item>
         </el-submenu>
         <el-submenu index="5">
@@ -74,10 +80,14 @@
             <span slot="title">第三方</span>
           </template>
           <el-menu-item index="5-1">
-            <span @click="$router.push({path:'/third-party/user/101'})">easy-mock</span>
+            <span @click="$router.push({ path: '/third-party/user/101' })"
+              >easy-mock</span
+            >
           </el-menu-item>
           <el-menu-item index="5-2">
-            <span @click="$router.push({path:'/third-party/editor'})">富文本编辑器</span>
+            <span @click="$router.push({ path: '/third-party/editor' })"
+              >富文本编辑器</span
+            >
           </el-menu-item>
         </el-submenu>
       </el-menu>
@@ -86,26 +96,25 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import variables from '@/styles/variables.scss'
-import SidebarLogo from './Logo'
+import { mapGetters } from "vuex";
+import variables from "@/styles/variables.scss";
+import SidebarLogo from "./Logo";
 export default {
-  name: 'SideBar',
-  data () {
-    return {}
+  name: "SideBar",
+  data() {
+    return {};
   },
   components: {
     SidebarLogo
   },
   computed: {
-    ...mapGetters(['isCollapse']),
-    variables () {
-      return variables
+    ...mapGetters(["sidebarCollapse", "showLogo"]),
+    variables() {
+      return variables;
     }
   },
   methods: {}
-}
+};
 </script>
 
-<style lang="less" >
-</style>
+<style lang="less"></style>

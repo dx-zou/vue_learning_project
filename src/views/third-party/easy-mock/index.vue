@@ -19,9 +19,9 @@
 <script>
 export default {
   props: {
-    id: ,
+    id: "",
     name: {
-      default: '',
+      default: "",
       type: String
     }
   },
