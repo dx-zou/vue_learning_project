@@ -1,1 +1,2 @@
 export const CHANGE_SETTING = "CHANGE_SETTING";
+export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";

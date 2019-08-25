@@ -1,5 +1,6 @@
 <template>
   <div :class="classObj" class="app-wrapper">
+    <div v-if="device==='mobile' && !sidebarCollapse" class="drawer-bg" @click="handleClickOutside"></div>
     <side-bar></side-bar>
     <div class="main-container">
       <app-header :class="{'fixed-header':fixedHeader}"></app-header>
@@ -13,6 +14,7 @@
 <script>
   import AppHeader from "./AppHeader/AppHeader";
   import SideBar from './Sidebar/Sidebar'
+  import ResizeHandler from "./mixin/ResizeHandler";
 export default {
   name: 'layout',
   data () {
@@ -22,6 +24,7 @@ export default {
     AppHeader,
     SideBar
   },
+  mixins: [ResizeHandler],
   computed: {
     sidebarCollapse () {
       return this.$store.getters.sidebarCollapse
@@ -35,10 +38,15 @@ export default {
     classObj () {
       return {
         hideSidebar: this.sidebarCollapse,
-        openSidebar: !this.sidebarCollapse
+        openSidebar: !this.sidebarCollapse,
         // withoutAnimation: this.sidebar.withoutAnimation,
-        // mobile: this.device === "mobile"
+        mobile: this.device === "mobile"
       }
+    }
+  },
+  methods: {
+    handleClickOutside() {
+      this.$store.dispatch("settings/closeSideBar");
     }
   }
 }
