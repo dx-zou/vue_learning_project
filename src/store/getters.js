@@ -7,4 +7,4 @@ export default {
   rotateLogo: state => state.settings.rotateLogo,
   // 设备
   device: state => state.app.device
-};
+}

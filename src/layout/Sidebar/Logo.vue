@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-logo-container" :class="{ collapse: collapse }">
+<!--    <audio :src="bgUrl" autoplay></audio>-->
     <transition name="sidebarLogoFade">
       <router-link
         v-if="collapse"
@@ -28,7 +29,8 @@ export default {
   },
   data () {
     return {
-      title: 'admin pro'
+      title: 'admin pro',
+      bgUrl: require('@/assets/music-bg.mp3')
     }
   }
 }

@@ -53,58 +53,58 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import { mapGetters } from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb'
 export default {
-  name: "AppHeader",
-  data() {
+  name: 'AppHeader',
+  data () {
     return {
       showDialog: false,
       settingForm: {
         showLogo: this.showLogo ? 0 : 1,
         rotateLogo: this.rotateLogo ? 0 : 1
       }
-    };
+    }
   },
   components: {
     Breadcrumb
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
+    ...mapGetters(['sidebarCollapse', 'showLogo', 'rotateLogo'])
   },
-  created() {
-    console.log(this.showLogo);
+  created () {
+    console.log(this.showLogo)
   },
   methods: {
-    logout() {
-      sessionStorage.clear();
-      this.$router.push("/login");
-      this.$toast("success", "已退出登录");
+    logout () {
+      sessionStorage.clear()
+      this.$router.push('/login')
+      this.$toast('success', '已退出登录')
     },
     // 切换侧边栏
-    toggleSidebar() {
-      this.$store.dispatch("settings/changeSetting", {
-        key: "sidebarCollapse"
-      });
+    toggleSidebar () {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'sidebarCollapse'
+      })
     },
     // 点击下拉菜单项的回调
-    handleCommand(command) {
-      if (command === "set") {
-        this.showDialog = true;
-      } else if (command === "logout") {
-        this.logout();
+    handleCommand (command) {
+      if (command === 'set') {
+        this.showDialog = true
+      } else if (command === 'logout') {
+        this.logout()
       }
     },
     // 保存用户设置
-    saveSettings() {
-      this.showDialog = false;
-      this.$store.dispatch("settings/changeSetting", {
-        key: "showLogo"
-      });
-      this.$toast("success", "修改成功");
+    saveSettings () {
+      this.showDialog = false
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'showLogo'
+      })
+      this.$toast('success', '修改成功')
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

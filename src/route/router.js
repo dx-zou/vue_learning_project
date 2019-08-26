@@ -1,7 +1,7 @@
 import login from '@/views/login/login'
 import layout from '../layout'
-  const constantRouterMap = [
-   {
+const constantRouterMap = [
+  {
     path: '/login',
     name: 'login',
     component: login
@@ -177,4 +177,4 @@ import layout from '../layout'
     component: () => import('@/views/404')
   }
 ]
- export default constantRouterMap
+export default constantRouterMap

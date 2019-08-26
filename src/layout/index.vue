@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  import AppHeader from "./AppHeader/AppHeader";
-  import SideBar from './Sidebar/Sidebar'
-  import ResizeHandler from "./mixin/ResizeHandler";
+import AppHeader from './AppHeader/AppHeader'
+import SideBar from './Sidebar/Sidebar'
+import ResizeHandler from './mixin/ResizeHandler'
 export default {
   name: 'layout',
   data () {
@@ -40,13 +40,13 @@ export default {
         hideSidebar: this.sidebarCollapse,
         openSidebar: !this.sidebarCollapse,
         // withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === "mobile"
+        mobile: this.device === 'mobile'
       }
     }
   },
   methods: {
-    handleClickOutside() {
-      this.$store.dispatch("settings/closeSideBar");
+    handleClickOutside () {
+      this.$store.dispatch('settings/closeSideBar')
     }
   }
 }
