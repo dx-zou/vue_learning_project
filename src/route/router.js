@@ -74,14 +74,31 @@ const constantRouterMap = [
         }
       },
       {
-        name: 'css',
         path: 'css-world',
+        name: 'css-world',
         component: () => import('../views/normal-use/css-world'),
-        meta: {
-          breadcrumbs: ['normal', 'css'],
-          requireAuth: true,
-          roles: ['admin', 'normal']
-        }
+        children: [
+          {
+            path: 'css-color',
+            name: 'css-color',
+            component: () => import('../views/normal-use/css-world/css-world'),
+            meta: {
+              breadcrumbs: ['normal', 'css-color'],
+              requireAuth: true,
+              roles: ['admin', 'normal']
+            }
+          },
+          {
+            path: 'css-skill',
+            name: 'css-skill',
+            component: () => import('../views/normal-use/css-world/css-skill'),
+            meta: {
+              breadcrumbs: ['normal', 'css-skill'],
+              requireAuth: true,
+              roles: ['admin', 'normal']
+            }
+          }
+        ]
       }
     ]
   },
@@ -100,15 +117,6 @@ const constantRouterMap = [
           breadcrumbs: ['vue', 'route']
         }
       },
-      // {
-      //   path: 'vuex',
-      //   component: () => import('@/views/vue/vuex'),
-      //   meta: {
-      //     requireAuth: true,
-      //     roles: ['admin', 'normal'],
-      //     breadcrumbs: ['vue', 'vuex']
-      //   }
-      // },
       {
         name: 'slot',
         path: 'slot',

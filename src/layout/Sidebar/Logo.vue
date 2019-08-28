@@ -30,7 +30,6 @@ export default {
   data () {
     return {
       title: 'admin pro',
-      bgUrl: require('@/assets/music-bg.mp3')
     }
   }
 }
