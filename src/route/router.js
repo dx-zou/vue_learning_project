@@ -19,8 +19,8 @@ const constantRouterMap = [
     component: layout,
     children: [
       {
-        name: 'dashboard',
         path: '',
+        name: 'dashboard',
         component: () => import('@/views/home/home'),
         meta: {
           requireAuth: true,
@@ -64,7 +64,7 @@ const constantRouterMap = [
     component: layout,
     children: [
       {
-        name: 'cart',
+        name: '小球动画',
         path: 'cart',
         component: () => import('@/views/normal-use/cart'),
         meta: {
@@ -108,7 +108,7 @@ const constantRouterMap = [
     component: layout,
     children: [
       {
-        name: 'route',
+        name: '路由导航守卫',
         path: 'route-nav',
         component: () => import('@/views/vue/route-nav'),
         meta: {
@@ -128,7 +128,7 @@ const constantRouterMap = [
         }
       },
       {
-        name: 'transiton',
+        name: 'transition',
         path: 'transition',
         component: () => import('@/views/vue/transition'),
         meta: {

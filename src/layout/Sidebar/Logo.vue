@@ -29,7 +29,7 @@ export default {
   },
   data () {
     return {
-      title: 'admin pro',
+      title: 'admin pro'
     }
   }
 }
