@@ -22,11 +22,6 @@
         </el-col>
       </el-row>
     </el-form>
-
-    <!-- <fn-alert title="hhh" closeText="关闭" @close="closeAlert" type="info" showIcon></fn-alert>
-    <fn-alert title="hhh" type="success" showIcon></fn-alert>
-    <fn-alert title="hhh" type="error" showIcon></fn-alert>
-    <fn-alert title="hhh" type="warning" showIcon></fn-alert>-->
   </div>
 </template>
 

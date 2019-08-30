@@ -8,10 +8,7 @@ const constantRouterMap = [
   },
   {
     path: '/',
-    redirect: '/dashboard',
-    meta: {
-      roles: ['admin', 'normal']
-    }
+    redirect: '/dashboard'
   },
   // 首页
   {
@@ -22,10 +19,7 @@ const constantRouterMap = [
         path: '',
         name: 'dashboard',
         component: () => import('@/views/home/home'),
-        meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal']
-        }
+        meta: {}
       }
     ]
   },
@@ -33,26 +27,21 @@ const constantRouterMap = [
   {
     path: '/my-components',
     component: layout,
-    redirect: '/my-components/date-select',
     meta: { title: 'components' },
     children: [
       {
         path: 'date-select',
-        name: '日期选择',
+        name: 'date',
         component: () => import('@/views/my-components/dateSelect'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['components', 'date']
         }
       },
       {
-        path: 'my-table',
-        name: '表格组件',
+        path: 'table',
+        name: 'table',
         component: () => import('@/views/my-components/my-table'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['components', 'table']
         }
       }
@@ -60,45 +49,25 @@ const constantRouterMap = [
   },
   // 常用
   {
-    path: '/normal-use',
+    path: '/css-world',
     component: layout,
+    name: 'css-world',
     children: [
       {
-        name: '小球动画',
-        path: 'cart',
-        component: () => import('@/views/normal-use/cart'),
+        path: 'css-color',
+        name: 'css-color',
+        component: () => import('../views/css-world/css-color/css-color'),
         meta: {
-          breadcrumbs: ['normal', 'cart'],
-          requireAuth: true,
-          roles: ['admin', 'normal']
+          breadcrumbs: ['css-world', 'css-color']
         }
       },
       {
-        path: 'css-world',
-        name: 'css-world',
-        component: () => import('../views/normal-use/css-world'),
-        children: [
-          {
-            path: 'css-color',
-            name: 'css-color',
-            component: () => import('../views/normal-use/css-world/css-world'),
-            meta: {
-              breadcrumbs: ['normal', 'css-color'],
-              requireAuth: true,
-              roles: ['admin', 'normal']
-            }
-          },
-          {
-            path: 'css-skill',
-            name: 'css-skill',
-            component: () => import('../views/normal-use/css-world/css-skill'),
-            meta: {
-              breadcrumbs: ['normal', 'css-skill'],
-              requireAuth: true,
-              roles: ['admin', 'normal']
-            }
-          }
-        ]
+        path: 'css-skill',
+        name: 'css-skill',
+        component: () => import('../views/css-world/css-skill/css-skill'),
+        meta: {
+          breadcrumbs: ['normal', 'css-skill']
+        }
       }
     ]
   },
@@ -108,12 +77,10 @@ const constantRouterMap = [
     component: layout,
     children: [
       {
-        name: '路由导航守卫',
-        path: 'route-nav',
-        component: () => import('@/views/vue/route-nav'),
+        path: 'router',
+        name: 'router',
+        component: () => import('@/views/vue/vue-router'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['vue', 'route']
         }
       },
@@ -122,28 +89,22 @@ const constantRouterMap = [
         path: 'slot',
         component: () => import('@/views/vue/todo'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['vue', 'slot']
         }
       },
       {
-        name: 'transition',
         path: 'transition',
+        name: 'transition',
         component: () => import('@/views/vue/transition'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['vue', 'transiton']
         }
       },
       {
+        path: 'computed',
         name: 'computed',
-        path: 'watch-computed',
         component: () => import('@/views/vue/computed'),
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['vue', 'computed']
         }
       }
@@ -162,20 +123,14 @@ const constantRouterMap = [
           name: 'feng'
         },
         meta: {
-          requireAuth: true,
-          roles: ['admin', 'normal'],
           breadcrumbs: ['third-party', 'mock']
         }
       },
       {
-        name: '富文本编辑器',
         path: 'editor',
+        name: 'editor',
         component: () => import('@/views/third-party/quill-editor'),
-        meta: {
-          requireAuth: true,
-          roles: ['admin'],
-          breadcrumbs: ['third-party', 'editor']
-        }
+        meta: { breadcrumbs: ['third-party', 'editor'] }
       }
     ]
   },

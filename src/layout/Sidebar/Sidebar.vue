@@ -47,7 +47,7 @@ export default {
         this.$store.getters.activeIndex ||
         sessionStorage.getItem("activeIndex") ||
         "1"
-      );
+      )
     }
   },
   methods: {

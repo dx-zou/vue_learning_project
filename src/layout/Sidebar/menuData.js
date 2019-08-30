@@ -14,14 +14,7 @@ const MENU = [
       {
         id: 3,
         index: '2-1',
-        title: 'vue',
-        children: [
-          {
-            id: 4,
-            index: '2-1-1',
-            title: '路由导航守卫'
-          }
-        ]
+        title: 'router'
       },
       {
         id: 4,
@@ -43,55 +36,43 @@ const MENU = [
   {
     id: 7,
     index: '3',
-    title: '常用',
+    title: 'css-world',
     icon: 'icon-changyong',
     children: [
       {
-        id: 8,
-        index: '3-1',
-        title: '小球动画'
+        id: 10,
+        index: '3-2',
+        title: 'css-color'
       },
       {
-        id: 9,
-        index: '3-2',
-        title: 'css-world',
-        children: [
-          {
-            id: 10,
-            index: '3-2-1',
-            title: 'css-color'
-          },
-          {
-            id: 11,
-            index: '3-2-2',
-            title: 'css-skill'
-          }
-        ]
+        id: 11,
+        index: '3-3',
+        title: 'css-skill'
       }
     ]
   },
   {
     id: 12,
     index: '4',
-    title: '组件',
+    title: 'components',
     icon: 'icon-zujian',
     children: [
       {
         id: 13,
         index: '4-1',
-        title: '日期选择'
+        title: 'date'
       },
       {
         id: 14,
         index: '4',
-        title: '表格组件'
+        title: 'table'
       }
     ]
   },
   {
     id: 15,
     index: '5',
-    title: '第三方',
+    title: 'plugins',
     icon: 'icon-disanfang',
     children: [
       {
@@ -102,7 +83,7 @@ const MENU = [
       {
         id: 17,
         index: '5-2',
-        title: '富文本编辑器'
+        title: 'editor'
       }
     ]
   }
