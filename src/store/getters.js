@@ -6,5 +6,8 @@ export default {
   // 是否旋转logo
   rotateLogo: state => state.settings.rotateLogo,
   // 设备
-  device: state => state.app.device
+  device: state => state.app.device,
+  // 活动的菜单项的index
+  activeIndex: state => state.app.activeIndex,
+  fixedHeader: state => state.settings.fixedHeader
 }

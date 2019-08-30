@@ -26,14 +26,16 @@ export default {
   },
   mixins: [ResizeHandler],
   computed: {
+    // sidebar的折叠状态
     sidebarCollapse () {
       return this.$store.getters.sidebarCollapse
     },
+    // 设备值
     device () {
-      return this.$store.state.app.device
+      return this.$store.getters.device
     },
     fixedHeader () {
-      return this.$store.state.settings.fixedHeader
+      return this.$store.getters.fixedHeader
     },
     classObj () {
       return {
@@ -45,6 +47,7 @@ export default {
     }
   },
   methods: {
+    // 隐藏siderbar
     handleClickOutside () {
       this.$store.dispatch('settings/closeSideBar')
     }

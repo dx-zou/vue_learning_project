@@ -18,6 +18,7 @@ const mutations = {
       state[key] ? Cookies.set(key, 1) : Cookies.set(key, 0)
     }
   },
+  // 关闭sidebar
   [CLOSE_SIDEBAR]: (state) => {
     Cookies.set('sidebarCollapse', 1)
     state.sidebarCollapse = true

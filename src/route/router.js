@@ -38,7 +38,7 @@ const constantRouterMap = [
     children: [
       {
         path: 'date-select',
-        name: 'date',
+        name: '日期选择',
         component: () => import('@/views/my-components/dateSelect'),
         meta: {
           requireAuth: true,
@@ -48,7 +48,7 @@ const constantRouterMap = [
       },
       {
         path: 'my-table',
-        name: 'table',
+        name: '表格组件',
         component: () => import('@/views/my-components/my-table'),
         meta: {
           requireAuth: true,
@@ -155,8 +155,8 @@ const constantRouterMap = [
     component: layout,
     children: [
       {
-        name: 'mock',
-        path: 'user/:id',
+        name: 'easy-mock',
+        path: 'user',
         component: () => import('@/views/third-party/easy-mock'),
         props: {
           name: 'feng'
@@ -168,7 +168,7 @@ const constantRouterMap = [
         }
       },
       {
-        name: 'editor',
+        name: '富文本编辑器',
         path: 'editor',
         component: () => import('@/views/third-party/quill-editor'),
         meta: {

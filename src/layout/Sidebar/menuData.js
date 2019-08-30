@@ -9,7 +9,7 @@ const MENU = [
     id: 2,
     index: '2',
     title: 'Vue',
-    icon: 'icon-shouye1',
+    icon: 'icon-vuejs',
     children: [
       {
         id: 3,
@@ -44,6 +44,7 @@ const MENU = [
     id: 7,
     index: '3',
     title: '常用',
+    icon: 'icon-changyong',
     children: [
       {
         id: 8,
@@ -73,6 +74,7 @@ const MENU = [
     id: 12,
     index: '4',
     title: '组件',
+    icon: 'icon-zujian',
     children: [
       {
         id: 13,
@@ -90,6 +92,7 @@ const MENU = [
     id: 15,
     index: '5',
     title: '第三方',
+    icon: 'icon-disanfang',
     children: [
       {
         id: 16,
