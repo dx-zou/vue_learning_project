@@ -4,7 +4,7 @@
     <input type="text" placeholder="border color" class="common-input" />
     <h1 class="gradient-text">Full Stack Developer</h1>
     <h1 class>选中文字的颜色</h1>
-    <p class="gray">开启灰色模式</p>
+    <p class="gray">开启滤镜效果模式</p>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {}
 
 <style lang="scss" scoped>
 $color: #ccc;
+/* 文字选中的背景色，颜色 */
 ::selection {
   background-color: red;
   color: #fff;
@@ -24,9 +25,11 @@ $color: #ccc;
     width: 100%;
     letter-spacing: 0.3rem;
     font-size: 0.3rem;
+    /* 滤镜效果 */
     filter: grayscale(100%);
   }
 }
+/* 输入框边框不设颜色，将跟随文字颜色 */
 input {
   width: 100%;
   height: 0.4rem;
@@ -39,6 +42,7 @@ input {
     border-color: aquamarine;
   }
 }
+/* 背景渐变效果 */
 .gradient-bg {
   display: flex;
   justify-content: center;
@@ -60,6 +64,7 @@ input {
     background-position-x: right;
   }
 }
+/* 文字渐变效果 */
 .gradient-text {
   background-image: linear-gradient(90deg, red, orange);
   background-clip: text;

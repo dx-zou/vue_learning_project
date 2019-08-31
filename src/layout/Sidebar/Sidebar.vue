@@ -20,44 +20,44 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import variables from "@/styles/variables.scss";
-import SidebarLogo from "./Logo";
-import MenuList from "./menuData";
-import SidebarItem from "./SidebarItem";
+import { mapGetters } from 'vuex'
+import variables from '@/styles/variables.scss'
+import SidebarLogo from './Logo'
+import MenuList from './menuData'
+import SidebarItem from './SidebarItem'
 export default {
-  name: "SideBar",
-  data() {
-    return {};
+  name: 'SideBar',
+  data () {
+    return {}
   },
   components: {
     SidebarLogo,
     SidebarItem
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo"]),
-    variables() {
-      return variables;
+    ...mapGetters(['sidebarCollapse', 'showLogo']),
+    variables () {
+      return variables
     },
-    MenuList() {
-      return MenuList;
+    MenuList () {
+      return MenuList
     },
-    activeIndex() {
+    activeIndex () {
       return (
         this.$store.getters.activeIndex ||
-        sessionStorage.getItem("activeIndex") ||
-        "1"
+        sessionStorage.getItem('activeIndex') ||
+        '1'
       )
     }
   },
   methods: {
     // 改变选中的菜单项触发
-    handleSelect(key, keypath) {
-      this.$store.dispatch("app/changeActiveIndex", key);
-      sessionStorage.setItem("activeIndex", key);
+    handleSelect (key, keypath) {
+      this.$store.dispatch('app/changeActiveIndex', key)
+      sessionStorage.setItem('activeIndex', key)
     }
   }
-};
+}
 </script>
 
 <style lang="less"></style>

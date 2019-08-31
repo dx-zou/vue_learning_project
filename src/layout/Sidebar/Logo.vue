@@ -1,13 +1,8 @@
 <template>
   <div class="sidebar-logo-container" :class="{ collapse: collapse }">
-<!--    <audio :src="bgUrl" autoplay></audio>-->
+    <!--    <audio :src="bgUrl" autoplay></audio>-->
     <transition name="sidebarLogoFade">
-      <router-link
-        v-if="collapse"
-        key="collapse"
-        class="sidebar-logo-link"
-        to="/"
-      >
+      <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
         <img src="@/assets/images/logo.gif" class="sidebar-logo" />
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
@@ -29,7 +24,7 @@ export default {
   },
   data () {
     return {
-      title: 'admin pro'
+      title: 'Keep going'
     }
   }
 }
@@ -60,9 +55,9 @@ export default {
 
     & .sidebar-logo {
       display: inline-block;
-      width: .55rem;
-      height: .55rem;
-      margin-right: .1rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-right: 0.1rem;
       border-radius: 50%;
       vertical-align: middle;
       /*box-shadow: 0 0 0 2px #fd9495;*/

@@ -3,13 +3,13 @@ const MENU = [
     id: 1,
     index: '1',
     title: 'dashboard',
-    icon: 'icon-shouye1'
+    icon: 'icon-home'
   },
   {
     id: 2,
     index: '2',
     title: 'Vue',
-    icon: 'icon-vuejs',
+    icon: 'icon-vue',
     children: [
       {
         id: 3,
@@ -36,8 +36,8 @@ const MENU = [
   {
     id: 7,
     index: '3',
-    title: 'css-world',
-    icon: 'icon-changyong',
+    title: 'css',
+    icon: 'icon-css',
     children: [
       {
         id: 10,
@@ -55,7 +55,7 @@ const MENU = [
     id: 12,
     index: '4',
     title: 'components',
-    icon: 'icon-zujian',
+    icon: 'icon-component',
     children: [
       {
         id: 13,
@@ -73,7 +73,7 @@ const MENU = [
     id: 15,
     index: '5',
     title: 'plugins',
-    icon: 'icon-disanfang',
+    icon: 'icon-plugin',
     children: [
       {
         id: 16,

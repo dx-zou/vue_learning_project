@@ -17,12 +17,12 @@
 
 <script>
 export default {
-  name: "SidebarItem",
+  name: 'SidebarItem',
   props: {
     item: {
       type: Object,
       required: true
     }
   }
-};
+}
 </script>
