@@ -25,45 +25,50 @@
       除此之外，有点很重要的区别是：计算属性不能执行异步任务，计算属性必须同步执行。也就是说计算属性不能向服务器请求或者执行异步任务。如果遇到异步任务，就交给侦听属性。watch也可以检测computed属性。
     </p>
     <el-button type="primary" @click="obj.age++">点击</el-button>
+    <el-button type="primary" @click="$emit('sendData',123)">点击</el-button>
     <span>{{obj.age}}</span>
   </div>
 </template>
 
 <script>
+import bus from "@/utils/bus";
 export default {
-  data () {
+  data() {
     return {
       obj: {
         age: 20
       },
       age: 0
-    }
+    };
   },
   computed: {
     fullName: {
       // getter
-      get: function () {
-        return this.firstName + ' ' + this.lastName
+      get: function() {
+        return this.firstName + " " + this.lastName;
       },
       // setter
-      set: function (newValue) {
+      set: function(newValue) {
         // this.fullName = newValue 这种写法会报错
-        var names = newValue.split(' ')
-        this.firstName = names[0] // 对它的依赖进行赋值
-        this.lastName = names[names.length - 1]
+        var names = newValue.split("");
+        this.firstName = names[0]; // 对它的依赖进行赋值
+        this.lastName = names[names.length - 1];
       }
     }
   },
   watch: {
     obj: {
-      handler: function (newVal, oldVla) {
-        this.age = newVal.age
+      handler: function(newVal, oldVla) {
+        this.age = newVal.age;
       },
       deep: true,
       immediate: true
     }
+  },
+  methods: {
+    sendData() {}
   }
-}
+};
 </script>
 
 <style lang="less" scoped>

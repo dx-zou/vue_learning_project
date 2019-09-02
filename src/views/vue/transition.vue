@@ -10,14 +10,20 @@
 </template>
 
 <script>
+import bus from "@/utils/bus";
 export default {
-  data () {
+  data() {
     return {
       show: false
-    }
+    };
+  },
+  created() {
+    bus.$on("sendData", data => {
+      console.log(data);
+    });
   },
   methods: {}
-}
+};
 </script>
 
 <style lang="less" scoped>
