@@ -13,11 +13,16 @@
 }
 
 .app-main {
-  height: calc(100% - 0.6rem);
+  height: calc(100% - 0.5rem);
   padding: 0.2rem;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
+  background-color: #f0f3f4;
+}
+
+.common-wrapper {
+  background-color: #fff;
 }
 
 /* 顶部导航栏固定 */
@@ -37,7 +42,7 @@
 
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  height: calc(100vh - 0.6rem);
+  height: calc(100vh - 0.5rem);
   // margin-top: 0.6rem;
 }
 

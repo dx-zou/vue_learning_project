@@ -1,6 +1,17 @@
 <template>
-  <div class="home-wrapper" v-loading="isLoading">
-    <div ref="myChart" id="myChart"></div>
+  <div class="common-wrapper home-wrapper">
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>系统首页</span>
+      </div>
+      <el-button type="primary" @click.stop="guide">功能指引</el-button>
+    </el-card>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
+        <span>Echarts</span>
+      </div>
+      <div ref="myChart" id="myChart" v-loading="isLoading"></div>
+    </el-card>
   </div>
 </template>
 
@@ -18,26 +29,28 @@ require("echarts/lib/component/dataZoom");
 require("echarts/lib/component/toolbox");
 require("echarts/lib/component/tooltip");
 require("echarts/lib/component/legend");
+import driver from "@/mixins/startDriver";
 export default {
   data() {
     return {
       dateList,
       codeNum,
       timeNum,
-      isLoading: true
+      isLoading: false
     };
   },
+  mixins: [driver],
   mounted() {
-    this.$nextTick(() => {
-      this.initCharts();
-    });
+    // this.$nextTick(() => {
+    //   this.initCharts();
+    // });
   },
   methods: {
     initCharts() {
       // 基于准备好的dom，初始化echarts实例
       let opts = {
         width: "80%",
-        height: "80%"
+        height: "60%"
       };
       let myChart = echarts.init(document.getElementById("myChart"), opts);
       let option = {
@@ -170,14 +183,17 @@ export default {
   }
 };
 </script>
-
 <style lang="less">
 .home-wrapper {
   width: 100%;
   box-sizing: border-box;
+  background-color: inherit;
+  .el-card {
+    margin-bottom: 0.2rem;
+  }
   #myChart {
     width: 100%;
-    height: 50vh;
+    height: 30vh;
   }
 }
 </style>
