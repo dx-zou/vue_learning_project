@@ -2,6 +2,12 @@
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile' && !sidebarCollapse" class="drawer-bg" @click="handleClickOutside"></div>
     <side-bar></side-bar>
+    <transition
+      enter-active-class="animated bounceInDown"
+      leave-active-class="animated zoomOutRight"
+    >
+      <message-box v-show="showMsgBox"></message-box>
+    </transition>
     <div class="main-container">
       <app-header :class="{'fixed-header':fixedHeader}"></app-header>
       <div class="app-main">
@@ -17,6 +23,8 @@
 import AppHeader from "./AppHeader/AppHeader";
 import SideBar from "./Sidebar/Sidebar";
 import ResizeHandler from "./mixin/ResizeHandler";
+import MessageBox from "@/components/MessageBox";
+import { mapGetters } from "vuex";
 export default {
   name: "layout",
   data() {
@@ -24,26 +32,27 @@ export default {
   },
   components: {
     AppHeader,
-    SideBar
+    SideBar,
+    MessageBox
   },
   mixins: [ResizeHandler],
   computed: {
-    // sidebar的折叠状态
-    sidebarCollapse() {
-      return this.$store.getters.sidebarCollapse;
-    },
-    // 设备值
-    device() {
-      return this.$store.getters.device;
-    },
-    fixedHeader() {
-      return this.$store.getters.fixedHeader;
-    },
+    ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox"]),
+    // // sidebar的折叠状态
+    // sidebarCollapse() {
+    //   return this.$store.getters.sidebarCollapse;
+    // },
+    // // 设备值
+    // device() {
+    //   return this.$store.getters.device;
+    // },
+    // fixedHeader() {
+    //   return this.$store.getters.fixedHeader;
+    // },
     classObj() {
       return {
         hideSidebar: this.sidebarCollapse,
         openSidebar: !this.sidebarCollapse,
-        // withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === "mobile"
       };
     }

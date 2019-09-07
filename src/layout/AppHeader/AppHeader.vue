@@ -11,7 +11,7 @@
     </div>
     <div class="header_r">
       <el-badge is-dot id="message">
-        <i class="el-icon-message-solid"></i>
+        <i class="el-icon-message-solid" @click="toggleMsgBox"></i>
       </el-badge>
       <el-dropdown
         id="userCenter"
@@ -69,20 +69,21 @@ export default {
   computed: {
     ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
   },
-  created() {
-    console.log(this.showLogo);
-  },
   methods: {
     logout() {
       sessionStorage.clear();
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
     },
-    // 切换侧边栏
+    // 切换菜单栏
     toggleSidebar() {
       this.$store.dispatch("settings/changeSetting", {
         key: "sidebarCollapse"
       });
+    },
+    // 显示隐藏msgbox
+    toggleMsgBox() {
+      this.$store.dispatch("app/toggleMsgBox");
     },
     // 点击下拉菜单项的回调
     handleCommand(command) {

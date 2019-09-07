@@ -9,5 +9,6 @@ export default {
   device: state => state.app.device,
   // 活动的菜单项的index
   activeIndex: state => state.app.activeIndex,
-  fixedHeader: state => state.settings.fixedHeader
+  fixedHeader: state => state.settings.fixedHeader,
+  showMsgBox: state => state.app.showMsgBox
 }

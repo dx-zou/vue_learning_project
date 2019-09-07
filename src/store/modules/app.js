@@ -1,8 +1,13 @@
-import { TOGGLE_DEVICE, CHANGE_ACTIVEINDEX } from '../mutation-types'
+import {
+  TOGGLE_DEVICE,
+  CHANGE_ACTIVEINDEX,
+  TOGGLE_MESSAGEBOX
+} from '../mutation-types';
 
 const state = {
   device: 'desktop',
-  activeIndex: ''
+  activeIndex: '',
+  showMsgBox: false
 }
 
 const mutations = {
@@ -11,8 +16,12 @@ const mutations = {
     state.device = device
   },
   // 切换选中的菜单项index
-  [CHANGE_ACTIVEINDEX]: (state, data) => {
-    state.activeIndex = data
+  [CHANGE_ACTIVEINDEX]: (state, playload) => {
+    state.activeIndex = playload
+  },
+  [TOGGLE_MESSAGEBOX]: state => {
+    state.showMsgBox = !state.showMsgBox
+    console.log(state.showMsgBox)
   }
 }
 
@@ -24,6 +33,9 @@ const actions = {
   // 提交菜单项切换
   changeActiveIndex ({ commit }, data) {
     commit('CHANGE_ACTIVEINDEX', data)
+  },
+  toggleMsgBox ({ commit }) {
+    commit('TOGGLE_MESSAGEBOX')
   }
 }
 
