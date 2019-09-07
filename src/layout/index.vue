@@ -5,20 +5,22 @@
     <div class="main-container">
       <app-header :class="{'fixed-header':fixedHeader}"></app-header>
       <div class="app-main">
-        <router-view />
+        <transition name="app">
+          <router-view />
+        </transition>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from './AppHeader/AppHeader'
-import SideBar from './Sidebar/Sidebar'
-import ResizeHandler from './mixin/ResizeHandler'
+import AppHeader from "./AppHeader/AppHeader";
+import SideBar from "./Sidebar/Sidebar";
+import ResizeHandler from "./mixin/ResizeHandler";
 export default {
-  name: 'layout',
-  data () {
-    return {}
+  name: "layout",
+  data() {
+    return {};
   },
   components: {
     AppHeader,
@@ -27,30 +29,30 @@ export default {
   mixins: [ResizeHandler],
   computed: {
     // sidebar的折叠状态
-    sidebarCollapse () {
-      return this.$store.getters.sidebarCollapse
+    sidebarCollapse() {
+      return this.$store.getters.sidebarCollapse;
     },
     // 设备值
-    device () {
-      return this.$store.getters.device
+    device() {
+      return this.$store.getters.device;
     },
-    fixedHeader () {
-      return this.$store.getters.fixedHeader
+    fixedHeader() {
+      return this.$store.getters.fixedHeader;
     },
-    classObj () {
+    classObj() {
       return {
         hideSidebar: this.sidebarCollapse,
         openSidebar: !this.sidebarCollapse,
         // withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
+        mobile: this.device === "mobile"
+      };
     }
   },
   methods: {
     // 隐藏siderbar
-    handleClickOutside () {
-      this.$store.dispatch('settings/closeSideBar')
+    handleClickOutside() {
+      this.$store.dispatch("settings/closeSideBar");
     }
   }
-}
+};
 </script>
