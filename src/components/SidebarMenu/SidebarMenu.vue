@@ -50,10 +50,14 @@
           <span slot="title">css-world</span>
         </template>
         <el-menu-item index="3-2-1">
-          <span @click="$router.push('/normal-use/css-world/css-color')">css-color</span>
+          <span @click="$router.push('/normal-use/css-world/css-color')"
+            >css-color</span
+          >
         </el-menu-item>
         <el-menu-item index="3-2-2">
-          <span @click="$router.push('/normal-use/css-world/css-skill')">css-skill</span>
+          <span @click="$router.push('/normal-use/css-world/css-skill')"
+            >css-skill</span
+          >
         </el-menu-item>
       </el-submenu>
     </el-submenu>
@@ -63,7 +67,9 @@
         <span slot="title">组件</span>
       </template>
       <el-menu-item index="4-1">
-        <span @click="$router.push('/my-components/date-select')">日期选择</span>
+        <span @click="$router.push('/my-components/date-select')"
+          >日期选择</span
+        >
       </el-menu-item>
       <el-menu-item index="4-2">
         <span @click="$router.push('/my-components/my-table')">表格组件</span>
@@ -75,18 +81,21 @@
         <span slot="title">第三方</span>
       </template>
       <el-menu-item index="5-1">
-        <span @click="$router.push({ path: '/third-party/user/101' })">easy-mock</span>
+        <span @click="$router.push({ path: '/third-party/user/101' })"
+          >easy-mock</span
+        >
       </el-menu-item>
       <el-menu-item index="5-2">
-        <span @click="$router.push({ path: '/third-party/editor' })">富文本编辑器</span>
+        <span @click="$router.push({ path: '/third-party/editor' })"
+          >富文本编辑器</span
+        >
       </el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

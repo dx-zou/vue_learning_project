@@ -21,80 +21,80 @@
 </template>
 
 <script>
-import { quillEditor } from 'vue-quill-editor'
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+import { quillEditor } from "vue-quill-editor";
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
 const toolbarOptions = [
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block'],
+  ["bold", "italic", "underline", "strike"],
+  ["blockquote", "code-block"],
   [{ header: 1 }, { header: 2 }],
-  [{ list: 'ordered' }, { list: 'bullet' }],
-  [{ script: 'sub' }, { script: 'super' }],
-  [{ indent: '-1' }, { indent: '+1' }],
-  [{ size: ['small', false, 'large', 'huge'] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ script: "sub" }, { script: "super" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ size: ["small", false, "large", "huge"] }],
   [{ color: [] }, { background: [] }],
   [{ font: [] }],
   [{ align: [] }],
-  ['link', 'image'],
-  ['clean']
-]
+  ["link", "image"],
+  ["clean"]
+];
 export default {
   components: {
     quillEditor
   },
-  data () {
+  data() {
     return {
-      content: '',
-      uploadUrl: '',
+      content: "",
+      uploadUrl: "",
       editorOption: {
-        placeholder: '请输入内容',
+        placeholder: "请输入内容",
         modules: {
           toolbar: {
             container: toolbarOptions,
             handlers: {
-              image: function (value) {
+              image: function(value) {
                 if (value) {
-                  document.querySelector('.quill-upload input').click()
+                  document.querySelector(".quill-upload input").click();
                 } else {
-                  this.quill.format('image', false)
+                  this.quill.format("image", false);
                 }
               }
             }
           }
         }
       }
-    }
+    };
   },
   methods: {
     // 富文本上传图片前
-    beforeUpload (file) {
+    beforeUpload(file) {
       // 限制格式
       if (!/^image\/(jpeg|png|jpg|JPG|JPEG|gif)$/.test(file.type)) {
-        this.$toast('只支持上传jpg,png,gif格式的图片', 'warning')
-        return
+        this.$toast("只支持上传jpg,png,gif格式的图片", "warning");
+        return;
       }
-      const isLt2M = file.size / 1024 / 1024 < 5
+      const isLt2M = file.size / 1024 / 1024 < 5;
       if (!isLt2M) {
-        this.$toast('图片大小不能超过5MB!', 'warning')
+        this.$toast("图片大小不能超过5MB!", "warning");
       }
     },
-    uploadSuccess (res, file) {
+    uploadSuccess(res, file) {
       // 获取富文本组件实例
-      let quill = this.$refs.myQuillEditor.quill
+      let quill = this.$refs.myQuillEditor.quill;
       // 获取光标所在位置
-      let length = quill.getSelection().index
+      let length = quill.getSelection().index;
       // 插入图片
-      quill.insertEmbed(length, 'image', res.data)
+      quill.insertEmbed(length, "image", res.data);
       // 调整光标到最后
-      quill.setSelection(length + 1)
+      quill.setSelection(length + 1);
     },
-    uploadError () {},
-    onEditorBlur (e) {},
-    onEditorFocus (e) {},
-    onEditorReady (e) {}
+    uploadError() {},
+    onEditorBlur(e) {},
+    onEditorFocus(e) {},
+    onEditorReady(e) {}
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

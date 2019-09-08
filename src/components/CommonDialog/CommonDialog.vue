@@ -19,10 +19,10 @@
 
 <script>
 export default {
-  name: 'CommonDialog',
+  name: "CommonDialog",
   props: {
     title: {
-      default: ''
+      default: ""
     },
     showDialog: {
       type: Boolean,
@@ -30,25 +30,25 @@ export default {
     },
     width: {
       type: String,
-      default: '30%'
+      default: "30%"
     },
     top: {
       type: String,
-      default: '15vh'
+      default: "15vh"
     }
   },
   methods: {
-    handleClose () {
-      this.$emit('update:showDialog', false)
+    handleClose() {
+      this.$emit("update:showDialog", false);
     },
-    close () {
-      this.$emit('update:showDialog', false)
+    close() {
+      this.$emit("update:showDialog", false);
     },
-    handleConfirm () {
-      this.$emit('handleConfirm')
+    handleConfirm() {
+      this.$emit("handleConfirm");
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

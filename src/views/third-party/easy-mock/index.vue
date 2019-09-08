@@ -1,15 +1,41 @@
 <template>
   <div class="user-container">
     <el-table :data="tableData" style="idth: 100%">
-      <el-table-column prop="date" label="编号" width="80" type="index" align="center"></el-table-column>
-      <el-table-column prop="name" label="姓名" align="center"></el-table-column>
-      <el-table-column prop="city" label="城市" align="center"></el-table-column>
-      <el-table-column prop="phone" label="手机号" align="center"></el-table-column>
-      <el-table-column prop="birthday" label="生日" align="center"></el-table-column>
-      <el-table-column prop="title" label="生日" align="center"></el-table-column>
+      <el-table-column
+        prop="date"
+        label="编号"
+        width="80"
+        type="index"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="name"
+        label="姓名"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="city"
+        label="城市"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="phone"
+        label="手机号"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="birthday"
+        label="生日"
+        align="center"
+      ></el-table-column>
+      <el-table-column
+        prop="title"
+        label="生日"
+        align="center"
+      ></el-table-column>
       <el-table-column prop="image" label="头像" align="center">
         <template slot-scope="scope">
-          <img :src="scope.row.image" alt>
+          <img :src="scope.row.image" alt />
         </template>
       </el-table-column>
     </el-table>
@@ -21,29 +47,28 @@ export default {
   props: {
     id: null,
     name: {
-      default: '',
+      default: "",
       type: String
     }
   },
-  data () {
+  data() {
     return {
       tableData: []
-    }
+    };
   },
-  created () {
-    this.getUserlist()
+  created() {
+    this.getUserlist();
   },
   methods: {
-    getUserlist () {
+    getUserlist() {
       this.$http({
         url: this.$api.getUserList
       }).then(res => {
-        this.tableData = res.data
-      })
+        this.tableData = res.data;
+      });
     }
   }
-}
+};
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

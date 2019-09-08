@@ -25,50 +25,51 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       accounts: [
-        { name: 'admin', password: '123', role: 'admin' },
-        { name: 'normal', password: '321', role: 'ordinary' }
+        { name: "admin", password: "123", role: "admin" },
+        { name: "normal", password: "321", role: "ordinary" }
       ]
-    }
+    };
   },
   methods: {
-    login () {
-      if (!this.username || !this.password) return this.$toast('warning', '请输入用户名和密码')
+    login() {
+      if (!this.username || !this.password)
+        return this.$toast("warning", "请输入用户名和密码");
       // 添加loading效果
       const loading = this.$loading({
         lock: true,
-        text: '拼命加载中。。。',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
-      })
+        text: "拼命加载中。。。",
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.7)"
+      });
       // 验证账号密码
       var res = this.accounts.some(
         item => this.username === item.name && this.password === item.password
-      )
+      );
       if (res) {
         // Cookies.set("token", "Admin-Token");
-        sessionStorage.setItem('token', this.username + Math.random())
+        sessionStorage.setItem("token", this.username + Math.random());
         setTimeout(() => {
-          loading.close()
-          this.$toast('success', '登陆成功')
-          this.$router.push('/dashboard')
-        }, 400)
+          loading.close();
+          this.$toast("success", "登陆成功");
+          this.$router.push("/dashboard");
+        }, 400);
       } else {
-        loading.close()
+        loading.close();
         setTimeout(() => {
-          this.$toast('error', '账号或密码错误')
-        }, 300)
+          this.$toast("error", "账号或密码错误");
+        }, 300);
       }
     }
   }
-}
+};
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .login-wrapper {
   position: relative;
   width: 100%;

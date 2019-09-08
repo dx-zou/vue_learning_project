@@ -20,9 +20,15 @@
         @command="handleCommand"
       >
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-s-custom" command="user">个人中心</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-s-tools" command="set">项目配置</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-eleme" divided command="logout">退出登录</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-custom" command="user"
+            >个人中心</el-dropdown-item
+          >
+          <el-dropdown-item icon="el-icon-s-tools" command="set"
+            >项目配置</el-dropdown-item
+          >
+          <el-dropdown-item icon="el-icon-eleme" divided command="logout"
+            >退出登录</el-dropdown-item
+          >
         </el-dropdown-menu>
         <div class="el-dropdown-link">
           <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
@@ -30,7 +36,11 @@
         </div>
       </el-dropdown>
     </div>
-    <common-dialog :show-dialog.sync="showDialog" title="项目配置" @handleConfirm="saveSettings">
+    <common-dialog
+      :show-dialog.sync="showDialog"
+      title="项目配置"
+      @handleConfirm="saveSettings"
+    >
       <el-form label-width="100px" :model="settingForm" ref="settingForm">
         <el-form-item label="显示Logo">
           <el-radio-group v-model="settingForm.showLogo">

@@ -3,7 +3,7 @@
     <div class="wavetext">
       <div class="wavetop">
         <div class="wavelx">
-          <img src="@/assets/images/404/404.svg">
+          <img src="@/assets/images/404/404.svg" />
         </div>
         <div class="wavets">em~ 此路不通！</div>
       </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style lang="scss">

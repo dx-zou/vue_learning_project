@@ -1,6 +1,10 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile' && !sidebarCollapse" class="drawer-bg" @click="handleClickOutside"></div>
+    <div
+      v-if="device === 'mobile' && !sidebarCollapse"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    ></div>
     <side-bar></side-bar>
     <transition
       enter-active-class="animated bounceInDown"
@@ -9,7 +13,7 @@
       <message-box v-show="showMsgBox"></message-box>
     </transition>
     <div class="main-container">
-      <app-header :class="{'fixed-header':fixedHeader}"></app-header>
+      <app-header :class="{ 'fixed-header': fixedHeader }"></app-header>
       <div class="app-main">
         <transition name="app">
           <router-view />

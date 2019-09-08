@@ -14,7 +14,11 @@
         class="menu-container"
         id="sidebar"
       >
-        <sidebar-item v-for="item in MenuList " :item="item" :key="item.id"></sidebar-item>
+        <sidebar-item
+          v-for="item in MenuList"
+          :item="item"
+          :key="item.id"
+        ></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -53,7 +57,7 @@ export default {
   },
   methods: {
     // 改变选中的菜单项触发
-    handleSelect(key, keypath) {
+    handleSelect(key) {
       this.$store.dispatch("app/changeActiveIndex", key);
       sessionStorage.setItem("activeIndex", key);
     }

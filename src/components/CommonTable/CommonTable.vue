@@ -72,11 +72,11 @@
 
 <script>
 export default {
-  name: 'CommonTable',
-  data () {
+  name: "CommonTable",
+  data() {
     return {
       multipleSelection: []
-    }
+    };
   },
   props: {
     // 表头字段
@@ -115,12 +115,12 @@ export default {
     // 操作栏宽度
     operateWidth: {
       type: String,
-      default: '200'
+      default: "200"
     },
     // 表格高度
     tableHeight: {
       type: String,
-      default: '69.5vh'
+      default: "69.5vh"
     },
     // 多选
     showSelection: {
@@ -129,30 +129,30 @@ export default {
     }
   },
   methods: {
-    showSth () {
-      console.log(123)
+    showSth() {
+      console.log(123);
     },
     // 多选框多选
-    handleSelectionChange (val) {
-      this.multipleSelection = val
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
       // 存储批量删除的数组长度
       this.$store.commit(
-        'CHANGE_MULTIPLE_LENGTH',
+        "CHANGE_MULTIPLE_LENGTH",
         this.multipleSelection.length
-      )
+      );
       // 调用父组件方法
-      this.$emit('handleSelectionChange', val)
+      this.$emit("handleSelectionChange", val);
     },
     // 修改行数据
-    changeRow (id) {
-      this.$emit('changeRow', id)
+    changeRow(id) {
+      this.$emit("changeRow", id);
     },
     // 删除行数据
-    goToDel (id) {
-      this.$emit('goToDel', id)
+    goToDel(id) {
+      this.$emit("goToDel", id);
     }
   }
-}
+};
 </script>
 <style>
 .nav-dot {

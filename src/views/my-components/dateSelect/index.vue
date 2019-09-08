@@ -10,8 +10,8 @@
                 <!-- <template v-slot:range="slotProps"> -->
                 <template #range="{dateRange}">
                   <h3>选择的时间范围：</h3>
-                  <p>开始时间：{{dateRange.start_time}}</p>
-                  <p>结束时间：{{dateRange.end_time}}</p>
+                  <p>开始时间：{{ dateRange.start_time }}</p>
+                  <p>结束时间：{{ dateRange.end_time }}</p>
                 </template>
               </fn-date-range>
             </el-form-item>
@@ -30,25 +30,25 @@ export default {
   components: {
     // fnDateRange,
   },
-  data () {
+  data() {
     return {
       dateRange: {
-        start_time: '',
-        end_time: ''
+        start_time: "",
+        end_time: ""
       }
-    }
+    };
   },
-  created () {},
+  created() {},
   methods: {
-    getDateRange (start, end) {
-      this.dateRange.start_time = start
-      this.dateRange.end_time = end
+    getDateRange(start, end) {
+      this.dateRange.start_time = start;
+      this.dateRange.end_time = end;
     },
-    closeAlert () {
-      this.visible = !this.visible
+    closeAlert() {
+      this.visible = !this.visible;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

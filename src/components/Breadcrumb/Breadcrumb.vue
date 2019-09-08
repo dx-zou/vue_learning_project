@@ -4,9 +4,11 @@
       <el-breadcrumb-item key="dashboard">
         <a class="iconfont icon-home" @click.prevent="handleHomeClick"></a>
       </el-breadcrumb-item>
-      <el-breadcrumb-item v-for="(item,index) in breadList" :key="item">
-        <span v-if="index === breadList.length- 1" class="no-redirect">{{ item }}</span>
-        <a v-else @click.prevent="handleLink(item,index)">{{ item }}</a>
+      <el-breadcrumb-item v-for="(item, index) in breadList" :key="item">
+        <span v-if="index === breadList.length - 1" class="no-redirect">{{
+          item
+        }}</span>
+        <a v-else @click.prevent="handleLink(item, index)">{{ item }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>

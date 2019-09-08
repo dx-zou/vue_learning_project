@@ -11,4 +11,4 @@ export default {
   activeIndex: state => state.app.activeIndex,
   fixedHeader: state => state.settings.fixedHeader,
   showMsgBox: state => state.app.showMsgBox
-}
+};

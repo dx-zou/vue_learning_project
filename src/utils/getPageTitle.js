@@ -1,9 +1,8 @@
+const title = "Vue_Manage_System";
 
-const title = 'Vue_Manage_System'
-
-export default function getPageTitle (pageTitle) {
+export default function getPageTitle(pageTitle) {
   if (pageTitle) {
-    return `${pageTitle} - ${title}`
+    return `${pageTitle} - ${title}`;
   }
-  return `${title}`
+  return `${title}`;
 }

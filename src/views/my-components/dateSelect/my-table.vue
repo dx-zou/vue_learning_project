@@ -1,5 +1,9 @@
 <template>
-  <common-table :isLoading="false" :tableOptions="tableOptions" :tableData="tableData"></common-table>
+  <common-table
+    :isLoading="false"
+    :tableOptions="tableOptions"
+    :tableData="tableData"
+  ></common-table>
 </template>
 
 <script>
@@ -20,7 +24,6 @@ export default {
         { materialname: "100" }
       ]
     };
-  },
+  }
 };
-
 </script>
