@@ -9,6 +9,14 @@ export default {
   device: state => state.app.device,
   // 活动的菜单项的index
   activeIndex: state => state.app.activeIndex,
+  // 固定头部
   fixedHeader: state => state.settings.fixedHeader,
-  showMsgBox: state => state.app.showMsgBox
+  // 显示隐藏消息框
+  showMsgBox: state => state.app.showMsgBox,
+  // 用户名称
+  userInfo: state => state.user.userInfo,
+  // 菜单栏列表
+  menuList: state => state.user.menuList,
+  // 菜单名称
+  menuName: state => state.user.menuName
 };

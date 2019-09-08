@@ -1,11 +1,5 @@
 const MENU = [
   {
-    id: 1,
-    index: "1",
-    title: "dashboard",
-    icon: "icon-home"
-  },
-  {
     id: 2,
     index: "2",
     title: "Vue",

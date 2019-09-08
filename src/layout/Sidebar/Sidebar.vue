@@ -14,11 +14,11 @@
         class="menu-container"
         id="sidebar"
       >
-        <sidebar-item
-          v-for="item in MenuList"
-          :item="item"
-          :key="item.id"
-        ></sidebar-item>
+        <el-menu-item index="1">
+          <i class="iconfont icon-home"></i>
+          <router-link to="/dashboard" tag="span">dashboard</router-link>
+        </el-menu-item>
+        <sidebar-item v-for="item in MenuList" :item="item" :key="item.id"></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
