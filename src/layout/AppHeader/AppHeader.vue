@@ -105,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .app-header {
   display: flex;
   height: 0.5rem;

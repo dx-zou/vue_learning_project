@@ -36,7 +36,7 @@
 export default {}
 </script>
 
-<style lang="less">
+<style lang="scss">
 @keyframes move_wave {
   0% {
     transform: translateX(0) translateZ(0) scaleY(1);

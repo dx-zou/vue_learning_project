@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .transition-container {
   position: relative;
   .filter {

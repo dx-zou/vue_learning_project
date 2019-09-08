@@ -11,11 +11,11 @@
 export default {
   name: "MessageBox",
   methods: {
-     // 显示隐藏msgbox
+    // 显示隐藏msgbox
     toggleMsgBox() {
       this.$store.dispatch("app/toggleMsgBox");
-    },
-  },
+    }
+  }
 };
 </script>
 

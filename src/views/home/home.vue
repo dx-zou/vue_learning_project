@@ -41,9 +41,9 @@ export default {
   },
   mixins: [driver],
   mounted() {
-    // this.$nextTick(() => {
-    //   this.initCharts();
-    // });
+    this.$nextTick(() => {
+      this.initCharts();
+    });
   },
   methods: {
     initCharts() {
@@ -183,7 +183,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .home-wrapper {
   width: 100%;
   box-sizing: border-box;
@@ -192,7 +192,7 @@ export default {
     margin-bottom: 0.2rem;
   }
   #myChart {
-    width: 100%;
+    width: 50%;
     height: 30vh;
   }
 }

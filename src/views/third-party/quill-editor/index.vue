@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .quill-editor {
   height: 300px;
 }

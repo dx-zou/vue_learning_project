@@ -42,12 +42,12 @@ const MENU = [
       {
         id: 10,
         index: '3-2',
-        title: 'css-color'
+        title: 'color'
       },
       {
         id: 11,
         index: '3-3',
-        title: 'css-skill'
+        title: 'skill'
       }
     ]
   },

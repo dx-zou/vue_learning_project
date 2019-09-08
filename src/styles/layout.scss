@@ -10,6 +10,7 @@
   height: 100%;
   margin-left: $sideBarWidth;
   transition: margin-left .3s;
+  overflow: hidden;
 }
 
 .app-main {

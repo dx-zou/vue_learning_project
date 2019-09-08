@@ -21,7 +21,6 @@ const mutations = {
   },
   [TOGGLE_MESSAGEBOX]: state => {
     state.showMsgBox = !state.showMsgBox
-    console.log(state.showMsgBox)
   }
 }
 

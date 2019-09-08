@@ -68,7 +68,7 @@ export default {
 }
 </script>
 
-<style lang="less" >
+<style lang="scss" >
 .login-wrapper {
   position: relative;
   width: 100%;

@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
 .fn-alert {
     display: flex;
     width: 100%;

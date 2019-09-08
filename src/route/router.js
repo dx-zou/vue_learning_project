@@ -54,16 +54,16 @@ const constantRouterMap = [
     name: 'css-world',
     children: [
       {
-        path: 'css-color',
-        name: 'css-color',
+        path: 'color',
+        name: 'color',
         component: () => import('../views/css-world/css-color/css-color'),
         meta: {
           breadcrumbs: ['css-world', 'css-color']
         }
       },
       {
-        path: 'css-skill',
-        name: 'css-skill',
+        path: 'skill',
+        name: 'skill',
         component: () => import('../views/css-world/css-skill/css-skill'),
         meta: {
           breadcrumbs: ['normal', 'css-skill']
