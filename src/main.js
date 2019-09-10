@@ -12,7 +12,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
 import "nprogress/nprogress.css";
 import components from "./components";
-import "./permission";
+// import "./permission";
 NProgress.configure({
   showSpinner: false
 });
