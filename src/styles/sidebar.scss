@@ -15,12 +15,6 @@
       color: $menuActiveText;
     }
 
-    // .is-active {
-    //   i {
-    //     color: $menuActiveText;
-    //   }
-    // }
-
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
@@ -167,10 +161,17 @@
       }
     }
 
+    /*  当sidebar折叠时 */
     .el-menu--collapse {
+      .el-menu-item {
+        a {
+          visibility: hidden;
+        }
+      }
+
       .el-submenu {
-        &>.el-submenu__title {
-          &>span {
+        .el-submenu__title {
+          span {
             height: 0;
             width: 0;
             overflow: hidden;
@@ -238,6 +239,11 @@
     &:hover {
       // you can use $subMenuHover
       background-color: $menuHover !important;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
     }
   }
 
