@@ -18,7 +18,7 @@
           <i class="iconfont icon-home"></i>
           <router-link to="/dashboard" tag="span">dashboard</router-link>
         </el-menu-item>
-        <sidebar-item v-for="item in MenuList" :item="item" :key="item.id"></sidebar-item>
+        <sidebar-item v-for="item in menuList" :item="item" :key="item.id"></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -28,7 +28,7 @@
 import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import SidebarLogo from "./Logo";
-import MenuList from "./menuData";
+// import MenuList from "./menuData";
 import SidebarItem from "./SidebarItem";
 export default {
   name: "SideBar",
@@ -40,13 +40,13 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo"]),
+    ...mapGetters(["sidebarCollapse", "showLogo","menuList"]),
     variables() {
       return variables;
     },
-    MenuList() {
-      return MenuList;
-    },
+    // MenuList() {
+    //   return MenuList;
+    // },
     activeIndex() {
       return (
         this.$store.getters.activeIndex ||
@@ -65,4 +65,3 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
