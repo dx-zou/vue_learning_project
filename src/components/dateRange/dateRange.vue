@@ -1,18 +1,7 @@
 <template>
   <div class="date-range">
-    <el-select
-      v-model="dateRangeValue"
-      placeholder="请选择"
-      clearable
-      style="width:100%"
-    >
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      >
-      </el-option>
+    <el-select v-model="dateRangeValue" placeholder="请选择" clearable style="width:100%">
+      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
     </el-select>
     <slot name="range" :dateRange="dateRange"></slot>
   </div>
@@ -20,7 +9,7 @@
 
 <script>
 export default {
-  name: "fnDateRange",
+  name: "FnDateRange",
   data() {
     return {
       dateRangeValue: "",
@@ -45,8 +34,6 @@ export default {
       }
     };
   },
-  created() {},
-  computed: {},
   watch: {
     dateRangeValue() {
       switch (this.dateRangeValue) {

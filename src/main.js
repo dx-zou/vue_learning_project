@@ -13,6 +13,7 @@ import "./styles/common.scss";
 import "nprogress/nprogress.css";
 import components from "./components";
 import "@/utils/setRem";
+import JsonExcel from "vue-json-excel";
 // import "./permission";
 NProgress.configure({
   showSpinner: false
@@ -20,6 +21,7 @@ NProgress.configure({
 // 全局注册组件
 Vue.use(ElementUI);
 Vue.use(animated);
+Vue.component("downloadExcel", JsonExcel);
 components.forEach(component => Vue.use(component));
 // 挂载提示方法
 Vue.prototype.$toast = toast;
