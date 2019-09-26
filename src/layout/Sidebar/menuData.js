@@ -46,6 +46,19 @@ const MENU = [
     ]
   },
   {
+    id: 8,
+    index: "4",
+    title: "js",
+    icon: "icon-css",
+    children: [
+      {
+        id: 9,
+        index: "4-1",
+        title: "lodash"
+      }
+    ]
+  },
+  {
     id: 12,
     index: "4",
     title: "components",
