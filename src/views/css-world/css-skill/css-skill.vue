@@ -7,20 +7,44 @@
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
-        <input type="text" size="50" placeholder="please" />
+        <input type="text" size="30" placeholder="弹性布局" />
       </div>
       <div data-content="伪元素的content" class="content"></div>
       <div data-content="伪元素的content2" class="content2 content"></div>
       <div data-content="伪元素的content3" class="content3 content"></div>
       <!-- 进度条 -->
-      <div class="progress" style="--percent: 30"></div>
+      <div class="progress" style="--percent: 30">css  进度条</div>
       <div class="progress" style="--percent: 60"></div>
       <div class="progress" style="--percent: 80"></div>
       <p class="loading">加载中</p>
       <div class="no-more">无更多数据</div>
       <div class="onepx-border"></div>
+      <div class="truncate-text-multiline">
+        多行文本截断显示，多行文本截断显示多行文本截断显示，多行文本截断显示，多行文本截断显示，多行文本截断显示
+      </div>
     </div>
-    <div class="center"></div>
+    <div class="center">
+      <h2>计数器</h2>
+      <ul>
+        <li>List item</li>
+        <li>List item</li>
+        <li>
+          List item
+          <ul>
+            <li>List item</li>
+            <li>List item</li>
+            <li>List item</li>
+          </ul>
+        </li>
+      </ul>
+    <div class="focus-within">
+      <h2>表单聚焦高亮</h2>
+      <form>
+        <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
+        <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
+      </form>
+    </div>
+    </div>
     <div class="right"></div>
   </div>
 </template>
@@ -45,11 +69,13 @@ export default {};
       width: 60px;
       height: 30px;
       margin: auto;
+      /*flex: 1;*/
       background-color: orange;
     }
 
     input {
       height: 30px;
+      flex: 1;
     }
   }
 
@@ -163,5 +189,45 @@ export default {};
       transform-origin: left top;
     }
   }
+    // 多行文本截断显示
+    .truncate-text-multiline {
+      overflow: hidden;
+      display: block;
+      height: 109.2px;
+      margin: 0 auto;
+      font-size: 26px;
+      line-height: 1.4;
+      width: 400px;
+      position: relative;
+  }
+  .truncate-text-multiline:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      height: 36.4px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0), #f5f6f9 50%);
+  }
+
+
 }
+  .center {
+    ul {
+      counter-reset: counter;
+    }
+    li::before {
+      counter-increment: counter;
+      content: counters(counter, '.') ' ';
+    }
+    form {
+      border: 3px solid #2d98da;
+      color: #000000;
+      padding: 4px;
+    }
+    form:focus-within {
+      background: #f7b731;
+      color: #000000;
+    }
+  }
 </style>
