@@ -16,7 +16,7 @@
       >
         <el-menu-item index="1">
           <i class="iconfont icon-home"></i>
-          <router-link to="/dashboard" tag="span">dashboard</router-link>
+          <router-link to="/dashboard">dashboard</router-link>
         </el-menu-item>
         <sidebar-item v-for="item in menuList" :item="item" :key="item.id"></sidebar-item>
       </el-menu>

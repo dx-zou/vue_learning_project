@@ -10,12 +10,7 @@
     tooltip-effect="light"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column
-      v-if="showSelection"
-      align="center"
-      type="selection"
-      width="55"
-    ></el-table-column>
+    <el-table-column v-if="showSelection" align="center" type="selection" width="55"></el-table-column>
     <el-table-column
       v-for="item in tableOptions"
       :key="item.prop"
@@ -34,12 +29,7 @@
       :width="operateWidth"
     >
       <template slot-scope="scope">
-        <el-popover
-          placement="bottom-start"
-          width="200"
-          trigger="hover"
-          :open-delay="300"
-        >
+        <el-popover placement="bottom-start" width="200" trigger="hover" :open-delay="300">
           <slot :scope="scope" name="default">
             <el-button
               @click="changeRow(scope.row.id)"
@@ -47,23 +37,16 @@
               size="small"
               v-if="showEdit"
               @hover="showSth"
-              >修改</el-button
-            >
+            >修改</el-button>
             <el-button
               @click="goToDel(scope.row.id)"
               type="danger"
               size="small"
               v-if="showDelete"
-              >删除</el-button
-            >
+            >删除</el-button>
           </slot>
           <slot :scope="scope" name="more"></slot>
-          <img
-            src="../../assets/images/dot.png"
-            slot="reference"
-            alt="导航图标"
-            class="nav-dot"
-          />
+          <img src="../../assets/images/dot.png" slot="reference" alt="导航图标" class="nav-dot" />
         </el-popover>
       </template>
     </el-table-column>
@@ -129,9 +112,7 @@ export default {
     }
   },
   methods: {
-    showSth() {
-      console.log(123);
-    },
+    showSth() {},
     // 多选框多选
     handleSelectionChange(val) {
       this.multipleSelection = val;

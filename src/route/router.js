@@ -71,6 +71,22 @@ const constantRouterMap = [
       }
     ]
   },
+  // js-learning
+  {
+    path: "/js-learning",
+    component: layout,
+    name: "js-learning",
+    children: [
+      {
+        path: "lodash",
+        name: "lodash",
+        component: () => import("../views/js/lodash-test"),
+        meta: {
+          breadcrumbs: ["js-learning", "lodash"]
+        }
+      }
+    ]
+  },
   // vue 学习
   {
     path: "/vue",

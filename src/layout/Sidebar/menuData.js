@@ -4,6 +4,7 @@ const MENU = [
     index: "2",
     title: "Vue",
     icon: "icon-vue",
+    svg: "vue",
     children: [
       {
         id: 3,
@@ -32,6 +33,7 @@ const MENU = [
     index: "3",
     title: "css",
     icon: "icon-css",
+    svg: "css",
     children: [
       {
         id: 10,
@@ -46,37 +48,53 @@ const MENU = [
     ]
   },
   {
-    id: 12,
+    id: 8,
     index: "4",
+    title: "js",
+    icon: "icon-css",
+    svg: "css",
+    children: [
+      {
+        id: 9,
+        index: "4-1",
+        title: "lodash"
+      }
+    ]
+  },
+  {
+    id: 12,
+    index: "5",
     title: "components",
     icon: "icon-component",
+    svg: "component",
     children: [
       {
         id: 13,
-        index: "4-1",
+        index: "5-1",
         title: "date"
       },
       {
         id: 14,
-        index: "4",
+        index: "5-2",
         title: "table"
       }
     ]
   },
   {
     id: 15,
-    index: "5",
+    index: "6",
     title: "plugins",
     icon: "icon-plugin",
+    svg: "plugin",
     children: [
       {
         id: 16,
-        index: "5-1",
+        index: "6-1",
         title: "easy-mock"
       },
       {
         id: 17,
-        index: "5-2",
+        index: "6-2",
         title: "editor"
       }
     ]
