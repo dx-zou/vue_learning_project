@@ -12,6 +12,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
 import "nprogress/nprogress.css";
 import components from "./components";
+import '@/icons'; // svg 图标
 import "@/utils/setRem";
 import JsonExcel from "vue-json-excel";
 // import "./permission";

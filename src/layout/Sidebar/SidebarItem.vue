@@ -11,7 +11,8 @@
 
     <el-submenu v-else ref="subMenu" :index="item.index">
       <template slot="title">
-        <i :class="['iconfont', item.icon]"></i>
+        <svg-icon :icon-class="item.svg" />
+<!--        <i :class="['iconfont', item.icon]"></i>-->
         <span slot="title">{{ item.title }}</span>
       </template>
       <sidebar-item v-for="child in item.children" :key="child.id" :item="child" class="nest-menu" />
