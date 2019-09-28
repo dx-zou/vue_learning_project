@@ -37,13 +37,17 @@
           </ul>
         </li>
       </ul>
-    <div class="focus-within">
-      <h2>表单聚焦高亮</h2>
-      <form>
-        <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
-        <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
-      </form>
-    </div>
+      <div class="focus-within">
+        <h2>表单聚焦高亮</h2>
+        <form>
+          <label for="given_name">Given Name:</label> <input id="given_name" type="text" /> <br />
+          <label for="family_name">Family Name:</label> <input id="family_name" type="text" />
+        </form>
+      </div>
+      <div class="none-select">
+        <h2>禁止用户选择</h2>
+        <span>无法选择哦！！！</span>
+      </div>
     </div>
     <div class="right"></div>
   </div>
@@ -228,6 +232,15 @@ export default {};
     form:focus-within {
       background: #f7b731;
       color: #000000;
+    }
+    .none-select {
+      margin-top: 0.3rem;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      /*-khtml-user-select: none;*/
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   }
 </style>

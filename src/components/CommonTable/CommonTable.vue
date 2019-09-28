@@ -55,7 +55,7 @@
               v-if="showEdit"
             >编辑</el-button>
             <el-button
-              @click="goToDel(row)"
+              @click="deleteRow(row)"
               type="danger"
               icon="el-icon-delete"
               size="mini"
@@ -166,8 +166,8 @@ export default {
       this.$emit("editRow", id);
     },
     // 删除行数据
-    goToDel(id) {
-      this.$emit("goToDel", id);
+    deleteRow(id) {
+      this.$emit("deleteRow", id);
     },
     //重置密码
     handlePassword(id) {

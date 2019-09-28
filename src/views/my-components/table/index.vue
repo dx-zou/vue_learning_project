@@ -6,10 +6,12 @@
     show-edit
     show-delete
     @editRow="editRow"
+    @deleteRow="deleteRow"
   ></common-table>
 </template>
 
 <script>
+  import {mapMutations} from "vuex"
 export default {
   data() {
     return {
@@ -30,8 +32,12 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["CONFIRM_DELETE_DATA"]),
     editRow(row) {
       console.log(row);
+    },
+    deleteRow(row) {
+      this.CONFIRM_DELETE_DATA({url:'getUserMenu',ids:row.id})
     }
   }
 };

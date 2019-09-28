@@ -4,7 +4,7 @@ import constantRouterMap from "./router";
 Vue.use(Router);
 
 const router = new Router({
-  mode: "hash",
+  mode: "history",
   routes: constantRouterMap,
   // 滚动行为，
   scrollBehavior(to, from, savedPosition) {
