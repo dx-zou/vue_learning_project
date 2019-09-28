@@ -1,0 +1,93 @@
+{
+  "id": "1241616",
+  "name": "vue学习管理系统",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "821726",
+      "name": "网站中心-第三方",
+      "font_class": "disanfang",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "1002521",
+      "name": "首页",
+      "font_class": "home",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "3002354",
+      "name": "vue",
+      "font_class": "vue",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "3879527",
+      "name": "组件",
+      "font_class": "component",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "5244045",
+      "name": "插件",
+      "font_class": "plugin",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "6140410",
+      "name": "常用",
+      "font_class": "changyong",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "6517771",
+      "name": "切换",
+      "font_class": "qiehuan",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "7551905",
+      "name": "退出",
+      "font_class": "exit",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "7674923",
+      "name": "更多",
+      "font_class": "more",
+      "unicode": "e71d",
+      "unicode_decimal": 59165
+    },
+    {
+      "icon_id": "7735995",
+      "name": "css3",
+      "font_class": "css",
+      "unicode": "e8df",
+      "unicode_decimal": 59615
+    },
+    {
+      "icon_id": "8288894",
+      "name": "星星",
+      "font_class": "xingxing",
+      "unicode": "e859",
+      "unicode_decimal": 59481
+    },
+    {
+      "icon_id": "8289033",
+      "name": "星星",
+      "font_class": "xingxing-rate",
+      "unicode": "e870",
+      "unicode_decimal": 59504
+    }
+  ]
+}
