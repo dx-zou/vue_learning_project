@@ -40,7 +40,7 @@ const constantRouterMap = [
       {
         path: 'table',
         name: 'table',
-        component: () => import('@/views/my-components/my-table'),
+        component: () => import('@/views/my-components/table'),
         meta: {
           breadcrumbs: ['components', 'table']
         }

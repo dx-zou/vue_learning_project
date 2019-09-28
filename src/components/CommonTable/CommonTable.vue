@@ -37,7 +37,7 @@
       label="操作"
       :width="operateWidth"
     >
-      <template slot-scope="scope">
+      <template #default="{row}">
         <el-popover
           placement="left-start"
           width="160"
@@ -46,16 +46,16 @@
           popper-class="btn-popover"
         >
           <!-- 如果不要相关操作按钮，在属性中改变默认值 -->
-          <slot :scope="scope" name="default">
+          <slot :scope="row" name="default">
             <el-button
-              @click="editRow(scope.row.id)"
+              @click="editRow(row)"
               type="primary"
               icon="el-icon-edit"
               size="mini"
               v-if="showEdit"
             >编辑</el-button>
             <el-button
-              @click="goToDel(scope.row.id)"
+              @click="goToDel(row)"
               type="danger"
               icon="el-icon-delete"
               size="mini"
