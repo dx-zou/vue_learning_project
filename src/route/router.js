@@ -36,15 +36,15 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["components", "date"]
         }
+      },
+      {
+        path: 'table',
+        name: 'table',
+        component: () => import('@/views/my-components/my-table'),
+        meta: {
+          breadcrumbs: ['components', 'table']
+        }
       }
-      // {
-      //   path: 'table',
-      //   name: 'table',
-      //   component: () => import('@/views/my-components/my-table'),
-      //   meta: {
-      //     breadcrumbs: ['components', 'table']
-      //   }
-      // }
     ]
   },
   // 常用
