@@ -1,17 +1,17 @@
 <template>
   <el-table
     :data="tableData"
-    style="width: 100%"
     :height="tableHeight || null"
-    v-loading="isLoading"
     :border="showBorder"
     :header-row-style="{ height: '0.3rem' }"
     :header-cell-style="{ backgroundColor: '#fff', color: '#000' }"
-    element-loading-text="加载中..."
     tooltip-effect="light"
+    v-loading="isLoading"
+    element-loading-text="加载中..."
     @selection-change="handleSelectionChange"
     @filter-change="handleFilterChange"
     @sort-change="handleSort"
+    style="width: 100%"
     ref="multipleTable"
   >
     <el-table-column v-if="showSelection" align="center" type="selection" width="55"></el-table-column>
@@ -29,13 +29,12 @@
       :filters="item.filters || null"
       :formatter="item.formatter || null"
     ></el-table-column>
-    <!-- 在尾部添加自定义操作栏 -->
     <el-table-column
-      align="center"
       v-if="showOperate"
+      :width="operateWidth"
+      align="center"
       fixed="right"
       label="操作"
-      :width="operateWidth"
     >
       <template #default="{row}">
         <el-popover
@@ -45,7 +44,6 @@
           :open-delay="200"
           popper-class="btn-popover"
         >
-          <!-- 如果不要相关操作按钮，在属性中改变默认值 -->
           <slot :scope="row" name="default">
             <el-button
               @click="editRow(row)"

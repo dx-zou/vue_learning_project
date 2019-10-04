@@ -14,7 +14,7 @@ import components from "./components";
 import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
 import "nprogress/nprogress.css";
-import '@/icons'; // svg 图标
+import "@/icons"; // svg 图标
 import "@/utils/setRem";
 // import "./permission";
 NProgress.configure({
