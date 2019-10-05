@@ -4,9 +4,8 @@
     :visible.sync="showDialog"
     :width="width"
     :before-close="handleClose"
-    append-to-body
-    center
     :top="top"
+    center
     custom-class="common-dialog"
   >
     <slot></slot>

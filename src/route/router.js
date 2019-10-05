@@ -38,11 +38,11 @@ const constantRouterMap = [
         }
       },
       {
-        path: 'table',
-        name: 'table',
-        component: () => import('@/views/my-components/table'),
+        path: "table",
+        name: "table",
+        component: () => import("@/views/my-components/table"),
         meta: {
-          breadcrumbs: ['components', 'table']
+          breadcrumbs: ["components", "table"]
         }
       }
     ]
@@ -84,7 +84,15 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["js-learning", "lodash"]
         }
-      }
+      },
+      {
+        path: "regExp",
+        name: "regExp",
+        component: () => import("../views/js/regExp"),
+        meta: {
+          breadcrumbs: ["js-learning", "regExp"]
+        }
+      },
     ]
   },
   // vue 学习
@@ -147,6 +155,12 @@ const constantRouterMap = [
         name: "editor",
         component: () => import("@/views/third-party/quill-editor"),
         meta: { breadcrumbs: ["third-party", "editor"] }
+      },
+      {
+        path: "cropper",
+        name: "cropper",
+        component: () => import("@/views/third-party/cropper"),
+        meta: { breadcrumbs: ["third-party", "cropper"] }
       }
     ]
   },
