@@ -58,6 +58,11 @@ const MENU = [
         id: 9,
         index: "4-1",
         title: "lodash"
+      },
+      {
+        id: 10,
+        index: "4-2",
+        title: "regExp"
       }
     ]
   },
@@ -93,8 +98,13 @@ const MENU = [
         title: "easy-mock"
       },
       {
-        id: 17,
+        id: 18,
         index: "6-2",
+        title: "cropper"
+      },
+      {
+        id: 17,
+        index: "6-3",
         title: "editor"
       }
     ]

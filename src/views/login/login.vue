@@ -15,15 +15,16 @@
         prefix-icon="el-icon-lock"
         show-password
         v-model.trim="userData.password"
-        @keyup.native.enter="login"
+        @keyup.native.enter="debounceLogin"
         placeholder="密码"
       ></el-input>
-      <el-button type="primary" @click="login">登录</el-button>
+      <el-button type="primary" @click="debounceLogin">登录</el-button>
     </div>
   </div>
 </template>
 
 <script>
+  import _ from "lodash"
 export default {
   data() {
     return {
@@ -33,9 +34,15 @@ export default {
       }
     };
   },
+  computed: {
+    lodash() {
+      return _
+    }
+  },
   methods: {
-    login() {
-      if (!this.userData.username || !this.userData.password)
+    // debounce login
+    debounceLogin: _.debounce(function() {
+       if (!this.userData.username || !this.userData.password)
         return this.$toast("warning", "请输入用户名和密码");
       const loading = this.$loading({
         lock: true,
@@ -52,7 +59,7 @@ export default {
           this.$toast("error", res.msg);
         }
       });
-    }
+    },1000,{leading: true,trailing: true}),
   }
 };
 </script>

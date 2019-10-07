@@ -1,52 +1,66 @@
 <template>
   <el-table
     :data="tableData"
-    style="width: 100%"
-    :height="tableHeight"
-    v-loading="isLoading"
+    :height="tableHeight || null"
     :border="showBorder"
-    element-loading-text="加载中..."
-    ref="multipleTable"
+    :header-row-style="{ height: '0.3rem' }"
+    :header-cell-style="{ backgroundColor: '#fff', color: '#000' }"
     tooltip-effect="light"
+    v-loading="isLoading"
+    element-loading-text="加载中..."
     @selection-change="handleSelectionChange"
+    @filter-change="handleFilterChange"
+    @sort-change="handleSort"
+    style="width: 100%"
+    ref="multipleTable"
   >
     <el-table-column v-if="showSelection" align="center" type="selection" width="55"></el-table-column>
     <el-table-column
       v-for="item in tableOptions"
       :key="item.prop"
+      :column-key="item.columnKey"
       :prop="item.prop"
       :label="item.label"
       :show-overflow-tooltip="item.showTooltip || false"
       :align="item.align || 'center'"
       :header-align="item.headerAlign || 'center'"
       :width="item.width || ''"
+      :sortable="item.sortable || false"
+      :filters="item.filters || null"
+      :formatter="item.formatter || null"
     ></el-table-column>
     <el-table-column
-      align="center"
       v-if="showOperate"
+      :width="operateWidth"
+      align="center"
       fixed="right"
       label="操作"
-      :width="operateWidth"
     >
-      <template slot-scope="scope">
-        <el-popover placement="bottom-start" width="200" trigger="hover" :open-delay="300">
-          <slot :scope="scope" name="default">
+      <template #default="{row}">
+        <el-popover
+          placement="left-start"
+          width="160"
+          trigger="hover"
+          :open-delay="200"
+          popper-class="btn-popover"
+        >
+          <slot :scope="row" name="default">
             <el-button
-              @click="changeRow(scope.row.id)"
+              @click="editRow(row)"
               type="primary"
-              size="small"
+              icon="el-icon-edit"
+              size="mini"
               v-if="showEdit"
-              @hover="showSth"
-            >修改</el-button>
+            >编辑</el-button>
             <el-button
-              @click="goToDel(scope.row.id)"
+              @click="deleteRow(row)"
               type="danger"
-              size="small"
+              icon="el-icon-delete"
+              size="mini"
               v-if="showDelete"
             >删除</el-button>
           </slot>
-          <slot :scope="scope" name="more"></slot>
-          <img src="../../assets/images/dot.png" slot="reference" alt="导航图标" class="nav-dot" />
+          <span class="iconfont icon-more operate-icon" slot="reference"></span>
         </el-popover>
       </template>
     </el-table-column>
@@ -75,35 +89,45 @@ export default {
       type: Boolean,
       default: true
     },
-    // 加载动画
+    // 边框
     showBorder: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 显示操作栏
     showOperate: {
       type: Boolean,
       default: true
     },
+    //更新操作按钮
+    showUpdate: {
+      type: Boolean,
+      default: false
+    },
+    //单条审核按钮
+    showAudit: {
+      type: Boolean,
+      default: false
+    },
     // 编辑按钮
     showEdit: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 删除按钮
     showDelete: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 操作栏宽度
     operateWidth: {
       type: String,
-      default: "200"
+      default: "100"
     },
     // 表格高度
     tableHeight: {
       type: String,
-      default: "69.5vh"
+      default: "79vh"
     },
     // 多选
     showSelection: {
@@ -112,33 +136,73 @@ export default {
     }
   },
   methods: {
-    showSth() {},
     // 多选框多选
     handleSelectionChange(val) {
-      this.multipleSelection = val;
+      // this.multipleSelection = val.map(item => item.id);
       // 存储批量删除的数组长度
-      this.$store.commit(
-        "CHANGE_MULTIPLE_LENGTH",
-        this.multipleSelection.length
-      );
+      // this.$store.commit(
+      //   'CHANGE_MULTIPLE_LENGTH',
+      //   this.multipleSelection.length
+      // )
       // 调用父组件方法
       this.$emit("handleSelectionChange", val);
     },
+    //更新
+    goUpdate(row) {
+      this.$emit("goUpdate", row);
+    },
+    //去审核
+    goAudit(id) {
+      this.$emit("goAudit", id);
+    },
+    //查看详情
+    checkDetail(id) {
+      this.$emit("checkDetail", id);
+    },
     // 修改行数据
-    changeRow(id) {
-      this.$emit("changeRow", id);
+    editRow(id) {
+      this.$emit("editRow", id);
     },
     // 删除行数据
-    goToDel(id) {
-      this.$emit("goToDel", id);
+    deleteRow(id) {
+      this.$emit("deleteRow", id);
+    },
+    //重置密码
+    handlePassword(id) {
+      this.$emit("handlePassword", id);
+    },
+    // 列过滤
+    handleFilterChange(filters) {
+      this.$emit("handleFilterChange", filters);
+    },
+    // 列排序
+    handleSort(val) {
+      this.$emit("handleSort", val);
     }
   }
 };
 </script>
-<style>
-.nav-dot {
-  width: 0.2rem;
-  height: 0.2rem;
-  cursor: pointer;
+<style lang="scss">
+.el-table {
+  margin: 0.1rem 0;
+  .operate-icon {
+    vertical-align: middle;
+    font-size: 0.26rem;
+    cursor: pointer;
+  }
+}
+
+.btn-popover {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+
+  .el-button {
+    margin-bottom: 0.1rem;
+  }
+
+  .el-button + .el-button {
+    margin-left: 0;
+  }
 }
 </style>

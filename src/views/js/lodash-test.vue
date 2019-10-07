@@ -23,6 +23,18 @@
     created() {
       this.concatArray();
     },
+    // 组件内导航钩子： 离开前的守卫
+    beforeRouteLeave(to,from,next) {
+       this.$confirm('检测到未保存的信息, 是否离开?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          next()
+        }).catch(() => {
+          this.$toast("warning", "请保存信息后离开")
+        });
+    },
     methods: {
       // 创建一个新数组，将array与任何数组 或 值连接在一起。
       concatArray() {
