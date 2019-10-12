@@ -9,7 +9,6 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        // 这里假设你有 `src/styles/variables.scss` 文件
         // 共享sass 全局变量
         data: `@import "~@/styles/variables.scss";`
       },
