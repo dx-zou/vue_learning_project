@@ -135,6 +135,11 @@ export default {
       default: true
     }
   },
+
+  mounted() {
+    console.log(this.$attrs)
+    console.log(this.$listeners)
+  },
   methods: {
     // 多选框多选
     handleSelectionChange(val) {

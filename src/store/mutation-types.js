@@ -6,4 +6,3 @@ export const TOGGLE_MESSAGEBOX = "TOGGLE_MESSAGEBOX"; // 切换设备
 export const SET_TOKEN = "SET_TOKEN"; // 设置登录token
 export const SET_MENULIST = "SET_MENULIST"; // 设置菜单栏
 export const GET_MENU_NAME = "GET_MENU_NAME"; // 获取菜单名称列表
-export const CONFIRM_DELETE_DATA = "CONFIRM_DELETE_DATA"; // 获取菜单名称列表

@@ -13,15 +13,15 @@ module.exports = {
         // 共享sass 全局变量
         data: `@import "~@/styles/variables.scss";`
       },
-    postcss: {
-      plugins: [
-        autoprefixer(),
-        pxtorem({
-          rootValue: 100,
-          propList: ["*"]
-        })
-      ]
-    }
+      postcss: {
+        plugins: [
+          autoprefixer(),
+          pxtorem({
+            rootValue: 100,
+            propList: ["*"]
+          })
+        ]
+      }
     }
   },
   chainWebpack(config) {

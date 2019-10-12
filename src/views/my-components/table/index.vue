@@ -3,15 +3,16 @@
     :table-options="tableOptions"
     :table-data="tableData"
     :is-loading="false"
+    is-test="测试$attrs"
     show-edit
     show-delete
+    @listenersTest="editRow"
     @editRow="editRow"
     @deleteRow="deleteRow"
   ></common-table>
 </template>
 
 <script>
-  import {mapMutations} from "vuex"
 export default {
   data() {
     return {
@@ -32,12 +33,16 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["CONFIRM_DELETE_DATA"]),
     editRow(row) {
       console.log(row);
+      this.$toast("success","fshdk")
     },
     deleteRow(row) {
-      this.CONFIRM_DELETE_DATA({url:'getUserMenu',ids:row.id})
+      this.$deleteDataFromTable('df',123).then(res => {
+
+      }).catch(() => {
+        console.log("catch success")
+      })
     }
   }
 };

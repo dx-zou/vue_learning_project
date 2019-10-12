@@ -36,4 +36,5 @@ service.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+Vue.prototype.$http = service;
 export default service;

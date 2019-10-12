@@ -4,12 +4,12 @@ import App from "./App.vue";
 import store from "./store/index";
 import ElementUI from "element-ui";
 import router from "./route/index";
-import request from "./http/request";
-import Tools from "@/utils/tools";
+import "./http/request";
+import "@/utils/toolFunctions";
 import animated from "animate.css";
 import NProgress from "nprogress";
 import JsonExcel from "vue-json-excel";
-import api from "./http/api";
+import "./http/api";
 import components from "./components";
 import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
@@ -25,10 +25,7 @@ Vue.use(ElementUI);
 Vue.use(animated);
 Vue.component("downloadExcel", JsonExcel);
 components.forEach(component => Vue.use(component));
-// 挂载提示方法
-Vue.prototype.$toast = Tools.toast;
-Vue.prototype.$http = request;
-Vue.prototype.$api = api;
+
 Vue.config.productionTip = false;
 
 new Vue({
