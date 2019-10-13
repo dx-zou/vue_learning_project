@@ -18,7 +18,13 @@
           </div>
         </el-col>
         <el-col :span="12">
-          <div class="grid-content bg-purple"></div>
+          <div class="grid-content bg-purple">
+            <common-select
+              :optionList="selectData"
+              :value="formData.name"
+              @changeValue="handleChange"
+            ></common-select>
+          </div>
         </el-col>
       </el-row>
     </el-form>
@@ -35,7 +41,12 @@ export default {
       dateRange: {
         start_time: "",
         end_time: ""
-      }
+      },
+      selectData: [
+        { id: 1, label: "test1", value: 1 },
+        { id: 2, label: "test2", value: 2 }
+      ],
+      formData: {},
     };
   },
   created() {},
@@ -46,6 +57,9 @@ export default {
     },
     closeAlert() {
       this.visible = !this.visible;
+    },
+    handleChange(val) {
+      this.$set(this.formData, "name",val)
     }
   }
 };

@@ -10,7 +10,7 @@ import animated from "animate.css";
 import NProgress from "nprogress";
 import JsonExcel from "vue-json-excel";
 import "./http/api";
-import components from "./components";
+import "./components";
 import "element-ui/lib/theme-chalk/index.css";
 import "./styles/common.scss";
 import "nprogress/nprogress.css";
@@ -24,7 +24,6 @@ NProgress.configure({
 Vue.use(ElementUI);
 Vue.use(animated);
 Vue.component("downloadExcel", JsonExcel);
-components.forEach(component => Vue.use(component));
 
 Vue.config.productionTip = false;
 
