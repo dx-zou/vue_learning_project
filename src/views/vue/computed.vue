@@ -58,6 +58,7 @@ export default {
       }
     }
   },
+  // 侦听器
   watch: {
     obj: {
       handler: function(newVal) {
