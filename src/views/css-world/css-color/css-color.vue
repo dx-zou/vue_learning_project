@@ -5,11 +5,22 @@
     <h1 class="gradient-text">Full Stack Developer</h1>
     <h1 class>选中文字的颜色</h1>
     <p class="gray">开启滤镜效果模式</p>
+    <svg-icon icon-name="calendar" icon-class="">
+      <icon-calendar />
+    </svg-icon>
   </div>
 </template>
 
 <script>
-export default {};
+import IconCalendar from "@/components/icons/IconCalendar";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    IconCalendar
+  }
+};
 </script>
 
 <style lang="scss" scoped>
