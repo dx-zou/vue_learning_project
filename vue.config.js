@@ -6,6 +6,9 @@ function resolve(dir) {
 }
 
 module.exports = {
+  configureWebpack: {
+    devtool: "source-map"
+  },
   css: {
     loaderOptions: {
       sass: {

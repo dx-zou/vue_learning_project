@@ -16,13 +16,23 @@ import "./styles/common.scss";
 import "nprogress/nprogress.css";
 import "@/icons"; // svg 图标
 import "@/utils/setRem";
+import { Collapse, Icon } from "ant-design-vue";
+import moment from "moment";
+
 // import "./permission";
 NProgress.configure({
   showSpinner: false
 });
+
+// 时间过滤器
+Vue.filter("filterTime", timestr => {
+  return moment(timestr).calendar();
+});
 // 全局注册组件
 Vue.use(ElementUI);
 Vue.use(animated);
+Vue.use(Collapse);
+Vue.use(Icon);
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.config.productionTip = false;
