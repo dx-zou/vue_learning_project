@@ -2,7 +2,7 @@ export const chattingList = [
   {
     id: 0,
     img: require("@/assets/images/head1.png"),
-    name: "基普瑞森王海昌经理基普瑞森王海昌经理",
+    name: "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",
     msgNum: 1,
     active: false,
     time: "2018-01-23 12:03"
@@ -10,7 +10,7 @@ export const chattingList = [
   {
     id: 1,
     img: require("@/assets/images/head1.png"),
-    name: "李宏勉",
+    name: "哈哈哈和",
     msgNum: 35,
     active: false,
     time: "2018-01-23 12:03"
@@ -18,7 +18,23 @@ export const chattingList = [
   {
     id: 2,
     img: require("@/assets/images/head1.png"),
-    name: "刘昭",
+    name: "哈哈哈",
+    msgNum: 0,
+    active: false,
+    time: "2018-01-23 12:03"
+  },
+  {
+    id: 3,
+    img: require("@/assets/images/head1.png"),
+    name: "哈哈哈",
+    msgNum: 0,
+    active: false,
+    time: "2018-01-23 12:03"
+  },
+  {
+    id: 4,
+    img: require("@/assets/images/head1.png"),
+    name: "哈哈哈",
     msgNum: 0,
     active: false,
     time: "2018-01-23 12:03"

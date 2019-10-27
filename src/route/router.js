@@ -100,7 +100,7 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["js-learning", "regExp"]
         }
-      },
+      }
     ]
   },
   // vue 学习
@@ -169,6 +169,12 @@ const constantRouterMap = [
         name: "cropper",
         component: () => import("@/views/third-party/cropper"),
         meta: { breadcrumbs: ["third-party", "cropper"] }
+      },
+      {
+        path: "chat",
+        name: "chat",
+        component: () => import("@/views/third-party/chat"),
+        meta: { breadcrumbs: ["third-party", "chat"] }
       }
     ]
   },

@@ -273,7 +273,7 @@ export default {
     },
     // 发送客户消息
     sendCusMsg() {
-       let msg = this.$refs["chatInput"].innerHTML.trim();
+      let msg = this.$refs["chatInput"].innerHTML.trim();
       if (msg.length === 0) {
         return this.$toast("warning", "不能发送空消息");
       }
@@ -287,7 +287,7 @@ export default {
     },
     // 发送回复消息
     sendMyMessage() {
-       let msg = this.$refs["chatInput"].innerHTML.trim();
+      let msg = this.$refs["chatInput"].innerHTML.trim();
       if (msg.length === 0) {
         return this.$toast("warning", "不能发送空消息");
       }
@@ -303,6 +303,19 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.hotel-item {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 50px;
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+}
+</style>
 <style lang="scss" scoped>
 $baseBorderColor: #ccc;
 .chat-container {
@@ -327,7 +340,7 @@ $baseBorderColor: #ccc;
     }
     /deep/.ant-collapse-header {
       color: $baseFontColor;
-      padding-left: 20px;
+      // padding-left: 20px;
     }
     /deep/ .el-badge__content.is-fixed {
       right: 20px;
@@ -489,7 +502,6 @@ $baseBorderColor: #ccc;
         cursor: pointer;
       }
       .chat-record {
-        color: $baseColor;
         cursor: pointer;
       }
     }

@@ -49,3 +49,19 @@ a:hover {
 div:focus {
   outline: none;
 }
+
+/* 表情包弹出框样式 */
+.el-popover.el-popper {
+  padding-left: 20px;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.face-img {
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+#driver-popover-item .driver-popover-footer {
+  font-size: 0.14rem;
+}

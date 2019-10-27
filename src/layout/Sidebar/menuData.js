@@ -111,6 +111,11 @@ const MENU = [
         id: 17,
         index: "6-3",
         title: "editor"
+      },
+      {
+        id: 19,
+        index: "6-4",
+        title: "chat"
       }
     ]
   }
