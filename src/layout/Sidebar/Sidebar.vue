@@ -32,7 +32,7 @@
 import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import SidebarLogo from "./Logo";
-import MenuList from "./menuData";
+// import MenuList from "./menuData";
 import SidebarItem from "./SidebarItem";
 export default {
   name: "SideBar",
@@ -44,13 +44,13 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo"]),
+    ...mapGetters(["sidebarCollapse", "showLogo","menuList"]),
     variables() {
       return variables;
     },
-    MenuList() {
-      return MenuList;
-    },
+    // MenuList() {
+    //   return MenuList;
+    // },
     activeIndex() {
       return (
         this.$store.getters.activeIndex ||
