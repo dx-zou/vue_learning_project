@@ -44,6 +44,11 @@ const MENU = [
         id: 11,
         index: "3-3",
         title: "skill"
+      },
+      {
+        id: 12,
+        index: "3-4",
+        title: "skill-2"
       }
     ]
   },
@@ -106,6 +111,11 @@ const MENU = [
         id: 17,
         index: "6-3",
         title: "editor"
+      },
+      {
+        id: 19,
+        index: "6-4",
+        title: "chat"
       }
     ]
   }

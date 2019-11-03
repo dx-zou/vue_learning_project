@@ -6,7 +6,7 @@
         :collapse="sidebarCollapse"
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
-        :unique-opened="false"
+        unique-opened
         :default-active="activeIndex"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
@@ -18,7 +18,11 @@
           <i class="iconfont icon-home"></i>
           <router-link to="/dashboard">dashboard</router-link>
         </el-menu-item>
-        <sidebar-item v-for="item in menuList" :item="item" :key="item.id"></sidebar-item>
+        <sidebar-item
+          v-for="item in MenuList"
+          :item="item"
+          :key="item.id"
+        ></sidebar-item>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -64,4 +68,3 @@ export default {
   }
 };
 </script>
-

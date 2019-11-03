@@ -20,6 +20,13 @@
       "unicode_decimal": 58936
     },
     {
+      "icon_id": "2972013",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
       "icon_id": "3002354",
       "name": "vue",
       "font_class": "vue",
@@ -32,6 +39,13 @@
       "font_class": "component",
       "unicode": "e656",
       "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "4087146",
+      "name": "表情",
+      "font_class": "biaoqing",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
     },
     {
       "icon_id": "5244045",
