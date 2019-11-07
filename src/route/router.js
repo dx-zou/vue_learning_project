@@ -100,6 +100,14 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["js-learning", "regExp"]
         }
+      },
+      {
+        path: "upload",
+        name: "upload",
+        component: () => import("../views/js/upload"),
+        meta: {
+          breadcrumbs: ["js-learning", "upload"]
+        }
       }
     ]
   },

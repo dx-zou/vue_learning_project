@@ -68,6 +68,11 @@ const MENU = [
         id: 10,
         index: "4-2",
         title: "regExp"
+      },
+      {
+        id: 81,
+        index: "4-3",
+        title: "upload"
       }
     ]
   },
