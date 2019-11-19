@@ -70,6 +70,14 @@ const constantRouterMap = [
         }
       },
       {
+        path: "skill-sticky",
+        name: "sticky",
+        component: () => import("../views/css-world/css-skill/sticky.vue"),
+        meta: {
+          breadcrumbs: ["css-world", "css-sticky"]
+        }
+      },
+      {
         path: "skill-2",
         name: "skill-2",
         component: () => import("../views/css-world/skill-2"),

@@ -18,7 +18,6 @@ import "@/icons"; // svg 图标
 import "@/utils/setRem";
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
-
 // import "./permission";
 NProgress.configure({
   showSpinner: false
