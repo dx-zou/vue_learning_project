@@ -25,7 +25,7 @@ export default {
   right: 0;
   bottom: 0;
   width: 4rem;
-  height: calc(100% - 0.5rem);
+  height: calc(100% - 0.6rem);
   background-color: #fff;
   box-shadow: -2px -1px 2px rgba(0, 0, 0, 0.2);
   z-index: 10;
@@ -33,7 +33,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    line-height: 0.5rem;
+    line-height: 0.6rem;
     font-size: 0.16rem;
     padding: 0 0.2rem;
     border-bottom: 1px solid #e4e4e4;

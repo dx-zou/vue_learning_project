@@ -15,7 +15,7 @@
 }
 
 .app-main {
-  height: calc(100% - 0.5rem);
+  height: calc(100% - 0.6rem);
   padding: 0.2rem;
   overflow-y: auto;
   overflow-x: hidden;
@@ -44,7 +44,7 @@
 
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  height: calc(100vh - 0.5rem);
+  height: calc(100vh - 0.6rem);
   // margin-top: 0.6rem;
 }
 

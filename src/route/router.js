@@ -78,6 +78,14 @@ const constantRouterMap = [
         }
       },
       {
+        path: "flip-clock",
+        name: "flipClock",
+        component: () => import("../views/css-world/flip-clock"),
+        meta: {
+          breadcrumbs: ["css-world", "flipClock"]
+        }
+      },
+      {
         path: "skill-2",
         name: "skill-2",
         component: () => import("../views/css-world/skill-2"),
