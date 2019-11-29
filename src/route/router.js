@@ -86,6 +86,14 @@ const constantRouterMap = [
         }
       },
       {
+        path: "waterfall-flow",
+        name: "waterfall",
+        component: () => import("../views/css-world/waterfall-flow"),
+        meta: {
+          breadcrumbs: ["css-world", "waterfall"]
+        }
+      },
+      {
         path: "skill-2",
         name: "skill-2",
         component: () => import("../views/css-world/skill-2"),

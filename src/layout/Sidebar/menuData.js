@@ -59,6 +59,11 @@ const MENU = [
         id: 76,
         index: "3-6",
         title: "flipClock"
+      },
+      {
+        id: 77,
+        index: "3-7",
+        title: "waterfall"
       }
     ]
   },
