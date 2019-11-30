@@ -47,7 +47,14 @@
         <div class="google"></div>
       </div>
     </div>
-    <div class="bottom">2</div>
+    <div class="bottom">
+      <div class="one-line">
+        单行文本截断文本截断文本截断文本截断文本截断文本截断文本截断文本截断文本截断
+      </div>
+      <div class="mutiple-line">
+        多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断多行文本截断
+      </div>
+    </div>
   </div>
 </template>
 
@@ -193,6 +200,22 @@
         border: 8px solid white;
       }
     }
+  }
+  .one-line {
+    width: 500px;
+    background-color: #ccc;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .mutiple-line {
+    width: 500px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #ff0909;
   }
 }
 </style>

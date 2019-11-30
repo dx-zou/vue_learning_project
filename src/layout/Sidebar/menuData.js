@@ -49,6 +49,21 @@ const MENU = [
         id: 12,
         index: "3-4",
         title: "skill-2"
+      },
+      {
+        id: 73,
+        index: "3-5",
+        title: "sticky"
+      },
+      {
+        id: 76,
+        index: "3-6",
+        title: "flipClock"
+      },
+      {
+        id: 77,
+        index: "3-7",
+        title: "waterfall"
       }
     ]
   },
@@ -68,6 +83,11 @@ const MENU = [
         id: 10,
         index: "4-2",
         title: "regExp"
+      },
+      {
+        id: 81,
+        index: "4-3",
+        title: "upload"
       }
     ]
   },

@@ -10,6 +10,7 @@
       <breadcrumb></breadcrumb>
     </div>
     <div class="header_r">
+      <flip-clock />
       <el-badge is-dot id="message">
         <i class="el-icon-message-solid" @click="toggleMsgBox"></i>
       </el-badge>
@@ -62,6 +63,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import FlipClock from "@/components/FlipClock";
 export default {
   name: "AppHeader",
   data() {
@@ -74,7 +76,8 @@ export default {
     };
   },
   components: {
-    Breadcrumb
+    Breadcrumb,
+    FlipClock
   },
   computed: {
     ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
@@ -118,7 +121,7 @@ export default {
 <style lang="scss" scoped>
 .app-header {
   display: flex;
-  height: 0.5rem;
+  height: 0.6rem;
   padding: 0 0.2rem;
   justify-content: space-between;
   align-items: center;
@@ -129,7 +132,7 @@ export default {
     align-items: center;
   }
   .right-menu {
-    line-height: 0.5rem;
+    line-height: 0.6rem;
     border: none;
   }
   .toggle-icon {
@@ -141,16 +144,18 @@ export default {
     transform: rotate(180deg);
   }
   .header_r {
+    display: flex;
+    align-items: center;
     .el-badge {
       font-size: 0.2rem;
-      margin-right: 0.1rem;
+      margin: 0 0.1rem 0 20px;
       color: #333;
       cursor: pointer;
     }
   }
   .el-dropdown-link {
     .avatar {
-      height: 0.5rem;
+      height: 0.6rem;
       border-radius: 0.1rem;
       vertical-align: middle;
       cursor: pointer;

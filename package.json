@@ -27,6 +27,7 @@
     "vue-ele-form-image-uploader": "^0.1.1",
     "vue-json-excel": "^0.2.98",
     "vue-router": "^3.0.3",
+    "vue-sticky": "^3.3.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

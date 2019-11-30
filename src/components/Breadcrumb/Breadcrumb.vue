@@ -48,7 +48,7 @@ export default {
 .el-breadcrumb {
   display: inline-block;
   font-size: 0.14rem;
-  line-height: 0.5rem;
+  line-height: 0.6rem;
   margin-left: 0.08rem;
 
   .no-redirect {

@@ -70,6 +70,30 @@ const constantRouterMap = [
         }
       },
       {
+        path: "skill-sticky",
+        name: "sticky",
+        component: () => import("../views/css-world/css-skill/sticky.vue"),
+        meta: {
+          breadcrumbs: ["css-world", "css-sticky"]
+        }
+      },
+      {
+        path: "flip-clock",
+        name: "flipClock",
+        component: () => import("../views/css-world/flip-clock"),
+        meta: {
+          breadcrumbs: ["css-world", "flipClock"]
+        }
+      },
+      {
+        path: "waterfall-flow",
+        name: "waterfall",
+        component: () => import("../views/css-world/waterfall-flow"),
+        meta: {
+          breadcrumbs: ["css-world", "waterfall"]
+        }
+      },
+      {
         path: "skill-2",
         name: "skill-2",
         component: () => import("../views/css-world/skill-2"),
@@ -99,6 +123,14 @@ const constantRouterMap = [
         component: () => import("../views/js/regExp"),
         meta: {
           breadcrumbs: ["js-learning", "regExp"]
+        }
+      },
+      {
+        path: "upload",
+        name: "upload",
+        component: () => import("../views/js/upload"),
+        meta: {
+          breadcrumbs: ["js-learning", "upload"]
         }
       }
     ]
