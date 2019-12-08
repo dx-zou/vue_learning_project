@@ -14,7 +14,12 @@
     style="width: 100%"
     ref="multipleTable"
   >
-    <el-table-column v-if="showSelection" align="center" type="selection" width="55"></el-table-column>
+    <el-table-column
+      v-if="showSelection"
+      align="center"
+      type="selection"
+      width="55"
+    ></el-table-column>
     <el-table-column
       v-for="item in tableOptions"
       :key="item.prop"
@@ -51,14 +56,16 @@
               icon="el-icon-edit"
               size="mini"
               v-if="showEdit"
-            >编辑</el-button>
+              >编辑</el-button
+            >
             <el-button
               @click="deleteRow(row)"
               type="danger"
               icon="el-icon-delete"
               size="mini"
               v-if="showDelete"
-            >删除</el-button>
+              >删除</el-button
+            >
           </slot>
           <span class="iconfont icon-more operate-icon" slot="reference"></span>
         </el-popover>
@@ -137,8 +144,8 @@ export default {
   },
 
   mounted() {
-    console.log(this.$attrs)
-    console.log(this.$listeners)
+    console.log(this.$attrs);
+    console.log(this.$listeners);
   },
   methods: {
     // 多选框多选
@@ -152,18 +159,6 @@ export default {
       // 调用父组件方法
       this.$emit("handleSelectionChange", val);
     },
-    //更新
-    goUpdate(row) {
-      this.$emit("goUpdate", row);
-    },
-    //去审核
-    goAudit(id) {
-      this.$emit("goAudit", id);
-    },
-    //查看详情
-    checkDetail(id) {
-      this.$emit("checkDetail", id);
-    },
     // 修改行数据
     editRow(id) {
       this.$emit("editRow", id);
@@ -171,10 +166,6 @@ export default {
     // 删除行数据
     deleteRow(id) {
       this.$emit("deleteRow", id);
-    },
-    //重置密码
-    handlePassword(id) {
-      this.$emit("handlePassword", id);
     },
     // 列过滤
     handleFilterChange(filters) {

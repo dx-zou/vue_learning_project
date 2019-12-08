@@ -210,6 +210,18 @@ const constantRouterMap = [
       }
     ]
   },
+  {
+    path: "/blog",
+    component: layout,
+    children: [
+      {
+        path: "list",
+        name: "blog-node",
+        component: () => import("@/views/blog"),
+        meta: { breadcrumbs: ["blog", "blog-node"] }
+      }
+    ]
+  },
   // 404
   {
     path: "*",

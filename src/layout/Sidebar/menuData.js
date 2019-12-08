@@ -138,6 +138,20 @@ const MENU = [
         title: "chat"
       }
     ]
+  },
+  {
+    id: 21,
+    index: "21",
+    title: "blog",
+    icon: "icon-plugin",
+    svg: "plugin",
+    children: [
+      {
+        id: 211,
+        index: "21-1",
+        title: "blog-node"
+      }
+    ]
   }
 ];
 
