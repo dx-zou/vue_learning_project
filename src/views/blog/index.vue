@@ -5,10 +5,22 @@
       @handleToolClick="handleToolClick"
     ></table-toolbar>
     <common-table
-      :data="tableData"
+      :table-data="tableData"
       :table-options="tableOptions"
       :is-loading="false"
-    ></common-table>
+    >
+      <template #status="row">
+        <el-switch
+          :value="row.status"
+          :active-value="true"
+          :inactive-value="false"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+          @change="handleChange($event)"
+        >
+        </el-switch>
+      </template>
+    </common-table>
     <el-dialog :visible.sync="showLogin" title="博客系统登录" width="39%">
       <el-form :model="loginForm">
         <el-form-item label="用户名">
@@ -39,15 +51,24 @@
 export default {
   data() {
     return {
-      tableData: [],
+      tableData: [
+        {
+          title: "11",
+          status: true,
+          author: "feng",
+          createTime: new Date().getFullYear(),
+          read: 100
+        }
+      ],
       tableOptions: [
         {
           prop: "title",
           label: "标题"
         },
         {
-          prop: "content",
-          label: "内容"
+          prop: "status",
+          label: "状态",
+          slotName: "status"
         },
         {
           prop: "author",
@@ -76,7 +97,8 @@ export default {
         }
       ],
       loginForm: {},
-      showLogin: false
+      showLogin: false,
+      value: "100"
     };
   },
   mounted() {
@@ -95,7 +117,10 @@ export default {
         this.showLogin = true;
       }
     },
-    toLogin() {}
+    toLogin() {},
+    handleChange(value) {
+      console.log(value);
+    }
   }
 };
 </script>

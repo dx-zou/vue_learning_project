@@ -33,7 +33,13 @@
       :sortable="item.sortable || false"
       :filters="item.filters || null"
       :formatter="item.formatter || null"
-    ></el-table-column>
+    >
+      <template #default="{row}">
+        <slot :name="item.slotName || ''" :scope="row">
+          {{ row[item.prop] }}
+        </slot>
+      </template>
+    </el-table-column>
     <el-table-column
       v-if="showOperate"
       :width="operateWidth"
@@ -55,7 +61,6 @@
               type="primary"
               icon="el-icon-edit"
               size="mini"
-              v-if="showEdit"
               >编辑</el-button
             >
             <el-button
@@ -63,7 +68,6 @@
               type="danger"
               icon="el-icon-delete"
               size="mini"
-              v-if="showDelete"
               >删除</el-button
             >
           </slot>
@@ -77,11 +81,6 @@
 <script>
 export default {
   name: "CommonTable",
-  data() {
-    return {
-      multipleSelection: []
-    };
-  },
   props: {
     // 表头字段
     tableOptions: {
@@ -106,25 +105,15 @@ export default {
       type: Boolean,
       default: true
     },
-    //更新操作按钮
-    showUpdate: {
-      type: Boolean,
-      default: false
-    },
-    //单条审核按钮
-    showAudit: {
-      type: Boolean,
-      default: false
-    },
     // 编辑按钮
     showEdit: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 删除按钮
     showDelete: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 操作栏宽度
     operateWidth: {
@@ -142,10 +131,14 @@ export default {
       default: true
     }
   },
-
+  data() {
+    return {
+      multipleSelection: []
+    };
+  },
   mounted() {
-    console.log(this.$attrs);
-    console.log(this.$listeners);
+    // console.log(this.$attrs);
+    // console.log(this.$listeners);
   },
   methods: {
     // 多选框多选
