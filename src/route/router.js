@@ -44,6 +44,14 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["components", "table"]
         }
+      },
+      {
+        path: "indentify-code",
+        name: "indentifyCode",
+        component: () => import("@/views/my-components/indentify-code"),
+        meta: {
+          breadcrumbs: ["components", "indentifyCode"]
+        }
       }
     ]
   },

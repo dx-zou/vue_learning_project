@@ -16,7 +16,7 @@
           :inactive-value="false"
           active-color="#13ce66"
           inactive-color="#ff4949"
-          @change="handleChange($event)"
+          @change="handleChange($event, row)"
         >
         </el-switch>
       </template>
@@ -102,7 +102,7 @@ export default {
     };
   },
   mounted() {
-    this.getTableData();
+    // this.getTableData();
   },
   methods: {
     // 获取表格数据
@@ -118,8 +118,10 @@ export default {
       }
     },
     toLogin() {},
-    handleChange(value) {
+    handleChange(value, row) {
       console.log(value);
+      console.log(row.scope)
+      row.scope.status = false
     }
   }
 };
