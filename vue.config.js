@@ -48,7 +48,7 @@ module.exports = {
   //   proxy: {
   //     "/": {
   //       ws: false,
-  //       target: "http://192.168.0.88:8100",
+  //       // target: "http://127.0.0.1:3000",
   //       changeOrigin: true,
   //       pathRewrite: {
   //         "/": ""

@@ -122,7 +122,7 @@ export default {
 .app-header {
   display: flex;
   height: 0.6rem;
-  padding: 0 0.2rem;
+  padding: 0 0.1rem;
   justify-content: space-between;
   align-items: center;
   // box-shadow: 0 1px 5px rgba(0, 21, 41, 0.08);

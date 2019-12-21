@@ -3,7 +3,7 @@
     <table-toolbar
       :tool-buttons="toolButtons"
       @handleToolClick="handleToolClick"
-    ></table-toolbar>
+    />
     <common-table
       :table-data="tableData"
       :table-options="tableOptions"
@@ -21,26 +21,32 @@
         </el-switch>
       </template>
     </common-table>
-    <el-dialog :visible.sync="showLogin" title="博客系统登录" width="39%">
-      <el-form :model="loginForm">
-        <el-form-item label="用户名">
+    <el-dialog
+      :visible.sync="showLogin"
+      title="博客系统登录"
+      width="39%"
+      custom-class="commom-dialog"
+    >
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
+        <el-form-item label="用户名" prop="username">
           <el-input
-            v-model="loginForm.username"
+            v-model.trim="loginForm.username"
             placeholder="请输入用户名"
             clearable
-          ></el-input>
+          />
         </el-form-item>
-        <el-form-item label="密码">
+        <el-form-item label="密码" prop="password">
           <el-input
-            v-model="loginForm.password"
+            v-model.trim="loginForm.password"
             type="password"
             clearable
             show-password
             placeholder="请输入密码"
-          ></el-input>
+          />
         </el-form-item>
       </el-form>
       <div slot="footer">
+        <el-button size="small" @click="showLogin = false">取消</el-button>
         <el-button type="primary" size="small" @click="toLogin">登录</el-button>
       </div>
     </el-dialog>
@@ -51,25 +57,13 @@
 export default {
   data() {
     return {
-      tableData: [
-        {
-          title: "11",
-          status: true,
-          author: "feng",
-          createTime: new Date().getFullYear(),
-          read: 100
-        }
-      ],
+      tableData: [],
       tableOptions: [
         {
           prop: "title",
           label: "标题"
         },
-        {
-          prop: "status",
-          label: "状态",
-          slotName: "status"
-        },
+
         {
           prop: "author",
           label: "作者"
@@ -81,8 +75,29 @@ export default {
         {
           prop: "read",
           label: "阅读量"
+        },
+        {
+          prop: "status",
+          label: "状态",
+          slotName: "status"
         }
       ],
+      loginRules: {
+        username: [
+          {
+            required: true,
+            message: "请输入用户名",
+            trigger: ["blur", "change"]
+          }
+        ],
+        password: [
+          {
+            required: true,
+            message: "请输入密码",
+            trigger: ["blur", "change"]
+          }
+        ]
+      },
       toolButtons: [
         {
           icon: "el-icon-plus",
@@ -97,19 +112,20 @@ export default {
         }
       ],
       loginForm: {},
-      showLogin: false,
-      value: "100"
+      showLogin: false
     };
   },
   mounted() {
-    // this.getTableData();
+    this.getTableData();
   },
   methods: {
     // 获取表格数据
     getTableData() {
       this.$http({
         url: this.$api.getBlogList
-      }).then(res => {});
+      }).then(res => {
+        this.tableData = res.data;
+      });
     },
     // 处理工具栏按钮点击事件
     handleToolClick(type) {
@@ -117,11 +133,30 @@ export default {
         this.showLogin = true;
       }
     },
-    toLogin() {},
+    toLogin() {
+      this.$refs["loginForm"].validate(valid => {
+        if (valid) {
+          const { username, password } = this.loginForm;
+          this.$http({
+            url: this.$api.login,
+            method: "post",
+            data: {
+              username,
+              password
+            }
+          }).then(res => {
+            if (res.code) {
+              this.showLogin = false;
+              this.getTableData();
+              this.$toast("success", "登录成功");
+            }
+          });
+        }
+      });
+    },
     handleChange(value, row) {
-      console.log(value);
-      console.log(row.scope)
-      row.scope.status = false
+      console.log(row.scope);
+      row.scope.status = false;
     }
   }
 };

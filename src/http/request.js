@@ -26,6 +26,9 @@ service.interceptors.response.use(
   response => {
     // 对响应数据先做一层处理
     // 请求成功后返回的数据
+    if (response.data.code === 0) {
+      Vue.prototype.$toast("error", response.data.message);
+    }
     return response.data;
   },
   error => {
