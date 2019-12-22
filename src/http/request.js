@@ -1,7 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
 // import BASE_URL from "./api";
-// 添加请求拦截器
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   // baseURL: "https://easy-mock.com/mock/5c949a926811807c6b28d8c0/feng/",
@@ -9,6 +8,7 @@ const service = axios.create({
   withCredentials: true,
   timeout: 10000
 });
+// 添加请求拦截
 service.interceptors.request.use(
   config => {
     // 设置请求头信息

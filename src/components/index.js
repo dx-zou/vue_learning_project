@@ -6,6 +6,7 @@ import CommonDialog from "./CommonDialog/CommonDialog";
 import CommonSelect from "./CommonSelect";
 import SvgIcon from "./icons/IconBase";
 import TableToolbar from "./TableToolbar";
+import AddTopbar from "./AddTopbar";
 const components = [
   CommonTable,
   FnAlert,
@@ -13,7 +14,8 @@ const components = [
   CommonDialog,
   CommonSelect,
   SvgIcon,
-  TableToolbar
+  TableToolbar,
+  AddTopbar
 ];
 components.forEach(component => {
   component.install = function() {
