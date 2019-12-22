@@ -131,6 +131,8 @@ export default {
     handleToolClick(type) {
       if (type === "login") {
         this.showLogin = true;
+      } else if (type === "add") {
+        this.$router.push({ name: "addBlog" });
       }
     },
     toLogin() {
