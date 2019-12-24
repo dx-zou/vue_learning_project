@@ -3,11 +3,25 @@
     <table-toolbar
       :tool-buttons="toolButtons"
       @handleToolClick="handleToolClick"
-    />
+    >
+      <template>
+        <el-form-item>
+          <el-input
+            size="small"
+            v-model="queryForm.title"
+            clearable
+            prefix-icon="el-icon-search"
+            :placeholder="$t('keyword')"
+          />
+        </el-form-item>
+      </template>
+    </table-toolbar>
     <common-table
       :table-data="tableData"
       :table-options="tableOptions"
       :is-loading="false"
+      @toEdit="toEdit"
+      @toDelete="toDelete"
     >
       <template #status="row">
         <el-switch
@@ -57,6 +71,7 @@
 export default {
   data() {
     return {
+      queryForm: {},
       tableData: [],
       tableOptions: [
         {
@@ -117,6 +132,7 @@ export default {
   },
   mounted() {
     this.getTableData();
+    this.$confirm();
   },
   methods: {
     // 获取表格数据
@@ -156,8 +172,27 @@ export default {
         }
       });
     },
+    toEdit(row) {
+      this.$router.push(`/blog/edit-blog/${row.id}`);
+    },
+    async toDelete(row) {
+      let confirmed = await this.$deleteConfirm();
+      if (confirmed) {
+        this.$http({
+          url: this.$api.deleteBlog,
+          method: "post",
+          data: {
+            id: row.id
+          }
+        }).then(res => {
+          if (res.code === 1) {
+            this.$toast("success", "删除成功");
+            this.getTableData();
+          }
+        });
+      }
+    },
     handleChange(value, row) {
-      console.log(row.scope);
       row.scope.status = false;
     }
   }

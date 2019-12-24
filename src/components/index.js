@@ -7,6 +7,7 @@ import CommonSelect from "./CommonSelect";
 import SvgIcon from "./icons/IconBase";
 import TableToolbar from "./TableToolbar";
 import AddTopbar from "./AddTopbar";
+import Pagination from "./Pagination";
 const components = [
   CommonTable,
   FnAlert,
@@ -15,7 +16,8 @@ const components = [
   CommonSelect,
   SvgIcon,
   TableToolbar,
-  AddTopbar
+  AddTopbar,
+  Pagination
 ];
 components.forEach(component => {
   component.install = function() {

@@ -44,7 +44,6 @@
       v-if="showOperate"
       :width="operateWidth"
       align="center"
-      fixed="right"
       label="操作"
     >
       <template #default="{row}">
@@ -57,14 +56,14 @@
         >
           <slot :scope="row" name="default">
             <el-button
-              @click="editRow(row)"
+              @click="toEdit(row)"
               type="primary"
               icon="el-icon-edit"
               size="mini"
               >编辑</el-button
             >
             <el-button
-              @click="deleteRow(row)"
+              @click="toDelete(row)"
               type="danger"
               icon="el-icon-delete"
               size="mini"
@@ -153,12 +152,12 @@ export default {
       this.$emit("handleSelectionChange", val);
     },
     // 修改行数据
-    editRow(id) {
-      this.$emit("editRow", id);
+    toEdit(row) {
+      this.$emit("toEdit", row);
     },
     // 删除行数据
-    deleteRow(id) {
-      this.$emit("deleteRow", id);
+    toDelete(id) {
+      this.$emit("toDelete", id);
     },
     // 列过滤
     handleFilterChange(filters) {

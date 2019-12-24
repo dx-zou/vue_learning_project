@@ -1,5 +1,5 @@
-import config from "@/http/api";
-import $http from "@/http/request";
+import config from "@/plugins/http/api";
+import $http from "@/plugins/http/request";
 import { SET_TOKEN, SET_MENULIST, GET_MENU_NAME } from "../mutation-types";
 const state = {
   userInfo: {

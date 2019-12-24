@@ -18,5 +18,7 @@ export default {
   // 菜单栏列表
   menuList: state => state.user.menuList,
   // 菜单名称
-  menuName: state => state.user.menuName
+  menuName: state => state.user.menuName,
+  // 语言
+  locale: state => state.settings.locale
 };

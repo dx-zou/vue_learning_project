@@ -24,6 +24,9 @@
           <el-dropdown-item icon="el-icon-s-custom" command="user"
             >个人中心</el-dropdown-item
           >
+          <el-dropdown-item icon="el-icon-s-custom" command="locale">{{
+            lang
+          }}</el-dropdown-item>
           <el-dropdown-item icon="el-icon-s-tools" command="set"
             >项目配置</el-dropdown-item
           >
@@ -80,7 +83,10 @@ export default {
     FlipClock
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
+    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo", "locale"]),
+    lang() {
+      return this.locale === "en-US" ? "中文" : "英文";
+    }
   },
   methods: {
     logout() {
@@ -104,6 +110,8 @@ export default {
         this.showDialog = true;
       } else if (command === "logout") {
         this.logout();
+      } else if (command === "locale") {
+        this.$store.dispatch("settings/changeLocale");
       }
     },
     // 保存用户设置
