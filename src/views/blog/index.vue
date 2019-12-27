@@ -11,7 +11,7 @@
             v-model="queryForm.title"
             clearable
             prefix-icon="el-icon-search"
-            :placeholder="$t('keyword')"
+            placeholder="请输入"
           />
         </el-form-item>
       </template>
@@ -35,6 +35,10 @@
         </el-switch>
       </template>
     </common-table>
+    <pagination
+      :page-options="pageOptions"
+      @handlePageChange="handlePageChange"
+    />
     <el-dialog
       :visible.sync="showLogin"
       title="博客系统登录"
@@ -127,20 +131,34 @@ export default {
         }
       ],
       loginForm: {},
-      showLogin: false
+      showLogin: false,
+      pageOptions: {
+        total: 0,
+        pageSize: 5,
+        pageNo: 1
+      }
     };
   },
   mounted() {
     this.getTableData();
-    this.$confirm();
   },
   methods: {
+    handlePageChange(val) {
+      this.pageOptions.pageNo = val;
+      this.getTableData();
+    },
     // 获取表格数据
     getTableData() {
+      let { pageNo, pageSize } = this.pageOptions;
       this.$http({
-        url: this.$api.getBlogList
+        url: this.$api.getBlogList,
+        params: {
+          pageNo,
+          pageSize
+        }
       }).then(res => {
-        this.tableData = res.data;
+        this.tableData = res.data.rows;
+        this.pageOptions.total = res.data.total;
       });
     },
     // 处理工具栏按钮点击事件

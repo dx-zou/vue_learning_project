@@ -2,10 +2,10 @@
   <div class="pagination-container">
     <el-pagination
       :current-page.sync="currentPage"
-      :page-size="eachPageSize"
+      :page-size.sync="eachPageSize"
       :page-sizes="pageSizes"
       :layout="layout"
-      :total="total"
+      :total="pageOptions.total"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     ></el-pagination>
@@ -20,18 +20,20 @@ export default {
       type: Number,
       default: 0
     },
-    pageIndex: {
-      type: Number,
-      default: 1
-    },
-    pageSize: {
-      type: Number,
-      default: 50
+    pageOptions: {
+      type: Object,
+      default() {
+        return {
+          pageNo: 1,
+          pageSize: 50,
+          total: 0
+        };
+      }
     },
     pageSizes: {
       type: Array,
       default() {
-        return [50, 100, 200, 300];
+        return [5, 100, 200, 300];
       }
     },
     layout: {
@@ -43,19 +45,19 @@ export default {
     // 当前页码数
     currentPage: {
       get() {
-        return this.pageIndex;
+        return this.pageOptions.pageNo;
       },
       set(val) {
-        this.$emit("update:pageIndex", val);
+        this.$emit("update:pageOptions.pageNo", val);
       }
     },
     // 每页的条数
     eachPageSize: {
       get() {
-        return this.pageSize;
+        return this.pageOptions.pageSize;
       },
       set(val) {
-        this.$emit("update:pageSize", val);
+        this.$emit("update:pageOptions.pageSize", val);
       }
     }
   },
@@ -66,7 +68,7 @@ export default {
     },
     // 当前页改变
     handleCurrentChange(val) {
-      this.$emit("currentChange", val);
+      this.$emit("handlePageChange", val);
     }
   }
 };
