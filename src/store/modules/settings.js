@@ -15,7 +15,8 @@ const state = {
   sidebarCollapse: Cookies.get("sidebarCollapse")
     ? !!+Cookies.get("sidebarCollapse")
     : false,
-  locale: "zh-CN" // 语言
+  locale: "en-US" ,// 语言
+  // locale: "zh-CN" ,// 语言
 };
 const mutations = {
   // 改变状态

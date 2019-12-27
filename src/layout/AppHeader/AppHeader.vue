@@ -22,16 +22,16 @@
       >
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item icon="el-icon-s-custom" command="user"
-            >个人中心</el-dropdown-item
+            >{{$t('userCenter')}}</el-dropdown-item
+          >
+          <el-dropdown-item icon="el-icon-s-tools" command="set"
+            >{{$t("settings")}}</el-dropdown-item
           >
           <el-dropdown-item icon="el-icon-s-custom" command="locale">{{
             lang
           }}</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-s-tools" command="set"
-            >项目配置</el-dropdown-item
-          >
           <el-dropdown-item icon="el-icon-eleme" divided command="logout"
-            >退出登录</el-dropdown-item
+            >{{$t("logout")}}</el-dropdown-item
           >
         </el-dropdown-menu>
         <div class="el-dropdown-link">
@@ -85,7 +85,7 @@ export default {
   computed: {
     ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo", "locale"]),
     lang() {
-      return this.locale === "en-US" ? "中文" : "英文";
+      return this.locale === "en-US" ? "中文" : "English";
     }
   },
   methods: {
