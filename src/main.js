@@ -2,7 +2,6 @@
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store/index";
-import ElementUI from "element-ui";
 import router from "./route/index";
 import "./plugins/http/request";
 import "@/utils/toolFunctions";
@@ -19,7 +18,7 @@ import "@/utils/setRem";
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
 import i18n from "@/plugins/i18n";
-// import locale from "element-ui/lib/locale/lang/en";
+import "./plugins/vue-socket";
 
 // import "./permission";
 NProgress.configure({
@@ -31,7 +30,6 @@ Vue.filter("filterTime", timestr => {
   return moment(timestr).calendar();
 });
 // 全局注册组件
-// Vue.use(ElementUI, { locale });
 Vue.use(animated);
 Vue.use(Collapse);
 Vue.use(Icon);

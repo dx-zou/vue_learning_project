@@ -19,6 +19,10 @@ export default {
   menuList: state => state.user.menuList,
   // 菜单名称
   menuName: state => state.user.menuName,
+  // 登录用户头像
+  profilePicture: state => state.socket.profilePicture,
+  // 登录用户id
+  userId: state => state.socket.userId,
   // 语言
   locale: state => state.settings.locale
 };
