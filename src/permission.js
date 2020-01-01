@@ -4,7 +4,7 @@ import getPageTitle from "./utils/getPageTitle";
 import store from "./store";
 // 判断是否有路由访问权限
 const permissionControl = (to, next) => {
-  let hasPermission =
+  const hasPermission =
     store.getters.menuName.includes(to.name) ||
     store.getters.menuName.includes(to.meta.parentName);
   if (hasPermission || to.path === "/dashboard" || to.path === "/login") {
@@ -18,8 +18,8 @@ const permissionControl = (to, next) => {
 router.beforeEach((to, from, next) => {
   NProgress.start();
   document.title = getPageTitle(to.name);
-  let hasToken = sessionStorage.getItem("userToken");
-  let username = sessionStorage.getItem("username");
+  const hasToken = sessionStorage.getItem("userToken");
+  const username = sessionStorage.getItem("username");
   if (hasToken) {
     // 如果刷新了页面就重新获取菜单列表
     if (!store.getters.menuList.length) {

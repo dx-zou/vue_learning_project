@@ -59,6 +59,7 @@
             type="password"
             clearable
             show-password
+            @click.enter.native="toLogin"
             placeholder="请输入密码"
           />
         </el-form-item>
@@ -134,7 +135,7 @@ export default {
       showLogin: false,
       pageOptions: {
         total: 0,
-        pageSize: 5,
+        pageSize: 15,
         pageNo: 1
       }
     };

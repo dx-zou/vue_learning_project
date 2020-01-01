@@ -4,8 +4,8 @@ import Element from "element-ui";
 import enLocale from "element-ui/lib/locale/lang/en";
 import zhLocale from "element-ui/lib/locale/lang/zh-CN";
 import store from "@/store";
-import zh from "./zh"
-import en from "./en"
+import zh from "./zh";
+import en from "./en";
 Vue.use(VueI18n);
 let locale = store.getters.locale;
 const messages = {
