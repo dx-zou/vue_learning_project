@@ -42,5 +42,18 @@ service.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const getRequest = function(url, params = {}) {
+  return new Promise((resolve, reject) => {
+    service
+      .get(url, { params })
+      .then(res => {
+        resolve(res);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
 Vue.prototype.$http = service;
 export default service;

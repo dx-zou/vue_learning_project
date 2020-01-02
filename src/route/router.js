@@ -108,6 +108,14 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["css-world", "skill-2"]
         }
+      },
+      {
+        path: "snow",
+        name: "snow",
+        component: () => import("../views/css-world/snow"),
+        meta: {
+          breadcrumbs: ["css-world", "snow"]
+        }
       }
     ]
   },

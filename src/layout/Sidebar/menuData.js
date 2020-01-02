@@ -64,6 +64,11 @@ const MENU = [
         id: 77,
         index: "3-7",
         title: "waterfall"
+      },
+      {
+        id: 78,
+        index: "3-8",
+        title: "snow"
       }
     ]
   },
@@ -107,7 +112,8 @@ const MENU = [
         id: 14,
         index: "5-2",
         title: "table"
-      },{
+      },
+      {
         id: 121,
         index: "5-3",
         title: "indentifyCode"

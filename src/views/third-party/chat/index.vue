@@ -52,32 +52,32 @@ export default {
 
   mounted() {
     // 监听消息接收
-    this.$options.sockets.onmessage = res => {
-      // res.data为服务端返回的数据
-      const data = JSON.parse(res.data);
-      // 200为服务端连接建立成功时返回的状态码(此处根据真实后端返回值进行相应的修改)
-      if (data.code === 200) {
-        // 连接建立成功
-        console.log(data.msg);
-      } else {
-        // 获取服务端推送的消息
-        const msgObj = {
-          msg: data.msg,
-          avatarSrc: data.avatarSrc,
-          userID: data.userID
-        };
-        // 渲染页面:如果msgArray存在则转json
-        if (_.isEmpty(localStorage.getItem("msgArray"))) {
-          this.renderPage([], msgObj, 0);
-        } else {
-          this.renderPage(
-            JSON.parse(localStorage.getItem("msgArray")),
-            msgObj,
-            0
-          );
-        }
-      }
-    };
+    // this.$options.sockets.onmessage = res => {
+    //   // res.data为服务端返回的数据
+    //   const data = JSON.parse(res.data);
+    //   // 200为服务端连接建立成功时返回的状态码(此处根据真实后端返回值进行相应的修改)
+    //   if (data.code === 200) {
+    //     // 连接建立成功
+    //     console.log(data.msg);
+    //   } else {
+    //     // 获取服务端推送的消息
+    //     const msgObj = {
+    //       msg: data.msg,
+    //       avatarSrc: data.avatarSrc,
+    //       userID: data.userID
+    //     };
+    //     // 渲染页面:如果msgArray存在则转json
+    //     if (_.isEmpty(localStorage.getItem("msgArray"))) {
+    //       this.renderPage([], msgObj, 0);
+    //     } else {
+    //       this.renderPage(
+    //         JSON.parse(localStorage.getItem("msgArray")),
+    //         msgObj,
+    //         0
+    //       );
+    //     }
+    //   }
+    // };
   },
   methods: {
     // 消息发送函数
