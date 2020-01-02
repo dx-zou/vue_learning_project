@@ -14,6 +14,7 @@ service.interceptors.request.use(
   config => {
     // 设置请求头信息
     config.headers.Authorization = sessionStorage.getItem("token") || "";
+    config.headers.post["Content-Type"] = "application/json";
     return config;
   },
   error => {
@@ -43,17 +44,5 @@ service.interceptors.response.use(
   }
 );
 
-export const getRequest = function(url, params = {}) {
-  return new Promise((resolve, reject) => {
-    service
-      .get(url, { params })
-      .then(res => {
-        resolve(res);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
-};
 Vue.prototype.$http = service;
 export default service;

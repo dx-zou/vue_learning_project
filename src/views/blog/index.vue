@@ -23,13 +23,13 @@
       @toEdit="toEdit"
       @toDelete="toDelete"
     >
-      <template #status="row">
+      <template #toTop="row">
         <el-switch
-          :value="row.status"
-          :active-value="true"
-          :inactive-value="false"
-          active-color="#13ce66"
-          inactive-color="#ff4949"
+          :value="row.scope.isTop"
+          :active-value="1"
+          :inactive-value="0"
+          active-color="#ff4949"
+          inactive-color="#dcdfe6"
           @change="handleChange($event, row)"
         >
         </el-switch>
@@ -97,9 +97,9 @@ export default {
           label: "阅读量"
         },
         {
-          prop: "status",
-          label: "状态",
-          slotName: "status"
+          prop: "toTop",
+          label: "是否置顶",
+          slotName: "toTop"
         }
       ],
       loginRules: {
@@ -144,25 +144,28 @@ export default {
     this.getTableData();
   },
   methods: {
+    /**
+     * @description 当前页码数变化
+     */
     handlePageChange(val) {
       this.pageOptions.pageNo = val;
       this.getTableData();
     },
-    // 获取表格数据
+    /**
+     * @description 获取表格数据
+     */
     getTableData() {
       let { pageNo, pageSize } = this.pageOptions;
-      this.$http({
-        url: this.$api.getBlogList,
-        params: {
-          pageNo,
-          pageSize
-        }
-      }).then(res => {
-        this.tableData = res.data.rows;
-        this.pageOptions.total = res.data.total;
-      });
+      this.$http
+        .get(this.$api.getBlogList, { params: { pageNo, pageSize } })
+        .then(res => {
+          this.tableData = res.data.rows;
+          this.pageOptions.total = res.data.total;
+        });
     },
-    // 处理工具栏按钮点击事件
+    /**
+     * @description 处理工具栏按钮点击事件
+     */
     handleToolClick(type) {
       if (type === "login") {
         this.showLogin = true;
@@ -170,40 +173,41 @@ export default {
         this.$router.push({ name: "addBlog" });
       }
     },
+    /**
+     * @description 登录
+     */
     toLogin() {
       this.$refs["loginForm"].validate(valid => {
         if (valid) {
           const { username, password } = this.loginForm;
-          this.$http({
-            url: this.$api.login,
-            method: "post",
-            data: {
+          this.$http
+            .post(this.$api.login, {
               username,
               password
-            }
-          }).then(res => {
-            if (res.code) {
-              this.showLogin = false;
-              this.getTableData();
-              this.$toast("success", "登录成功");
-            }
-          });
+            })
+            .then(res => {
+              if (res.code) {
+                this.showLogin = false;
+                this.getTableData();
+                this.$toast("success", "登录成功");
+              }
+            });
         }
       });
     },
+    /**
+     * @description 去编辑页面
+     */
     toEdit(row) {
       this.$router.push(`/blog/edit-blog/${row.id}`);
     },
+    /**
+     * @description 删除数据
+     */
     async toDelete(row) {
       let confirmed = await this.$deleteConfirm();
       if (confirmed) {
-        this.$http({
-          url: this.$api.deleteBlog,
-          method: "post",
-          data: {
-            id: row.id
-          }
-        }).then(res => {
+        this.$http.delete(this.$api.deleteBlog + `/${row.id}`).then(res => {
           if (res.code === 1) {
             this.$toast("success", "删除成功");
             this.getTableData();
@@ -212,7 +216,7 @@ export default {
       }
     },
     handleChange(value, row) {
-      row.scope.status = false;
+      row.scope.isTop = row.scope.isTop === 1 ? 0 : 1;
     }
   }
 };

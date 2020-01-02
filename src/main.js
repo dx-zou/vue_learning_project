@@ -18,7 +18,7 @@ import "@/utils/setRem";
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
 import i18n from "@/plugins/i18n";
-import "./plugins/vue-socket";
+// import "./plugins/vue-socket";
 
 // import "./permission";
 NProgress.configure({

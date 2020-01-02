@@ -22,12 +22,13 @@
       <el-form-item label="内容" prop="content">
         <el-input
           v-model.trim="formData.content"
+          type="textarea"
           clearable
           placeholder="请输入博客内容"
         ></el-input>
       </el-form-item>
-      <el-form-item label="是否置顶" prop="toTop">
-        <el-radio-group v-model="formData.toTop">
+      <el-form-item label="是否置顶" prop="isTop">
+        <el-radio-group v-model="formData.isTop">
           <el-radio :label="0">否</el-radio>
           <el-radio :label="1">是</el-radio>
         </el-radio-group>
@@ -59,7 +60,7 @@ export default {
             trigger: ["blur", "change"]
           }
         ],
-        toTop: [
+        isTop: [
           {
             required: true,
             message: "请选择",
@@ -86,7 +87,7 @@ export default {
     // 获取详情
     getDetail() {
       this.$http({
-        url: this.$api.getBlogDetail + `?id=${this.id}`
+        url: this.$api.getBlogDetail + `/${this.id}`
       }).then(res => {
         this.formData = res.data;
       });
@@ -98,7 +99,7 @@ export default {
           this.isSaving = true;
           this.$http({
             url: this.id ? this.$api.updateBlog : this.$api.addBlog,
-            method: "post",
+            method: this.id ? "patch" : "post",
             data: this.formData
           }).then(res => {
             this.isSaving = false;
