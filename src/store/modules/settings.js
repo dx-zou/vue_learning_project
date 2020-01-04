@@ -1,4 +1,8 @@
-import { CHANGE_SETTING, CLOSE_SIDEBAR } from "../mutation-types";
+import {
+  CHANGE_SETTING,
+  CLOSE_SIDEBAR,
+  CHANGE_LOCALE
+} from "../mutation-types";
 import Cookies from "js-cookie";
 const state = {
   // 固定顶部导航栏
@@ -10,7 +14,9 @@ const state = {
   // sidebar 折叠
   sidebarCollapse: Cookies.get("sidebarCollapse")
     ? !!+Cookies.get("sidebarCollapse")
-    : false
+    : false,
+  locale: "en-US" ,// 语言
+  // locale: "zh-CN" ,// 语言
 };
 const mutations = {
   // 改变状态
@@ -24,6 +30,10 @@ const mutations = {
   [CLOSE_SIDEBAR]: state => {
     Cookies.set("sidebarCollapse", 1);
     state.sidebarCollapse = true;
+  },
+  // 切换语言
+  [CHANGE_LOCALE]: state => {
+    state.locale = state.locale === "en-US" ? "zh-CN" : "en-US";
   }
 };
 
@@ -34,6 +44,9 @@ const actions = {
   },
   closeSideBar({ commit }) {
     commit("CLOSE_SIDEBAR");
+  },
+  changeLocale({ commit }) {
+    commit("CHANGE_LOCALE");
   }
 };
 export default {

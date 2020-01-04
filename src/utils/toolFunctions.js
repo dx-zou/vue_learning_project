@@ -1,5 +1,4 @@
 import { Notification, MessageBox } from "element-ui";
-import $http from "@/http/request";
 import Vue from "vue";
 // 全局提示函数
 function toast(type, message) {
@@ -9,30 +8,24 @@ function toast(type, message) {
     message
   });
 }
-function deleteDataFromTable(url, id) {
-  return new Promise((resolve, reject) => {
+function deleteConfirm() {
+  return new Promise(resolve => {
     MessageBox.confirm("此操作将永久删除选择的数据, 是否继续?", "提示", {
       confirmButtonText: "确定",
       cancelButtonText: "取消",
       type: "warning"
     })
       .then(() => {
-        $http({
-          url: $api[url] + `/${id}`,
-          method: "delete"
-          // data: {ids}
-        }).then(res => {
-          resolve();
-        });
+        resolve(true);
       })
       .catch(() => {
-        reject();
+        resolve(false);
       });
   });
 }
 Vue.prototype.$toast = toast;
-Vue.prototype.$deleteDataFromTable = deleteDataFromTable;
+Vue.prototype.$deleteConfirm = deleteConfirm;
 export default {
   toast,
-  deleteDataFromTable
+  deleteConfirm
 };

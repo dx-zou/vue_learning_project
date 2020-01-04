@@ -4,12 +4,14 @@
 @import './animation.scss';
 @import './sidebar.scss';
 @import './layout.scss';
+@import "./add.scss";
 
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  color: #000;
 }
 
 html {

@@ -14,7 +14,12 @@
     style="width: 100%"
     ref="multipleTable"
   >
-    <el-table-column v-if="showSelection" align="center" type="selection" width="55"></el-table-column>
+    <el-table-column
+      v-if="showSelection"
+      align="center"
+      type="selection"
+      width="55"
+    ></el-table-column>
     <el-table-column
       v-for="item in tableOptions"
       :key="item.prop"
@@ -28,12 +33,17 @@
       :sortable="item.sortable || false"
       :filters="item.filters || null"
       :formatter="item.formatter || null"
-    ></el-table-column>
+    >
+      <template #default="{row}">
+        <slot :name="item.slotName || ''" :scope="row">
+          {{ row[item.prop] }}
+        </slot>
+      </template>
+    </el-table-column>
     <el-table-column
       v-if="showOperate"
       :width="operateWidth"
       align="center"
-      fixed="right"
       label="操作"
     >
       <template #default="{row}">
@@ -46,19 +56,19 @@
         >
           <slot :scope="row" name="default">
             <el-button
-              @click="editRow(row)"
+              @click="toEdit(row)"
               type="primary"
               icon="el-icon-edit"
               size="mini"
-              v-if="showEdit"
-            >编辑</el-button>
+              >编辑</el-button
+            >
             <el-button
-              @click="deleteRow(row)"
+              @click="toDelete(row)"
               type="danger"
               icon="el-icon-delete"
               size="mini"
-              v-if="showDelete"
-            >删除</el-button>
+              >删除</el-button
+            >
           </slot>
           <span class="iconfont icon-more operate-icon" slot="reference"></span>
         </el-popover>
@@ -70,11 +80,6 @@
 <script>
 export default {
   name: "CommonTable",
-  data() {
-    return {
-      multipleSelection: []
-    };
-  },
   props: {
     // 表头字段
     tableOptions: {
@@ -99,25 +104,15 @@ export default {
       type: Boolean,
       default: true
     },
-    //更新操作按钮
-    showUpdate: {
-      type: Boolean,
-      default: false
-    },
-    //单条审核按钮
-    showAudit: {
-      type: Boolean,
-      default: false
-    },
     // 编辑按钮
     showEdit: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 删除按钮
     showDelete: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 操作栏宽度
     operateWidth: {
@@ -135,10 +130,14 @@ export default {
       default: true
     }
   },
-
+  data() {
+    return {
+      multipleSelection: []
+    };
+  },
   mounted() {
-    console.log(this.$attrs)
-    console.log(this.$listeners)
+    // console.log(this.$attrs);
+    // console.log(this.$listeners);
   },
   methods: {
     // 多选框多选
@@ -152,29 +151,13 @@ export default {
       // 调用父组件方法
       this.$emit("handleSelectionChange", val);
     },
-    //更新
-    goUpdate(row) {
-      this.$emit("goUpdate", row);
-    },
-    //去审核
-    goAudit(id) {
-      this.$emit("goAudit", id);
-    },
-    //查看详情
-    checkDetail(id) {
-      this.$emit("checkDetail", id);
-    },
     // 修改行数据
-    editRow(id) {
-      this.$emit("editRow", id);
+    toEdit(row) {
+      this.$emit("toEdit", row);
     },
     // 删除行数据
-    deleteRow(id) {
-      this.$emit("deleteRow", id);
-    },
-    //重置密码
-    handlePassword(id) {
-      this.$emit("handlePassword", id);
+    toDelete(id) {
+      this.$emit("toDelete", id);
     },
     // 列过滤
     handleFilterChange(filters) {

@@ -22,13 +22,16 @@
       >
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item icon="el-icon-s-custom" command="user"
-            >个人中心</el-dropdown-item
+            >{{$t('userCenter')}}</el-dropdown-item
           >
           <el-dropdown-item icon="el-icon-s-tools" command="set"
-            >项目配置</el-dropdown-item
+            >{{$t("settings")}}</el-dropdown-item
           >
+          <el-dropdown-item icon="el-icon-s-custom" command="locale">{{
+            lang
+          }}</el-dropdown-item>
           <el-dropdown-item icon="el-icon-eleme" divided command="logout"
-            >退出登录</el-dropdown-item
+            >{{$t("logout")}}</el-dropdown-item
           >
         </el-dropdown-menu>
         <div class="el-dropdown-link">
@@ -80,7 +83,10 @@ export default {
     FlipClock
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo"])
+    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo", "locale"]),
+    lang() {
+      return this.locale === "en-US" ? "中文" : "English";
+    }
   },
   methods: {
     logout() {
@@ -104,6 +110,8 @@ export default {
         this.showDialog = true;
       } else if (command === "logout") {
         this.logout();
+      } else if (command === "locale") {
+        this.$store.dispatch("settings/changeLocale");
       }
     },
     // 保存用户设置
@@ -122,7 +130,7 @@ export default {
 .app-header {
   display: flex;
   height: 0.6rem;
-  padding: 0 0.2rem;
+  padding: 0 0.1rem;
   justify-content: space-between;
   align-items: center;
   // box-shadow: 0 1px 5px rgba(0, 21, 41, 0.08);

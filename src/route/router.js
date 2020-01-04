@@ -44,6 +44,14 @@ const constantRouterMap = [
         meta: {
           breadcrumbs: ["components", "table"]
         }
+      },
+      {
+        path: "indentify-code",
+        name: "indentifyCode",
+        component: () => import("@/views/my-components/indentify-code"),
+        meta: {
+          breadcrumbs: ["components", "indentifyCode"]
+        }
       }
     ]
   },
@@ -99,6 +107,14 @@ const constantRouterMap = [
         component: () => import("../views/css-world/skill-2"),
         meta: {
           breadcrumbs: ["css-world", "skill-2"]
+        }
+      },
+      {
+        path: "snow",
+        name: "snow",
+        component: () => import("../views/css-world/snow"),
+        meta: {
+          breadcrumbs: ["css-world", "snow"]
         }
       }
     ]
@@ -207,6 +223,30 @@ const constantRouterMap = [
         name: "chat",
         component: () => import("@/views/third-party/chat"),
         meta: { breadcrumbs: ["third-party", "chat"] }
+      }
+    ]
+  },
+  {
+    path: "/blog",
+    component: layout,
+    children: [
+      {
+        path: "list",
+        name: "blog-node",
+        component: () => import("@/views/blog"),
+        meta: { breadcrumbs: ["blog", "blog-node"] }
+      },
+      {
+        path: "add-blog",
+        name: "addBlog",
+        component: () => import("@/views/blog/add"),
+        meta: { breadcrumbs: ["blog", "add-blog"] }
+      },
+      {
+        path: "edit-blog/:id",
+        name: "editBlog",
+        component: () => import("@/views/blog/add"),
+        meta: { breadcrumbs: ["blog", "edit-blog"] }
       }
     ]
   },

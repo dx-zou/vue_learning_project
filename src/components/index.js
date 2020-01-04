@@ -5,13 +5,19 @@ import FnDateRange from "./dateRange/dateRange";
 import CommonDialog from "./CommonDialog/CommonDialog";
 import CommonSelect from "./CommonSelect";
 import SvgIcon from "./icons/IconBase";
+import TableToolbar from "./TableToolbar";
+import AddTopbar from "./AddTopbar";
+import Pagination from "./Pagination";
 const components = [
   CommonTable,
   FnAlert,
   FnDateRange,
   CommonDialog,
   CommonSelect,
-  SvgIcon
+  SvgIcon,
+  TableToolbar,
+  AddTopbar,
+  Pagination
 ];
 components.forEach(component => {
   component.install = function() {

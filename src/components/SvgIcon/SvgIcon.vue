@@ -1,32 +1,31 @@
 <template>
-   <svg  :class="svgClass" aria-hidden="true" v-on="$listeners">
+  <svg :class="svgClass" aria-hidden="true" v-on="$listeners">
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script>
-  export default {
-    name: "SvgIcon",
-    props: {
-      iconClass: {
-        type: String,
-        required: true
-      },
-
+export default {
+  name: "SvgIcon",
+  props: {
+    iconClass: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    iconName() {
+      return `#icon-${this.iconClass}`;
     },
-     computed: {
-      iconName() {
-        return `#icon-${this.iconClass}`
-      },
-      svgClass() {
-        if (this.className) {
-          return 'svg-icon' + this.className
-        } else {
-          return 'svg-icon'
-        }
+    svgClass() {
+      if (this.className) {
+        return "svg-icon" + this.className;
+      } else {
+        return "svg-icon";
       }
     }
   }
+};
 </script>
 
 <style lang="scss">
@@ -40,7 +39,7 @@
 
 .svg-external-icon {
   background-color: currentColor;
-  mask-size: cover!important;
+  mask-size: cover !important;
   display: inline-block;
 }
 </style>
