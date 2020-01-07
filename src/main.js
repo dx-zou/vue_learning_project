@@ -18,6 +18,8 @@ import "@/utils/setRem";
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
 import i18n from "@/plugins/i18n";
+import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
+import "vue-gn-components/lib/style/index.css";
 // import "./plugins/vue-socket";
 
 // import "./permission";
@@ -33,6 +35,9 @@ Vue.filter("filterTime", timestr => {
 Vue.use(animated);
 Vue.use(Collapse);
 Vue.use(Icon);
+Vue.use(Magnifier)
+  .use(DragWrap)
+  .use(DragItem);
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.config.productionTip = false;
