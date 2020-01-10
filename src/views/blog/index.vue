@@ -38,6 +38,7 @@
     <pagination
       :page-options="pageOptions"
       @handlePageChange="handlePageChange"
+      @handleSizeChange="handleSizeChange"
     />
     <el-dialog
       :visible.sync="showLogin"
@@ -59,7 +60,7 @@
             type="password"
             clearable
             show-password
-            @click.enter.native="toLogin"
+            @keyup.enter.native="toLogin"
             placeholder="请输入密码"
           />
         </el-form-item>
@@ -135,7 +136,7 @@ export default {
       showLogin: false,
       pageOptions: {
         total: 0,
-        pageSize: 15,
+        pageSize: 3,
         pageNo: 1
       }
     };
@@ -149,6 +150,13 @@ export default {
      */
     handlePageChange(val) {
       this.pageOptions.pageNo = val;
+      this.getTableData();
+    },
+    /**
+     * @description 每页条数变化
+     */
+    handleSizeChange(val) {
+      this.pageOptions.pageSize = val;
       this.getTableData();
     },
     /**

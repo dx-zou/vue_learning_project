@@ -26,6 +26,12 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
   response => {
+    console.log(response.headers);
+
+    // 保存响应头返回的token
+    if (response.headers.Authorization) {
+      sessionStorage.setItem("token", response.headers.Authorization);
+    }
     // 对响应数据先做一层处理
     // 请求成功后返回的数据
     if (response.data.code === 0) {
