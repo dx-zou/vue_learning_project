@@ -1,6 +1,13 @@
 import { Notification, MessageBox } from "element-ui";
 import Vue from "vue";
-// 全局提示函数
+
+/**
+ * @description 全局toast提示方法
+ *
+ * @param {*} type
+ * @param {*} message
+ * @returns
+ */
 function toast(type, message) {
   return Notification({
     duration: 2000,
@@ -8,6 +15,11 @@ function toast(type, message) {
     message
   });
 }
+/**
+ * @description 删除提示方法
+ *
+ * @returns
+ */
 function deleteConfirm() {
   return new Promise(resolve => {
     MessageBox.confirm("此操作将永久删除选择的数据, 是否继续?", "提示", {

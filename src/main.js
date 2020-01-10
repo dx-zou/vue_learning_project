@@ -4,7 +4,7 @@ import App from "./App.vue";
 import store from "./store/index";
 import router from "./route/index";
 import "./plugins/http/request";
-import "@/utils/toolFunctions";
+import "@/utils/businessTooles";
 import animated from "animate.css";
 import NProgress from "nprogress";
 import JsonExcel from "vue-json-excel";
