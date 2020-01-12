@@ -1,9 +1,9 @@
 <template>
-  <div>
-    lodash learning ...
+  <div class="app-main_wrapper">
+    <div class="title">lodash learning ...</div>
     <ul>
       <li v-for="item in list" :key="item.name">
-        <h3>{{ item.name }}</h3>
+        <h1 style="font-size:20px">{{ item.name }}</h1>
         <p>{{ item.desc }}</p>
       </li>
     </ul>
@@ -31,14 +31,16 @@
 
 <script>
 import _ from "lodash";
+import { _typeof } from "@/utils/tools";
 export default {
   data() {
     return {
-      list: [{ name: "_.concat", desc: "hh" }]
+      list: [{ name: "_.concat", desc: "" }]
     };
   },
-  created() {
-    this.concatArray();
+  mounted() {
+    // this.concatArray();
+    this.test();
   },
   // 组件内导航钩子： 离开前的守卫
   // beforeRouteLeave(to,from,next) {
@@ -58,7 +60,27 @@ export default {
       var array = [1];
       var other = _.concat(array, 2, [3], [[4]]);
       console.log(other);
+    },
+    test() {
+      let obj = { value: "hello myCall" };
+      const fn = function(name) {
+        console.log(this.value);
+        console.log([...arguments].join());
+        console.log(name);
+      };
+      fn._myBind(obj, "feng")();
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.app-main_wrapper {
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+.title {
+  font-size: 30px;
+}
+</style>
