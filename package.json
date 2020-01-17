@@ -28,6 +28,7 @@
     "vue-awesome-swiper": "^3.1.3",
     "vue-ele-form": "^0.3.19",
     "vue-ele-form-image-uploader": "^0.1.1",
+    "vue-gn-components": "^1.1.0",
     "vue-i18n": "^8.15.3",
     "vue-json-excel": "^0.2.98",
     "vue-native-websocket": "^2.0.13",

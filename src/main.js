@@ -4,7 +4,7 @@ import App from "./App.vue";
 import store from "./store/index";
 import router from "./route/index";
 import "./plugins/http/request";
-import "@/utils/toolFunctions";
+import "@/utils/businessTooles";
 import animated from "animate.css";
 import NProgress from "nprogress";
 import JsonExcel from "vue-json-excel";
@@ -18,6 +18,8 @@ import "@/utils/setRem";
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
 import i18n from "@/plugins/i18n";
+import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
+import "vue-gn-components/lib/style/index.css";
 // import "./plugins/vue-socket";
 
 // import "./permission";
@@ -33,6 +35,9 @@ Vue.filter("filterTime", timestr => {
 Vue.use(animated);
 Vue.use(Collapse);
 Vue.use(Icon);
+Vue.use(Magnifier)
+  .use(DragWrap)
+  .use(DragItem);
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.config.productionTip = false;

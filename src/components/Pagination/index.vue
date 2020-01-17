@@ -33,7 +33,7 @@ export default {
     pageSizes: {
       type: Array,
       default() {
-        return [5, 100, 200, 300];
+        return [3, 100, 200, 300];
       }
     },
     layout: {
@@ -64,7 +64,7 @@ export default {
   methods: {
     // 每页条数改变
     handleSizeChange(val) {
-      this.$emit("sizeChange", val);
+      this.$emit("handleSizeChange", val);
     },
     // 当前页改变
     handleCurrentChange(val) {
