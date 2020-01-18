@@ -17,25 +17,33 @@
             </el-form-item>
           </div>
         </el-col>
-        <el-col :span="12">
-          <div class="grid-content bg-purple">
-            <common-select
-              :optionList="selectData"
-              :value="formData.name"
-              @changeValue="handleChange"
-            ></common-select>
-          </div>
-        </el-col>
       </el-row>
     </el-form>
+    <draggable
+      v-model="dataList"
+      :group="{ name: 'people', pull: 'clone', put: false }"
+      @start="drag = true"
+      @end="handleDragChange"
+      @change="handleDragChange"
+      @choose="handleDragChange"
+      @update="handleDragChange"
+    >
+      <transition-group>
+        <div
+          class="draggable-item"
+          v-for="element in dataList"
+          :key="element.id"
+        >
+          {{ element.name }}
+        </div>
+      </transition-group>
+    </draggable>
   </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 export default {
-  components: {
-    // fnDateRange,
-  },
   data() {
     return {
       dateRange: {
@@ -47,7 +55,15 @@ export default {
         { id: 2, label: "test2", value: 2 }
       ],
       formData: {},
+      dataList: [
+        { name: "feng", id: 1 },
+        { name: "feeng", id: 2 },
+        { name: "fen", id: 3 }
+      ]
     };
+  },
+  components: {
+    draggable
   },
   created() {},
   methods: {
@@ -59,7 +75,13 @@ export default {
       this.visible = !this.visible;
     },
     handleChange(val) {
-      this.$set(this.formData, "name",val)
+      this.$set(this.formData, "name", val);
+    },
+    /**
+     *
+     */
+    handleDragChange(e) {
+      console.log(e);
     }
   }
 };
@@ -69,6 +91,10 @@ export default {
 .date-container {
   .el-row {
     margin-right: 0 !important;
+  }
+  .draggable-item {
+    border-bottom: 1px solid #ccc;
+    line-height: 50px;
   }
 }
 </style>

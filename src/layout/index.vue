@@ -5,15 +5,15 @@
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar></side-bar>
+    <side-bar />
     <transition
       enter-active-class="animated bounceInDown"
       leave-active-class="animated zoomOutRight"
     >
-      <message-box v-show="showMsgBox"></message-box>
+      <message-box v-show="showMsgBox" />
     </transition>
     <div class="main-container">
-      <app-header :class="{ 'fixed-header': fixedHeader }"></app-header>
+      <app-header :class="{ 'fixed-header': fixedHeader }" />
       <div class="app-main">
         <transition name="app">
           <router-view />

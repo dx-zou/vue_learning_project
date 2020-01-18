@@ -21,18 +21,18 @@
         @command="handleCommand"
       >
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-s-custom" command="user"
-            >{{$t('userCenter')}}</el-dropdown-item
-          >
-          <el-dropdown-item icon="el-icon-s-tools" command="set"
-            >{{$t("settings")}}</el-dropdown-item
-          >
+          <el-dropdown-item icon="el-icon-s-custom" command="user">{{
+            $t("userCenter")
+          }}</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-tools" command="set">{{
+            $t("settings")
+          }}</el-dropdown-item>
           <el-dropdown-item icon="el-icon-s-custom" command="locale">{{
             lang
           }}</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-eleme" divided command="logout"
-            >{{$t("logout")}}</el-dropdown-item
-          >
+          <el-dropdown-item icon="el-icon-eleme" divided command="logout">{{
+            $t("logout")
+          }}</el-dropdown-item>
         </el-dropdown-menu>
         <div class="el-dropdown-link">
           <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
