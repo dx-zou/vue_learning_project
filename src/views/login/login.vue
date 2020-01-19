@@ -1,5 +1,7 @@
 <template>
   <div class="login-wrapper">
+    <div class="login-bg"></div>
+    <div class="login-overlay"></div>
     <div class="login-container">
       <h1>VUE LEARNING SYS</h1>
       <el-input
@@ -74,26 +76,66 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/login-bg.jpg") no-repeat;
-  background-size: cover;
   text-align: center;
+  .login-bg {
+    position: fixed;
+    width: 6750px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #348cb2 url("../../assets/images/bg.jpg") bottom left;
+    background-repeat: repeat-x;
+    background-size: 2250px auto;
+    animation: bg-move 60s linear infinite;
+  }
+  .login-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: overlay 1.5s forwards;
+    background-attachment: fixed, fixed;
+    background-image: url("../../assets/images/overlay-pattern.png"),
+      url("../../assets/images/overlay.svg");
+    background-position: top left, center center;
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
+  }
+  @keyframes bg-move {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-2250px, 0, 0);
+    }
+  }
+  @keyframes overlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   .login-container {
     position: absolute;
     width: 500px;
-    left: 15%;
-    bottom: 20%;
+    left: 50%;
+    top: 40%;
     padding: 0.2rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px #ddd;
+    box-shadow: 3px 3px 6px #ddd;
+    transform: translate(-50%, -50%);
     h1 {
-      margin-bottom: 0.2rem;
+      margin-bottom: 20px;
       text-align: center;
-      color: #333;
-      font-size: 0.3rem;
+      font-size: 30px;
     }
     .el-input {
-      margin-bottom: 0.2rem;
+      margin-bottom: 30px;
     }
     .el-button {
       width: 100%;
