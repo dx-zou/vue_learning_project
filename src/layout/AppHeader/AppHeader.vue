@@ -65,6 +65,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Breadcrumb from "@/components/Breadcrumb"
 import FlipClock from "@/components/FlipClock";
 export default {
   name: "AppHeader",
@@ -78,7 +79,8 @@ export default {
     };
   },
   components: {
-    FlipClock
+    FlipClock,
+    Breadcrumb
   },
   computed: {
     ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo", "locale"]),
