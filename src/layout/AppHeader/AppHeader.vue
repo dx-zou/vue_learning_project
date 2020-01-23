@@ -7,7 +7,7 @@
         @click="toggleSidebar"
         id="toggleSidebar"
       ></span>
-      <breadcrumb></breadcrumb>
+      <breadcrumb />
     </div>
     <div class="header_r">
       <flip-clock />
@@ -65,7 +65,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import FlipClock from "@/components/FlipClock";
 export default {
   name: "AppHeader",
@@ -79,7 +78,6 @@ export default {
     };
   },
   components: {
-    Breadcrumb,
     FlipClock
   },
   computed: {

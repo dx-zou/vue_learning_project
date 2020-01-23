@@ -38,10 +38,12 @@
         </div>
       </transition-group>
     </draggable>
+    <el-button type="primary" @click="testDay">dayjs</el-button>
   </div>
 </template>
 
 <script>
+import dayjs from "dayjs";
 import draggable from "vuedraggable";
 export default {
   data() {
@@ -65,7 +67,6 @@ export default {
   components: {
     draggable
   },
-  created() {},
   methods: {
     getDateRange(start, end) {
       this.dateRange.start_time = start;
@@ -78,10 +79,13 @@ export default {
       this.$set(this.formData, "name", val);
     },
     /**
-     *
+     * 
      */
     handleDragChange(e) {
       console.log(e);
+    },
+    testDay() {
+      console.log(dayjs().year())
     }
   }
 };

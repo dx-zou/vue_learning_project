@@ -28,7 +28,7 @@ const ICON_CLASSES_MAP = {
   warning: "el-icon-warning"
 };
 export default {
-  name: "FnAlert",
+  name: "CommonAlert",
   props: {
     showIcon: Boolean,
     type: {
