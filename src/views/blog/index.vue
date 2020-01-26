@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-mian_wrapper">
     <table-toolbar
       :tool-buttons="toolButtons"
       @handleToolClick="handleToolClick"

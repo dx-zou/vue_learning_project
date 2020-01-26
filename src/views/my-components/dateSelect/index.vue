@@ -5,7 +5,7 @@
         <el-col :span="12">
           <div class="grid-content bg-purple">
             <el-form-item label="时间范围">
-              <fn-date-range @getRange="getDateRange">
+              <date-range @getRange="getDateRange">
                 <!-- 自定义插槽内容 -->
                 <!-- <template v-slot:range="slotProps"> -->
                 <template #range="{dateRange}">
@@ -13,7 +13,7 @@
                   <p>开始时间：{{ dateRange.start_time }}</p>
                   <p>结束时间：{{ dateRange.end_time }}</p>
                 </template>
-              </fn-date-range>
+              </date-range>
             </el-form-item>
           </div>
         </el-col>

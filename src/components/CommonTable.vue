@@ -1,7 +1,7 @@
 <template>
   <el-table
     :data="tableData"
-    :height="tableHeight || null"
+    :max-height="tableHeight || null"
     :border="showBorder"
     :header-row-style="{ height: '0.3rem' }"
     :header-cell-style="{ backgroundColor: '#fff', color: '#000' }"
