@@ -24,6 +24,14 @@ export default [
         }
       },
       {
+        path: "canvas",
+        name: "canvas",
+        component: () => import("@/views/js/canvas"),
+        meta: {
+          breadcrumbs: ["js-learning", "canvas"]
+        }
+      },
+      {
         path: "upload",
         name: "upload",
         component: () => import("@/views/js/upload"),

@@ -93,6 +93,11 @@ const MENU = [
         id: 81,
         index: "4-3",
         title: "upload"
+      },
+      {
+        id: 82,
+        index: "82",
+        title: "canvas"
       }
     ]
   },
