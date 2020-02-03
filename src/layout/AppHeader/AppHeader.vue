@@ -2,12 +2,12 @@
   <header class="app-header">
     <div class="app-header_l">
       <template v-if="sideLayout">
-        <sidebar-logo v-if="showLogo" />
-        <top-menu />
-      </template>
-      <template v-else>
         <hamburger />
         <breadcrumb />
+      </template>
+      <template v-else>
+        <sidebar-logo v-if="showLogo" />
+        <app-menu />
       </template>
     </div>
     <div class="app-header_r">
@@ -27,24 +27,23 @@ import Hamburger from "@/components/Hamburger";
 import FlipClock from "@/components/FlipClock";
 import UserDropdown from "@/components/UserDropdown";
 import SidebarLogo from "../Sidebar/Logo";
-import TopMenu from "../Sidebar/TopMenu";
+import AppMenu from "../Sidebar/AppMenu";
 
 export default {
   name: "AppHeader",
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     FlipClock,
     Breadcrumb,
     Hamburger,
     SidebarLogo,
-    TopMenu,
+    AppMenu,
     UserDropdown
   },
   computed: {
-    ...mapGetters([ "sideLayout", "showLogo"])
+    ...mapGetters(["sideLayout", "showLogo"])
   },
   methods: {
     // 显示隐藏msgbox
@@ -56,7 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .app-header {
   display: flex;
   height: 60px;
@@ -94,7 +92,7 @@ export default {
 }
 .top-menu-layout {
   .app-header {
-    background-color: $subMenuBg
+    background-color: $subMenuBg;
   }
 }
 </style>

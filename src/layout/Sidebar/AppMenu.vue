@@ -1,13 +1,15 @@
 <template>
   <el-menu
+    :class="!sideLayout && 'menu-container'"
+    :mode="sideLayout ? 'vertical' : 'horizontal'"
+    :collapse="sideLayout && sidebarCollapse"
     :background-color="variables.menuBg"
     :text-color="variables.menuText"
     :default-active="activeIndex"
     :active-text-color="variables.menuActiveText"
-    mode="horizontal"
+    :collapse-transition="false"
     unique-opened
     @select="handleSelect"
-    class="menu-container"
     id="sidebar"
   >
     <el-submenu
@@ -42,7 +44,7 @@ import variables from "@/styles/variables.scss";
 import MenuList from "./menuData";
 
 export default {
-  name: "TopMenu",
+  name: "AppMenu",
   computed: {
     ...mapGetters(["sidebarCollapse", "sideLayout"]),
     variables() {
@@ -60,7 +62,7 @@ export default {
     }
   },
   methods: {
-    // 改变选中的菜单项触发
+    // 处理菜单栏高亮
     handleSelect(key) {
       this.$store.dispatch("app/changeActiveIndex", key);
       sessionStorage.setItem("activeIndex", key);

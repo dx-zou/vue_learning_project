@@ -18,6 +18,8 @@ const state = {
     : false,
   // 菜单布局方式 true: 侧边栏 false: 顶布局
   sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
+  // 主题风格
+  darkTheme: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
   // 语言
   locale: "en-US" ,
   // locale: "zh-CN" ,// 语言

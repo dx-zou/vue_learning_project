@@ -5,7 +5,7 @@
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar v-if="!sideLayout"/>
+    <side-bar v-if="sideLayout"/>
     <transition
       enter-active-class="animated bounceInDown"
       leave-active-class="animated zoomOutRight"
@@ -42,9 +42,9 @@ export default {
     classObj() {
       return {
         "app-wrapper": true,
-        hideSidebar: this.sidebarCollapse && !this.sideLayout,
-        openSidebar: !this.sidebarCollapse,
-        "top-menu-layout": this.sideLayout,
+        hideSidebar: this.sidebarCollapse && this.sideLayout,
+        openSidebar: this.sidebarCollapse,
+        "top-menu-layout": !this.sideLayout,
         mobile: this.device === "mobile"
       };
     }
