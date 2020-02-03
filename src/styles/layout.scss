@@ -19,8 +19,8 @@
   }
 }
 .app-main {
-  height: calc(100% - 0.6rem);
-  padding: 0.1rem;
+  height: calc(100% - 60px);
+  padding: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -48,7 +48,7 @@
 
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  height: calc(100vh - 0.6rem);
+  height: calc(100vh - 60px);
   // margin-top: 0.6rem;
 }
 

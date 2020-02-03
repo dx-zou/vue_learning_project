@@ -38,13 +38,13 @@
 
     .el-submenu__title,
     .el-menu-item {
-      height: 56px;
-      line-height: 56px;
-      font-size: 14px;
+      height: 0.56rem;
+      line-height: 0.56rem;
+      font-size: 0.14rem;
 
       i {
-        margin-right: 10px;
-        font-size: 14px;
+        margin-right: 0.1rem;
+        font-size: 0.14rem;
       }
 
       .el-submenu__icon-arrow {
@@ -63,7 +63,7 @@
 
     &.has-logo {
       .el-scrollbar {
-        height: calc(100% - 60px);
+        height: calc(100% - 0.6rem);
       }
     }
 
@@ -78,7 +78,7 @@
     }
 
     .svg-icon {
-      margin-right: 16px;
+      margin-right: 0.16rem;
     }
 
     .el-menu {
@@ -97,7 +97,7 @@
 
     .el-submenu__icon-arrow {
       right: 20px;
-      margin-top: -5px;
+      margin-top: -0.07rem;
     }
 
     .is-active>.el-submenu__title {
@@ -120,14 +120,13 @@
     }
   }
 
-  // 侧边栏收起时
   .hideSidebar {
     .sidebar-container {
-      width: 60px !important;
+      width: 0.6rem !important;
     }
 
     .main-container {
-      margin-left: 60px;
+      margin-left: 0.6rem;
     }
 
     .submenu-title-noDropdown {
@@ -138,7 +137,7 @@
         padding: 0 !important;
 
         .svg-icon {
-          margin-left: 20px;
+          margin-left: 0.2rem;
         }
       }
     }
@@ -147,9 +146,9 @@
       overflow: hidden;
 
       &>.el-submenu__title {
-        width: 56px;
-        height: 56px;
-        padding: 0 20px !important;
+        width: 0.56rem;
+        height: 0.56rem;
+        padding: 0 0.2rem !important;
 
         //.svg-icon {
         //  margin-left: 0.2rem;
@@ -224,24 +223,19 @@
     }
   }
 }
-.el-menu--horizontal {
-  .el-menu {
-    a {
-      display: inline-block;
-      width: 100%;
-    }
-  }
-}
-.el-menu--vertical, .el-menu--horizontal {
+
+// when menu collapsed
+.el-menu--vertical {
   &>.el-menu {
     .svg-icon {
-      margin-right: 16px;
+      margin-right: 0.16rem;
     }
   }
 
-  .el-submenu>.el-submenu__title,
+  .nest-menu .el-submenu>.el-submenu__title,
   .el-menu-item {
     &:hover {
+      // you can use $subMenuHover
       background-color: $menuHover !important;
     }
 
@@ -251,6 +245,7 @@
     }
   }
 
+  // the scroll bar appears when the subMenu is too long
   >.el-menu--popup {
     max-height: 100vh;
     // overflow-y: auto;

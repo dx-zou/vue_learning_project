@@ -42,17 +42,6 @@ export default {
   mixins: [ResizeHandler],
   computed: {
     ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox", "sideLayout"]),
-    // // sidebar的折叠状态
-    // sidebarCollapse() {
-    //   return this.$store.getters.sidebarCollapse;
-    // },
-    // // 设备值
-    // device() {
-    //   return this.$store.getters.device;
-    // },
-    // fixedHeader() {
-    //   return this.$store.getters.fixedHeader;
-    // },
     classObj() {
       return {
         "app-wrapper": true,

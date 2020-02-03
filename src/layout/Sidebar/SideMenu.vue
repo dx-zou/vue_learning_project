@@ -11,15 +11,29 @@
     class="menu-container"
     id="sidebar"
   >
-    <el-menu-item index="1">
-      <i class="iconfont icon-home"></i>
-      <router-link to="/dashboard">dashboard</router-link>
-    </el-menu-item>
-    <sidebar-item
+    <el-submenu
       v-for="item in MenuList"
       :item="item"
       :key="item.id"
-    ></sidebar-item>
+      ref="subMenu"
+      :index="item.index"
+    >
+      <template slot="title">
+        <svg-icon :icon-class="item.svg" />
+        <span slot="title">{{ item.title }}</span>
+      </template>
+      <template v-if="item.children">
+        <el-menu-item
+          v-for="child in item.children"
+          :key="child.id"
+          :index="item.index"
+        >
+          <router-link :to="{ name: child.title }">
+            {{ child.title }}
+          </router-link>
+        </el-menu-item>
+      </template>
+    </el-submenu>
   </el-menu>
 </template>
 
@@ -27,13 +41,9 @@
 import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import MenuList from "./menuData";
-import SidebarItem from "./SidebarItem";
 
 export default {
   name: "SideMenu",
-  components: {
-    SidebarItem
-  },
   computed: {
     ...mapGetters(["sidebarCollapse", "sideLayout"]),
     variables() {
@@ -51,7 +61,7 @@ export default {
     }
   },
   methods: {
-    // 改变选中的菜单项触发
+    // 处理菜单栏高亮
     handleSelect(key) {
       this.$store.dispatch("app/changeActiveIndex", key);
       sessionStorage.setItem("activeIndex", key);
@@ -59,3 +69,4 @@ export default {
   }
 };
 </script>
+

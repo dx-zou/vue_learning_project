@@ -5,6 +5,7 @@
         <span>系统首页</span>
       </div>
       <el-button type="primary" @click.stop="guide">功能指引</el-button>
+      <el-button type="primary" @click="setLayout">布局</el-button>
     </el-card>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
@@ -41,9 +42,9 @@ export default {
   },
   mixins: [driver],
   mounted() {
-    this.$nextTick(() => {
-      this.initCharts();
-    });
+    // this.$nextTick(() => {
+    //   this.initCharts();
+    // });
   },
   methods: {
     initCharts() {
@@ -179,6 +180,9 @@ export default {
 
         myChart.setOption(option);
       }, 2100);
+    },
+    setLayout() {
+      this.$store.dispatch("settings/changeSetting",{key: "sideLayout"})
     }
   }
 };

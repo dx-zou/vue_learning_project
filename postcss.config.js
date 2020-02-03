@@ -2,10 +2,10 @@ module.exports = {
   plugins: {
     autoprefixer: {}
   },
-  "postcss-pxtorem": {
-    rootValue: 100, //结果为：设计稿元素尺寸/16，比如元素宽320px,最终页面会换算成 20rem
-    propList: ["*"]
-  }
+  // "postcss-pxtorem": {
+  //   rootValue: 100, //结果为：设计稿元素尺寸/16，比如元素宽320px,最终页面会换算成 20rem
+  //   propList: ["*"]
+  // }
   // "postcss-px-to-viewport": {
   //   viewportWidth: 750, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
   //   viewportHeight: 1334, // 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置

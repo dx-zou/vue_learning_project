@@ -23,7 +23,7 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      required: true
+      default: true
     }
   },
   data() {
@@ -46,7 +46,6 @@ export default {
 
 .sidebar-logo-container {
   position: relative;
-  width: 100%;
   height: 0.6rem;
   line-height: 0.6rem;
   background: #1e2128;

@@ -4,22 +4,35 @@
     :text-color="variables.menuText"
     :default-active="activeIndex"
     :active-text-color="variables.menuActiveText"
-    :collapse-transition="false"
     mode="horizontal"
     unique-opened
     @select="handleSelect"
     class="menu-container"
     id="sidebar"
   >
-    <el-menu-item index="1">
-      <i class="iconfont icon-home"></i>
-      <router-link to="/dashboard">dashboard</router-link>
-    </el-menu-item>
-    <sidebar-item
+    <el-submenu
       v-for="item in MenuList"
       :item="item"
       :key="item.id"
-    ></sidebar-item>
+      ref="subMenu"
+      :index="item.index"
+    >
+      <template slot="title">
+        <svg-icon :icon-class="item.svg" />
+        <span slot="title">{{ item.title }}</span>
+      </template>
+      <template v-if="item.children">
+        <el-menu-item
+          v-for="child in item.children"
+          :key="child.id"
+          :index="item.index"
+        >
+          <router-link :to="{ name: child.title }">
+            {{ child.title }}
+          </router-link>
+        </el-menu-item>
+      </template>
+    </el-submenu>
   </el-menu>
 </template>
 
@@ -27,13 +40,9 @@
 import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import MenuList from "./menuData";
-import SidebarItem from "./SidebarItem";
 
 export default {
   name: "TopMenu",
-  components: {
-    SidebarItem
-  },
   computed: {
     ...mapGetters(["sidebarCollapse", "sideLayout"]),
     variables() {
@@ -59,3 +68,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .menu-container {
+    margin-left: 20px;
+    /deep/ .el-submenu__title {
+      padding: 0 15px !important;
+    }
+    /deep/.svg-icon {
+      margin-right: 5px;
+    }
+    /deep/ .el-icon-arrow-down {
+      margin-left: 10px !important;
+      margin-top: -1px !important;
+    }
+  }
+</style>

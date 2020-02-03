@@ -3,7 +3,7 @@
     <div class="app-header_l">
       <template v-if="sideLayout">
         <sidebar-logo />
-        <top-menu  />
+        <top-menu />
       </template>
       <template v-else>
         <hamburger />
@@ -132,8 +132,8 @@ export default {
 
 .app-header {
   display: flex;
-  height: 0.6rem;
-  padding: 0 0.1rem;
+  height: 60px;
+  padding: 0 10px;
   justify-content: space-between;
   align-items: center;
   // box-shadow: 0 1px 5px rgba(0, 21, 41, 0.08);
@@ -143,12 +143,12 @@ export default {
     align-items: center;
   }
   .right-menu {
-    line-height: 0.6rem;
+    line-height: 60px;
     border: none;
   }
   .toggle-icon {
-    margin-right: 0.1rem;
-    font-size: 0.2rem;
+    margin-right: 10px;
+    font-size: 20px;
     cursor: pointer;
   }
   .is-collapse {
@@ -158,22 +158,22 @@ export default {
     display: flex;
     align-items: center;
     .el-badge {
-      font-size: 0.2rem;
-      margin: 0 0.1rem 0 20px;
+      font-size: 20px;
+      margin: 0 10px 0 20px;
       color: #333;
       cursor: pointer;
     }
   }
   .el-dropdown-link {
     .avatar {
-      height: 0.6rem;
-      border-radius: 0.1rem;
+      height: 60px;
+      border-radius: 10px;
       vertical-align: middle;
       cursor: pointer;
     }
     i {
       vertical-align: bottom;
-      margin-bottom: 0.1rem;
+      margin-bottom: 10px;
     }
   }
 }
