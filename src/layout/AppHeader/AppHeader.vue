@@ -1,15 +1,16 @@
 <template>
   <header class="app-header">
-    <div class="bread-container">
-      <span
-        class="iconfont icon-qiehuan toggle-icon"
-        :class="[sidebarCollapse ? '' : 'is-collapse']"
-        @click="toggleSidebar"
-        id="toggleSidebar"
-      ></span>
-      <breadcrumb />
+    <div class="app-header_l">
+      <template v-if="sideLayout">
+        <sidebar-logo />
+        <top-menu  />
+      </template>
+      <template v-else>
+        <hamburger />
+        <breadcrumb />
+      </template>
     </div>
-    <div class="header_r">
+    <div class="app-header_r">
       <flip-clock />
       <el-badge is-dot id="message">
         <i class="el-icon-message-solid" @click="toggleMsgBox"></i>
@@ -65,8 +66,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb"
+import Breadcrumb from "@/components/Breadcrumb";
+import Hamburger from "@/components/Hamburger";
 import FlipClock from "@/components/FlipClock";
+import SidebarLogo from "../Sidebar/Logo";
+import TopMenu from "../Sidebar/TopMenu";
+
 export default {
   name: "AppHeader",
   data() {
@@ -80,10 +85,13 @@ export default {
   },
   components: {
     FlipClock,
-    Breadcrumb
+    Breadcrumb,
+    Hamburger,
+    SidebarLogo,
+    TopMenu
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo", "rotateLogo", "locale"]),
+    ...mapGetters([ "showLogo", "rotateLogo", "locale", "sideLayout"]),
     lang() {
       return this.locale === "en-US" ? "中文" : "English";
     }
@@ -93,12 +101,6 @@ export default {
       sessionStorage.clear();
       this.$router.push("/login");
       this.$toast("success", "已退出登录");
-    },
-    // 切换菜单栏
-    toggleSidebar() {
-      this.$store.dispatch("settings/changeSetting", {
-        key: "sidebarCollapse"
-      });
     },
     // 显示隐藏msgbox
     toggleMsgBox() {
@@ -127,6 +129,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .app-header {
   display: flex;
   height: 0.6rem;
@@ -135,7 +138,7 @@ export default {
   align-items: center;
   // box-shadow: 0 1px 5px rgba(0, 21, 41, 0.08);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
-  .bread-container {
+  .app-header_l {
     display: flex;
     align-items: center;
   }
@@ -151,7 +154,7 @@ export default {
   .is-collapse {
     transform: rotate(180deg);
   }
-  .header_r {
+  .app-header_r {
     display: flex;
     align-items: center;
     .el-badge {
@@ -172,6 +175,11 @@ export default {
       vertical-align: bottom;
       margin-bottom: 0.1rem;
     }
+  }
+}
+.top-menu-layout {
+  .app-header {
+    background-color: $subMenuBg
   }
 }
 </style>

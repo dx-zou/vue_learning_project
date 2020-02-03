@@ -15,6 +15,8 @@ const state = {
   sidebarCollapse: Cookies.get("sidebarCollapse")
     ? !!+Cookies.get("sidebarCollapse")
     : false,
+  // 菜单布局方式 true: 侧边栏 false: 顶布局
+  sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
   locale: "en-US" ,// 语言
   // locale: "zh-CN" ,// 语言
 };

@@ -1,11 +1,11 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div :class="classObj">
     <div
       v-if="device === 'mobile' && !sidebarCollapse"
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar />
+    <side-bar v-if="!sideLayout"/>
     <transition
       enter-active-class="animated bounceInDown"
       leave-active-class="animated zoomOutRight"
@@ -30,7 +30,7 @@ import ResizeHandler from "./mixin/ResizeHandler";
 import MessageBox from "@/components/MessageBox";
 import { mapGetters } from "vuex";
 export default {
-  name: "layout",
+  name: "Layout",
   data() {
     return {};
   },
@@ -41,7 +41,7 @@ export default {
   },
   mixins: [ResizeHandler],
   computed: {
-    ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox"]),
+    ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox", "sideLayout"]),
     // // sidebar的折叠状态
     // sidebarCollapse() {
     //   return this.$store.getters.sidebarCollapse;
@@ -55,8 +55,10 @@ export default {
     // },
     classObj() {
       return {
-        hideSidebar: this.sidebarCollapse,
+        "app-wrapper": true,
+        hideSidebar: this.sidebarCollapse && !this.sideLayout,
         openSidebar: !this.sidebarCollapse,
+        "top-menu-layout": this.sideLayout,
         mobile: this.device === "mobile"
       };
     }
@@ -69,3 +71,5 @@ export default {
   }
 };
 </script>
+
+

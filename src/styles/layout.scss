@@ -13,7 +13,11 @@
   transition: margin-left .3s;
   overflow: hidden;
 }
-
+.top-menu-layout {
+  .main-container {
+    margin-left: 0;
+  }
+}
 .app-main {
   height: calc(100% - 0.6rem);
   padding: 0.1rem;

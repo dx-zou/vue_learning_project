@@ -26,12 +26,13 @@
         </li>
       </ul>
     </div>
+    <el-button @click="test">test</el-button>
   </div>
 </template>
 
 <script>
-import _ from "lodash";
-import { _typeof } from "@/utils/tools";
+// import _ from "lodash";
+import tools from "@/utils/tools";
 export default {
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
   },
   mounted() {
     // this.concatArray();
-    this.test();
+    // this.test();
   },
   // 组件内导航钩子： 离开前的守卫
   // beforeRouteLeave(to,from,next) {
@@ -56,20 +57,13 @@ export default {
   // },
   methods: {
     // 创建一个新数组，将array与任何数组 或 值连接在一起。
-    concatArray() {
-      var array = [1];
-      var other = _.concat(array, 2, [3], [[4]]);
-      console.log(other);
-    },
-    test() {
-      let obj = { value: "hello myCall" };
-      const fn = function(name) {
-        console.log(this.value);
-        console.log([...arguments].join());
-        console.log(name);
-      };
-      fn._myBind(obj, "feng")();
-    }
+    // concatArray() {
+    //   var array = [1];
+    //   var other = _.concat(array, 2, [3], [[4]]);
+    // },
+    test: tools._debounce(function() {
+      console.log(123);
+    }),
   }
 };
 </script>
