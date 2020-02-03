@@ -31,9 +31,6 @@ import MessageBox from "@/components/MessageBox";
 import { mapGetters } from "vuex";
 export default {
   name: "Layout",
-  data() {
-    return {};
-  },
   components: {
     AppHeader,
     SideBar,

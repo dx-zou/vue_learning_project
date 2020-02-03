@@ -2,13 +2,6 @@
   <div class="common-wrapper home-wrapper">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>系统首页</span>
-      </div>
-      <el-button type="primary" @click.stop="guide">功能指引</el-button>
-      <el-button type="primary" @click="setLayout">布局</el-button>
-    </el-card>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
         <span>Echarts</span>
       </div>
       <div ref="myChart" id="myChart" v-loading="isLoading"></div>
@@ -30,7 +23,7 @@ require("echarts/lib/component/dataZoom");
 require("echarts/lib/component/toolbox");
 require("echarts/lib/component/tooltip");
 require("echarts/lib/component/legend");
-import driver from "@/mixins/startDriver";
+
 export default {
   data() {
     return {
@@ -40,7 +33,6 @@ export default {
       isLoading: false
     };
   },
-  mixins: [driver],
   mounted() {
     // this.$nextTick(() => {
     //   this.initCharts();
@@ -180,9 +172,6 @@ export default {
 
         myChart.setOption(option);
       }, 2100);
-    },
-    setLayout() {
-      this.$store.dispatch("settings/changeSetting",{key: "sideLayout"})
     }
   }
 };

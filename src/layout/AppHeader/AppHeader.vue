@@ -2,7 +2,7 @@
   <header class="app-header">
     <div class="app-header_l">
       <template v-if="sideLayout">
-        <sidebar-logo />
+        <sidebar-logo v-if="showLogo" />
         <top-menu />
       </template>
       <template v-else>
@@ -15,52 +15,8 @@
       <el-badge is-dot id="message">
         <i class="el-icon-message-solid" @click="toggleMsgBox"></i>
       </el-badge>
-      <el-dropdown
-        id="userCenter"
-        :hide-on-click="false"
-        placement="bottom-start"
-        @command="handleCommand"
-      >
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-s-custom" command="user">{{
-            $t("userCenter")
-          }}</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-s-tools" command="set">{{
-            $t("settings")
-          }}</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-s-custom" command="locale">{{
-            lang
-          }}</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-eleme" divided command="logout">{{
-            $t("logout")
-          }}</el-dropdown-item>
-        </el-dropdown-menu>
-        <div class="el-dropdown-link">
-          <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
-          <i class="el-icon-caret-bottom"></i>
-        </div>
-      </el-dropdown>
+      <user-dropdown />
     </div>
-    <common-dialog
-      :show-dialog.sync="showDialog"
-      title="项目配置"
-      @handleConfirm="saveSettings"
-    >
-      <el-form label-width="100px" :model="settingForm" ref="settingForm">
-        <el-form-item label="显示Logo">
-          <el-radio-group v-model="settingForm.showLogo">
-            <el-radio :label="1">是</el-radio>
-            <el-radio :label="0">否</el-radio>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="旋转Logo">
-          <el-radio-group v-model="settingForm.rotateLogo">
-            <el-radio :label="1">是</el-radio>
-            <el-radio :label="0">否</el-radio>
-          </el-radio-group>
-        </el-form-item>
-      </el-form>
-    </common-dialog>
   </header>
 </template>
 
@@ -69,6 +25,7 @@ import { mapGetters } from "vuex";
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
 import FlipClock from "@/components/FlipClock";
+import UserDropdown from "@/components/UserDropdown";
 import SidebarLogo from "../Sidebar/Logo";
 import TopMenu from "../Sidebar/TopMenu";
 
@@ -76,11 +33,6 @@ export default {
   name: "AppHeader",
   data() {
     return {
-      showDialog: false,
-      settingForm: {
-        showLogo: this.showLogo ? 0 : 1,
-        rotateLogo: this.rotateLogo ? 0 : 1
-      }
     };
   },
   components: {
@@ -88,41 +40,16 @@ export default {
     Breadcrumb,
     Hamburger,
     SidebarLogo,
-    TopMenu
+    TopMenu,
+    UserDropdown
   },
   computed: {
-    ...mapGetters([ "showLogo", "rotateLogo", "locale", "sideLayout"]),
-    lang() {
-      return this.locale === "en-US" ? "中文" : "English";
-    }
+    ...mapGetters([ "sideLayout", "showLogo"])
   },
   methods: {
-    logout() {
-      sessionStorage.clear();
-      this.$router.push("/login");
-      this.$toast("success", "已退出登录");
-    },
     // 显示隐藏msgbox
     toggleMsgBox() {
       this.$store.dispatch("app/toggleMsgBox");
-    },
-    // 点击下拉菜单项的回调
-    handleCommand(command) {
-      if (command === "set") {
-        this.showDialog = true;
-      } else if (command === "logout") {
-        this.logout();
-      } else if (command === "locale") {
-        this.$store.dispatch("settings/changeLocale");
-      }
-    },
-    // 保存用户设置
-    saveSettings() {
-      this.showDialog = false;
-      this.$store.dispatch("settings/changeSetting", {
-        key: "showLogo"
-      });
-      this.$toast("success", "修改成功");
     }
   }
 };
@@ -162,18 +89,6 @@ export default {
       margin: 0 10px 0 20px;
       color: #333;
       cursor: pointer;
-    }
-  }
-  .el-dropdown-link {
-    .avatar {
-      height: 60px;
-      border-radius: 10px;
-      vertical-align: middle;
-      cursor: pointer;
-    }
-    i {
-      vertical-align: bottom;
-      margin-bottom: 10px;
     }
   }
 }

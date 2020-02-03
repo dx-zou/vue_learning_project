@@ -4,7 +4,7 @@ const MENU = [
     index: "0",
     title: "首页",
     icon: "icon-vue",
-    svg: "vue",
+    svg: "home",
     children: [
       {
         id: 10,

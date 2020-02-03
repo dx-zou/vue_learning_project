@@ -55,7 +55,7 @@ export default {
       return (
         this.$store.getters.activeIndex ||
         sessionStorage.getItem("activeIndex") ||
-        "1"
+        "0"
       );
     }
   },
