@@ -1,17 +1,20 @@
 <template>
   <div class="common-wrapper home-wrapper">
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>Echarts</span>
-      </div>
-      <div ref="myChart" id="myChart" v-loading="isLoading"></div>
-    </el-card>
+    <span>2020年新型冠状病毒肺炎疫情统计图</span>
+    <el-tabs type="border-card" v-model="activeName">
+      <el-tab-pane label="全国范围" name="1" ref="chart1">
+        <virus-chart :chart-data="chartData" />
+      </el-tab-pane>
+      <el-tab-pane label="配置管理" name="2" ref="chart2">
+        <!-- <div ref="myChart" id="myChart" v-loading="isLoading"></div> -->
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
 // 引入基本模板
-import { dateList, codeNum, timeNum } from "./data";
+import { dateList, codeNum, timeNum, chartData } from "./data";
 import option from "./chartOption";
 let echarts = require("echarts/lib/echarts");
 // 引入柱状图组件
@@ -30,8 +33,17 @@ export default {
       dateList,
       codeNum,
       timeNum,
-      isLoading: false
+      isLoading: false,
+      chartData,
+      activeName: "1"
     };
+  },
+  watch: {
+    activeName(v) {
+      this.$nextTick(_ => {
+        this.$refs[`chart${v}`].echarts.resize();
+      });
+    }
   },
   mounted() {
     // this.$nextTick(() => {
@@ -186,7 +198,7 @@ export default {
   }
   #myChart {
     width: 50%;
-    height: 30vh;
+    height: 60vh;
   }
 }
 </style>
