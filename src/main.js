@@ -15,6 +15,7 @@ import "./styles/common.scss";
 import "nprogress/nprogress.css";
 import "@/icons"; // svg 图标
 import "@/utils/setRem";
+import VCharts from 'v-charts';
 import { Collapse, Icon } from "ant-design-vue";
 import moment from "moment";
 import i18n from "@/plugins/i18n";
@@ -37,7 +38,8 @@ Vue.use(Collapse);
 Vue.use(Icon);
 Vue.use(Magnifier)
   .use(DragWrap)
-  .use(DragItem);
+  .use(DragItem)
+  .use(VCharts);
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.config.productionTip = false;

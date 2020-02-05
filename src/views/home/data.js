@@ -1,16 +1,5 @@
-export const codeNum = [378, 180, 300, 220, 600, 330, 400];
-export const timeNum = [30, 50, 60, 40, 100, 66, 180];
-export const dateList = [
-  "08.01",
-  "08.02",
-  "08.03",
-  "08.04",
-  "08.05",
-  "08.06",
-  "08.07"
-];
 
-export const chartData = {
+export const virusChartData = {
   columns: ["日期", "确诊病例", "疑似病例", "重症病例", "死亡病例", "治愈病例"],
   rows: [
     {
@@ -100,6 +89,41 @@ export const chartData = {
       重症病例: 492,
       死亡病例: 64,
       治愈病例: 157
-    }
+    },
+    {
+      日期: "2020-02-04",
+      确诊病例: 3887,
+      疑似病例: 3971,
+      重症病例: 431,
+      死亡病例: 65,
+      治愈病例: 262
+    },
   ]
 };
+export const virusSumData = [
+  {
+    title: "确诊",
+    num: 24324,
+    color: "red"
+  },
+  {
+    title: "疑似",
+    num: 23260,
+    color: "#000"
+  },
+  {
+    title: "重症",
+    num: 3219,
+    color: "#000"
+  },
+  {
+    title: "死亡",
+    num: 490,
+    color: "#000"
+  },
+  {
+    title: "治愈",
+    num: 892,
+    color: "#000"
+  },
+]
