@@ -16,14 +16,6 @@ export default [
         }
       },
       {
-        path: "table",
-        name: "table",
-        component: () => import("@/views/my-components/table"),
-        meta: {
-          breadcrumbs: ["components", "table"]
-        }
-      },
-      {
         path: "indentify-code",
         name: "indentifyCode",
         component: () => import("@/views/my-components/indentify-code"),
@@ -33,4 +25,4 @@ export default [
       }
     ]
   }
-]
+];

@@ -51,7 +51,7 @@ export default {
     },
     // 绑定值
     value: {
-      type: [String, Boolean, Number,Object],
+      type: [String, Boolean, Number, Object],
       required: true
     },
     // 是否禁用
@@ -70,6 +70,6 @@ export default {
         this.$emit("changeValue", newVal);
       }
     }
-  },
+  }
 };
 </script>

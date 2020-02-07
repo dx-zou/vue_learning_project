@@ -1,6 +1,6 @@
 <template functional>
   <div class="data-card-container" style="{width: props.width}">
-    <div :style="{color: props.color }" class="data">{{ props.data }}</div>
+    <div :style="{ color: props.color }" class="data">{{ props.data }}</div>
     <span>{{ props.desc }}</span>
   </div>
 </template>

@@ -31,14 +31,6 @@ export default [
         }
       },
       {
-        path: "flip-clock",
-        name: "flipClock",
-        component: () => import("@/views/css-world/flip-clock"),
-        meta: {
-          breadcrumbs: ["css-world", "flipClock"]
-        }
-      },
-      {
         path: "waterfall-flow",
         name: "waterfall",
         component: () => import("@/views/css-world/waterfall-flow"),
@@ -64,4 +56,4 @@ export default [
       }
     ]
   }
-]
+];

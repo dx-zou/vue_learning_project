@@ -19,9 +19,9 @@ const state = {
   // 菜单布局方式 true: 侧边栏 false: 顶布局
   sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
   // 主题风格
-  darkTheme: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
+  darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : true,
   // 语言
-  locale: "en-US" ,
+  locale: "en-US"
   // locale: "zh-CN" ,// 语言
 };
 
@@ -51,7 +51,7 @@ const actions = {
   changeSetting({ commit }, Payload) {
     commit("CHANGE_SETTING", Payload);
   },
-  
+
   // 收起侧边栏
   closeSideBar({ commit }) {
     commit("CLOSE_SIDEBAR");

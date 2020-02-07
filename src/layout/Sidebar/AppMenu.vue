@@ -72,17 +72,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu-container {
-    margin-left: 20px;
-    /deep/ .el-submenu__title {
-      padding: 0 15px !important;
-    }
-    /deep/.svg-icon {
-      margin-right: 5px;
-    }
-    /deep/ .el-icon-arrow-down {
-      margin-left: 10px !important;
-      margin-top: -1px !important;
-    }
+.menu-container {
+  margin-left: 20px;
+  /deep/ .el-submenu__title {
+    padding: 0 15px !important;
   }
+  /deep/.svg-icon {
+    margin-right: 5px;
+  }
+  /deep/ .el-icon-arrow-down {
+    margin-left: 10px !important;
+    margin-top: -1px !important;
+  }
+}
 </style>

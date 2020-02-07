@@ -20,7 +20,7 @@ export default {
       this.$store.dispatch("settings/changeSetting", {
         key: "sidebarCollapse"
       });
-    },
+    }
   }
 };
 </script>

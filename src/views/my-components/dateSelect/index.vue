@@ -79,13 +79,13 @@ export default {
       this.$set(this.formData, "name", val);
     },
     /**
-     * 
+     *
      */
     handleDragChange(e) {
       console.log(e);
     },
     testDay() {
-      console.log(dayjs().year())
+      console.log(dayjs().year());
     }
   }
 };

@@ -14,14 +14,6 @@ export default [
         }
       },
       {
-        name: "slot",
-        path: "slot",
-        component: () => import("@/views/vue/todo"),
-        meta: {
-          breadcrumbs: ["vue", "slot"]
-        }
-      },
-      {
         path: "transition",
         name: "transition",
         component: () => import("@/views/vue/transition"),
@@ -38,5 +30,5 @@ export default [
         }
       }
     ]
-  },
-]
+  }
+];

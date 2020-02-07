@@ -10,8 +10,8 @@
     <el-form label-width="100px" ref="settingForm" label-position="top">
       <el-form-item label="系统主题风格">
         <el-radio-group
-          :value="sideLayout"
-          @change="handleChange($event, 'sideLayout')"
+          :value="darkTheme"
+          @change="handleSettingChange($event, 'darkTheme')"
         >
           <el-radio :label="true">
             <el-tooltip content="暗黑风格" placement="top">
@@ -32,7 +32,7 @@
       <el-form-item label="导航布局模式">
         <el-radio-group
           :value="sideLayout"
-          @change="handleChange($event, 'sideLayout')"
+          @change="handleSettingChange($event, 'sideLayout')"
         >
           <el-radio :label="true">
             <el-tooltip content="侧边布局" placement="top">
@@ -55,7 +55,7 @@
           :value="showLogo"
           active-color="#13ce66"
           inactive-color="#ff4949"
-          @change="handleChange($event, 'showLogo')"
+          @change="handleSettingChange($event, 'showLogo')"
         >
         </el-switch>
       </el-form-item>
@@ -76,22 +76,14 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["sideLayout", "showLogo"])
+    ...mapGetters(["sideLayout", "showLogo", "darkTheme"])
   },
   methods: {
     handleClose() {
       this.$emit("update:showDrawer", false);
     },
-    // 保存用户设置
-    saveSettings() {
-      this.showDialog = false;
-      this.$store.dispatch("settings/changeSetting", {
-        key: "showLogo"
-      });
-      this.$toast("success", "修改成功");
-    },
     // 改变设置
-    handleChange(value, key) {
+    handleSettingChange(value, key) {
       this.$store.dispatch("settings/changeSetting", { key });
     }
   }

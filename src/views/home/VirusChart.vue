@@ -1,6 +1,6 @@
 <template>
   <ve-histogram
-    height="400px"
+    height="600px"
     :data="chartData"
     :extend="extend"
     :settings="chartSettings"
@@ -27,32 +27,40 @@ export default {
         }
       },
       chartSettings: {
-        showLine: ['确诊病例','疑似病例', '重症病例', '死亡病例', '治愈病例']
+        showLine: ["确诊病例", "疑似病例", "重症病例", "死亡病例", "治愈病例"]
       },
       markPoint: {
         data: [
           {
-            name: '最大值',
-            type: 'max'
+            name: "最大值",
+            type: "max"
           }
         ]
       },
       dataZoom: [
         {
-          type: 'slider',
+          type: "slider",
           start: 0,
           end: 20
         }
       ],
       yAxis: {
-            maxInterval: 500
-          },
-      colors: ['#c23531','#2f4554', '#61a0a8',
-        '#d48265', '#91c7ae','#749f83', 
-        '#ca8622', '#bda29a','#6e7074',
-        '#546570', '#c4ccd3']
+        maxInterval: 500
+      },
+      colors: [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#91c7ae",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3"
+      ]
     };
   }
 };
 </script>
-

@@ -26,11 +26,6 @@ const MENU = [
         title: "router"
       },
       {
-        id: 12,
-        index: "1-2",
-        title: "slot"
-      },
-      {
         id: 13,
         index: "1-3",
         title: "computed"
@@ -68,11 +63,6 @@ const MENU = [
         id: 24,
         index: "2-4",
         title: "sticky"
-      },
-      {
-        id: 25,
-        index: "2-5",
-        title: "flipClock"
       },
       {
         id: 26,
@@ -128,11 +118,6 @@ const MENU = [
         title: "date"
       },
       {
-        id: 42,
-        index: "4-2",
-        title: "table"
-      },
-      {
         id: 43,
         index: "4-3",
         title: "indentifyCode"
@@ -146,11 +131,6 @@ const MENU = [
     icon: "icon-plugin",
     svg: "plugin",
     children: [
-      {
-        id: 51,
-        index: "5-1",
-        title: "easy-mock"
-      },
       {
         id: 52,
         index: "5-2",

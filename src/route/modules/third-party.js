@@ -7,17 +7,6 @@ export default [
     sort: 5,
     children: [
       {
-        name: "easy-mock",
-        path: "user",
-        component: () => import("@/views/third-party/easy-mock"),
-        props: {
-          name: "feng"
-        },
-        meta: {
-          breadcrumbs: ["third-party", "mock"]
-        }
-      },
-      {
         path: "editor",
         name: "editor",
         component: () => import("@/views/third-party/quill-editor"),
@@ -36,5 +25,5 @@ export default [
         meta: { breadcrumbs: ["third-party", "chat"] }
       }
     ]
-  },
-]
+  }
+];

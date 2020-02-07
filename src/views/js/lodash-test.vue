@@ -63,7 +63,7 @@ export default {
     // },
     test: tools._debounce(function() {
       console.log(123);
-    }),
+    })
   }
 };
 </script>

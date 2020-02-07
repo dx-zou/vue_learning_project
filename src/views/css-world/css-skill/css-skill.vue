@@ -1,5 +1,10 @@
 <template>
-  <div class="skill-container" ref="skillRef" @selectstart="stopCopy($event)" @contextmenu="stopCopy($event)">
+  <div
+    class="skill-container"
+    ref="skillRef"
+    @selectstart="stopCopy($event)"
+    @contextmenu="stopCopy($event)"
+  >
     <div class="left">
       <div class="box">
         <div class="item"></div>
@@ -58,23 +63,16 @@
 <script>
 export default {
   data() {
-    return {
-
-    }
+    return {};
   },
- mounted( ){
-
- },
-  beforeDestroy() {
-
-  },
+  mounted() {},
+  beforeDestroy() {},
   methods: {
     stopCopy(e) {
       // this.$toast("error","禁止复制，禁止右键")
-     e.preventDefault()
+      e.preventDefault();
     }
-  },
-
+  }
 };
 </script>
 

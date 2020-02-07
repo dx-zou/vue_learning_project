@@ -1,7 +1,13 @@
 <template>
   <div class="cropper-wrapper">
     <!-- 1.一个用于获取上传文件的input，type="file"，并且监听onchange事件  -->
-    <input type="file" accept="image/*" id="imgReader" hidden @change="loadingImg" />
+    <input
+      type="file"
+      accept="image/*"
+      id="imgReader"
+      hidden
+      @change="loadingImg"
+    />
     <el-button type="primary" @click="uploadImg">上传</el-button>
     <div class="prev-wrapper">
       <!-- 2.一个用于给Cropper.js覆盖使用的img  -->

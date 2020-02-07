@@ -1,11 +1,6 @@
-
 <template>
   <div class="reg-container">
-    <el-input
-      v-model="regExp"
-      placeholder="请输入正则表达式"
-      clearable
-    />
+    <el-input v-model="regExp" placeholder="请输入正则表达式" clearable />
   </div>
 </template>
 
@@ -31,7 +26,7 @@ export default {
       }
       // 反捕获
       const reg = /(?:\d){3,}([a-z]*)/gi;
-      if(reg.test(str)) {
+      if (reg.test(str)) {
         console.log(RegExp.$1); // abc
         console.log(RegExp.$2); //
       }
@@ -40,7 +35,7 @@ export default {
       const pattern = /(\d){3,}([a-z]*)/gi;
       let str = "123abc";
       let res = str.replace(pattern, "$2$1$2");
-      console.log('正则替换结果：' + res)
+      console.log("正则替换结果：" + res);
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header :class="['app-header', !sideLayout && darkTheme && 'dark-theme']">
     <div class="app-header_l">
       <template v-if="sideLayout">
         <hamburger />
@@ -43,7 +43,7 @@ export default {
     UserDropdown
   },
   computed: {
-    ...mapGetters(["sideLayout", "showLogo"])
+    ...mapGetters(["sideLayout", "showLogo", "darkTheme"])
   },
   methods: {
     // 显示隐藏msgbox
@@ -90,9 +90,7 @@ export default {
     }
   }
 }
-.top-menu-layout {
-  .app-header {
-    background-color: $subMenuBg;
-  }
+.dark-theme {
+  background-color: $subMenuBg;
 }
 </style>

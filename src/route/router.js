@@ -23,16 +23,16 @@ let routerList = [
       }
     ]
   }
-]
-const files = require.context("./modules",false, /\.js$/);
+];
+const files = require.context("./modules", false, /\.js$/);
 files.keys().forEach(key => {
-  routerList = routerList.concat(files(key).default)
-})
+  routerList = routerList.concat(files(key).default);
+});
 const NotFound = [
   {
     path: "*",
     component: () => import("@/views/404")
   }
-]
+];
 
 export default routerList.concat(NotFound);

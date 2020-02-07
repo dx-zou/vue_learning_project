@@ -15,18 +15,32 @@
       </el-col>
     </el-row>
     <el-tabs type="border-card" v-model="activeName">
-      <el-tab-pane label="疫情地图" name="1" >
-        <virus-chart :chart-data="chartData" ref="chart1"/>
+      <el-tab-pane label="疫情地图" name="1">
+        <el-row :gutter="12">
+          <el-col :span="10">
+            <virus-map ref="chart1" />
+          </el-col>
+          <el-col :span="14">
+            <common-table
+              :table-data="provinceData"
+              :table-columns="provinceColumns"
+              :is-loading="false"
+              :show-operate="false"
+              expand-all
+            />
+          </el-col>
+        </el-row>
       </el-tab-pane>
-      <el-tab-pane label="全国范围统计图表" name="2" >
+      <el-tab-pane label="全国范围统计图表" name="2">
         <virus-chart :chart-data="chartData" ref="chart2" />
       </el-tab-pane>
-      <el-tab-pane label="数据" name="3" >
+      <el-tab-pane label="数据" name="3">
         <common-table
           :table-data="chartData.rows"
           :table-columns="tableColumns"
           :is-loading="false"
           :show-operate="false"
+          table-height="550px"
         />
       </el-tab-pane>
     </el-tabs>
@@ -35,49 +49,35 @@
 
 <script>
 // 引入基本模板
-import { virusChartData, virusSumData } from "./data";
+import {
+  virusChartData,
+  virusSumData,
+  tableColumns,
+  provinceData,
+  provinceColumns
+} from "./data";
+import VirusChart from "./VirusChart";
+import VirusMap from "./VirusMap";
 // 引入柱状图组件
-require("echarts/lib/chart/bar");
-require("echarts/lib/chart/line");
-// 引入提示框和title组件
-require("echarts/lib/component/title");
-require("echarts/lib/component/dataZoom");
-require("echarts/lib/component/toolbox");
-require("echarts/lib/component/tooltip");
-require("echarts/lib/component/legend");
+// require("echarts/lib/chart/bar");
+// require("echarts/lib/chart/line");
+// // 引入提示框和title组件
+// require("echarts/lib/component/title");
+// require("echarts/lib/component/dataZoom");
+// require("echarts/lib/component/toolbox");
+// require("echarts/lib/component/tooltip");
+// require("echarts/lib/component/legend");
 
 export default {
   data() {
     return {
       isLoading: false,
-      activeName: "1",
-      tableColumns: [
-        {
-          prop: "日期",
-          label: "时间"
-        },
-        {
-          prop: "确诊病例",
-          label: "确诊病例(人)"
-        },
-        {
-          prop: "疑似病例",
-          label: "疑似病例(人)"
-        },
-        {
-          prop: "重症病例",
-          label: "重症病例(人)"
-        },
-        {
-          prop: "死亡病例",
-          label: "死亡病例(人)"
-        },
-        {
-          prop: "治愈病例",
-          label: "治愈病例(人)"
-        }
-      ]
+      activeName: "1"
     };
+  },
+  components: {
+    VirusChart,
+    VirusMap
   },
   computed: {
     chartData() {
@@ -86,11 +86,23 @@ export default {
 
     virusSumData() {
       return virusSumData;
+    },
+
+    tableColumns() {
+      return tableColumns;
+    },
+
+    provinceData() {
+      return provinceData;
+    },
+
+    provinceColumns() {
+      return provinceColumns;
     }
   },
   watch: {
     activeName(v) {
-      if(v === '3') return;
+      if (v === "3") return;
       this.$nextTick(() => {
         this.$refs[`chart${v}`].$refs["chart"].echarts.resize();
       });

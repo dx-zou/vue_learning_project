@@ -5,6 +5,9 @@
     :border="showBorder"
     :header-row-style="{ height: '0.3rem' }"
     :header-cell-style="{ backgroundColor: '#fff', color: '#000' }"
+    :default-expand-all="expandAll"
+    :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+    row-key="id"
     tooltip-effect="light"
     v-loading="isLoading"
     element-loading-text="加载中..."
@@ -21,7 +24,7 @@
       width="55"
     ></el-table-column>
     <el-table-column
-      v-for="item in tableOptions"
+      v-for="item in tableColumns"
       :key="item.prop"
       :column-key="item.columnKey"
       :prop="item.prop"
@@ -82,7 +85,7 @@ export default {
   name: "CommonTable",
   props: {
     // 表头字段
-    tableOptions: {
+    tableColumns: {
       type: Array
     },
     // 表格数据
@@ -127,7 +130,12 @@ export default {
     // 多选
     showSelection: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    // 树形表格展开所有
+    expandAll: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

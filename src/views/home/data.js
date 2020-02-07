@@ -1,4 +1,3 @@
-
 export const virusChartData = {
   columns: ["日期", "确诊病例", "疑似病例", "重症病例", "死亡病例", "治愈病例"],
   rows: [
@@ -98,32 +97,134 @@ export const virusChartData = {
       死亡病例: 65,
       治愈病例: 262
     },
+    {
+      日期: "2020-02-05",
+      确诊病例: 3694,
+      疑似病例: 5328,
+      重症病例: 640,
+      死亡病例: 73,
+      治愈病例: 261
+    },
+    {
+      日期: "2020-02-06",
+      确诊病例: 3143,
+      疑似病例: 4833,
+      重症病例: 962,
+      死亡病例: 73,
+      治愈病例: 387
+    }
   ]
 };
 export const virusSumData = [
   {
     title: "确诊",
-    num: 24324,
+    num: 31214,
     color: "red"
   },
   {
     title: "疑似",
-    num: 23260,
+    num: 26359,
     color: "#000"
   },
   {
     title: "重症",
-    num: 3219,
+    num: 3859,
     color: "#000"
   },
   {
     title: "死亡",
-    num: 490,
+    num: 637,
     color: "#000"
   },
   {
     title: "治愈",
-    num: 892,
+    num: 1561,
     color: "#000"
+  }
+];
+
+export const tableColumns = [
+  {
+    prop: "日期",
+    label: "时间"
   },
-]
+  {
+    prop: "确诊病例",
+    label: "确诊病例(人)"
+  },
+  {
+    prop: "疑似病例",
+    label: "疑似病例(人)"
+  },
+  {
+    prop: "重症病例",
+    label: "重症病例(人)"
+  },
+  {
+    prop: "死亡病例",
+    label: "死亡病例(人)"
+  },
+  {
+    prop: "治愈病例",
+    label: "治愈病例(人)"
+  }
+];
+
+export const provinceColumns = [
+  {
+    prop: "name",
+    label: "省市"
+  },
+  {
+    prop: "total",
+    label: "确诊病例"
+  },
+  {
+    prop: "dead",
+    label: "死亡病例"
+  }
+];
+export const provinceData = [
+  {
+    id: 1,
+    name: "湖北",
+    total: 22112,
+    dead: 618,
+    children: [
+      {
+        id: 10,
+        name: "武汉",
+        total: 11618,
+        dead: 478
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "河南",
+    total: 914,
+    dead: 3,
+    children: [
+      {
+        id: 20,
+        name: "驻马店",
+        total: 106,
+        dead: 0
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: "北京",
+    total: 297,
+    dead: 1,
+    children: [
+      {
+        id: 30,
+        name: "朝阳区",
+        total: 51,
+        dead: 0
+      }
+    ]
+  }
+];

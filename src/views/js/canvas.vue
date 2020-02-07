@@ -12,7 +12,7 @@ export default {
     return {};
   },
   mounted() {
-    this.paintCanvas()
+    this.paintCanvas();
   },
   methods: {
     paintCanvas() {
@@ -81,7 +81,7 @@ canvas {
 }
 @keyframes rotate {
   from {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);

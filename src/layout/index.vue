@@ -5,7 +5,7 @@
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar v-if="sideLayout"/>
+    <side-bar v-if="sideLayout" />
     <transition
       enter-active-class="animated bounceInDown"
       leave-active-class="animated zoomOutRight"
@@ -38,7 +38,13 @@ export default {
   },
   mixins: [ResizeHandler],
   computed: {
-    ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox", "sideLayout"]),
+    ...mapGetters([
+      "sidebarCollapse",
+      "device",
+      "fixedHeader",
+      "showMsgBox",
+      "sideLayout"
+    ]),
     classObj() {
       return {
         "app-wrapper": true,
@@ -57,5 +63,3 @@ export default {
   }
 };
 </script>
-
-

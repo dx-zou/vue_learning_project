@@ -24,5 +24,5 @@ export default [
         meta: { breadcrumbs: ["blog", "edit-blog"] }
       }
     ]
-  },
-]
+  }
+];

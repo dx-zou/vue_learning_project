@@ -21,9 +21,9 @@ export default {
     this.makeIdentifyCode({ randomTypeLen: true });
   },
   methods: {
-   /*
-   * 随机生成一个0~9之间的数
-   * */
+    /*
+     * 随机生成一个0~9之间的数
+     * */
     randomNum() {
       return Math.floor(Math.random() * 10);
     },

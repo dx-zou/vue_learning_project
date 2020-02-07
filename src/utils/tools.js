@@ -13,13 +13,13 @@ const _unique = function(arr = [], prop) {
 };
 /**
  * @description 数组去重 Map的键不可重复
- * 
+ *
  * @param {*} arr
  * @param {*} key
  * @returns
  */
 function _uniqueArray(arr, key) {
-  return [...new Map(arr.map(item => [item[key], item])).values()]
+  return [...new Map(arr.map(item => [item[key], item])).values()];
 }
 /**
  * @description 判断数据类型方法
@@ -224,24 +224,24 @@ const _deep = function(obj, cache = []) {
  * @param {boolean} [leading=true]
  * @returns
  */
-function _debounce(fn, wait=1000, leading=true) {
+function _debounce(fn, wait = 1000, leading = true) {
   let timerId, result;
   return function(...args) {
     timerId && clearTimeout(timerId);
     if (leading) {
       if (!timerId) {
-        result = fn.apply(this, args)
+        result = fn.apply(this, args);
       }
       timerId = setTimeout(() => {
         timerId = null;
       }, wait);
     } else {
       timerId = setTimeout(() => {
-        result = fn.apply(this, args)
+        result = fn.apply(this, args);
       }, wait);
     }
     return result;
-  }
+  };
 }
 
 /**
@@ -253,30 +253,30 @@ function _debounce(fn, wait=1000, leading=true) {
  * @param {boolean} [trailing=true] false表示禁用停止触发的回调
  * @returns function
  */
-function _throttle(fn, wait=1000, leading=true, trailing=true) {
+function _throttle(fn, wait = 1000, leading = true, trailing = true) {
   let prev = 0;
   let timerId;
   const later = function(args) {
     timerId && clearTimeout(timerId);
     timerId = setTimeout(() => {
       timerId = null;
-      fn.apply(this, args)
+      fn.apply(this, args);
     }, wait);
-  }
+  };
   return function(...args) {
     let now = +new Date();
     // 立即执行一次
     if (!leading) {
-      return later(args)
+      return later(args);
     }
     if (now - prev > wait) {
-      fn.apply(this, args)
+      fn.apply(this, args);
       prev = now;
     }
     if (trailing) {
-      later(args)
+      later(args);
     }
-  }
+  };
 }
 Function.prototype._myCall = _call;
 Function.prototype._myApply = _myApply;
