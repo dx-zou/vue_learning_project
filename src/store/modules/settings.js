@@ -4,22 +4,23 @@ import {
   CHANGE_LOCALE
 } from "../mutation-types";
 import Cookies from "js-cookie";
+import {fixedHeader, showLogo, sidebarCollapse, sideLayout, darkTheme} from "@/config";
 
 const state = {
   // 固定顶部导航栏
-  fixedHeader: Cookies.get("fixHeader") ? !!+Cookies.get("fixHeader") : true,
+  fixedHeader: Cookies.get("fixHeader") ? !!+Cookies.get("fixHeader") : fixedHeader,
   // 显示logo
-  showLogo: Cookies.get("showLogo") ? !!+Cookies.get("showLogo") : true,
+  showLogo: Cookies.get("showLogo") ? !!+Cookies.get("showLogo") : showLogo,
   // 旋转logo
   rotateLogo: Cookies.get("rotateLogo") ? !!+Cookies.get("rotateLogo") : true,
   // sidebar 折叠
   sidebarCollapse: Cookies.get("sidebarCollapse")
     ? !!+Cookies.get("sidebarCollapse")
-    : false,
+    : sidebarCollapse,
   // 菜单布局方式 true: 侧边栏 false: 顶布局
-  sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : true,
+  sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : sideLayout,
   // 主题风格
-  darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : true,
+  darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : darkTheme,
   // 语言
   locale: "en-US"
   // locale: "zh-CN" ,// 语言
