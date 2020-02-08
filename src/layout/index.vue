@@ -8,7 +8,7 @@
     <side-bar v-if="sideLayout" />
     <transition
       enter-active-class="animated bounceInDown"
-      leave-active-class="animated zoomOutRight"
+      leave-acti  ve-class="animated zoomOutRight"
     >
       <message-box v-show="showMsgBox" />
     </transition>
@@ -16,7 +16,10 @@
       <app-header />
       <div class="app-main">
         <transition name="app">
-          <router-view />
+          <keep-alive v-if="$route.meta.keepAlive">
+            <router-view />
+          </keep-alive>
+          <router-view v-else />
         </transition>
       </div>
     </div>
