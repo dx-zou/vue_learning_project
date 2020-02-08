@@ -1,189 +1,109 @@
 <template>
   <div class="common-wrapper home-wrapper">
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>系统首页</span>
-      </div>
-      <el-button type="primary" @click.stop="guide">功能指引</el-button>
-    </el-card>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>Echarts</span>
-      </div>
-      <div ref="myChart" id="myChart" v-loading="isLoading"></div>
-    </el-card>
+    <div class="title">2020年新型冠状病毒肺炎疫情统计数据</div>
+    <el-row :gutter="12">
+      <el-col :span="24">
+        <el-card shadow="hover" class="preview">
+          <data-card
+            v-for="item in virusSumData"
+            :key="item.title"
+            :data="item.num"
+            :desc="item.title"
+            color="red"
+          />
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-tabs type="border-card" v-model="activeName">
+      <el-tab-pane label="疫情地图" name="1">
+        <el-row :gutter="12">
+          <el-col :span="10">
+            <virus-map ref="chart1" />
+          </el-col>
+          <el-col :span="14">
+            <common-table
+              :table-data="provinceData"
+              :table-columns="provinceColumns"
+              :is-loading="false"
+              :show-operate="false"
+              expand-all
+            />
+          </el-col>
+        </el-row>
+      </el-tab-pane>
+      <el-tab-pane label="全国范围统计图表" name="2">
+        <virus-chart :chart-data="chartData" ref="chart2" />
+      </el-tab-pane>
+      <el-tab-pane label="数据" name="3">
+        <common-table
+          :table-data="chartData.rows"
+          :table-columns="tableColumns"
+          :is-loading="false"
+          :show-operate="false"
+          table-height="550px"
+        />
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
 // 引入基本模板
-import { dateList, codeNum, timeNum } from "./data";
-import option from "./chartOption";
-let echarts = require("echarts/lib/echarts");
-// 引入柱状图组件
-require("echarts/lib/chart/bar");
-require("echarts/lib/chart/line");
-// 引入提示框和title组件
-require("echarts/lib/component/title");
-require("echarts/lib/component/dataZoom");
-require("echarts/lib/component/toolbox");
-require("echarts/lib/component/tooltip");
-require("echarts/lib/component/legend");
-import driver from "@/mixins/startDriver";
+import {
+  virusChartData,
+  virusSumData,
+  tableColumns,
+  provinceData,
+  provinceColumns
+} from "./data";
+// import VirusChart from "./VirusChart";
+// import VirusMap from "./VirusMap";
+const VirusMap = () => import("./VirusMap")
+const VirusChart = () => import("./VirusChart")
 export default {
   data() {
     return {
-      dateList,
-      codeNum,
-      timeNum,
-      isLoading: false
+      isLoading: false,
+      activeName: "1"
     };
   },
-  mixins: [driver],
-  mounted() {
-    this.$nextTick(() => {
-      this.initCharts();
-    });
+  components: {
+    VirusChart,
+    VirusMap
   },
-  methods: {
-    initCharts() {
-      // 基于准备好的dom，初始化echarts实例
-      let opts = {
-        width: "80%",
-        height: "60%"
-      };
-      let myChart = echarts.init(document.getElementById("myChart"), opts);
-      let option = {
-        title: {
-          text: "动态数据",
-          subtext: "纯属虚构"
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "cross",
-            label: {
-              backgroundColor: "#283b56"
-            }
-          }
-        },
-        legend: {
-          data: ["最新成交价", "预购队列"]
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            dataView: { readOnly: false },
-            restore: {},
-            saveAsImage: {}
-          }
-        },
-        dataZoom: {
-          show: false,
-          start: 0,
-          end: 100
-        },
-        xAxis: [
-          {
-            type: "category",
-            boundaryGap: true,
-            data: (function() {
-              var now = new Date();
-              var res = [];
-              var len = 10;
-              while (len--) {
-                res.unshift(now.toLocaleTimeString().replace(/^\D*/, ""));
-                now = new Date(now - 2000);
-              }
-              return res;
-            })()
-          },
-          {
-            type: "category",
-            boundaryGap: true,
-            data: (function() {
-              var res = [];
-              var len = 10;
-              while (len--) {
-                res.push(10 - len - 1);
-              }
-              return res;
-            })()
-          }
-        ],
-        yAxis: [
-          {
-            type: "value",
-            scale: true,
-            name: "价格",
-            max: 30,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          },
-          {
-            type: "value",
-            scale: true,
-            name: "预购量",
-            max: 1200,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-          }
-        ],
-        series: [
-          {
-            name: "预购队列",
-            type: "bar",
-            xAxisIndex: 1,
-            yAxisIndex: 1,
-            data: (function() {
-              var res = [];
-              var len = 10;
-              while (len--) {
-                res.push(Math.round(Math.random() * 1000));
-              }
-              return res;
-            })()
-          },
-          {
-            name: "最新成交价",
-            type: "line",
-            data: (function() {
-              var res = [];
-              var len = 0;
-              while (len < 10) {
-                res.push((Math.random() * 10 + 5).toFixed(1) - 0);
-                len++;
-              }
-              return res;
-            })()
-          }
-        ]
-      };
-      // 绘制图表
-      app.count = 11;
-      this.isLoading = false;
-      setInterval(function() {
-        let axisData = new Date().toLocaleTimeString().replace(/^\D*/, "");
+  computed: {
+    chartData() {
+      return virusChartData;
+    },
 
-        var data0 = option.series[0].data;
-        var data1 = option.series[1].data;
-        data0.shift();
-        data0.push(Math.round(Math.random() * 1000));
-        data1.shift();
-        data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+    virusSumData() {
+      return virusSumData;
+    },
 
-        option.xAxis[0].data.shift();
-        option.xAxis[0].data.push(axisData);
-        option.xAxis[1].data.shift();
-        option.xAxis[1].data.push(app.count++);
+    tableColumns() {
+      return tableColumns;
+    },
 
-        myChart.setOption(option);
-      }, 2100);
+    provinceData() {
+      return provinceData;
+    },
+
+    provinceColumns() {
+      return provinceColumns;
     }
-  }
+  },
+  watch: {
+    activeName(v) {
+      if (v === "3") return;
+      this.$nextTick(() => {
+        this.$refs[`chart${v}`].$refs["chart"].echarts.resize();
+      });
+    }
+  },
+  methods: {}
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .home-wrapper {
   width: 100%;
   box-sizing: border-box;
@@ -193,7 +113,33 @@ export default {
   }
   #myChart {
     width: 50%;
-    height: 30vh;
+    height: 60vh;
+  }
+  .title {
+    position: relative;
+    padding: 10px 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f77c31;
+    background: #fff;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #f77c31;
+    }
+  }
+  .preview {
+    /deep/ .el-card__body {
+      display: flex;
+      justify-content: space-around;
+    }
   }
 }
 </style>

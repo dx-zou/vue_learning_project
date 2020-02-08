@@ -13,11 +13,16 @@
   transition: margin-left .3s;
   overflow: hidden;
 }
-
-.app-main {
-  height: calc(100% - 0.6rem);
-  padding: 0.1rem;
+.scroll-header-main {
   overflow-y: auto;
+}
+.top-menu-layout {
+  .main-container {
+    margin-left: 0;
+  }
+}
+.app-main {
+  padding: 10px;
   overflow-x: hidden;
   box-sizing: border-box;
   background-color: #f0f3f4;
@@ -27,28 +32,17 @@
   background-color: #fff;
 }
 
-/* 顶部导航栏固定 */
-.fixed-header {
-  // position: fixed;
-  // width: calc(100% - 2.1rem);
-  // top: 0;
-  // right: 0;
-  z-index: 9;
-  transition: width 0.3s ease;
-}
-
-/* 菜单栏收起  */
-// .hideSidebar .fixed-header {
-//   // width: calc(100% - 0.6rem);
-// }
-
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  height: calc(100vh - 0.6rem);
-  // margin-top: 0.6rem;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 }
 
 /* 手机模式下 */
 .mobile .fixed-header {
   width: 100%;
+}
+
+.app-mian_wrapper {
+  height: 100%;
 }

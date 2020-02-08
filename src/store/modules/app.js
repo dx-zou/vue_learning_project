@@ -19,6 +19,7 @@ const mutations = {
   [CHANGE_ACTIVEINDEX]: (state, playload) => {
     state.activeIndex = playload;
   },
+  // 消息盒子
   [TOGGLE_MESSAGEBOX]: state => {
     state.showMsgBox = !state.showMsgBox;
   }

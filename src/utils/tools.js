@@ -11,7 +11,16 @@ const _unique = function(arr = [], prop) {
     return prev;
   }, []);
 };
-
+/**
+ * @description 数组去重 Map的键不可重复
+ *
+ * @param {*} arr
+ * @param {*} key
+ * @returns
+ */
+function _uniqueArray(arr, key) {
+  return [...new Map(arr.map(item => [item[key], item])).values()];
+}
 /**
  * @description 判断数据类型方法
  *
@@ -51,7 +60,25 @@ const _myCall = function(context) {
   // 返回结果
   return result;
 };
-
+/**
+ * @description 模拟call 第二版
+ *
+ * @param {*} context
+ * @param {*} args
+ * @returns
+ */
+const _call = function(context, ...args) {
+  if (context === null || context === undefined) {
+    context = window;
+  } else {
+    context = Object(context);
+  }
+  const key = Symbol();
+  context[key] = this;
+  const result = context[key](...args);
+  delete context[key];
+  return result;
+};
 /**
  * @description 模拟apply函数
  *
@@ -59,8 +86,13 @@ const _myCall = function(context) {
  * @param {Array} arr
  */
 const _myApply = function(context, args = []) {
-  let ctx = Object(context) || window;
-  ctx.fn = this;
+  if (context === null || context === undefined) {
+    context = window;
+  } else {
+    context = Object(context);
+  }
+  const key = Symbol();
+  ctx[key] = this;
   const type = Array.isArray(args);
   // 判断参数是否是数组类型
   if (!type) {
@@ -68,8 +100,8 @@ const _myApply = function(context, args = []) {
       `second argument to Function.prototype._myApply must be an array`
     );
   }
-  const result = ctx.fn(...args);
-  delete ctx.fn;
+  const result = ctx[key](...args);
+  delete ctx[key];
   return result;
 };
 
@@ -100,6 +132,24 @@ const _myBind = function(context) {
   return bindFn;
 };
 
+/**
+ * @description 模拟bind第二版
+ *
+ * @param {*} context
+ * @returns function
+ */
+function _bind(context, ...args1) {
+  const _this = this;
+  const bindFn = function(...args2) {
+    const ctx =
+      this instanceof bindFn ? this : (Object(context), [...args1, ...args2]);
+    _this.apply(ctx);
+  };
+  if (this.prototype) {
+    bindFn.prototype = Object.create(this.prototype);
+  }
+  return bindFn;
+}
 const _forEach = function(array, iteratee) {
   let index = -1;
   const length = array.length;
@@ -136,11 +186,106 @@ const _deepClone = function(target, map = new WeakMap()) {
     return target;
   }
 };
-Function.prototype._myCall = _myCall;
+
+/**
+ * @description 深拷贝
+ *
+ * @param {*} obj
+ * @param {*} [cache=[]]
+ * @returns
+ */
+const _deep = function(obj, cache = []) {
+  // just return if obj is immutable value
+  if (obj === null || typeof obj !== "object") {
+    return obj;
+  }
+  // if obj is hit, it is in circular structure
+  const hit = cache.filter(c => c.original === obj)[0];
+  if (hit) {
+    return hit.copy;
+  }
+  const copy = Array.isArray(obj) ? [] : {};
+  // put the copy into cache at first
+  // because we want to refer it in recursive deepCopy
+  cache.push({
+    original: obj,
+    copy
+  });
+  Object.keys(obj).forEach(key => (copy[key] = deepCopy(obj[key], cache)));
+
+  return copy;
+};
+
+/**
+ * @description 防抖函数
+ *
+ * @param {function} fn
+ * @param {number} [wait=300]
+ * @param {boolean} [leading=true]
+ * @returns
+ */
+function _debounce(fn, wait = 1000, leading = true) {
+  let timerId, result;
+  return function(...args) {
+    timerId && clearTimeout(timerId);
+    if (leading) {
+      if (!timerId) {
+        result = fn.apply(this, args);
+      }
+      timerId = setTimeout(() => {
+        timerId = null;
+      }, wait);
+    } else {
+      timerId = setTimeout(() => {
+        result = fn.apply(this, args);
+      }, wait);
+    }
+    return result;
+  };
+}
+
+/**
+ * @description 节流函数
+ *
+ * @param {function} fn
+ * @param {number} [wait=1000]
+ * @param {boolean} [leading=true] false表示禁用第一次执行
+ * @param {boolean} [trailing=true] false表示禁用停止触发的回调
+ * @returns function
+ */
+function _throttle(fn, wait = 1000, leading = true, trailing = true) {
+  let prev = 0;
+  let timerId;
+  const later = function(args) {
+    timerId && clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      timerId = null;
+      fn.apply(this, args);
+    }, wait);
+  };
+  return function(...args) {
+    let now = +new Date();
+    // 立即执行一次
+    if (!leading) {
+      return later(args);
+    }
+    if (now - prev > wait) {
+      fn.apply(this, args);
+      prev = now;
+    }
+    if (trailing) {
+      later(args);
+    }
+  };
+}
+Function.prototype._myCall = _call;
 Function.prototype._myApply = _myApply;
-Function.prototype._myBind = _myBind;
+Function.prototype._myBind = _bind;
 export default {
   _unique,
+  _uniqueArray,
   _typeof,
-  _deepClone
+  _deepClone,
+  _debounce,
+  _throttle
 };

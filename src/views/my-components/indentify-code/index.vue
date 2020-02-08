@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @click="refreshCode">
+  <div @click="refreshCode">
     <s-identify :identifyCode="identifyCode"></s-identify>
   </div>
 </template>
@@ -7,7 +7,6 @@
 <script>
 import SIdentify from "@/components/IndentifyCode";
 export default {
-  name: "App",
   data() {
     return {
       makeCode: "",
@@ -21,9 +20,9 @@ export default {
     this.makeIdentifyCode({ randomTypeLen: true });
   },
   methods: {
-   /*
-   * 随机生成一个0~9之间的数
-   * */
+    /*
+     * 随机生成一个0~9之间的数
+     * */
     randomNum() {
       return Math.floor(Math.random() * 10);
     },

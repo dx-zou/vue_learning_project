@@ -5,12 +5,16 @@ export default {
   showLogo: state => state.settings.showLogo,
   // 是否旋转logo
   rotateLogo: state => state.settings.rotateLogo,
-  // 设备
+  // 菜单布局
+  sideLayout: state => state.settings.sideLayout,
+  // 固定头部
+  fixedHeader: state => state.settings.fixedHeader,
+  // 暗黑主题
+  darkTheme: state => state.settings.darkTheme,
+  // 设备类型
   device: state => state.app.device,
   // 活动的菜单项的index
   activeIndex: state => state.app.activeIndex,
-  // 固定头部
-  fixedHeader: state => state.settings.fixedHeader,
   // 显示隐藏消息框
   showMsgBox: state => state.app.showMsgBox,
   // 用户名称

@@ -1,3 +1,3 @@
 export default {
-  "userCenter": "个人中心"
-}
+  userCenter: "个人中心"
+};

@@ -1,5 +1,8 @@
 <template>
-  <div class="sidebar-logo-container" :class="{ collapse: collapse }">
+  <div
+    class="sidebar-logo-container"
+    :class="{ collapse: collapse, 'light-theme': !$store.getters.darkTheme }"
+  >
     <transition name="sidebarLogoFade">
       <router-link
         v-if="collapse"
@@ -23,7 +26,7 @@ export default {
   props: {
     collapse: {
       type: Boolean,
-      required: true
+      default: false
     }
   },
   data() {
@@ -46,10 +49,9 @@ export default {
 
 .sidebar-logo-container {
   position: relative;
-  width: 100%;
   height: 0.6rem;
   line-height: 0.6rem;
-  background: #1e2128;
+  background: $menuBg;
   text-align: center;
   overflow: hidden;
 
@@ -73,10 +75,10 @@ export default {
 
     & .sidebar-title {
       display: inline-block;
-      color: #fff;
       font-weight: 700;
-      line-height: 0.5rem;
-      font-size: 0.14rem;
+      line-height: 50px;
+      font-size: 14px;
+      color: #fff;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }
@@ -86,6 +88,12 @@ export default {
     text-align: left;
     .sidebar-logo {
       margin-right: 0;
+    }
+  }
+  &.light-theme {
+    background: #fff;
+    .sidebar-title {
+      color: #000;
     }
   }
   @keyframes logo-rotate {

@@ -6,11 +6,9 @@
         {{ item.title }}
       </router-link>
     </el-menu-item>
-
     <el-submenu v-else ref="subMenu" :index="item.index">
       <template slot="title">
         <svg-icon :icon-class="item.svg" />
-        <!--        <i :class="['iconfont', item.icon]"></i>-->
         <span slot="title">{{ item.title }}</span>
       </template>
       <sidebar-item

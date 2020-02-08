@@ -1,22 +1,25 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div :class="classObj">
     <div
       v-if="device === 'mobile' && !sidebarCollapse"
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar></side-bar>
+    <side-bar v-if="sideLayout" />
     <transition
       enter-active-class="animated bounceInDown"
-      leave-active-class="animated zoomOutRight"
+      leave-acti  ve-class="animated zoomOutRight"
     >
-      <message-box v-show="showMsgBox"></message-box>
+      <message-box v-show="showMsgBox" />
     </transition>
-    <div class="main-container">
-      <app-header :class="{ 'fixed-header': fixedHeader }"></app-header>
+    <div :class="['main-container', !fixedHeader && 'scroll-header-main']">
+      <app-header />
       <div class="app-main">
         <transition name="app">
-          <router-view />
+          <keep-alive v-if="$route.meta.keepAlive">
+            <router-view />
+          </keep-alive>
+          <router-view v-else />
         </transition>
       </div>
     </div>
@@ -26,14 +29,11 @@
 <script>
 import AppHeader from "./AppHeader/AppHeader";
 import SideBar from "./Sidebar/Sidebar";
-import ResizeHandler from "./mixin/ResizeHandler";
+import ResizeHandler from "@/mixins/ResizeHandler";
 import MessageBox from "@/components/MessageBox";
 import { mapGetters } from "vuex";
 export default {
-  name: "layout",
-  data() {
-    return {};
-  },
+  name: "Layout",
   components: {
     AppHeader,
     SideBar,
@@ -41,22 +41,20 @@ export default {
   },
   mixins: [ResizeHandler],
   computed: {
-    ...mapGetters(["sidebarCollapse", "device", "fixedHeader", "showMsgBox"]),
-    // // sidebar的折叠状态
-    // sidebarCollapse() {
-    //   return this.$store.getters.sidebarCollapse;
-    // },
-    // // 设备值
-    // device() {
-    //   return this.$store.getters.device;
-    // },
-    // fixedHeader() {
-    //   return this.$store.getters.fixedHeader;
-    // },
+    ...mapGetters([
+      "sidebarCollapse",
+      "device",
+      "showMsgBox",
+      "fixedHeader",
+      "sideLayout",
+      "darkTheme"
+    ]),
     classObj() {
       return {
-        hideSidebar: this.sidebarCollapse,
-        openSidebar: !this.sidebarCollapse,
+        "app-wrapper": true,
+        hideSidebar: this.sidebarCollapse && this.sideLayout,
+        "app-light-theme": !this.darkTheme,
+        "top-menu-layout": !this.sideLayout,
         mobile: this.device === "mobile"
       };
     }

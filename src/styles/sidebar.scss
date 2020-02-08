@@ -38,17 +38,17 @@
 
     .el-submenu__title,
     .el-menu-item {
-      height: 0.56rem;
-      line-height: 0.56rem;
-      font-size: 0.14rem;
+      height: 56px;
+      line-height: 56px;
+      font-size: 14px;
 
       i {
-        margin-right: 0.1rem;
-        font-size: 0.14rem;
+        margin-right: 10px;
+        font-size: 14px;
       }
 
       .el-submenu__icon-arrow {
-        margin-right: 0.2rem;
+        margin-right: 20px;
       }
     }
 
@@ -63,7 +63,7 @@
 
     &.has-logo {
       .el-scrollbar {
-        height: calc(100% - 0.6rem);
+        height: calc(100% - 60px);
       }
     }
 
@@ -78,7 +78,7 @@
     }
 
     .svg-icon {
-      margin-right: 0.16rem;
+      margin-right: 16px;
     }
 
     .el-menu {
@@ -87,21 +87,12 @@
       width: 100% !important;
     }
 
-    // menu hover
-    .submenu-title-noDropdown,
-    .el-submenu__title {
-      &:hover {
-        background-color: $menuHover !important;
-      }
-    }
-
     .el-submenu__icon-arrow {
-      right: 0.2rem;
-      margin-top: -0.07rem;
+      right: 20px;
+      margin-top: -5px;
     }
 
     .is-active>.el-submenu__title {
-      color: $subMenuActiveText !important;
       color: $menuActiveText !important;
 
       i {
@@ -109,24 +100,27 @@
       }
     }
 
-    & .nest-menu .el-submenu>.el-submenu__title,
-    & .el-submenu .el-menu-item {
-      min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
+    .el-submenu {
+      .el-menu-item, .el-submenu__title {
+        min-width: $sideBarWidth !important;
+        background-color: $subMenuBg !important;
+    
+        &:hover {
+          background-color: $subMenuHover !important;
+        }
 
-      &:hover {
-        background-color: $subMenuHover !important;
       }
     }
   }
 
+  // 侧边栏收起时
   .hideSidebar {
     .sidebar-container {
-      width: 0.6rem !important;
+      width: 60px !important;
     }
 
     .main-container {
-      margin-left: 0.6rem;
+      margin-left: 60px;
     }
 
     .submenu-title-noDropdown {
@@ -137,7 +131,7 @@
         padding: 0 !important;
 
         .svg-icon {
-          margin-left: 0.2rem;
+          margin-left: 20px;
         }
       }
     }
@@ -146,9 +140,9 @@
       overflow: hidden;
 
       &>.el-submenu__title {
-        width: 0.56rem;
-        height: 0.56rem;
-        padding: 0 0.2rem !important;
+        width: 56px;
+        height: 56px;
+        padding: 0 20px !important;
 
         //.svg-icon {
         //  margin-left: 0.2rem;
@@ -186,7 +180,6 @@
     min-width: $sideBarWidth !important;
   }
 
-  // mobile responsive
   .mobile {
     .main-container {
       margin-left: 0;
@@ -225,28 +218,33 @@
   }
 }
 
-// when menu collapsed
-.el-menu--vertical {
+.el-menu--vertical, .el-menu--horizontal {
   &>.el-menu {
     .svg-icon {
-      margin-right: 0.16rem;
+      margin-right: 16px;
     }
-  }
-
-  .nest-menu .el-submenu>.el-submenu__title,
-  .el-menu-item {
-    &:hover {
-      // you can use $subMenuHover
-      background-color: $menuHover !important;
-    }
-
     a {
       display: inline-block;
       width: 100%;
     }
   }
 
-  // the scroll bar appears when the subMenu is too long
+  .el-submenu>.el-submenu__title,
+  .el-menu-item {
+    &:hover {
+      background-color: $lightSubMenuHover !important;
+      color: $menuActiveText !important;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      &:hover {
+        color: $menuActiveText !important;
+      }
+    }
+  }
+
   >.el-menu--popup {
     max-height: 100vh;
     // overflow-y: auto;
