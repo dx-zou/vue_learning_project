@@ -1,6 +1,6 @@
 import login from "@/views/login/login";
-import layout from "../layout";
-let routerList = [
+
+let constant_routes = [
   {
     path: "/login",
     name: "login",
@@ -9,25 +9,14 @@ let routerList = [
   {
     path: "/",
     redirect: "/dashboard"
-  },
-  // 首页
-  {
-    path: "/dashboard",
-    component: layout,
-    children: [
-      {
-        path: "",
-        name: "dashboard",
-        component: () => import("@/views/home/home"),
-        meta: {}
-      }
-    ]
   }
 ];
+
 const files = require.context("./modules", false, /\.js$/);
 files.keys().forEach(key => {
-  routerList = routerList.concat(files(key).default);
+  constant_routes = constant_routes.concat(files(key).default);
 });
+
 const NotFound = [
   {
     path: "*",
@@ -35,4 +24,4 @@ const NotFound = [
   }
 ];
 
-export default routerList.concat(NotFound);
+export default constant_routes.concat(NotFound);

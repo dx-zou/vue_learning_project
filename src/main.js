@@ -22,8 +22,8 @@ import i18n from "@/plugins/i18n";
 import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
 import "vue-gn-components/lib/style/index.css";
 // import "./plugins/vue-socket";
-
 import "./permission";
+
 NProgress.configure({
   showSpinner: false
 });

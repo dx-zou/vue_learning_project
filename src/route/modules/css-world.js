@@ -1,4 +1,5 @@
-import layout from "@/layout";
+const layout = () => import("@/layout");
+
 export default [
   {
     path: "/css-world",
@@ -9,7 +10,7 @@ export default [
       {
         path: "color",
         name: "color",
-        component: () => import("@/views/css-world/css-color/css-color"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/css-color/css-color"),
         meta: {
           breadcrumbs: ["css-world", "color"]
         }
@@ -17,7 +18,7 @@ export default [
       {
         path: "skill",
         name: "skill",
-        component: () => import("@/views/css-world/css-skill/css-skill"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/css-skill/css-skill"),
         meta: {
           breadcrumbs: ["css-world", "skill"]
         }
@@ -25,7 +26,7 @@ export default [
       {
         path: "skill-sticky",
         name: "sticky",
-        component: () => import("@/views/css-world/css-skill/sticky.vue"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/css-skill/sticky.vue"),
         meta: {
           breadcrumbs: ["css-world", "css-sticky"]
         }
@@ -33,7 +34,7 @@ export default [
       {
         path: "waterfall-flow",
         name: "waterfall",
-        component: () => import("@/views/css-world/waterfall-flow"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/waterfall-flow"),
         meta: {
           breadcrumbs: ["css-world", "waterfall"]
         }
@@ -41,7 +42,7 @@ export default [
       {
         path: "skill-2",
         name: "skill-2",
-        component: () => import("@/views/css-world/skill-2"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/skill-2"),
         meta: {
           breadcrumbs: ["css-world", "skill-2"]
         }
@@ -49,7 +50,7 @@ export default [
       {
         path: "snow",
         name: "snow",
-        component: () => import("@/views/css-world/snow"),
+        component: () => import(/* webpackChunkName: "css-world" */ "@/views/css-world/snow"),
         meta: {
           breadcrumbs: ["css-world", "snow"]
         }

@@ -1,4 +1,5 @@
-import layout from "@/layout";
+const layout = () => import("@/layout");
+
 export default [
   // 第三方插件
   {
@@ -9,19 +10,19 @@ export default [
       {
         path: "editor",
         name: "editor",
-        component: () => import("@/views/third-party/quill-editor"),
+        component: () => import(/* webpackChunkName: "third-party-group" */ "@/views/third-party/quill-editor"),
         meta: { breadcrumbs: ["third-party", "editor"] }
       },
       {
         path: "cropper",
         name: "cropper",
-        component: () => import("@/views/third-party/cropper"),
+        component: () => import(/* webpackChunkName: "third-party-group" */ "@/views/third-party/cropper"),
         meta: { breadcrumbs: ["third-party", "cropper"] }
       },
       {
         path: "chat",
         name: "chat",
-        component: () => import("@/views/third-party/chat"),
+        component: () => import(/* webpackChunkName: "third-party-group" */ "@/views/third-party/chat"),
         meta: { breadcrumbs: ["third-party", "chat"] }
       }
     ]

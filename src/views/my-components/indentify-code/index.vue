@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @click="refreshCode">
+  <div @click="refreshCode">
     <s-identify :identifyCode="identifyCode"></s-identify>
   </div>
 </template>
@@ -7,7 +7,6 @@
 <script>
 import SIdentify from "@/components/IndentifyCode";
 export default {
-  name: "App",
   data() {
     return {
       makeCode: "",

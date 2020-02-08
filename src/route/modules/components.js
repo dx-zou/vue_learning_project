@@ -1,4 +1,5 @@
-import layout from "@/layout";
+const layout = () => import("@/layout");
+
 export default [
   // 我的组件
   {
@@ -10,7 +11,7 @@ export default [
       {
         path: "date-select",
         name: "date",
-        component: () => import("@/views/my-components/dateSelect"),
+        component: () => import(/* webpackChunkName: "components-group" */ "@/views/my-components/dateSelect"),
         meta: {
           breadcrumbs: ["components", "date"]
         }
@@ -18,7 +19,7 @@ export default [
       {
         path: "indentify-code",
         name: "indentifyCode",
-        component: () => import("@/views/my-components/indentify-code"),
+        component: () => import(/* webpackChunkName: "components-group" */ "@/views/my-components/indentify-code"),
         meta: {
           breadcrumbs: ["components", "indentifyCode"]
         }

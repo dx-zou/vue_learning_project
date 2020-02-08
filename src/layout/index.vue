@@ -26,7 +26,7 @@
 <script>
 import AppHeader from "./AppHeader/AppHeader";
 import SideBar from "./Sidebar/Sidebar";
-import ResizeHandler from "./mixin/ResizeHandler";
+import ResizeHandler from "@/mixins/ResizeHandler";
 import MessageBox from "@/components/MessageBox";
 import { mapGetters } from "vuex";
 export default {

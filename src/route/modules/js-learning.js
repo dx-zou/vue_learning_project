@@ -1,4 +1,5 @@
-import layout from "@/layout";
+const layout = () => import("@/layout");
+
 export default [
   // js-learning
   {
@@ -18,7 +19,7 @@ export default [
       {
         path: "regExp",
         name: "regExp",
-        component: () => import("@/views/js/regExp"),
+        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/regExp"),
         meta: {
           breadcrumbs: ["js-learning", "regExp"]
         }
@@ -26,7 +27,7 @@ export default [
       {
         path: "canvas",
         name: "canvas",
-        component: () => import("@/views/js/canvas"),
+        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/canvas"),
         meta: {
           breadcrumbs: ["js-learning", "canvas"]
         }
@@ -34,7 +35,7 @@ export default [
       {
         path: "upload",
         name: "upload",
-        component: () => import("@/views/js/upload"),
+        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/upload"),
         meta: {
           breadcrumbs: ["js-learning", "upload"]
         }

@@ -1,4 +1,4 @@
-import layout from "@/layout";
+const layout = () => import("@/layout");
 export default [
   {
     path: "/blog",
@@ -8,19 +8,19 @@ export default [
       {
         path: "list",
         name: "blog-node",
-        component: () => import("@/views/blog"),
+        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog"),
         meta: { breadcrumbs: ["blog", "blog-node"] }
       },
       {
         path: "add-blog",
         name: "addBlog",
-        component: () => import("@/views/blog/add"),
+        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
         meta: { breadcrumbs: ["blog", "add-blog"] }
       },
       {
         path: "edit-blog/:id",
         name: "editBlog",
-        component: () => import("@/views/blog/add"),
+        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
         meta: { breadcrumbs: ["blog", "edit-blog"] }
       }
     ]

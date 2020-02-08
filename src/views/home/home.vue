@@ -56,18 +56,10 @@ import {
   provinceData,
   provinceColumns
 } from "./data";
-import VirusChart from "./VirusChart";
-import VirusMap from "./VirusMap";
-// 引入柱状图组件
-// require("echarts/lib/chart/bar");
-// require("echarts/lib/chart/line");
-// // 引入提示框和title组件
-// require("echarts/lib/component/title");
-// require("echarts/lib/component/dataZoom");
-// require("echarts/lib/component/toolbox");
-// require("echarts/lib/component/tooltip");
-// require("echarts/lib/component/legend");
-
+// import VirusChart from "./VirusChart";
+// import VirusMap from "./VirusMap";
+const VirusMap = () => import("./VirusMap")
+const VirusChart = () => import("./VirusChart")
 export default {
   data() {
     return {
