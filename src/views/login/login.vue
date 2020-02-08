@@ -56,6 +56,7 @@ export default {
           background: "rgba(0, 0, 0, 0.7)"
         });
         if(username === "admin" && password === "123") {
+          sessionStorage.setItem("userToken", "isLogin")
           this.$router.push("/dashboard"); 
         }
         loading.close();

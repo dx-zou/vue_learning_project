@@ -38,21 +38,21 @@ router.beforeEach((to, from, next) => {
   NProgress.start();
   document.title = getPageTitle(to.name);
   const hasToken = sessionStorage.getItem("userToken");
-  const username = sessionStorage.getItem("username");
-  // if (hasToken) {
-  //   // 如果刷新了页面就重新获取菜单列表
-  //   if (!store.getters.menuList.length) {
-  //     store.dispatch("user/getUserMenu", username).then(() => {
-  //       permissionControl(to, next);
-  //     });
-  //   } else {
-  //     permissionControl(to, next);
-  //   }
-  // } else {
-  //   to.path === "/login" ? next() : next("/login");
-  //   NProgress.done();
-  // }
-  next()
+  // const username = sessionStorage.getItem("username");
+  if (hasToken) {
+    // 如果刷新了页面就重新获取菜单列表
+    // if (!store.getters.menuList.length) {
+    //   store.dispatch("user/getUserMenu", username).then(() => {
+    //     permissionControl(to, next);
+    //   });
+    // } else {
+    //   permissionControl(to, next);
+    // }
+    to.path === "/login" ? next("/dashboard") : next();
+  } else {
+    to.path === "/login" ? next() : next("/login");
+  }
+  NProgress.done();
 });
 router.afterEach(() => {
   NProgress.done();
