@@ -81,7 +81,7 @@ const MENU = [
     index: "3",
     title: "js",
     icon: "icon-css",
-    svg: "css",
+    svg: "js",
     children: [
       {
         id: 31,
@@ -153,7 +153,7 @@ const MENU = [
     index: "6",
     title: "blog",
     icon: "icon-plugin",
-    svg: "plugin",
+    svg: "blog",
     children: [
       {
         id: 61,

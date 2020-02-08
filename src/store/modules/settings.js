@@ -4,11 +4,20 @@ import {
   CHANGE_LOCALE
 } from "../mutation-types";
 import Cookies from "js-cookie";
-import {fixedHeader, showLogo, sidebarCollapse, sideLayout, darkTheme} from "@/config";
+import settings from "@/config";
+const {
+  fixedHeader,
+  showLogo,
+  sidebarCollapse,
+  sideLayout,
+  darkTheme
+} = settings;
 
 const state = {
   // 固定顶部导航栏
-  fixedHeader: Cookies.get("fixHeader") ? !!+Cookies.get("fixHeader") : fixedHeader,
+  fixedHeader: Cookies.get("fixHeader")
+    ? !!+Cookies.get("fixHeader")
+    : fixedHeader,
   // 显示logo
   showLogo: Cookies.get("showLogo") ? !!+Cookies.get("showLogo") : showLogo,
   // 旋转logo
@@ -18,7 +27,9 @@ const state = {
     ? !!+Cookies.get("sidebarCollapse")
     : sidebarCollapse,
   // 菜单布局方式 true: 侧边栏 false: 顶布局
-  sideLayout: Cookies.get("sideLayout") ? !!+Cookies.get("sideLayout") : sideLayout,
+  sideLayout: Cookies.get("sideLayout")
+    ? !!+Cookies.get("sideLayout")
+    : sideLayout,
   // 主题风格
   darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : darkTheme,
   // 语言

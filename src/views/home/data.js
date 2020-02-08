@@ -112,33 +112,36 @@ export const virusChartData = {
       重症病例: 962,
       死亡病例: 73,
       治愈病例: 387
+    },
+    {
+      日期: "2020-02-07",
+      确诊病例: 3399,
+      疑似病例: 4214,
+      重症病例: 1280,
+      死亡病例: 86,
+      治愈病例: 510
     }
   ]
 };
 export const virusSumData = [
   {
     title: "确诊",
-    num: 31214,
+    num: 34546,
     color: "red"
   },
   {
     title: "疑似",
-    num: 26359,
-    color: "#000"
-  },
-  {
-    title: "重症",
-    num: 3859,
+    num: 27657,
     color: "#000"
   },
   {
     title: "死亡",
-    num: 637,
+    num: 722,
     color: "#000"
   },
   {
     title: "治愈",
-    num: 1561,
+    num: 2050,
     color: "#000"
   }
 ];
@@ -188,27 +191,27 @@ export const provinceData = [
   {
     id: 1,
     name: "湖北",
-    total: 22112,
-    dead: 618,
+    total: 24953,
+    dead: 699,
     children: [
       {
         id: 10,
         name: "武汉",
-        total: 11618,
-        dead: 478
+        total: 13603,
+        dead: 545
       }
     ]
   },
   {
     id: 2,
     name: "河南",
-    total: 914,
-    dead: 3,
+    total: 981,
+    dead: 4,
     children: [
       {
         id: 20,
         name: "驻马店",
-        total: 106,
+        total: 113,
         dead: 0
       }
     ]
