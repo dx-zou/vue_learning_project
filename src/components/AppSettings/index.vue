@@ -56,8 +56,17 @@
         <el-switch
           :value="showLogo"
           active-color="#13ce66"
-          inactive-color="#ff4949"
+          inactive-color="#dcdfe6"
           @change="handleSettingChange($event, 'showLogo')"
+        >
+        </el-switch>
+      </el-form-item>
+      <el-form-item label="固定头部">
+        <el-switch
+          :value="fixedHeader"
+          active-color="#13ce66"
+          inactive-color="#dcdfe6"
+          @change="handleSettingChange($event, 'fixedHeader')"
         >
         </el-switch>
       </el-form-item>
@@ -78,7 +87,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["sideLayout", "showLogo", "darkTheme"])
+    ...mapGetters(["sideLayout", "showLogo", "darkTheme", "fixedHeader"])
   },
   methods: {
     handleClose() {

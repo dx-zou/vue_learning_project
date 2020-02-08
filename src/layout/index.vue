@@ -12,8 +12,8 @@
     >
       <message-box v-show="showMsgBox" />
     </transition>
-    <div class="main-container">
-      <app-header :class="{ 'fixed-header': fixedHeader }" />
+    <div :class="['main-container', !fixedHeader && 'scroll-header-main']">
+      <app-header />
       <div class="app-main">
         <transition name="app">
           <router-view />
@@ -41,8 +41,8 @@ export default {
     ...mapGetters([
       "sidebarCollapse",
       "device",
-      "fixedHeader",
       "showMsgBox",
+      "fixedHeader",
       "sideLayout",
       "darkTheme"
     ]),
