@@ -2,7 +2,7 @@
   <el-drawer
     title="系统设置"
     direction="rtl"
-    size="16%"
+    size="18%"
     :visible.sync="showDrawer"
     :before-close="handleClose"
     @closeDrawe="handleClose"
@@ -50,6 +50,8 @@
           </el-radio>
         </el-radio-group>
       </el-form-item>
+    </el-form>
+    <el-form label-width="130px" label-position="left">
       <el-form-item label="显示Logo">
         <el-switch
           :value="showLogo"

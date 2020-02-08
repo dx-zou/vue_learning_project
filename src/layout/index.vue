@@ -43,13 +43,14 @@ export default {
       "device",
       "fixedHeader",
       "showMsgBox",
-      "sideLayout"
+      "sideLayout",
+      "darkTheme"
     ]),
     classObj() {
       return {
         "app-wrapper": true,
         hideSidebar: this.sidebarCollapse && this.sideLayout,
-        openSidebar: this.sidebarCollapse,
+        "app-light-theme": !this.darkTheme,
         "top-menu-layout": !this.sideLayout,
         mobile: this.device === "mobile"
       };

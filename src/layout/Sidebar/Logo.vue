@@ -89,11 +89,11 @@ export default {
     .sidebar-logo {
       margin-right: 0;
     }
-    &.light-theme {
-      background: #fff;
-      .sidebar-title {
-        color: #000;
-      }
+  }
+  &.light-theme {
+    background: #fff;
+    .sidebar-title {
+      color: #000;
     }
   }
   @keyframes logo-rotate {

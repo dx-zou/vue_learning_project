@@ -23,7 +23,7 @@ import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
 import "vue-gn-components/lib/style/index.css";
 // import "./plugins/vue-socket";
 
-// import "./permission";
+import "./permission";
 NProgress.configure({
   showSpinner: false
 });

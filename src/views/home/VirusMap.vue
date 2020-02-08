@@ -5,7 +5,6 @@
     :legend-visible="false"
     :settings="settings"
     :extend="extendOptions"
-    log
     ref="chart"
   ></ve-map>
 </template>

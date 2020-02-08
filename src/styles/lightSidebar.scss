@@ -1,0 +1,19 @@
+#app {
+  .app-light-theme {
+    .sidebar-container, .app-header_l {
+      background-color: $lightMenuBg;
+      
+      .el-submenu {
+        .el-menu-item, .el-submenu__title {
+          background-color: $lightSubMenuBg !important;
+  
+          &:hover {
+            background-color: $lightSubMenuHover !important;
+          }
+        }
+      }
+      
+    }
+  }
+  
+}

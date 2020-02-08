@@ -46,7 +46,8 @@ export default {
     // debounce login
     debounceLogin: _.debounce(
       function() {
-        if (!this.userData.username || !this.userData.password)
+        const { username, password } = this.userData;
+        if (!username || !password)
           return this.$toast("warning", "请输入用户名和密码");
         const loading = this.$loading({
           lock: true,
@@ -54,15 +55,19 @@ export default {
           spinner: "el-icon-loading",
           background: "rgba(0, 0, 0, 0.7)"
         });
-        this.$store.dispatch("user/_login", this.userData).then(res => {
-          loading.close();
-          if (res.code === 1) {
-            this.$toast("success", "登录成功");
-            this.$router.push("/dashboard");
-          } else {
-            this.$toast("error", res.msg);
-          }
-        });
+        if(username === "admin" && password === "123") {
+          this.$router.push("/dashboard"); 
+        }
+        loading.close();
+        // this.$store.dispatch("user/_login", this.userData).then(res => {
+        //   loading.close();
+        //   if (res.code === 1) {
+        //     this.$toast("success", "登录成功");
+        //     this.$router.push("/dashboard");
+        //   } else {
+        //     this.$toast("error", res.msg);
+        //   }
+        // });
       },
       1000,
       { leading: true, trailing: true }

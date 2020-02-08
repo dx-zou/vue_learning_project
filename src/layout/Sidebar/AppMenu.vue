@@ -3,10 +3,10 @@
     :class="!sideLayout && 'menu-container'"
     :mode="sideLayout ? 'vertical' : 'horizontal'"
     :collapse="sideLayout && sidebarCollapse"
-    :background-color="variables.menuBg"
-    :text-color="variables.menuText"
-    :default-active="activeIndex"
+    :background-color="menuBgColor"
+    :text-color="menuTextColor"
     :active-text-color="variables.menuActiveText"
+    :default-active="activeIndex"
     :collapse-transition="false"
     unique-opened
     @select="handleSelect"
@@ -16,8 +16,8 @@
       v-for="item in MenuList"
       :item="item"
       :key="item.id"
-      ref="subMenu"
       :index="item.index"
+      ref="subMenu"
     >
       <template slot="title">
         <svg-icon :icon-class="item.svg" />
@@ -46,12 +46,18 @@ import MenuList from "./menuData";
 export default {
   name: "AppMenu",
   computed: {
-    ...mapGetters(["sidebarCollapse", "sideLayout"]),
+    ...mapGetters(["sidebarCollapse", "sideLayout", "darkTheme"]),
     variables() {
       return variables;
     },
     MenuList() {
       return MenuList;
+    },
+    menuBgColor() {
+      return this.darkTheme ? this.variables.menuBg : this.variables.lightMenuBg
+    },
+    menuTextColor() {
+      return this.darkTheme ? this.variables.menuText : this.variables.ligthMenuText
     },
     activeIndex() {
       return (
@@ -77,7 +83,8 @@ export default {
   /deep/ .el-submenu__title {
     padding: 0 15px !important;
   }
-  /deep/.svg-icon {
+  /deep/
+  .svg-icon {
     margin-right: 5px;
   }
   /deep/ .el-icon-arrow-down {
