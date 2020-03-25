@@ -55,9 +55,9 @@ export default {
           spinner: "el-icon-loading",
           background: "rgba(0, 0, 0, 0.7)"
         });
-        if(username === "admin" && password === "123") {
-          sessionStorage.setItem("userToken", "isLogin")
-          this.$router.push("/dashboard"); 
+        if (username === "admin" && password === "123") {
+          sessionStorage.setItem("userToken", "isLogin");
+          this.$router.push("/dashboard");
         }
         loading.close();
         // this.$store.dispatch("user/_login", this.userData).then(res => {

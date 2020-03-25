@@ -8,7 +8,8 @@
     <side-bar v-if="sideLayout" />
     <transition
       enter-active-class="animated bounceInDown"
-      leave-acti  ve-class="animated zoomOutRight"
+      leave-acti
+      ve-class="animated zoomOutRight"
     >
       <message-box v-show="showMsgBox" />
     </transition>

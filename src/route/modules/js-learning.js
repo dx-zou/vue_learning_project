@@ -19,7 +19,8 @@ export default [
       {
         path: "regExp",
         name: "regExp",
-        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/regExp"),
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/regExp"),
         meta: {
           breadcrumbs: ["js-learning", "regExp"]
         }
@@ -27,7 +28,8 @@ export default [
       {
         path: "canvas",
         name: "canvas",
-        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/canvas"),
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/canvas"),
         meta: {
           breadcrumbs: ["js-learning", "canvas"]
         }
@@ -35,7 +37,8 @@ export default [
       {
         path: "upload",
         name: "upload",
-        component: () => import(/* webpackChunkName: "js-group" */"@/views/js/upload"),
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/upload"),
         meta: {
           breadcrumbs: ["js-learning", "upload"]
         }

@@ -54,10 +54,14 @@ export default {
       return MenuList;
     },
     menuBgColor() {
-      return this.darkTheme ? this.variables.menuBg : this.variables.lightMenuBg
+      return this.darkTheme
+        ? this.variables.menuBg
+        : this.variables.lightMenuBg;
     },
     menuTextColor() {
-      return this.darkTheme ? this.variables.menuText : this.variables.ligthMenuText
+      return this.darkTheme
+        ? this.variables.menuText
+        : this.variables.ligthMenuText;
     },
     activeIndex() {
       return (
@@ -83,8 +87,7 @@ export default {
   /deep/ .el-submenu__title {
     padding: 0 15px !important;
   }
-  /deep/
-  .svg-icon {
+  /deep/ .svg-icon {
     margin-right: 5px;
   }
   /deep/ .el-icon-arrow-down {

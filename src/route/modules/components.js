@@ -11,7 +11,10 @@ export default [
       {
         path: "date-select",
         name: "date",
-        component: () => import(/* webpackChunkName: "components-group" */ "@/views/my-components/dateSelect"),
+        component: () =>
+          import(
+            /* webpackChunkName: "components-group" */ "@/views/my-components/dateSelect"
+          ),
         meta: {
           breadcrumbs: ["components", "date"]
         }
@@ -19,7 +22,10 @@ export default [
       {
         path: "indentify-code",
         name: "indentifyCode",
-        component: () => import(/* webpackChunkName: "components-group" */ "@/views/my-components/indentify-code"),
+        component: () =>
+          import(
+            /* webpackChunkName: "components-group" */ "@/views/my-components/indentify-code"
+          ),
         meta: {
           breadcrumbs: ["components", "indentifyCode"]
         }
