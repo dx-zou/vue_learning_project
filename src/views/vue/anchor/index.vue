@@ -30,38 +30,14 @@ export default {
   mounted() {
     const main = document.querySelector(".app-main");
     // 监听滚动事件
-    main.addEventListener("scroll", this.handleScroll, false);
+    main.addEventListener("scroll", _.throttle(this.onScroll, 200), false);
   },
   beforeDestory() {
     const main = document.querySelector(".app-main");
     // 必须移除监听器，不然当该vue组件被销毁了，监听器还在就会出错
-    main.removeEventListener("scroll", this.handleScroll);
+    main.removeEventListener("scroll", _.throttle(this.onScroll, 200));
   },
   methods: {
-    handleScroll() {
-      _.throttle(() => {
-        // 获取所有锚点元素
-        const navContents = document.querySelectorAll(".content-item");
-        // 所有锚点元素的 offsetTop
-        const offsetTopArr = [];
-        navContents.forEach(item => {
-          offsetTopArr.push(item.offsetTop);
-        });
-        const main = document.querySelector(".app-main");
-        // 获取当前文档流的 scrollTop
-        const scrollTop = main.scrollTop;
-        // 定义当前点亮的导航下标
-        let navIndex = 0;
-        for (let i = 0; i < offsetTopArr.length; i++) {
-          // 如果 scrollTop 大于等于第n个元素的 offsetTop 则说明 i-1 的内容已经完全不可见
-          // 那么此时导航索引就应该是n了
-          if (scrollTop > offsetTopArr[i] - 100) {
-            navIndex = i;
-          }
-        }
-        this.active = navIndex;
-      }, 2000)();
-    },
     // 滚动监听器
     onScroll() {
       // 获取所有锚点元素
