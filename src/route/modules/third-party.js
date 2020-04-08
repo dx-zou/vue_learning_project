@@ -25,15 +25,15 @@ export default [
           ),
         meta: { breadcrumbs: ["third-party", "cropper"] }
       },
-      {
-        path: "chat",
-        name: "chat",
-        component: () =>
-          import(
-            /* webpackChunkName: "third-party-group" */ "@/views/third-party/chat"
-          ),
-        meta: { breadcrumbs: ["third-party", "chat"] }
-      }
+      // {
+      //   path: "chat",
+      //   name: "chat",
+      //   component: () =>
+      //     import(
+      //        webpackChunkName: "third-party-group"  "@/views/third-party/chat"
+      //     ),
+      //   meta: { breadcrumbs: ["third-party", "chat"] }
+      // }
     ]
   }
 ];
