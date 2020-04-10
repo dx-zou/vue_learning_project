@@ -5,8 +5,8 @@
  * @param {string} prop ，要比较的数组元素属性
  */
 const _unique = function(arr = [], prop) {
+  let obj = {};
   return arr.reduce((prev, cur) => {
-    let obj = {};
     obj[cur[prop]] ? "" : (obj[cur[prop]] = true && prev.push(cur));
     return prev;
   }, []);
@@ -68,17 +68,19 @@ const _myCall = function(context) {
  * @returns
  */
 const _call = function(context, ...args) {
-  if (context === null || context === undefined) {
-    context = window;
-  } else {
-    context = Object(context);
-  }
+  // if (context === null || context === undefined) {
+  //   context = window;
+  // } else {
+  //   context = Object(context);
+  // }
+  context = context ? Object(context) : window;
   const key = Symbol();
   context[key] = this;
   const result = context[key](...args);
   delete context[key];
   return result;
 };
+
 /**
  * @description 模拟apply函数
  *
@@ -92,7 +94,7 @@ const _myApply = function(context, args = []) {
     context = Object(context);
   }
   const key = Symbol();
-  ctx[key] = this;
+  context[key] = this;
   const type = Array.isArray(args);
   // 判断参数是否是数组类型
   if (!type) {
@@ -100,8 +102,8 @@ const _myApply = function(context, args = []) {
       `second argument to Function.prototype._myApply must be an array`
     );
   }
-  const result = ctx[key](...args);
-  delete ctx[key];
+  const result = context[key](...args);
+  delete context[key];
   return result;
 };
 
@@ -211,7 +213,7 @@ const _deep = function(obj, cache = []) {
     original: obj,
     copy
   });
-  Object.keys(obj).forEach(key => (copy[key] = deepCopy(obj[key], cache)));
+  // Object.keys(obj).forEach(key => (copy[key] = deepCopy(obj[key], cache)));
 
   return copy;
 };
@@ -285,6 +287,9 @@ export default {
   _unique,
   _uniqueArray,
   _typeof,
+  _myCall,
+  _deep,
+  _myBind,
   _deepClone,
   _debounce,
   _throttle

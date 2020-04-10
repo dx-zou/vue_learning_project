@@ -3,7 +3,7 @@
     <div class="login-bg"></div>
     <div class="login-overlay"></div>
     <div class="login-container">
-      <h1>VUE LEARNING SYS</h1>
+      <h1>FE LEARNING SYS</h1>
       <el-input
         type="text"
         prefix-icon="el-icon-user-solid"
