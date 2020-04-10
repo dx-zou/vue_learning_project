@@ -10,7 +10,8 @@ const {
   showLogo,
   sidebarCollapse,
   sideLayout,
-  darkTheme
+  darkTheme,
+  fullHeader
 } = settings;
 
 const state = {
@@ -32,6 +33,14 @@ const state = {
     : sideLayout,
   // 主题风格
   darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : darkTheme,
+  // 顶部通栏布局
+  fullHeader: Cookies.get("fullHeader")
+    ? !!+Cookies.get("fullHeader")
+    : fullHeader,
+  // 顶部通栏布局
+  showSetting: Cookies.get("showSetting")
+    ? !!+Cookies.get("showSetting")
+    : false,
   // 语言
   locale: "en-US"
   // locale: "zh-CN" ,// 语言

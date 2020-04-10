@@ -8,5 +8,7 @@ export default {
   // 侧边菜单布局
   sideLayout: true,
   // 暗黑主题
-  darkTheme: true
+  darkTheme: true,
+  // 顶部通栏
+  fullHeader: false
 };
