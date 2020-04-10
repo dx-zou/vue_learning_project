@@ -15,8 +15,8 @@ const {
 
 const state = {
   // 固定顶部导航栏
-  fixedHeader: Cookies.get("fixHeader")
-    ? !!+Cookies.get("fixHeader")
+  fixedHeader: Cookies.get("fixedHeader")
+    ? !!+Cookies.get("fixedHeader")
     : fixedHeader,
   // 显示logo
   showLogo: Cookies.get("showLogo") ? !!+Cookies.get("showLogo") : showLogo,
