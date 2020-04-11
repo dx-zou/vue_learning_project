@@ -58,8 +58,8 @@ import {
 } from "./data";
 // import VirusChart from "./VirusChart";
 // import VirusMap from "./VirusMap";
-const VirusMap = () => import("./VirusMap")
-const VirusChart = () => import("./VirusChart")
+const VirusMap = () => import("./VirusMap");
+const VirusChart = () => import("./VirusChart");
 export default {
   data() {
     return {

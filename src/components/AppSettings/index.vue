@@ -61,12 +61,21 @@
         >
         </el-switch>
       </el-form-item>
-      <el-form-item label="固定头部">
+      <el-form-item label="固定顶部">
         <el-switch
           :value="fixedHeader"
           active-color="#13ce66"
           inactive-color="#dcdfe6"
           @change="handleSettingChange($event, 'fixedHeader')"
+        >
+        </el-switch>
+      </el-form-item>
+      <el-form-item label="顶部通栏">
+        <el-switch
+          :value="fullHeader"
+          active-color="#13ce66"
+          inactive-color="#dcdfe6"
+          @change="handleSettingChange($event, 'fullHeader')"
         >
         </el-switch>
       </el-form-item>
@@ -87,11 +96,20 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["sideLayout", "showLogo", "darkTheme", "fixedHeader"])
+    ...mapGetters([
+      "sideLayout",
+      "showLogo",
+      "darkTheme",
+      "fixedHeader",
+      "fullHeader"
+    ])
   },
   methods: {
     handleClose() {
-      this.$emit("update:showDrawer", false);
+      this.$store.dispatch("settings/changeSetting", {
+        key: "showSetting"
+      });
+      // this.$emit("update:showDrawer", false);
     },
     // 改变设置
     handleSettingChange(value, key) {

@@ -12,10 +12,10 @@ import store from "./store";
 const checkPermission = to => {
   return (
     store.getters.menuName.includes(to.name) ||
-    store.getters.menuName.includes(to.meta.parentName) || 
-    to.path === "/dashboard" || 
+    store.getters.menuName.includes(to.meta.parentName) ||
+    to.path === "/dashboard" ||
     to.path === "/login"
-  )
+  );
 };
 
 /**

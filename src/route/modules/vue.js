@@ -22,6 +22,14 @@ export default [
         }
       },
       {
+        path: "anchor",
+        name: "anchor",
+        component: () => import("@/views/vue/anchor"),
+        meta: {
+          breadcrumbs: ["vue", "anchor"]
+        }
+      },
+      {
         path: "computed",
         name: "computed",
         component: () => import("@/views/vue/computed"),

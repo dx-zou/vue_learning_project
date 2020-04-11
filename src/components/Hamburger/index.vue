@@ -1,7 +1,7 @@
 <template>
   <span
     class="iconfont icon-qiehuan toggle-icon"
-    :class="[sidebarCollapse ? '' : 'is-collapse']"
+    :class="[!sidebarCollapse && 'is-collapse', fullHeader && 'margin-left']"
     @click="toggleSidebar"
     id="toggleSidebar"
   ></span>
@@ -12,7 +12,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "Hamburger",
   computed: {
-    ...mapGetters(["sidebarCollapse"])
+    ...mapGetters(["sidebarCollapse", "fullHeader"])
   },
   methods: {
     // 切换菜单栏
@@ -30,6 +30,9 @@ export default {
   margin-right: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+.margin-left {
+  margin-left: 20px;
 }
 .is-collapse {
   transform: rotate(180deg);

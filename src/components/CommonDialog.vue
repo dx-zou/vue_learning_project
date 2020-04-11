@@ -59,7 +59,9 @@ export default {
 <style lang="scss">
 .common-dialog {
   border-radius: 5px;
-  .el-dialog__body, .el-dialog__footer, .el-dialog__header{
+  .el-dialog__body,
+  .el-dialog__footer,
+  .el-dialog__header {
     padding: 10px 20px;
   }
 }

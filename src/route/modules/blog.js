@@ -8,19 +8,22 @@ export default [
       {
         path: "list",
         name: "blog-node",
-        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog"),
+        component: () =>
+          import(/* webpackChunkName: "blog-group" */ "@/views/blog"),
         meta: { breadcrumbs: ["blog", "blog-node"] }
       },
       {
         path: "add-blog",
         name: "addBlog",
-        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
+        component: () =>
+          import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
         meta: { breadcrumbs: ["blog", "add-blog"] }
       },
       {
         path: "edit-blog/:id",
         name: "editBlog",
-        component: () => import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
+        component: () =>
+          import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
         meta: { breadcrumbs: ["blog", "edit-blog"] }
       }
     ]

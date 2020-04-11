@@ -1,6 +1,9 @@
 <template>
   <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
-    <sidebar-logo :collapse="sidebarCollapse" v-if="showLogo"></sidebar-logo>
+    <sidebar-logo
+      :collapse="sidebarCollapse"
+      v-if="showLogo && !fullHeader"
+    ></sidebar-logo>
     <el-scrollbar class="side-bar" ref="sidebar">
       <app-menu />
     </el-scrollbar>
@@ -19,7 +22,7 @@ export default {
     AppMenu
   },
   computed: {
-    ...mapGetters(["sidebarCollapse", "showLogo"])
+    ...mapGetters(["sidebarCollapse", "showLogo", "fullHeader"])
   }
 };
 </script>

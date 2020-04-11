@@ -51,7 +51,7 @@
         margin-right: 20px;
       }
     }
-
+    
     /* 菜单栏折叠时  */
     .el-menu--collapse .el-menu-item span {
       height: 0;
@@ -63,7 +63,7 @@
 
     &.has-logo {
       .el-scrollbar {
-        height: calc(100% - 60px);
+        height: calc(100% - 65px);
       }
     }
 
@@ -112,7 +112,9 @@
       }
     }
   }
-
+  .el-menu.el-menu--horizontal {
+    border: none !important;
+  }
   // 侧边栏收起时
   .hideSidebar {
     .sidebar-container {

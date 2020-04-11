@@ -8,10 +8,24 @@
 
 .main-container {
   position: relative;
-  height: 100%;
+  height: 100vh;
   margin-left: $sideBarWidth;
   transition: margin-left .3s;
   overflow: hidden;
+}
+/* 顶部通栏样式 */
+.full-header {
+  .main-container {
+    margin-left: 0!important;
+  }
+  .app-main {
+    margin-left: $sideBarWidth !important;
+  }
+}
+.hideSidebar.full-header {
+  .app-main {
+    margin-left: 60px !important;
+  }
 }
 .scroll-header-main {
   overflow-y: auto;
@@ -22,10 +36,12 @@
   }
 }
 .app-main {
+  min-height: calc(100vh - 65px);
   padding: 10px;
   overflow-x: hidden;
   box-sizing: border-box;
   background-color: #f0f3f4;
+  transition: margin-left .3s;
 }
 
 .common-wrapper {
@@ -34,7 +50,7 @@
 
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  height: calc(100vh - 60px);
+  // height: calc(100vh - 65px);
   overflow-y: auto;
 }
 
