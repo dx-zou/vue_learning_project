@@ -19,13 +19,11 @@
       <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
       <i class="el-icon-caret-bottom"></i>
     </div>
-    <!-- <app-settings :show-drawer.sync="showDrawer" /> -->
   </el-dropdown>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-// import AppSettings from "@/components/AppSettings";
 import driver from "@/mixins/startDriver";
 
 export default {
@@ -63,9 +61,6 @@ export default {
       ]
     };
   },
-  // components: {
-  //   AppSettings
-  // },
   computed: {
     ...mapGetters(["locale", "sideLayout", "showLogo"]),
     lang() {
@@ -87,7 +82,6 @@ export default {
           this.$store.dispatch("settings/changeSetting", {
             key: "showSetting"
           });
-          // this.showDrawer = true;
           break;
         case "logout":
           this.logout();

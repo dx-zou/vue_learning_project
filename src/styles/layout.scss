@@ -9,6 +9,7 @@
 .main-container {
   position: relative;
   height: 100vh;
+  overflow-y: auto;
   margin-left: $sideBarWidth;
   transition: margin-left .3s;
   overflow: hidden;
@@ -20,11 +21,18 @@
   }
   .app-main {
     margin-left: $sideBarWidth !important;
+    height: calc(100vh - 65px) !important;
+    overflow-y: auto !important;
   }
 }
 .hideSidebar.full-header {
   .app-main {
     margin-left: 60px !important;
+  }
+}
+.hideSidebar.mobile.full-header {
+  .app-main {
+    margin-left: 0 !important;
   }
 }
 .scroll-header-main {
@@ -36,7 +44,6 @@
   }
 }
 .app-main {
-  min-height: calc(100vh - 65px);
   padding: 10px;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -44,13 +51,14 @@
   transition: margin-left .3s;
 }
 
+
 .common-wrapper {
   background-color: #fff;
 }
 
 /* 导航栏固定后 */
 .fixed-header+.app-main {
-  // height: calc(100vh - 65px);
+  height: calc(100vh - 65px);
   overflow-y: auto;
 }
 

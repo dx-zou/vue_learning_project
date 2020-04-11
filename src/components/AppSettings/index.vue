@@ -109,7 +109,6 @@ export default {
       this.$store.dispatch("settings/changeSetting", {
         key: "showSetting"
       });
-      // this.$emit("update:showDrawer", false);
     },
     // 改变设置
     handleSettingChange(value, key) {

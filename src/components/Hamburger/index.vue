@@ -32,7 +32,7 @@ export default {
   cursor: pointer;
 }
 .margin-left {
-  margin-left: 20px;
+  margin-left: 60px;
 }
 .is-collapse {
   transform: rotate(180deg);
