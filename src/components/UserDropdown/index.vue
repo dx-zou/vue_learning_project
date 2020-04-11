@@ -19,13 +19,11 @@
       <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
       <i class="el-icon-caret-bottom"></i>
     </div>
-    <app-settings :show-drawer.sync="showDrawer" />
   </el-dropdown>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import AppSettings from "@/components/AppSettings";
 import driver from "@/mixins/startDriver";
 
 export default {
@@ -41,7 +39,7 @@ export default {
         },
         {
           icon: "el-icon-s-tools",
-          command: "set",
+          command: "showSetting",
           name: "系统设置"
         },
         {
@@ -63,9 +61,6 @@ export default {
       ]
     };
   },
-  components: {
-    AppSettings
-  },
   computed: {
     ...mapGetters(["locale", "sideLayout", "showLogo"]),
     lang() {
@@ -83,8 +78,10 @@ export default {
     // 点击下拉菜单项的回调
     handleCommand(command) {
       switch (command) {
-        case "set":
-          this.showDrawer = true;
+        case "showSetting":
+          this.$store.dispatch("settings/changeSetting", {
+            key: "showSetting"
+          });
           break;
         case "logout":
           this.logout();
@@ -106,7 +103,7 @@ export default {
 <style lang="scss" scoped>
 .el-dropdown-link {
   .avatar {
-    height: 60px;
+    height: 65px;
     border-radius: 10px;
     vertical-align: middle;
     cursor: pointer;

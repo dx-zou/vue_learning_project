@@ -1,7 +1,7 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-const pxtorem = require("postcss-pxtorem");
-const resolve = dir => path.join(__dirname, dir)
+// const pxtorem = require("postcss-pxtorem");
+const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
   configureWebpack: {
@@ -16,11 +16,11 @@ module.exports = {
       },
       postcss: {
         plugins: [
-          autoprefixer(),
-          pxtorem({
-            rootValue: 100,
-            propList: ["*"]
-          })
+          autoprefixer()
+          // pxtorem({
+          //   rootValue: 100,
+          //   propList: ["*"]
+          // })
         ]
       }
     }

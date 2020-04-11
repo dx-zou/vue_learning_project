@@ -5,15 +5,13 @@
       class="drawer-bg"
       @click="handleClickOutside"
     ></div>
-    <side-bar v-if="sideLayout" />
-    <transition
-      enter-active-class="animated bounceInDown"
-      leave-acti  ve-class="animated zoomOutRight"
-    >
-      <message-box v-show="showMsgBox" />
-    </transition>
+    <app-header v-if="sideLayout && fullHeader" />
+
+    <side-bar v-if="sideLayout && !fullHeader" />
+
     <div :class="['main-container', !fixedHeader && 'scroll-header-main']">
-      <app-header />
+      <side-bar v-if="sideLayout && fullHeader" />
+      <app-header v-if="!sideLayout || (sideLayout && !fullHeader)" />
       <div class="app-main">
         <transition name="app">
           <keep-alive v-if="$route.meta.keepAlive">
@@ -23,6 +21,14 @@
         </transition>
       </div>
     </div>
+    <transition
+      enter-active-class="animated bounceInDown"
+      leave-active-class="animated zoomOutRight"
+    >
+      <message-box v-if="showMsgBox" />
+    </transition>
+
+    <app-settings :show-drawer.sync="showSetting" />
   </div>
 </template>
 
@@ -31,13 +37,15 @@ import AppHeader from "./AppHeader/AppHeader";
 import SideBar from "./Sidebar/Sidebar";
 import ResizeHandler from "@/mixins/ResizeHandler";
 import MessageBox from "@/components/MessageBox";
+import AppSettings from "@/components/AppSettings";
 import { mapGetters } from "vuex";
 export default {
   name: "Layout",
   components: {
     AppHeader,
     SideBar,
-    MessageBox
+    MessageBox,
+    AppSettings
   },
   mixins: [ResizeHandler],
   computed: {
@@ -47,7 +55,9 @@ export default {
       "showMsgBox",
       "fixedHeader",
       "sideLayout",
-      "darkTheme"
+      "darkTheme",
+      "fullHeader",
+      "showSetting"
     ]),
     classObj() {
       return {
@@ -55,6 +65,7 @@ export default {
         hideSidebar: this.sidebarCollapse && this.sideLayout,
         "app-light-theme": !this.darkTheme,
         "top-menu-layout": !this.sideLayout,
+        "full-header": this.fullHeader && this.sideLayout,
         mobile: this.device === "mobile"
       };
     }

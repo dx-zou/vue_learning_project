@@ -1,26 +1,19 @@
 /**
- * @description 数组去重方法，用于元素是对象的数组
+ * 深拷贝
  *
- * @param {*} [arr=[]]
- * @param {string} prop ，要比较的数组元素属性
- */
-const _unique = function(arr = [], prop) {
-  return arr.reduce((prev, cur) => {
-    let obj = {};
-    obj[cur[prop]] ? "" : (obj[cur[prop]] = true && prev.push(cur));
-    return prev;
-  }, []);
-};
-/**
- * @description 数组去重 Map的键不可重复
- *
- * @param {*} arr
- * @param {*} key
+ * @param {*} obj
  * @returns
  */
-function _uniqueArray(arr, key) {
-  return [...new Map(arr.map(item => [item[key], item])).values()];
-}
+const deepClone = function(obj) {
+  let result = obj.constructor === Array ? [] : {};
+  for (let key of obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] =
+        typeof obj[key] === "object" ? deepClone(obj[key]) : obj[key];
+    }
+  }
+  return result;
+};
 /**
  * @description 判断数据类型方法
  *
@@ -68,17 +61,19 @@ const _myCall = function(context) {
  * @returns
  */
 const _call = function(context, ...args) {
-  if (context === null || context === undefined) {
-    context = window;
-  } else {
-    context = Object(context);
-  }
+  // if (context === null || context === undefined) {
+  //   context = window;
+  // } else {
+  //   context = Object(context);
+  // }
+  context = context ? Object(context) : window;
   const key = Symbol();
   context[key] = this;
   const result = context[key](...args);
   delete context[key];
   return result;
 };
+
 /**
  * @description 模拟apply函数
  *
@@ -92,7 +87,7 @@ const _myApply = function(context, args = []) {
     context = Object(context);
   }
   const key = Symbol();
-  ctx[key] = this;
+  context[key] = this;
   const type = Array.isArray(args);
   // 判断参数是否是数组类型
   if (!type) {
@@ -100,8 +95,8 @@ const _myApply = function(context, args = []) {
       `second argument to Function.prototype._myApply must be an array`
     );
   }
-  const result = ctx[key](...args);
-  delete ctx[key];
+  const result = context[key](...args);
+  delete context[key];
   return result;
 };
 
@@ -211,7 +206,7 @@ const _deep = function(obj, cache = []) {
     original: obj,
     copy
   });
-  Object.keys(obj).forEach(key => (copy[key] = deepCopy(obj[key], cache)));
+  // Object.keys(obj).forEach(key => (copy[key] = deepCopy(obj[key], cache)));
 
   return copy;
 };
@@ -282,9 +277,11 @@ Function.prototype._myCall = _call;
 Function.prototype._myApply = _myApply;
 Function.prototype._myBind = _bind;
 export default {
-  _unique,
-  _uniqueArray,
+  deepClone,
   _typeof,
+  _myCall,
+  _deep,
+  _myBind,
   _deepClone,
   _debounce,
   _throttle

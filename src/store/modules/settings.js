@@ -10,13 +10,14 @@ const {
   showLogo,
   sidebarCollapse,
   sideLayout,
-  darkTheme
+  darkTheme,
+  fullHeader
 } = settings;
 
 const state = {
   // 固定顶部导航栏
-  fixedHeader: Cookies.get("fixHeader")
-    ? !!+Cookies.get("fixHeader")
+  fixedHeader: Cookies.get("fixedHeader")
+    ? !!+Cookies.get("fixedHeader")
     : fixedHeader,
   // 显示logo
   showLogo: Cookies.get("showLogo") ? !!+Cookies.get("showLogo") : showLogo,
@@ -32,6 +33,14 @@ const state = {
     : sideLayout,
   // 主题风格
   darkTheme: Cookies.get("darkTheme") ? !!+Cookies.get("darkTheme") : darkTheme,
+  // 顶部通栏布局
+  fullHeader: Cookies.get("fullHeader")
+    ? !!+Cookies.get("fullHeader")
+    : fullHeader,
+  // 顶部通栏布局
+  showSetting: Cookies.get("showSetting")
+    ? !!+Cookies.get("showSetting")
+    : false,
   // 语言
   locale: "en-US"
   // locale: "zh-CN" ,// 语言

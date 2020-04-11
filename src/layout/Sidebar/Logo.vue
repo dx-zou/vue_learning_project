@@ -1,7 +1,10 @@
 <template>
   <div
     class="sidebar-logo-container"
-    :class="{ collapse: collapse, 'light-theme': !$store.getters.darkTheme }"
+    :class="{
+      collapse: collapse,
+      'light-theme': !darkTheme || (fullHeader && sideLayout)
+    }"
   >
     <transition name="sidebarLogoFade">
       <router-link
@@ -21,6 +24,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "SidebarLogo",
   props: {
@@ -28,6 +33,9 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  computed: {
+    ...mapGetters(["darkTheme", "fullHeader", "sideLayout"])
   },
   data() {
     return {
@@ -49,8 +57,8 @@ export default {
 
 .sidebar-logo-container {
   position: relative;
-  height: 0.6rem;
-  line-height: 0.6rem;
+  height: 65px;
+  line-height: 65px;
   background: $menuBg;
   text-align: center;
   overflow: hidden;
@@ -61,9 +69,9 @@ export default {
 
     & .sidebar-logo {
       display: inline-block;
-      width: 0.55rem;
-      height: 0.55rem;
-      margin-right: 0.1rem;
+      width: 55px;
+      height: 55px;
+      margin-right: 10px;
       border-radius: 50%;
       vertical-align: middle;
       /*box-shadow: 0 0 0 2px #fd9495;*/

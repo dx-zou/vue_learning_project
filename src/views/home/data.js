@@ -120,28 +120,60 @@ export const virusChartData = {
       重症病例: 1280,
       死亡病例: 86,
       治愈病例: 510
+    },
+    {
+      日期: "2020-02-08",
+      确诊病例: 2656,
+      疑似病例: 3916,
+      重症病例: 87,
+      死亡病例: 89,
+      治愈病例: 600
+    },
+    {
+      日期: "2020-02-09",
+      确诊病例: 3062,
+      疑似病例: 4008,
+      重症病例: 296,
+      死亡病例: 97,
+      治愈病例: 632
+    },
+    {
+      日期: "2020-02-10",
+      确诊病例: 2487,
+      疑似病例: 3536,
+      重症病例: 849,
+      死亡病例: 108,
+      治愈病例: 716
+    },
+    {
+      日期: "2020-02-11",
+      确诊病例: 2016,
+      疑似病例: 3342,
+      重症病例: 871,
+      死亡病例: 97,
+      治愈病例: 744
     }
   ]
 };
 export const virusSumData = [
   {
-    title: "确诊",
-    num: 34546,
+    title: "累计确诊",
+    num: 44653,
     color: "red"
   },
   {
-    title: "疑似",
-    num: 27657,
+    title: "现有疑似",
+    num: 16067,
     color: "#000"
   },
   {
-    title: "死亡",
-    num: 722,
+    title: "累计死亡",
+    num: 1113,
     color: "#000"
   },
   {
-    title: "治愈",
-    num: 2050,
+    title: "累计治愈",
+    num: 4740,
     color: "#000"
   }
 ];
@@ -191,27 +223,27 @@ export const provinceData = [
   {
     id: 1,
     name: "湖北",
-    total: 24953,
-    dead: 699,
+    total: 33366,
+    dead: 1068,
     children: [
       {
         id: 10,
         name: "武汉",
-        total: 13603,
-        dead: 545
+        total: 19558,
+        dead: 820
       }
     ]
   },
   {
     id: 2,
     name: "河南",
-    total: 981,
-    dead: 4,
+    total: 1135,
+    dead: 8,
     children: [
       {
         id: 20,
         name: "驻马店",
-        total: 113,
+        total: 128,
         dead: 0
       }
     ]
@@ -219,13 +251,13 @@ export const provinceData = [
   {
     id: 3,
     name: "北京",
-    total: 297,
-    dead: 1,
+    total: 352,
+    dead: 3,
     children: [
       {
         id: 30,
         name: "朝阳区",
-        total: 51,
+        total: 56,
         dead: 0
       }
     ]

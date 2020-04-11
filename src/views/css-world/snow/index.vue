@@ -209,7 +209,7 @@ export default {};
 
 <style lang="scss" scoped>
 .snow-container {
-  height: 100%;
+  height: calc(100vh - 100px);
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   filter: drop-shadow(0 0 10px white);

@@ -8,6 +8,7 @@
   >
     <div class="app-header_l">
       <template v-if="sideLayout">
+        <sidebar-logo v-if="fullHeader" />
         <hamburger />
         <breadcrumb />
       </template>
@@ -49,7 +50,13 @@ export default {
     UserDropdown
   },
   computed: {
-    ...mapGetters(["sideLayout", "showLogo", "darkTheme", "fixedHeader"])
+    ...mapGetters([
+      "sideLayout",
+      "showLogo",
+      "darkTheme",
+      "fixedHeader",
+      "fullHeader"
+    ])
   },
   methods: {
     // 显示隐藏msgbox
@@ -63,19 +70,19 @@ export default {
 <style lang="scss" scoped>
 .app-header {
   display: flex;
-  height: 60px;
+  height: 65px;
   padding: 0 10px;
   justify-content: space-between;
   align-items: center;
   transition: width 0.3s ease;
   // box-shadow: 0 1px 5px rgba(0, 21, 41, 0.08);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  // box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
   .app-header_l {
     display: flex;
     align-items: center;
   }
   .right-menu {
-    line-height: 60px;
+    line-height: 65px;
     border: none;
   }
   .toggle-icon {
