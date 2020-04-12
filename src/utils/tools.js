@@ -1,4 +1,77 @@
 /**
+ * Ajax请求
+ * Ajax状态
+
+    0：未初始化。尚未调用 open()方法。
+    1：启动。已经调用 open()方法，但尚未调用 send()方法。
+    2：发送。已经调用 send()方法，但尚未接收到响应。
+    3：接收。已经接收到部分响应数据。
+    4：完成。已经接收到全部响应数据，而且已经可以在客户端使用了。
+
+ */
+const $ajax = function(
+  url,
+  method = "get",
+  data,
+  config = { timeout: 10000, withCredentials: false, header: {} }
+) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const { timeout, withCredentials, header } = config;
+    xhr.timeout = timeout;
+    xhr.withCredentials = withCredentials;
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          resolve(xhr.response);
+        } else {
+          reject(xhr.response);
+        }
+      }
+    };
+    xhr.addEventListener("progress", updateProgress);
+    xhr.addEventListener("load", transferComplete);
+    xhr.addEventListener("error", transferFailed);
+    xhr.addEventListener("abort", transferCanceled);
+    // loadend 事件可以侦测到所有的三种加载结束条件（abort、load，或 error）
+    xhr.addEventListener("loadend", transferLoadend);
+    // 服务端到客户端的传输进程（下载）
+    function updateProgress(event) {
+      if (event.lengthComputable) {
+        var percentComplete = (event.loaded / event.total) * 100;
+        console.log(percentComplete);
+        // ...
+      } else {
+        // 总大小未知时不能计算进程信息
+        console.log("progress", event);
+      }
+    }
+
+    function transferComplete(res) {
+      console.log("load", res);
+    }
+
+    function transferFailed(res) {
+      console.log("An error occurred while transferring the file.", res);
+    }
+
+    function transferCanceled(res) {
+      console.log("The transfer has been canceled by the user.", res);
+    }
+    function transferLoadend(res) {
+      console.log("The transfer is loadend.", res);
+    }
+
+    xhr.open(method, url);
+    // 设置 HTTP 请求头的值, 必须在 open() 之后、send() 之前调用 setRequestHeader() 方法。
+    for (let key in header) {
+      xhr.setRequestHeader(key, header[key]);
+    }
+    xhr.send(data);
+  });
+};
+
+/**
  * 深拷贝
  *
  * @param {*} obj
@@ -277,6 +350,7 @@ Function.prototype._myCall = _call;
 Function.prototype._myApply = _myApply;
 Function.prototype._myBind = _bind;
 export default {
+  $ajax,
   deepClone,
   _typeof,
   _myCall,

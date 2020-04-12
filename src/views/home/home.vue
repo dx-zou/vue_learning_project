@@ -1,6 +1,9 @@
 <template>
   <div class="common-wrapper home-wrapper">
-    <div class="title">2020年新型冠状病毒肺炎疫情统计数据</div>
+    <div class="title">
+      2020年新型冠状病毒肺炎疫情统计数据
+      <el-button @click="handleTest">测试ajax</el-button>
+    </div>
     <el-row :gutter="12">
       <el-col :span="24">
         <el-card shadow="hover" class="preview">
@@ -60,6 +63,7 @@ import {
 // import VirusMap from "./VirusMap";
 const VirusMap = () => import("./VirusMap");
 const VirusChart = () => import("./VirusChart");
+import tools from "@/utils/tools";
 export default {
   data() {
     return {
@@ -100,7 +104,15 @@ export default {
       });
     }
   },
-  methods: {}
+  methods: {
+    handleTest() {
+      tools
+        .$ajax("https://finworkflow.totole.com.cn/approval/getPendingList")
+        .then(res => {
+          console.log(res);
+        });
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
