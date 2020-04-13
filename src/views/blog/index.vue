@@ -18,8 +18,9 @@
     </table-toolbar>
     <common-table
       :table-data="tableData"
-      :table-options="tableOptions"
+      :table-columns="tableColumns"
       :is-loading="false"
+      v-bind="queryForm"
       @toEdit="toEdit"
       @toDelete="toDelete"
     >
@@ -79,12 +80,11 @@ export default {
     return {
       queryForm: {},
       tableData: [],
-      tableOptions: [
+      tableColumns: [
         {
           prop: "title",
           label: "标题"
         },
-
         {
           prop: "author",
           label: "作者"
@@ -142,7 +142,7 @@ export default {
     };
   },
   mounted() {
-    this.getTableData();
+    // this.getTableData();
   },
   methods: {
     /**

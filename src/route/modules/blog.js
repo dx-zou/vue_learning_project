@@ -22,6 +22,7 @@ export default [
       {
         path: "edit-blog/:id",
         name: "editBlog",
+        props: true,
         component: () =>
           import(/* webpackChunkName: "blog-group" */ "@/views/blog/add"),
         meta: { breadcrumbs: ["blog", "edit-blog"] }

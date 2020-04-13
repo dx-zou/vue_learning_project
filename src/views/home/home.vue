@@ -1,8 +1,8 @@
 <template>
   <div class="common-wrapper home-wrapper">
     <div class="title">
-      2020年新型冠状病毒肺炎疫情统计数据
-      <el-button @click="handleTest">测试ajax</el-button>
+      新型冠状病毒肺炎(COVID-19)疫情统计数据
+      <!-- <el-button @click="handleTest">测试ajax</el-button> -->
     </div>
     <el-row :gutter="12">
       <el-col :span="24">

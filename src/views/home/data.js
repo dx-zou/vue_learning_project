@@ -158,22 +158,22 @@ export const virusChartData = {
 export const virusSumData = [
   {
     title: "累计确诊",
-    num: 44653,
+    num: 82052,
     color: "red"
   },
   {
     title: "现有疑似",
-    num: 16067,
+    num: 82,
     color: "#000"
   },
   {
     title: "累计死亡",
-    num: 1113,
+    num: 3339,
     color: "#000"
   },
   {
     title: "累计治愈",
-    num: 4740,
+    num: 77575,
     color: "#000"
   }
 ];
@@ -223,14 +223,14 @@ export const provinceData = [
   {
     id: 1,
     name: "湖北",
-    total: 33366,
-    dead: 1068,
+    total: 67803,
+    dead: 3219,
     children: [
       {
         id: 10,
         name: "武汉",
-        total: 19558,
-        dead: 820
+        total: 50008,
+        dead: 2577
       }
     ]
   },
@@ -244,20 +244,6 @@ export const provinceData = [
         id: 20,
         name: "驻马店",
         total: 128,
-        dead: 0
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: "北京",
-    total: 352,
-    dead: 3,
-    children: [
-      {
-        id: 30,
-        name: "朝阳区",
-        total: 56,
         dead: 0
       }
     ]

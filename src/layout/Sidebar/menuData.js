@@ -145,12 +145,12 @@ const MENU = [
         id: 53,
         index: "5-3",
         title: "editor"
-      },
-      {
-        id: 54,
-        index: "5-4",
-        title: "chat"
       }
+      // {
+      //   id: 54,
+      //   index: "5-4",
+      //   title: "chat"
+      // }
     ]
   },
   {

@@ -24,7 +24,7 @@ export default [
             /* webpackChunkName: "third-party-group" */ "@/views/third-party/cropper"
           ),
         meta: { breadcrumbs: ["third-party", "cropper"] }
-      },
+      }
       // {
       //   path: "chat",
       //   name: "chat",

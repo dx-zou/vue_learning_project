@@ -13,25 +13,30 @@ export default {
   },
   beforeMount() {
     window.addEventListener("resize", this.$_resizeHandler);
+    this.$once("hook:beforDestroy", () => {
+      console.log("hook:beforDestroy");
+
+      window.removeEventListener("resize", this.$_resizeHandler);
+    });
   },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.$_resizeHandler);
-  },
+  // beforeDestroy() {
+  //   window.removeEventListener("resize", this.$_resizeHandler);
+  // },
   mounted() {
-    const isMobile = this.$_isMobile();
+    const isMobile = this.isMobileMode();
     if (isMobile) {
       store.dispatch("app/toggleDevice", "mobile");
       store.dispatch("settings/closeSideBar");
     }
   },
   methods: {
-    $_isMobile() {
+    isMobileMode() {
       const rect = body.getBoundingClientRect();
       return rect.width - 1 < WIDTH;
     },
     $_resizeHandler() {
       if (!document.hidden) {
-        const isMobile = this.$_isMobile();
+        const isMobile = this.isMobileMode();
         store.dispatch("app/toggleDevice", isMobile ? "mobile" : "desktop");
 
         if (isMobile) {

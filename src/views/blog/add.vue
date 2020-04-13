@@ -41,6 +41,7 @@
 // import { checkName10, checkNumber } from "@/utils/checkForm";
 // import addPageAuth from "@/mixins/addPageAuth";
 export default {
+  props: ["id"],
   data() {
     return {
       formData: {},
@@ -72,9 +73,9 @@ export default {
   },
   // mixins: [addPageAuth],
   computed: {
-    id() {
-      return this.$route.params.id;
-    },
+    // id() {
+    //   return this.$route.params.id;
+    // },
     title() {
       return this.id ? "编辑博客" : "新增博客";
     }

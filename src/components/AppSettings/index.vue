@@ -55,7 +55,7 @@
       <el-form-item label="显示Logo">
         <el-switch
           :value="showLogo"
-          active-color="#13ce66"
+          active-color="#ff8c00"
           inactive-color="#dcdfe6"
           @change="handleSettingChange($event, 'showLogo')"
         >
@@ -64,7 +64,7 @@
       <el-form-item label="固定顶部">
         <el-switch
           :value="fixedHeader"
-          active-color="#13ce66"
+          active-color="#ff8c00"
           inactive-color="#dcdfe6"
           @change="handleSettingChange($event, 'fixedHeader')"
         >
@@ -73,7 +73,7 @@
       <el-form-item label="顶部通栏">
         <el-switch
           :value="fullHeader"
-          active-color="#13ce66"
+          active-color="#ff8c00"
           inactive-color="#dcdfe6"
           @change="handleSettingChange($event, 'fullHeader')"
         >
