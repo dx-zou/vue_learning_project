@@ -12,7 +12,8 @@
     @select="handleSelect"
     id="sidebar"
   >
-    <el-submenu
+    <sidebar-item v-for="item in MenuList" :item="item" :key="item.id" />
+    <!-- <el-submenu
       v-for="item in MenuList"
       :item="item"
       :key="item.id"
@@ -34,7 +35,7 @@
           </router-link>
         </el-menu-item>
       </template>
-    </el-submenu>
+    </el-submenu> -->
   </el-menu>
 </template>
 
@@ -42,6 +43,7 @@
 import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import MenuList from "./menuData";
+import SidebarItem from "./SidebarItem";
 
 export default {
   name: "AppMenu",
@@ -70,6 +72,9 @@ export default {
         "0"
       );
     }
+  },
+  components: {
+    SidebarItem
   },
   methods: {
     // 处理菜单栏高亮

@@ -70,6 +70,17 @@ export default [
         meta: {
           breadcrumbs: ["css-world", "snow"]
         }
+      },
+      {
+        path: "animation",
+        name: "animation",
+        component: () =>
+          import(
+            /* webpackChunkName: "css-world" */ "@/views/css-world/animation"
+          ),
+        meta: {
+          breadcrumbs: ["css-world", "animation"]
+        }
       }
     ]
   }
