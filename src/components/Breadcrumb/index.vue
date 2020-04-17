@@ -17,9 +17,7 @@
 <script>
 export default {
   data() {
-    return {
-      // breadList: null
-    };
+    return {};
   },
   computed: {
     breadList() {

@@ -42,6 +42,14 @@ module.exports = {
         symbolId: "icon-[name]"
       })
       .end();
+    config.module
+      .rule("md")
+      .test(/\.md/)
+      .use("html-loader")
+      .loader("html-loader")
+      .end()
+      .use("markdown-loader")
+      .loader("markdown-loader");
   }
   // devServer: {
   //   proxy: {

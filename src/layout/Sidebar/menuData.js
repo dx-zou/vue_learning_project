@@ -178,6 +178,20 @@ const MENU = [
         title: "blog-node"
       }
     ]
+  },
+  {
+    id: 7,
+    index: "7",
+    title: "docs",
+    icon: "icon-plugin",
+    svg: "docs",
+    children: [
+      {
+        id: 71,
+        index: "7-1",
+        title: "vue-doc"
+      }
+    ]
   }
 ];
 

@@ -23,7 +23,10 @@ import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
 import "vue-gn-components/lib/style/index.css";
 // import "./plugins/vue-socket";
 import "./permission";
-
+import mavonEditor from "mavon-editor";
+import "mavon-editor/dist/css/index.css";
+// use
+Vue.use(mavonEditor);
 NProgress.configure({
   showSpinner: false
 });
