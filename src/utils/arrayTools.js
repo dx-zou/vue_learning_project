@@ -46,6 +46,47 @@ const bubbleSort = function(arr) {
 };
 
 /**
+ * 冒泡排序改进
+ * 在每趟排序中进行正向和反向两遍冒泡的方法
+ * 一次可以得到两个最终值(最大者和最小者)
+ *
+ * @param {*} arr
+ * @returns
+ */
+const bubbleSort2 = function(arr) {
+  let [low, high, flag] = [0, arr.length - 1, true, 0];
+  console.time("2.改进后冒泡排序耗时");
+  while (low < high && flag) {
+    flag = false;
+    for (
+      let i = low;
+      i < high;
+      i++ //正向冒泡,找到最大者
+    ) {
+      if (arr[i] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        flag = true;
+      }
+    }
+    high--; //修改high值, 前移一位
+    for (
+      let j = high;
+      j > low;
+      j-- //反向冒泡,找到最小者
+    ) {
+      if (arr[j] < arr[j - 1]) {
+        [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+        flag = true;
+      }
+    }
+    low++; //修改low值,后移一位
+  }
+  console.timeEnd("2.改进后冒泡排序耗时");
+  return arr;
+};
+// const arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+// console.log(bubbleSort2(arr));
+/**
  * 快速排序
  *
  * @param {*} arr
@@ -93,11 +134,12 @@ const flatArray = function(arr) {
   return arr;
 };
 
-export default {
-  _unique,
-  _uniqueMap,
-  bubbleSort,
-  quickSort,
-  flatReduce,
-  flatArray
-};
+// export default {
+//   _unique,
+//   _uniqueMap,
+//   bubbleSort,
+//   bubbleSort2,
+//   quickSort,
+//   flatReduce,
+//   flatArray
+// };
