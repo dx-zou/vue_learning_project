@@ -1,4 +1,51 @@
 /**
+ * 千位分隔符
+ *
+ * @param {*} num
+ * @returns
+ */
+const commafy = num => {
+  const reg = /(\d)(?=(\d{3})+\.)/g;
+  return num.toString().replace(reg, ($0, $1) => {
+    return $1 + ",";
+  });
+};
+/**
+ * 查找字符串中出现次数最多的字符
+ *
+ */
+const findMaxStr = str => {
+  let num = 0;
+  let char = "";
+  // 使其按照一定的次序排列
+  str = str
+    .split("")
+    .sort()
+    .join("");
+
+  // 定义正则表达式
+  const reg = /(\w)\1+/g;
+  str.replace(reg, ($0, $1) => {
+    if (num < $0.length) {
+      num = $0.length;
+      char = $1;
+    }
+  });
+  return [num, char];
+};
+/**
+ * 短横线命名转换为驼峰命名法
+ *
+ * @param {*} s
+ * @returns
+ */
+const transToUpperCase = s => {
+  return s.replace(/-\w/g, $0 => {
+    return $0.slice(1).toUpperCase();
+  });
+};
+
+/**
  * Ajax请求
  * Ajax状态
 
@@ -346,9 +393,7 @@ function _throttle(fn, wait = 1000, leading = true, trailing = true) {
     }
   };
 }
-Function.prototype._myCall = _call;
-Function.prototype._myApply = _myApply;
-Function.prototype._myBind = _bind;
+
 export default {
   $ajax,
   deepClone,
