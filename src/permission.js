@@ -1,8 +1,14 @@
 import router from "./route";
 import NProgress from "nprogress";
-import getPageTitle from "./utils/getPageTitle";
 import store from "./store";
 
+const getPageTitle = pageTitle => {
+  const title = "前端学习管理系统";
+  if (pageTitle) {
+    return `${pageTitle} - ${title}`;
+  }
+  return `${title}`;
+};
 /**
  * 判断路由权限
  *
@@ -10,11 +16,12 @@ import store from "./store";
  * @returns
  */
 const checkPermission = to => {
+  const menuNames = store.getters.menuName;
+  const noAuthPath = ["/dashboard", "/login"];
   return (
-    store.getters.menuName.includes(to.name) ||
-    store.getters.menuName.includes(to.meta.parentName) ||
-    to.path === "/dashboard" ||
-    to.path === "/login"
+    menuNames.includes(to.name) ||
+    menuNames.includes(to.meta.parentName) ||
+    noAuthPath.includes(to.path)
   );
 };
 

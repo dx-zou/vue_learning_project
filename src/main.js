@@ -4,24 +4,24 @@ import App from "./App.vue";
 import store from "./store/index";
 import router from "./route/index";
 import "./components";
-import "./plugins/http/request";
-import "@/utils/businessTools";
+import "./http/request";
+import "./http/api";
+import "./utils/businessTools";
+import "./styles/common.scss";
+import "./icons"; // svg 图标
+import "./utils/setRem";
+import "element-ui/lib/theme-chalk/index.css";
 import animated from "animate.css";
 import NProgress from "nprogress";
-import JsonExcel from "vue-json-excel";
-import "./plugins/http/api";
-import "element-ui/lib/theme-chalk/index.css";
-import "./styles/common.scss";
 import "nprogress/nprogress.css";
-import "@/icons"; // svg 图标
-import "@/utils/setRem";
 import VCharts from "v-charts";
-import { Collapse, Icon } from "ant-design-vue";
-import moment from "moment";
-import i18n from "@/plugins/i18n";
-import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
-import "vue-gn-components/lib/style/index.css";
-// import "./plugins/vue-socket";
+import i18n from "./utils/i18n";
+// import moment from "moment";
+// import { Collapse, Icon } from "ant-design-vue";
+// import JsonExcel from "vue-json-excel";
+// import { Magnifier, DragWrap, DragItem } from "vue-gn-components";
+// import "vue-gn-components/lib/style/index.css";
+// import "./utils/vue-socket";
 import "./permission";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
@@ -32,18 +32,17 @@ NProgress.configure({
 });
 
 // 时间过滤器
-Vue.filter("filterTime", timestr => {
-  return moment(timestr).calendar();
-});
+// Vue.filter("filterTime", timestr => {
+//   return moment(timestr).calendar();
+// });
 // 全局注册组件
-Vue.use(animated);
-Vue.use(Collapse);
-Vue.use(Icon);
-Vue.use(Magnifier)
-  .use(DragWrap)
-  .use(DragItem)
-  .use(VCharts);
-Vue.component("downloadExcel", JsonExcel);
+Vue.use(animated).use(VCharts);
+// Vue.use(Collapse);
+// Vue.use(Icon);
+// Vue.use(Magnifier)
+//   .use(DragWrap)
+//   .use(DragItem)
+// Vue.component("downloadExcel", JsonExcel);
 
 Vue.config.productionTip = false;
 
