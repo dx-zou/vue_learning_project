@@ -1,84 +1,45 @@
 <template>
   <div>
-    <canvas ref="canvas" width="500" height="500"
-      >你的浏览器不支持canvas请升级浏览器后重试</canvas
-    >
+    <taiji />
+    <canvas ref="c1" width="300" height="300"></canvas>
+    <clock />
   </div>
 </template>
 
 <script>
+import taiji from "./components/taiji";
+import clock from "./components/clock";
 export default {
   data() {
     return {};
   },
+  components: {
+    taiji,
+    clock
+  },
   mounted() {
-    this.paintCanvas();
+    this.draw();
   },
   methods: {
-    paintCanvas() {
-      const cas = this.$refs.canvas;
-      const context = cas.getContext("2d");
-      const x0 = cas.width / 2;
-      const y0 = cas.height / 2;
-      // 绘制白色整体白色区域
-      context.arc(x0, y0, 200, (Math.PI / 180) * -90, (Math.PI / 180) * 270);
-      context.fillStyle = "white";
-      context.fill();
-      // 绘制黑色 的太极图
-      context.beginPath();
-      context.arc(
-        x0,
-        y0 - 100,
-        100,
-        (Math.PI / 180) * -90,
-        (Math.PI / 180) * 90,
-        true
-      );
-      context.arc(
-        x0,
-        y0 + 100,
-        100,
-        (Math.PI / 180) * -90,
-        (Math.PI / 180) * 90,
-        false
-      );
-      context.arc(x0, y0, 200, (Math.PI / 180) * 90, (Math.PI / 180) * 270);
-      context.fillStyle = "black";
-      context.fill();
-
-      // 绘制太极中的小圆点
-      context.beginPath();
-      context.fillStyle = "black";
-      context.arc(
-        x0,
-        y0 - 100,
-        10,
-        (Math.PI / 180) * -90,
-        (Math.PI / 180) * 270,
-        true
-      );
-      context.fill();
-
-      context.beginPath();
-      context.fillStyle = "white";
-      context.arc(
-        x0,
-        y0 + 100,
-        10,
-        (Math.PI / 180) * -90,
-        (Math.PI / 180) * 270,
-        false
-      );
-      context.fill();
+    draw() {
+      const cas = this.$refs.c1;
+      const ctx = cas.getContext("2d"); // 获取绘图环境
+      // console.log(ctx);
+      ctx.fillStyle = "blue";
+      ctx.font = "30px sans-serif";
+      ctx.direction = "ltr";
+      ctx.fillText("Hello Canvas", 0, 100);
+      ctx.strokeText("Hello Canvas", 0, 200);
+      // const src = cas.toDataURL("image/png", 0.9);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-canvas {
-  animation: rotate 15s linear infinite;
-}
+// canvas {
+//   animation: rotate 15s linear infinite;
+// }
 @keyframes rotate {
   from {
     transform: rotate(0deg);

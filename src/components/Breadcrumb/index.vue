@@ -2,7 +2,8 @@
   <el-breadcrumb class="app-breadcrumb" separator="/" id="breadCrumbs">
     <transition-group name="breadcrumb">
       <el-breadcrumb-item key="dashboard">
-        <a class="iconfont icon-home" @click.prevent="handleHomeClick"></a>
+        <a @click.prevent="handleHomeClick">Home</a>
+        <!-- <a class="iconfont icon-home" @click.prevent="handleHomeClick"></a> -->
       </el-breadcrumb-item>
       <el-breadcrumb-item v-for="(item, index) in breadList" :key="item">
         <span v-if="index === breadList.length - 1" class="no-redirect">{{

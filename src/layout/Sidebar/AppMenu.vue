@@ -12,30 +12,28 @@
     @select="handleSelect"
     id="sidebar"
   >
-    <sidebar-item v-for="item in MenuList" :item="item" :key="item.id" />
-    <!-- <el-submenu
-      v-for="item in MenuList"
-      :item="item"
-      :key="item.id"
-      :index="item.index"
-      ref="subMenu"
-    >
-      <template slot="title">
-        <svg-icon :icon-class="item.svg" />
-        <span slot="title">{{ item.title }}</span>
-      </template>
-      <template v-if="item.children">
-        <el-menu-item
+    <!-- <sidebar-item v-for="item in MenuList" :item="item" :key="item.id" /> -->
+    <template v-for="item in MenuList">
+      <el-menu-item v-if="!item.children" :key="item.title" :index="item.index">
+        <router-link :to="{ name: item.title }">
+          <svg-icon v-if="item.svg" :icon-class="item.svg" />
+          <span>
+            {{ item.title }}
+          </span>
+        </router-link>
+      </el-menu-item>
+      <el-submenu v-else :key="item.title" :index="item.index">
+        <template slot="title">
+          <svg-icon v-if="item.svg" :icon-class="item.svg" />
+          <span slot="title">{{ item.title }}</span>
+        </template>
+        <sidebar-item
           v-for="child in item.children"
           :key="child.id"
-          :index="item.index"
-        >
-          <router-link :to="{ name: child.title }">
-            {{ child.title }}
-          </router-link>
-        </el-menu-item>
-      </template>
-    </el-submenu> -->
+          :item="child"
+        />
+      </el-submenu>
+    </template>
   </el-menu>
 </template>
 

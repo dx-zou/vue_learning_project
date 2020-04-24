@@ -5,6 +5,17 @@
     <h1 class="gradient-text">Full Stack Developer</h1>
     <h1 class>选中文字的颜色</h1>
     <p class="gray">开启滤镜效果模式</p>
+    <h1>
+      Saul Goodman is. he's the last line of defense for the little guy. You
+      getting sold down the river? He's a life raft. You getting stepped on,
+      he's a sharp stick. You got Goliath on your back, Saul's the guy with the
+      slingshot. He's a righter of wrongs, He's a friend to the friendless,
+      That's Saul Goodman
+      他是小人物的最后一道防线，你即将被洪流卷走，他就是你的救生筏,
+      你被践踏了，他就是你的利刺，你被巨人歌利亚骑在背上,
+      索尔就是用弹弓击败他的人. 他伸冤理枉，他帮助无依无靠之人,
+      那就是索尔·古德曼
+    </h1>
   </div>
 </template>
 
