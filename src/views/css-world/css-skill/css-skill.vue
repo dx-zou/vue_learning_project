@@ -23,7 +23,7 @@
       <div class="progress" style="--percent: 80"></div>
       <p class="loading">加载中</p>
       <div class="no-more">无更多数据</div>
-      <div class="onepx-border"></div>
+      <div class="onepx-border">1px border</div>
       <div class="truncate-text-multiline">
         多行文本截断显示，多行文本截断显示多行文本截断显示，多行文本截断显示，多行文本截断显示，多行文本截断显示
       </div>
@@ -55,6 +55,8 @@
         <h2>禁止用户选择</h2>
         <span>无法选择哦！！！</span>
       </div>
+      <div class="tri"></div>
+      <div class="text-blur">文字模糊效果</div>
     </div>
     <div class="right"></div>
   </div>
@@ -164,33 +166,43 @@ export default {
 
   /* 加载中动画 */
   .loading::after {
-    content: "。";
+    content: ".";
     animation: loading 2s ease-in-out infinite;
   }
 
   @keyframes loading {
     33% {
-      content: "。。。";
+      content: ". . .";
     }
 
     66% {
-      content: "。。。。。。";
+      content: ". . . . . .";
     }
   }
 
+  .no-more {
+    position: relative;
+    text-align: center;
+  }
+  .no-more-style {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ccc;
+  }
   /* 更多数据 */
   .no-more::after {
-    /* content: '————————————————'; */
-    content: "";
-    display: inline-block;
-    width: 300px;
-    height: 1px;
-    background-color: #ccc;
+    @extend .no-more-style;
+    right: 0;
     margin-left: 50px;
   }
 
   .no-more::before {
-    content: "————————————————";
+    @extend .no-more-style;
+    left: 0;
     margin-right: 50px;
   }
   .onepx-border {
@@ -198,18 +210,20 @@ export default {
     width: 200px;
     height: 40px;
     color: red;
+    font-size: 20px;
     text-align: center;
     &::before {
+      content: "";
       position: absolute;
-      content: "1px border";
+      display: block;
       width: 200%;
       height: 200%;
-      border: 1px solid red;
       left: 0;
       top: 0;
-      font-size: 0.6rem;
       transform: scale(0.5);
-      transform-origin: left top;
+      transform-origin: 0 0;
+      padding: 1px;
+      border: 1px solid red;
     }
   }
   // 多行文本截断显示
@@ -239,7 +253,7 @@ export default {
   }
   li::before {
     counter-increment: counter;
-    content: counters(counter, ".") " ";
+    content: counters(counter, ".") "";
   }
   form {
     border: 3px solid #2d98da;
@@ -258,6 +272,17 @@ export default {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+  .tri {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+  }
+  .text-blur {
+    color: transparent;
+    text-shadow: 0 0 2px rgba($color: #000, $alpha: 0.6);
   }
 }
 </style>
