@@ -3,19 +3,22 @@
     <taiji />
     <canvas ref="c1" width="300" height="300"></canvas>
     <clock />
+    <rubber />
   </div>
 </template>
 
 <script>
 import taiji from "./components/taiji";
 import clock from "./components/clock";
+import rubber from "./components/rubber";
 export default {
   data() {
     return {};
   },
   components: {
     taiji,
-    clock
+    clock,
+    rubber
   },
   mounted() {
     this.draw();
