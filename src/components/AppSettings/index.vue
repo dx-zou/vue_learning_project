@@ -17,6 +17,8 @@
             <el-tooltip content="暗黑风格" placement="top">
               <img
                 src="https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg"
+                alt="图片"
+                class="svg-img"
               />
             </el-tooltip>
           </el-radio>
@@ -24,6 +26,8 @@
             <el-tooltip content="明亮风格" placement="top">
               <img
                 src="https://gw.alipayobjects.com/zos/antfincdn/NQ%24zoisaD2/jpRkZQMyYRryryPNtyIC.svg"
+                alt="图片"
+                class="svg-img"
               />
             </el-tooltip>
           </el-radio>
@@ -38,6 +42,8 @@
             <el-tooltip content="侧边布局" placement="top">
               <img
                 src="https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg"
+                alt="图片"
+                class="svg-img"
               />
             </el-tooltip>
           </el-radio>
@@ -45,6 +51,8 @@
             <el-tooltip content="顶部布局" placement="top">
               <img
                 src="https://gw.alipayobjects.com/zos/antfincdn/URETY8%24STp/KDNDBbriJhLwuqMoxcAr.svg"
+                alt="图片"
+                class="svg-img"
               />
             </el-tooltip>
           </el-radio>
@@ -121,5 +129,8 @@ export default {
 <style lang="scss" scoped>
 .el-form {
   padding: 0 20px;
+}
+.svg-img {
+  vertical-align: middle;
 }
 </style>
