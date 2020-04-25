@@ -19,6 +19,7 @@ export default {
   device: state => state.app.device,
   // 活动的菜单项的index
   activeIndex: state => state.app.activeIndex,
+  tabsList: state => state.app.tabsList,
   // 显示隐藏消息框
   showMsgBox: state => state.app.showMsgBox,
   // 用户名称

@@ -134,12 +134,12 @@ const flatArray = function(arr) {
   return arr;
 };
 
-// export default {
-//   _unique,
-//   _uniqueMap,
-//   bubbleSort,
-//   bubbleSort2,
-//   quickSort,
-//   flatReduce,
-//   flatArray
-// };
+export default {
+  _unique,
+  _uniqueMap,
+  bubbleSort,
+  bubbleSort2,
+  quickSort,
+  flatReduce,
+  flatArray
+};

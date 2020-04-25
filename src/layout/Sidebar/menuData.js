@@ -1,43 +1,43 @@
 const MENU = [
   {
     id: 0,
-    index: "0",
+    index: "首页",
     title: "首页",
     icon: "icon-vue",
     svg: "home",
     children: [
       {
         id: 10,
-        index: "0-1",
+        index: "dashboard",
         title: "dashboard"
       }
     ]
   },
   {
     id: 1,
-    index: "1",
+    index: "Vue",
     title: "Vue",
     icon: "icon-vue",
     svg: "vue",
     children: [
       {
         id: 11,
-        index: "1-1",
+        index: "router",
         title: "router"
       },
       {
         id: 13,
-        index: "1-3",
+        index: "computed",
         title: "computed"
       },
       {
         id: 14,
-        index: "1-4",
+        index: "transition",
         title: "transition"
       },
       {
         id: 15,
-        index: "1-5",
+        index: "anchor",
         title: "anchor"
       }
     ]
@@ -51,42 +51,42 @@ const MENU = [
     children: [
       {
         id: 21,
-        index: "2-1",
+        index: "color",
         title: "color"
       },
       {
         id: 22,
-        index: "2-2",
+        index: "skill",
         title: "skill"
       },
       {
         id: 23,
-        index: "2-3",
+        index: "skill-2",
         title: "skill-2"
       },
       {
         id: 24,
-        index: "2-4",
+        index: "sticky",
         title: "sticky"
       },
       {
         id: 26,
-        index: "2-6",
+        index: "waterfall",
         title: "waterfall"
       },
       {
         id: 27,
-        index: "2-7",
+        index: "snow",
         title: "snow"
       },
       {
         id: 28,
-        index: "2-8",
+        index: "28-1",
         title: "animation",
         children: [
           {
             id: 281,
-            index: "2-8-1",
+            index: "animation",
             title: "animation"
           }
         ]
@@ -95,48 +95,48 @@ const MENU = [
   },
   {
     id: 3,
-    index: "3",
+    index: "js",
     title: "js",
     icon: "icon-css",
     svg: "js",
     children: [
       {
         id: 31,
-        index: "3-1",
+        index: "lodash",
         title: "lodash"
       },
       {
         id: 32,
-        index: "3-2",
+        index: "regExp",
         title: "regExp"
       },
       {
         id: 33,
-        index: "3-3",
+        index: "upload",
         title: "upload"
       },
       {
         id: 34,
-        index: "3-4",
+        index: "canvas",
         title: "canvas"
       }
     ]
   },
   {
     id: 4,
-    index: "4",
+    index: "components",
     title: "components",
     icon: "icon-component",
     svg: "component",
     children: [
       {
         id: 41,
-        index: "4-1",
+        index: "date",
         title: "date"
       },
       {
         id: 43,
-        index: "4-3",
+        index: "indentifyCode",
         title: "indentifyCode"
       }
     ]
@@ -150,12 +150,12 @@ const MENU = [
     children: [
       {
         id: 52,
-        index: "5-2",
+        index: "cropper",
         title: "cropper"
       },
       {
         id: 53,
-        index: "5-3",
+        index: "editor",
         title: "editor"
       }
       // {
@@ -174,7 +174,7 @@ const MENU = [
     children: [
       {
         id: 61,
-        index: "6-1",
+        index: "blog-node",
         title: "blog-node"
       }
     ]
@@ -188,7 +188,7 @@ const MENU = [
     children: [
       {
         id: 71,
-        index: "7-1",
+        index: "vue-doc",
         title: "vue-doc"
       }
     ]

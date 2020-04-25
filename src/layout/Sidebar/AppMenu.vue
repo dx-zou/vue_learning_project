@@ -42,13 +42,25 @@ import { mapGetters } from "vuex";
 import variables from "@/styles/variables.scss";
 import MenuList from "./menuData";
 import SidebarItem from "./SidebarItem";
+import tools from "@/utils/arrayTools";
 
 export default {
   name: "AppMenu",
   computed: {
-    ...mapGetters(["sidebarCollapse", "sideLayout", "darkTheme"]),
+    ...mapGetters(["sidebarCollapse", "sideLayout", "darkTheme", "tabsList"]),
     variables() {
       return variables;
+    },
+    tabs() {
+      return this.tabsList.length
+        ? this.tabsList
+        : sessionStorage.tabsList
+        ? JSON.parse(sessionStorage.tabsList)
+        : [];
+    },
+    // 最多显示页签数量
+    maxTabs() {
+      return window.innerWidth < 1400 ? 8 : 11;
     },
     MenuList() {
       return MenuList;
@@ -77,8 +89,16 @@ export default {
   methods: {
     // 处理菜单栏高亮
     handleSelect(key) {
-      this.$store.dispatch("app/changeActiveIndex", key);
+      this.$store.commit("app/CHANGE_ACTIVEINDEX", key);
       sessionStorage.setItem("activeIndex", key);
+      // 更新页签
+      this.tabs.push({ title: key, index: this.activeIndex });
+      const list = tools._uniqueMap(this.tabs, "index");
+      // 最多同时显示11个页签
+      if (list.length > this.maxTabs) {
+        list.splice(0, 1);
+      }
+      this.$store.commit("app/CHANGE_TABS", list);
     }
   }
 };

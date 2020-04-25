@@ -1,13 +1,15 @@
 import {
   TOGGLE_DEVICE,
   CHANGE_ACTIVEINDEX,
-  TOGGLE_MESSAGEBOX
+  TOGGLE_MESSAGEBOX,
+  CHANGE_TABS
 } from "../mutation-types";
 
 const state = {
   device: "desktop",
   activeIndex: "",
-  showMsgBox: false
+  showMsgBox: false,
+  tabsList: []
 };
 
 const mutations = {
@@ -22,6 +24,11 @@ const mutations = {
   // 消息盒子
   [TOGGLE_MESSAGEBOX]: state => {
     state.showMsgBox = !state.showMsgBox;
+  },
+  // 页签
+  [CHANGE_TABS]: (state, playload) => {
+    state.tabsList = playload;
+    sessionStorage.setItem("tabsList", JSON.stringify(state.tabsList));
   }
 };
 
