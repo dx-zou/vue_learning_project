@@ -2,7 +2,6 @@
   <div class="common-wrapper home-wrapper">
     <div class="title">
       新型冠状病毒肺炎(COVID-19)疫情统计数据
-      <!-- <el-button @click="handleTest">测试ajax</el-button> -->
     </div>
     <el-row :gutter="12">
       <el-col :span="24">
@@ -132,16 +131,17 @@ export default {
     padding: 10px 40px;
     margin-bottom: 20px;
     font-size: 30px;
+    text-align: center;
     font-weight: bold;
     color: #f77c31;
     background: #fff;
     &::before {
       position: absolute;
       content: "";
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       top: 50%;
-      left: 10px;
+      left: 33%;
       transform: translateY(-50%);
       border-radius: 50%;
       background: #f77c31;
