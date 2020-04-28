@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div>
+      <el-button type="primary">橡皮筋选框放大图片</el-button>
+      <el-button type="primary">双击还原</el-button>
+    </div>
     <canvas
       @mousedown="handleMousedown"
       @mouseup="handleMouseup"
@@ -33,7 +37,7 @@ export default {
   data() {
     return {
       show: false,
-      imgData: undefined,
+      imgSrc: require("@/assets/images/gf.jpg"),
       cas: undefined,
       ctx: undefined,
       image: undefined,
@@ -52,7 +56,7 @@ export default {
       this.ctx = this.cas.getContext("2d");
       this.rubber = this.$refs.rubber;
       this.image = new Image();
-      this.image.src = require("@/assets/images/gf.jpg");
+      this.image.src = this.imgSrc;
       this.image.onload = () => {
         this.ctx.drawImage(this.image, 0, 0, this.cas.width, this.cas.height);
       };

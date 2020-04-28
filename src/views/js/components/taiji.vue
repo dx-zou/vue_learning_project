@@ -1,7 +1,9 @@
 <template>
-  <canvas ref="canvas" width="300" height="300"
-    >你的浏览器不支持canvas请升级浏览器后重试</canvas
-  >
+  <div>
+    <canvas ref="canvas" width="300" height="300"
+      >你的浏览器不支持canvas请升级浏览器后重试</canvas
+    >
+  </div>
 </template>
 
 <script>

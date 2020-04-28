@@ -1,5 +1,11 @@
 <template>
-  <canvas ref="cas" :width="width" :height="height"></canvas>
+  <div>
+    <div>
+      <el-button type="primary">离屏canvas</el-button>
+    </div>
+    <canvas ref="cas" v-show="false" :width="width" :height="height"></canvas>
+    <img :src="src" alt="离屏canvas" />
+  </div>
 </template>
 
 <script>
@@ -23,7 +29,8 @@ export default {
     return {
       imgData: undefined,
       cas: undefined,
-      ctx: undefined
+      ctx: undefined,
+      src: ""
     };
   },
   mounted() {
@@ -44,17 +51,7 @@ export default {
       this.drawNumerals(this.ctx, this.cas);
       this.drawCenter(this.ctx, this.cas);
       this.drawHands(this.ctx, this.cas);
-      this.cas.addEventListener("mouseover", this.handleMouseover);
-      this.$once("hook:beforeDestroy", () => {
-        this.cas.removeEventListener("mouseover", this.handleMouseover);
-      });
-    },
-
-    handleMousedown(e) {
-      this.saveDrawingSurface();
-    },
-    handleMouseover(e) {
-      this.saveDrawingSurface();
+      this.src = this.cas.toDataURL();
     },
     // 保存绘图表面
     saveDrawingSurface() {
@@ -148,7 +145,6 @@ export default {
       const date = new Date();
       let hour = date.getHours();
       hour = hour > 12 ? hour - 12 : hour;
-
       this.drawHand((hour + date.getMinutes() / 60) * 5, 35);
       this.drawHand(date.getMinutes(), 50);
       this.drawHand(date.getSeconds(), 60);
