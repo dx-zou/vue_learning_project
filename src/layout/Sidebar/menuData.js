@@ -118,7 +118,19 @@ const MENU = [
       {
         id: 34,
         index: "canvas",
-        title: "canvas"
+        title: "canvas",
+        children: [
+          {
+            id: 341,
+            index: "canvas-1",
+            title: "canvas-1"
+          },
+          {
+            id: 343,
+            index: "canvas-2",
+            title: "canvas-2"
+          }
+        ]
       }
     ]
   },

@@ -26,12 +26,21 @@ export default [
         }
       },
       {
-        path: "canvas",
-        name: "canvas",
+        path: "canvas-1",
+        name: "canvas-1",
         component: () =>
-          import(/* webpackChunkName: "js-group" */ "@/views/js/canvas"),
+          import(/* webpackChunkName: "js-group" */ "@/views/js/canvas/index"),
         meta: {
-          breadcrumbs: ["js-learning", "canvas"]
+          breadcrumbs: ["js-learning", "canvas", "canva-1"]
+        }
+      },
+      {
+        path: "canvas-2",
+        name: "canvas-2",
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/canvas/index2"),
+        meta: {
+          breadcrumbs: ["js-learning", "canvas", "canva-2"]
         }
       },
       {

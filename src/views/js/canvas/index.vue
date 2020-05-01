@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import taiji from "./components/taiji";
-import clock from "./components/clock";
-import rubber from "./components/rubber";
+import taiji from "../components/taiji";
+import clock from "../components/clock";
+import rubber from "../components/rubber";
 export default {
   data() {
     return {};
