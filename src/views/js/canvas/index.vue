@@ -19,7 +19,7 @@
       <canvas ref="c5" width="400" height="300"></canvas>
     </div>
     <div>
-      <canvas ref="c6" width="600" height="300"></canvas>
+      <canvas ref="c6" width="1000" height="300"></canvas>
     </div>
   </div>
 </template>
@@ -159,10 +159,18 @@ export default {
       ctx.beginPath();
       ctx.lineWidth = 2;
       ctx.strokeStyle = "lightGray";
-      ctx.moveTo(60, cas.height - 60);
-      ctx.lineTo(60, 60);
-      ctx.moveTo(60, cas.height - 60);
+      ctx.moveTo(60, 60);
+      ctx.lineTo(60, cas.height - 60);
       ctx.lineTo(cas.width - 60, cas.height - 60);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.fillStyle = "orange";
+      ctx.fillRect(80, 100, 30, cas.height - 160);
+
+      ctx.beginPath();
+      ctx.lineWidth = 20;
+      ctx.lineJoin = "round";
+      ctx.rect(300, 50, 300, 150);
       ctx.stroke();
     }
   }
