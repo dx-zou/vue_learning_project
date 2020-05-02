@@ -58,7 +58,23 @@
       <div class="tri"></div>
       <div class="text-blur">文字模糊效果</div>
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <h1>css属性</h1>
+      <div class="right-item">
+        <span>font-variant-numeric:</span>
+        <p class="font-variant-numeric">98060/1234567</p>
+      </div>
+      <div class="right-item">
+        <span>clip-path:</span>
+        <div class="clip-path"></div>
+      </div>
+      <div class="right-item">
+        <span> background-clip:</span>
+        <div class=" background-clip">
+          background-clip
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -276,13 +292,45 @@ export default {
   .tri {
     width: 0;
     height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
+    border: 50px solid transparent;
+    border-top: none;
     border-bottom: 100px solid red;
   }
   .text-blur {
     color: transparent;
     text-shadow: 0 0 2px rgba($color: #000, $alpha: 0.6);
+  }
+}
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  .font-variant-numeric {
+    font-size: 30px;
+    font-variant-numeric: tabular-nums;
+    // font-variant-numeric: slashed-zero;
+    font-variant-numeric: diagonal-fractions;
+  }
+  .right-item {
+    margin-right: 20px;
+  }
+  .clip-path {
+    width: 200px;
+    height: 100px;
+    background: orange;
+    clip-path: circle(50%);
+  }
+  .background-clip {
+    width: 400px;
+    height: 300px;
+    font-size: 60px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    color: #fff;
+    text-align: center;
+    background: url("../../../assets/images/gf.jpg") content-box no-repeat;
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
   }
 }
 </style>
