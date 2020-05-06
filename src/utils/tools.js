@@ -69,7 +69,7 @@ const $ajax = function(
     xhr.withCredentials = withCredentials;
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
           resolve(xhr.response);
         } else {
           reject(xhr.response);
@@ -109,7 +109,10 @@ const $ajax = function(
       console.log("The transfer is loadend.", res);
     }
 
+    // 查询字符串中每个参数的名称和值都必须使用encodeURIComponent()进行编码，然后才能放到URL的末尾；
+    // 而且所有名-值对儿都必须由和号（&）分隔
     xhr.open(method, url);
+
     // 设置 HTTP 请求头的值, 必须在 open() 之后、send() 之前调用 setRequestHeader() 方法。
     for (let key in header) {
       xhr.setRequestHeader(key, header[key]);

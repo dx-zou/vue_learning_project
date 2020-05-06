@@ -35,12 +35,13 @@ export default {
   },
   mounted() {
     this.draw();
-    const clock = setInterval(() => {
-      this.draw();
-    }, 1000);
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(clock);
-    });
+    requestAnimationFrame(this.draw);
+    // const clock = setInterval(() => {
+    //   this.draw();
+    // }, 1000);
+    // this.$once("hook:beforeDestroy", () => {
+    //   clearInterval(clock);
+    // });
   },
   methods: {
     draw() {
@@ -52,6 +53,7 @@ export default {
       this.drawCenter(this.ctx, this.cas);
       this.drawHands(this.ctx, this.cas);
       this.src = this.cas.toDataURL();
+      requestAnimationFrame(this.draw);
     },
     // 保存绘图表面
     saveDrawingSurface() {
