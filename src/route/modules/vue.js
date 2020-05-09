@@ -8,7 +8,8 @@ export default [
       {
         path: "router",
         name: "router",
-        component: () => import("@/views/vue/vue-router"),
+        component: () =>
+          import(/* webpackChunkName: "vue-group" */ "@/views/vue/vue-router"),
         meta: {
           breadcrumbs: ["vue", "route"]
         }
@@ -16,7 +17,8 @@ export default [
       {
         path: "transition",
         name: "transition",
-        component: () => import("@/views/vue/transition"),
+        component: () =>
+          import(/* webpackChunkName: "vue-group" */ "@/views/vue/transition"),
         meta: {
           breadcrumbs: ["vue", "transiton"]
         }
@@ -24,7 +26,8 @@ export default [
       {
         path: "anchor",
         name: "anchor",
-        component: () => import("@/views/vue/anchor"),
+        component: () =>
+          import(/* webpackChunkName: "vue-group" */ "@/views/vue/anchor"),
         meta: {
           breadcrumbs: ["vue", "anchor"]
         }
@@ -32,7 +35,8 @@ export default [
       {
         path: "computed",
         name: "computed",
-        component: () => import("@/views/vue/computed"),
+        component: () =>
+          import(/* webpackChunkName: "vue-group" */ "@/views/vue/computed"),
         meta: {
           breadcrumbs: ["vue", "computed"]
         }

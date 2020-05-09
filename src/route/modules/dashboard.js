@@ -9,7 +9,8 @@ export default [
       {
         path: "",
         name: "dashboard",
-        component: () => import("@/views/home/home"),
+        component: () =>
+          import(/* webpackChunkName: "dashboard" */ "@/views/home/home"),
         meta: {}
       }
     ]

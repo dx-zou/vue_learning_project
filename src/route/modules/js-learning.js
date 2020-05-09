@@ -11,7 +11,8 @@ export default [
       {
         path: "lodash",
         name: "lodash",
-        component: () => import("@/views/js/lodash-test"),
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/lodash-test"),
         meta: {
           breadcrumbs: ["js-learning", "lodash"]
         }
