@@ -13,10 +13,10 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img src="@/assets/images/logo.gif" class="sidebar-logo" />
+        <img src="@/assets/images/logo.png" class="sidebar-logo" />
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img src="@/assets/images/logo.gif" class="sidebar-logo" />
+        <img src="@/assets/images/logo.png" class="sidebar-logo" />
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>
@@ -69,26 +69,23 @@ export default {
 
     & .sidebar-logo {
       display: inline-block;
-      width: 55px;
-      height: 55px;
+      width: 60px;
+      height: 60px;
       margin-right: 10px;
-      border-radius: 50%;
       vertical-align: middle;
       /*box-shadow: 0 0 0 2px #fd9495;*/
-      animation: logo-rotate 8s linear infinite;
-      &:hover {
-        animation-play-state: paused; /*暂停动画*/
-      }
+      // animation: logo-rotate 8s linear infinite;
+      // &:hover {
+      //   animation-play-state: paused; /*暂停动画*/
+      // }
     }
 
     & .sidebar-title {
       display: inline-block;
-      font-weight: 700;
-      line-height: 50px;
-      font-size: 14px;
+      font-weight: bold;
+      line-height: 60px;
+      font-size: 20px;
       color: #fff;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-      vertical-align: middle;
     }
   }
 

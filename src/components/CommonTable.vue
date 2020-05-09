@@ -73,7 +73,7 @@
               >删除</el-button
             >
           </slot>
-          <span class="iconfont icon-more operate-icon" slot="reference"></span>
+          <svg-icon icon-class="more" class="operate-icon" slot="reference" />
         </el-popover>
       </template>
     </el-table-column>
@@ -180,10 +180,11 @@ export default {
 </script>
 <style lang="scss">
 .el-table {
-  margin: 0.1rem 0;
+  margin: 10px 0;
   .operate-icon {
+    width: 26px;
+    height: 26px;
     vertical-align: middle;
-    font-size: 0.26rem;
     cursor: pointer;
   }
 }
@@ -194,7 +195,7 @@ export default {
   padding-bottom: 0;
 
   .el-button {
-    margin-bottom: 0.1rem;
+    margin-bottom: 10px;
   }
 
   .el-button + .el-button {

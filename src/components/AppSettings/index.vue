@@ -15,20 +15,12 @@
         >
           <el-radio :label="true">
             <el-tooltip content="暗黑风格" placement="top">
-              <img
-                src="https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg"
-                alt="图片"
-                class="svg-img"
-              />
+              <img src="@/assets/images/dark.svg" alt="图片" class="svg-img" />
             </el-tooltip>
           </el-radio>
           <el-radio :label="false">
             <el-tooltip content="明亮风格" placement="top">
-              <img
-                src="https://gw.alipayobjects.com/zos/antfincdn/NQ%24zoisaD2/jpRkZQMyYRryryPNtyIC.svg"
-                alt="图片"
-                class="svg-img"
-              />
+              <img src="@/assets/images/light.svg" alt="图片" class="svg-img" />
             </el-tooltip>
           </el-radio>
         </el-radio-group>
@@ -40,20 +32,12 @@
         >
           <el-radio :label="true">
             <el-tooltip content="侧边布局" placement="top">
-              <img
-                src="https://gw.alipayobjects.com/zos/antfincdn/XwFOFbLkSM/LCkqqYNmvBEbokSDscrm.svg"
-                alt="图片"
-                class="svg-img"
-              />
+              <img src="@/assets/images/dark.svg" alt="图片" class="svg-img" />
             </el-tooltip>
           </el-radio>
           <el-radio :label="false">
             <el-tooltip content="顶部布局" placement="top">
-              <img
-                src="https://gw.alipayobjects.com/zos/antfincdn/URETY8%24STp/KDNDBbriJhLwuqMoxcAr.svg"
-                alt="图片"
-                class="svg-img"
-              />
+              <img src="@/assets/images/top.svg" alt="图片" class="svg-img" />
             </el-tooltip>
           </el-radio>
         </el-radio-group>

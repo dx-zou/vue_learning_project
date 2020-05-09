@@ -1,10 +1,14 @@
 <template>
-  <span
-    class="iconfont icon-qiehuan toggle-icon"
-    :class="[!sidebarCollapse && 'is-collapse', fullHeader && 'margin-left']"
+  <svg-icon
+    icon-class="toggle"
+    :class="[
+      'toggle-icon',
+      !sidebarCollapse && 'is-collapse',
+      fullHeader && 'margin-left'
+    ]"
     @click="toggleSidebar"
     id="toggleSidebar"
-  ></span>
+  />
 </template>
 
 <script>
@@ -27,12 +31,12 @@ export default {
 
 <style lang="scss" scoped>
 .toggle-icon {
-  margin-right: 10px;
-  font-size: 20px;
+  width: 23px;
+  height: 23px;
   cursor: pointer;
 }
 .margin-left {
-  margin-left: 60px;
+  margin-left: 30px;
 }
 .is-collapse {
   transform: rotate(180deg);

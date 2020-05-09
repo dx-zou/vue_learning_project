@@ -1,6 +1,5 @@
 <template>
   <el-menu-item v-if="!item.children" :index="item.index">
-    <!-- <i :class="['iconfont', item.icon]"></i> -->
     <router-link :to="{ name: item.title }">
       {{ item.title }}
     </router-link>

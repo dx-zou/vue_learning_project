@@ -85,11 +85,6 @@ export default {
     line-height: 65px;
     border: none;
   }
-  .toggle-icon {
-    margin-right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
   .is-collapse {
     transform: rotate(180deg);
   }

@@ -16,7 +16,7 @@
       >
     </el-dropdown-menu>
     <div class="el-dropdown-link">
-      <img src="../../assets/images/avatar.gif" alt="头像" class="avatar" />
+      <img src="../../assets/images/avatar.jpg" alt="头像" class="avatar" />
       <i class="el-icon-caret-bottom"></i>
     </div>
   </el-dropdown>
@@ -103,8 +103,8 @@ export default {
 <style lang="scss" scoped>
 .el-dropdown-link {
   .avatar {
-    height: 65px;
-    border-radius: 10px;
+    height: 60px;
+    border-radius: 50%;
     vertical-align: middle;
     cursor: pointer;
   }

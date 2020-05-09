@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       queryForm: {},
-      tableData: [],
+      tableData: [{}],
       tableColumns: [
         {
           prop: "title",
