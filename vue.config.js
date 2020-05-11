@@ -2,12 +2,31 @@ const path = require("path");
 const autoprefixer = require("autoprefixer");
 // const pxtorem = require("postcss-pxtorem");
 const resolve = dir => path.join(__dirname, dir);
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+const productionGzipExtensions = ["js", "css"];
 
 module.exports = {
-  configureWebpack: {
-    devtool: "source-map"
-  },
   productionSourceMap: false,
+  configureWebpack: config => {
+    if (process.env.NODE_ENV === "production") {
+      return {
+        plugins: [
+          new CompressionWebpackPlugin({
+            algorithm: "gzip",
+            test: new RegExp(
+              "\\.(" + productionGzipExtensions.join("|") + ")$"
+            ),
+            threshold: 10240, //对超过10k的数据进行压缩
+            minRatio: 0.6 // 压缩比例，值为0 ~ 1
+          })
+        ]
+      };
+    } else {
+      return {
+        // devtool: "source-map"
+      };
+    }
+  },
   css: {
     loaderOptions: {
       sass: {
