@@ -11,9 +11,9 @@ export default {
   fixedHeader: state => state.settings.fixedHeader,
   // 显示设置抽屉
   showSetting: state => state.settings.showSetting,
-  // 暗黑主题
+  // 深色主题
   darkTheme: state => state.settings.darkTheme,
-  // 暗黑主题
+  // 深色主题
   fullHeader: state => state.settings.fullHeader,
   // 设备类型
   device: state => state.app.device,

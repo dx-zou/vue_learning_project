@@ -38,8 +38,8 @@
 
     .el-submenu__title,
     .el-menu-item {
-      height: 56px;
-      line-height: 56px;
+      height: 49px;
+      line-height: 49px;
       font-size: 14px;
 
       i {
@@ -47,9 +47,9 @@
         font-size: 14px;
       }
 
-      .el-submenu__icon-arrow {
-        // margin-right: 20px;
-      }
+      // .el-submenu__icon-arrow {
+      //   margin-right: 20px;
+      // }
     }
     
     /* 菜单栏折叠时  */
@@ -144,8 +144,8 @@
       overflow: hidden;
 
       &>.el-submenu__title {
-        width: 56px;
-        height: 56px;
+        width: 49px;
+        height: 49px;
         padding: 0 20px !important;
 
         //.svg-icon {

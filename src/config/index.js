@@ -7,7 +7,7 @@ export default {
   sidebarCollapse: false,
   // 侧边菜单布局
   sideLayout: true,
-  // 暗黑主题
+  // 深色主题
   darkTheme: true,
   // 顶部通栏
   fullHeader: false

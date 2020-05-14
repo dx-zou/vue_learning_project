@@ -1,6 +1,10 @@
 <template>
   <div class="transition-container">
     <el-button type="primary" @click="show = !show">toggle</el-button>
+    <el-button @click="show = !show">toggle</el-button>
+    <el-button type="info" @click="show = !show">toggle</el-button>
+    <el-button type="danger" @click="show = !show">toggle</el-button>
+    <el-button type="warning" @click="show = !show">toggle</el-button>
     <transition name="filter">
       <div key="filter" v-show="show" class="filter">
         <div>hhhhhhhhhhhhhhhhhhh</div>

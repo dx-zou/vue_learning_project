@@ -14,7 +14,7 @@
           @change="handleSettingChange($event, 'darkTheme')"
         >
           <el-radio :label="true">
-            <el-tooltip content="暗黑风格" placement="top">
+            <el-tooltip content="深色风格" placement="top">
               <img src="@/assets/images/dark.svg" alt="图片" class="svg-img" />
             </el-tooltip>
           </el-radio>
