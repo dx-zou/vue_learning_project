@@ -7,7 +7,7 @@
 const _unique = function(arr = [], prop) {
   let obj = {};
   return arr.reduce((prev, cur) => {
-    obj[cur[prop]] ? "" : (obj[cur[prop]] = true && prev.push(cur));
+    !obj[cur[prop]] && (obj[cur[prop]] = true && prev.push(cur));
     return prev;
   }, []);
 };

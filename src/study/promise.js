@@ -24,28 +24,36 @@ p.then(
  * 可以用race给某个异步请求设置超时时间，并且在超时后执行相应的操作
  */
 // 请求某个图片资源
-function requestImg() {
-  return new Promise((resolve, reject) => {
-    var img = new Image();
-    img.onload = function() {
-      resolve(img);
-    };
-    img.src = "图片的路径";
-  });
-}
-// 延时函数，用于给请求计时
-function timeout() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject("图片请求超时");
-    }, 3000);
-  });
-}
+// function requestImg() {
+//   return new Promise((resolve, reject) => {
+//     var img = new Image();
+//     img.onload = function() {
+//       resolve(img);
+//     };
+//     img.src = "图片的路径";
+//   });
+// }
+// // 延时函数，用于给请求计时
+// function timeout() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject("图片请求超时");
+//     }, 3000);
+//   });
+// }
 
-Promise.race([requestImg(), timeout()])
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// Promise.race([requestImg(), timeout()])
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+const test = new Promise((resolve, reject) => {
+  reject(1);
+});
+
+test.finally(res => {
+  console.log(res);
+});
