@@ -10,7 +10,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  // font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
   color: #000;
 }
 
@@ -67,3 +68,17 @@ div:focus {
 #driver-popover-item .driver-popover-footer {
   font-size: 14px;
 }
+
+/* element 自定义主题 */
+
+/* 改变主题色变量 */
+$--color-primary: #0283d6;
+$--color-info: #6c757d;
+$--color-success: #1bb99a;
+$--color-danger: #ff5d48;
+$--color-warning: #f1b53d;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

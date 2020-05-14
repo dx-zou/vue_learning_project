@@ -33,6 +33,7 @@ export default {
 .toggle-icon {
   width: 23px;
   height: 23px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .margin-left {

@@ -10,7 +10,6 @@ import "./utils/businessTools";
 import "./styles/common.scss";
 import "./icons"; // svg 图标
 import "./utils/setRem";
-import "element-ui/lib/theme-chalk/index.css";
 import animated from "animate.css";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";

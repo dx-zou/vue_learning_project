@@ -124,7 +124,7 @@ $border: 1px solid #e4e7ed;
     }
   }
   .tab-active {
-    color: #409eff;
+    color: #0283d6;
     border-bottom: none;
     padding: 0 20px;
   }

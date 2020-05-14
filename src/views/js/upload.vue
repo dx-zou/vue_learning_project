@@ -58,7 +58,7 @@ export default {
      * @param {*} context
      * @returns {Function}
      */
-    request({ url, method = "post", data, headers = {}, requestList }) {
+    request({ url, method = "post", data, headers = {} }) {
       return new Promise(resolve => {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url);
