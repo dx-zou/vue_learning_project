@@ -1,66 +1,111 @@
 <template>
   <div class="login-wrapper">
-    <div class="login-bg"></div>
-    <div class="login-overlay"></div>
     <div class="login-container">
-      <h1>FE LEARNING SYS</h1>
-      <el-input
-        type="text"
-        prefix-icon="el-icon-user-solid"
-        v-model.trim="userData.username"
-        placeholder="username"
-        clearable
-        autofocus
-      ></el-input>
-      <el-input
-        type="text"
-        prefix-icon="el-icon-lock"
-        show-password
-        clearable
-        v-model.trim="userData.password"
-        @keyup.native.enter="debounceLogin"
-        placeholder="password"
-      ></el-input>
-      <el-button type="primary" @click="debounceLogin">sign in</el-button>
+      <div class="title">我的学习系统</div>
+      <div class="login-text">登录</div>
+      <div class="input-box">
+        <label
+          :class="['label', nameBlur ? 'blur' : 'focus']"
+          ref="name"
+          for="name"
+          >用户名</label
+        >
+        <input
+          class="input"
+          type="text"
+          name="name"
+          id="name"
+          v-model="userinfo.username"
+          @focus="handleFocus('name')"
+          @blur="handleBlur('name')"
+        />
+        <span :class="['spin', !nameBlur && 'spin-active']"></span>
+        <i
+          v-show="userinfo.username"
+          class="el-icon-circle-close close"
+          @click="clearInput('username')"
+        ></i>
+      </div>
+      <div class="input-box">
+        <label
+          :class="['label', passBlur ? 'blur' : 'focus']"
+          ref="pass"
+          for="password"
+          >密码</label
+        >
+        <input
+          class="input"
+          :type="showPass ? 'text' : 'password'"
+          id="password"
+          name="password"
+          v-model="userinfo.password"
+          @focus="handleFocus('pass')"
+          @blur="handleBlur('pass')"
+        />
+        <i
+          v-show="userinfo.password"
+          class="el-icon-view close show-pass"
+          @click="showPass = !showPass"
+        ></i>
+        <i
+          v-show="userinfo.password"
+          class="el-icon-circle-close close"
+          @click="clearInput('password')"
+        ></i>
+        <span :class="['spin', !passBlur && 'spin-active']"></span>
+      </div>
+      <div class="login-button" v-loading="isLoading">
+        <button class="button" @click="debounceLogin">
+          <span>登录</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import _ from "lodash";
+import { debounce } from "lodash";
 export default {
   data() {
     return {
-      userData: {
-        username: "admin",
-        password: "123"
-      }
+      userinfo: {
+        username: undefined,
+        password: undefined
+      },
+      nameBlur: true,
+      passBlur: true,
+      showPass: false,
+      isLoading: false
     };
   },
-  computed: {
-    lodash() {
-      return _;
-    }
-  },
   methods: {
-    // debounce login
-    debounceLogin: _.debounce(
+    handleFocus(value) {
+      value === "name" && (this.nameBlur = false);
+      value === "pass" && (this.passBlur = false);
+    },
+    handleBlur(value) {
+      value === "name" && !this.userinfo.username && (this.nameBlur = true);
+      value === "pass" && !this.userinfo.password && (this.passBlur = true);
+    },
+    clearInput(value) {
+      this.userinfo[value] = undefined;
+      value === "username" && (this.nameBlur = true);
+      value === "password" && (this.passBlur = true);
+    },
+    debounceLogin: debounce(
       function() {
-        const { username, password } = this.userData;
+        const { username, password } = this.userinfo;
         if (!username || !password)
           return this.$toast("warning", "请输入用户名和密码");
-        const loading = this.$loading({
-          lock: true,
-          text: "拼命加载中。。。",
-          spinner: "el-icon-loading",
-          background: "rgba(0, 0, 0, 0.7)"
-        });
+        this.isLoading = true;
         if (username === "admin" && password === "123") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$router.push("/dashboard");
+        } else {
+          this.$toast("warning", "用户名或密码错误");
+          this.isLoading = false;
         }
-        loading.close();
-        // this.$store.dispatch("user/_login", this.userData).then(res => {
+        // this.$store.dispatch("user/_login", this.userinfo).then(res => {
         //   loading.close();
         //   if (res.code === 1) {
         //     this.$toast("success", "登录成功");
@@ -82,69 +127,129 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
-  .login-bg {
-    position: fixed;
-    width: 6750px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #348cb2 url("../../assets/images/bg.jpg") bottom left;
-    background-repeat: repeat-x;
-    background-size: 2250px auto;
-    animation: bg-move 60s linear infinite;
-  }
-  .login-overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    animation: overlay 1.5s forwards;
-    background-attachment: fixed, fixed;
-    background-image: url("../../assets/images/overlay-pattern.png"),
-      url("../../assets/images/overlay.svg");
-    background-position: top left, center center;
-    background-repeat: repeat, no-repeat;
-    background-size: auto, cover;
-  }
-  @keyframes bg-move {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-2250px, 0, 0);
-    }
-  }
-  @keyframes overlay {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  background-color: #34495e;
   .login-container {
     position: absolute;
-    width: 500px;
+    width: 460px;
+    padding: 30px 50px;
     left: 50%;
-    top: 40%;
-    padding: 0.2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 3px 3px 6px #ddd;
+    top: 50%;
     transform: translate(-50%, -50%);
-    h1 {
-      margin-bottom: 20px;
-      text-align: center;
-      font-size: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px #34495e;
+    background-color: #fff;
+  }
+  .title {
+    width: 100%;
+    line-height: 46px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ff5d48;
+    position: relative;
+    &::before {
+      content: "";
+      width: 5px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -50px;
+      background: #ff5d48;
     }
-    .el-input {
-      margin-bottom: 30px;
-    }
-    .el-button {
+  }
+  .login-text {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff5d48;
+  }
+  .input-box {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    margin-top: 30px;
+    &::before {
+      content: "";
+      position: absolute;
       width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 3;
+    }
+    .label {
+      position: absolute;
+      left: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .input {
+      position: relative;
+      height: 60px;
+      top: 10px;
+      border: none;
+      background: transparent;
+      font-size: 21px;
+      color: rgba($color: #000000, $alpha: 0.8);
+    }
+    .spin {
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: #ff5d48;
+      z-index: 4;
+    }
+    .close {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      // color: #ddd;
+      cursor: pointer;
+    }
+    .show-pass {
+      right: 30px;
+    }
+    .spin-active {
+      width: 100%;
+    }
+    .blur {
+      top: 10px;
+      line-height: 60px;
+      font-size: 21px;
+      font-weight: 300;
+    }
+    .focus {
+      top: 0;
+      line-height: 16px;
+      font-size: 16px;
+      font-weight: 100;
+    }
+  }
+  .input,
+  .label,
+  .spin,
+  .button {
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .login-button {
+    margin-top: 30px;
+    text-align: center;
+    .button {
+      width: 60%;
+      line-height: 50px;
+      border: 3px solid rgba($color: #000000, $alpha: 0.1);
+      background: transparent;
+      color: rgba($color: #000000, $alpha: 0.2);
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      &:hover {
+        color: #ff5d48;
+        border-color: #ff5d48;
+      }
     }
   }
 }
