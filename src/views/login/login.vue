@@ -124,11 +124,12 @@ export default {
 </script>
 
 <style lang="scss">
+$login-color: #ff5d48;
 .login-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #34495e;
+  background: url("../../assets/images/login-bg.jpg") no-repeat bottom/100% 100%;
   .login-container {
     position: absolute;
     width: 460px;
@@ -137,7 +138,7 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
-    box-shadow: 2px 3px 5px #34495e;
+    // box-shadow: 2px 3px 5px #34495e;
     background-color: #fff;
   }
   .title {
@@ -146,7 +147,7 @@ export default {
     font-size: 32px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #ff5d48;
+    color: $login-color;
     position: relative;
     &::before {
       content: "";
@@ -155,14 +156,14 @@ export default {
       position: absolute;
       top: 0;
       left: -50px;
-      background: #ff5d48;
+      background: $login-color;
     }
   }
   .login-text {
     margin-top: 10px;
     font-size: 20px;
     font-weight: 700;
-    color: #ff5d48;
+    color: $login-color;
   }
   .input-box {
     position: relative;
@@ -187,6 +188,7 @@ export default {
     }
     .input {
       position: relative;
+      width: 80%;
       height: 60px;
       top: 10px;
       border: none;
@@ -200,7 +202,7 @@ export default {
       height: 1px;
       bottom: 0;
       left: 0;
-      background-color: #ff5d48;
+      background-color: $login-color;
       z-index: 4;
     }
     .close {
@@ -239,7 +241,7 @@ export default {
     margin-top: 30px;
     text-align: center;
     .button {
-      width: 60%;
+      width: 80%;
       line-height: 50px;
       border: 3px solid rgba($color: #000000, $alpha: 0.1);
       outline: none;
@@ -249,8 +251,8 @@ export default {
       font-weight: 700;
       cursor: pointer;
       &:hover {
-        color: #ff5d48;
-        border-color: #ff5d48;
+        color: $login-color;
+        border-color: $login-color;
       }
     }
   }
