@@ -41,6 +41,7 @@
           v-model="userinfo.password"
           @focus="handleFocus('pass')"
           @blur="handleBlur('pass')"
+          @keyup.enter="debounceLogin"
         />
         <i
           v-show="userinfo.password"
@@ -241,6 +242,7 @@ export default {
       width: 60%;
       line-height: 50px;
       border: 3px solid rgba($color: #000000, $alpha: 0.1);
+      outline: none;
       background: transparent;
       color: rgba($color: #000000, $alpha: 0.2);
       font-size: 18px;

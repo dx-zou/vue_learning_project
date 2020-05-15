@@ -45,7 +45,7 @@ export default {
 <style lang="scss" scoped>
 .el-breadcrumb {
   display: inline-block;
-  font-size: 0.14rem;
+  font-size: 14px;
   line-height: 0.6rem;
   margin-left: 0.08rem;
 

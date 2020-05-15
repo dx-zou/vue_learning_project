@@ -14,7 +14,7 @@
     .router-link-exact-active {
       color: $menuActiveText;
     }
-    // reset element-ui css
+
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out,
         0s padding-right ease-in-out;
@@ -35,16 +35,20 @@
     .el-scrollbar__wrap {
       overflow-x: hidden;
     }
-
     .el-submenu__title,
     .el-menu-item {
       height: 49px;
       line-height: 49px;
       font-size: 14px;
-
+      font-weight: 500;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      &:hover {
+        font-weight: 900;
+      }
       i {
         // margin-right: 10px;
         font-size: 14px;
+        font-weight: 900;
       }
 
       // .el-submenu__icon-arrow {
@@ -78,7 +82,7 @@
     }
 
     .svg-icon {
-      margin-right: 16px;
+      margin-right: 10px;
     }
 
     .el-menu {
@@ -225,7 +229,7 @@
 .el-menu--vertical, .el-menu--horizontal {
   &>.el-menu {
     .svg-icon {
-      margin-right: 16px;
+      margin-right: 10px;
     }
     a {
       display: inline-block;
@@ -235,11 +239,14 @@
 
   .el-submenu>.el-submenu__title,
   .el-menu-item {
+    font-weight: 700;
     &:hover {
       background-color: $lightSubMenuHover !important;
       color: $menuActiveText !important;
     }
-
+    i {
+      font-weight: 900;
+    }
     a {
       display: inline-block;
       width: 100%;

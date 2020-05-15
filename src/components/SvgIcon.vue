@@ -30,8 +30,8 @@ export default {
 
 <style lang="scss">
 .svg-icon {
-  width: 0.14rem;
-  height: 0.14rem;
+  width: 14px;
+  height: 14px;
   //vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
