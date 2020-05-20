@@ -169,6 +169,11 @@ const MENU = [
         id: 53,
         index: "editor",
         title: "editor"
+      },
+      {
+        id: 54,
+        index: "pdf",
+        title: "pdf"
       }
       // {
       //   id: 54,

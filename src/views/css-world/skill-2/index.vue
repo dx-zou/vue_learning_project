@@ -48,13 +48,13 @@
       </div>
       <div class="c-right">
         <div
-          v-for="item in 4"
-          :key="item"
+          v-for="item in elementList"
+          :key="item.id"
           class="box"
-          @mouseenter="handleMouseEnter($event, item)"
-          @mouseleave="handleMouseLeave($event, item)"
+          @mouseenter="handleMouseEnter($event, item.id)"
+          @mouseleave="handleMouseLeave($event, item.id)"
         >
-          <div :ref="'c' + item" :class="['content', 'move-in']">
+          <div :ref="'c' + item" :class="['content', left && 'move-in']">
             鼠标移入方向
           </div>
         </div>
@@ -79,6 +79,20 @@ export default {
     return {
       left: false,
       moveStyle: {},
+      elementList: [
+        {
+          id: 1
+        },
+        {
+          id: 2
+        },
+        {
+          id: 3
+        },
+        {
+          id: 4
+        }
+      ],
       dir: {
         left: {
           top: "0",
@@ -160,23 +174,26 @@ export default {
     },
     handleMouseEnter(e) {
       const index = this.getDirection(e);
-      console.log(index);
       const style = e.target.children[0].style;
-      const obj = this.dir[index];
-      style.left = obj.left;
-      style.top = obj.top;
-      const timer = setTimeout(() => {
-        clearTimeout(timer);
-        style.left = "0";
-        style.top = "0";
-      }, 150);
+      const { left, top } = this.dir[index];
+      // style.left = left;
+      // style.top = top;
+      this.left = true;
+      // e.target.children[0].offsetWidth;
+      // style.left = "0";
+      // style.top = "0";
+      // const timer = setTimeout(() => {
+      //   clearTimeout(timer);
+      //   style.left = "0";
+      //   style.top = "0";
+      // }, 150);
     },
     handleMouseLeave(e) {
       const index = this.getDirection(e);
       const style = e.target.children[0].style;
-      const obj = this.dir[index];
-      style.left = obj.left;
-      style.top = obj.top;
+      const { left, top } = this.dir[index];
+      // style.left = left;
+      // style.top = top;
     }
   }
 };
@@ -372,10 +389,50 @@ export default {
           font-size: 21px;
           color: #fff;
           z-index: 10;
+          transition: leftIn 0.9s;
         }
 
         .move-in {
-          transition: all 0.3s;
+          transition: left-in 0.9s;
+        }
+
+        @keyframes leftIn {
+          from {
+            transform: translate(-100%, 0);
+          }
+          to {
+            transform: translate(0, 0);
+          }
+        }
+        @keyframes right-in {
+          from {
+            left: "-100%";
+            top: "0";
+          }
+          to {
+            left: "0";
+            top: "0";
+          }
+        }
+        @keyframes top-in {
+          from {
+            left: "0";
+            top: "-100%";
+          }
+          to {
+            left: "0";
+            top: "0";
+          }
+        }
+        @keyframes bottom-in {
+          from {
+            left: "0";
+            top: "100%";
+          }
+          to {
+            left: "0";
+            top: "0";
+          }
         }
       }
     }

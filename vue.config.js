@@ -7,7 +7,7 @@ const productionGzipExtensions = ["js", "css"];
 
 module.exports = {
   productionSourceMap: false,
-  configureWebpack: config => {
+  configureWebpack: () => {
     if (process.env.NODE_ENV === "production") {
       return {
         plugins: [

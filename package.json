@@ -37,6 +37,7 @@
     "vue-i18n": "^8.15.3",
     "vue-json-excel": "^0.2.98",
     "vue-native-websocket": "^2.0.13",
+    "vue-pdf": "^4.0.8",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.3",
     "vue-sticky": "^3.3.4",
@@ -63,6 +64,7 @@
     "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
     "svg-sprite-loader": "^4.1.6",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "worker-loader": "^2.0.0"
   }
 }
