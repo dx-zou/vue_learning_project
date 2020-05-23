@@ -396,7 +396,48 @@ function _throttle(fn, wait = 1000, leading = true, trailing = true) {
     }
   };
 }
-
+/**
+ * 判断鼠标移入的方向
+ * @param(e) 鼠标事件对象
+ */
+export const getMouseDirection = function(e) {
+  /*以浏览器可视区域的左上角建立坐标系*/
+  //表示左上角和右下角及中心点坐标
+  //表示左上角和右下角的对角线斜率
+  //用getBoundingClientRect比较省事，而且它的兼容性还不错
+  const rect = e.target.getBoundingClientRect();
+  if (!rect.width) {
+    rect.width = rect.right - rect.left;
+  }
+  if (!rect.height) {
+    rect.height = rect.bottom - rect.top;
+  }
+  //求各个点坐标 注意y坐标应该转换为负值，因为浏览器可视区域左上角为(0,0)，整个可视区域属于第四象限
+  const x1 = rect.left;
+  const y1 = -rect.top;
+  const x4 = rect.left + rect.width;
+  const y4 = -(rect.top + rect.height);
+  const x0 = rect.left + rect.width / 2;
+  const y0 = -(rect.top + rect.height / 2);
+  //矩形不够大，不考虑
+  if (Math.abs(x1 - x4) < 0.0001) return 4;
+  //计算对角线斜率
+  const k = (y1 - y4) / (x1 - x4);
+  const range = [k, -k];
+  //表示鼠标当前位置的点坐标
+  const x = e.clientX;
+  const y = -e.clientY;
+  //表示鼠标当前位置的点与元素中心点连线的斜率
+  const kk = (y - y0) / (x - x0);
+  //如果斜率在range范围内，则鼠标是从左右方向移入移出的
+  if (isFinite(kk) && range[0] < kk && kk < range[1]) {
+    //根据x与x0判断左右
+    return x > x0 ? "right" : "left";
+  } else {
+    //根据y与y0判断上下
+    return y > y0 ? "top" : "bottom";
+  }
+};
 export default {
   $ajax,
   deepClone,
