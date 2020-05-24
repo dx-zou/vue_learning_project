@@ -26,6 +26,13 @@ export default [
         meta: { breadcrumbs: ["plugins", "cropper"] }
       },
       {
+        path: "wow",
+        name: "wow",
+        component: () =>
+          import(/* webpackChunkName: "plugins-group" */ "@/views/plugins/wow"),
+        meta: { breadcrumbs: ["plugins", "wow"] }
+      },
+      {
         path: "pdf",
         name: "pdf",
         component: () =>

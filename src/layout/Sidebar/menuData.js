@@ -174,6 +174,11 @@ const MENU = [
         id: 54,
         index: "pdf",
         title: "pdf"
+      },
+      {
+        id: 55,
+        index: "wow",
+        title: "wow"
       }
       // {
       //   id: 54,
