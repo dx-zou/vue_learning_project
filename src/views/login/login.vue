@@ -192,6 +192,7 @@ $login-color: #ff5d48;
       height: 60px;
       top: 10px;
       border: none;
+      outline: none;
       background: transparent;
       font-size: 21px;
       color: rgba($color: #000000, $alpha: 0.8);

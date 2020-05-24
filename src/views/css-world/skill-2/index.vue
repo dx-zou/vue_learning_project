@@ -38,10 +38,10 @@
       </div>
     </div>
     <div class="center">
-      <!-- <div class="c-left">
+      <div class="c-left">
         <img src="@/assets/images/gf.jpg" alt="" />
         <div class="img-box"></div>
-      </div> -->
+      </div>
       <div class="c-center">
         <h2>google</h2>
         <div class="google"></div>
