@@ -1,5 +1,5 @@
 <template>
-  <div class="app-main">
+  <div class="wow-container">
     <div class="box">WOW.js animation</div>
     <div
       class="box wow slideInRight"

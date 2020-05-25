@@ -3,18 +3,18 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store/index";
 import router from "./route/index";
+import service from "./http/request";
+import API from "./http/api";
+import businessToos from "./utils/businessTools";
+import VCharts from "v-charts";
+import i18n from "./utils/i18n";
+import NProgress from "nprogress";
 import "./components";
-import "./http/request";
-import "./http/api";
-import "./utils/businessTools";
 import "./styles/common.scss";
 import "./icons"; // svg 图标
 import "./utils/setRem";
-import animated from "animate.css";
-import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import VCharts from "v-charts";
-import i18n from "./utils/i18n";
+import "animate.css";
 // import moment from "moment";
 // import { Collapse, Icon } from "ant-design-vue";
 // import JsonExcel from "vue-json-excel";
@@ -34,14 +34,17 @@ NProgress.configure({
 // Vue.filter("filterTime", timestr => {
 //   return moment(timestr).calendar();
 // });
-// 全局注册组件
-Vue.use(animated).use(VCharts);
+Vue.use(VCharts);
 // Vue.use(Collapse);
 // Vue.use(Icon);
 // Vue.use(Magnifier)
 //   .use(DragWrap)
 //   .use(DragItem)
 // Vue.component("downloadExcel", JsonExcel);
+Vue.prototype.$toast = businessToos.toast;
+Vue.prototype.$deleteConfirm = businessToos.deleteConfirm;
+Vue.prototype.$api = API;
+Vue.prototype.$http = service;
 
 Vue.config.productionTip = false;
 

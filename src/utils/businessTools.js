@@ -20,9 +20,9 @@ function toast(type, message) {
  *
  * @returns
  */
-function deleteConfirm() {
+function deleteConfirm(value = "此操作将永久删除选择的数据, 是否继续?") {
   return new Promise(resolve => {
-    MessageBox.confirm("此操作将永久删除选择的数据, 是否继续?", "提示", {
+    MessageBox.confirm(value, "提示", {
       confirmButtonText: "确定",
       cancelButtonText: "取消",
       type: "warning"
@@ -35,8 +35,6 @@ function deleteConfirm() {
       });
   });
 }
-Vue.prototype.$toast = toast;
-Vue.prototype.$deleteConfirm = deleteConfirm;
 export default {
   toast,
   deleteConfirm

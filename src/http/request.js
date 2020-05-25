@@ -1,4 +1,4 @@
-import Vue from "vue";
+// import Vue from "vue";
 import axios from "axios";
 // import BASE_URL from "./api";
 // console.log(process.env.VUE_APP_BASE_API);
@@ -34,9 +34,8 @@ service.interceptors.response.use(
     }
     // 对响应数据先做一层处理
     // 请求成功后返回的数据
-    if (response.data.code === 0) {
-      Vue.prototype.$toast("error", response.data.msg);
-    }
+    // if (response.data.code === 0) {
+    // }
     return response.data;
   },
   error => {
@@ -50,5 +49,4 @@ service.interceptors.response.use(
   }
 );
 
-Vue.prototype.$http = service;
 export default service;

@@ -1,5 +1,3 @@
-import Vue from "vue";
-
 const API = {
   // 登录
   login: "/pc_blog/user/login",
@@ -16,7 +14,6 @@ const API = {
   // 删除
   deleteBlog: `/pc_blog/blog/delete-blog`
 };
-Vue.prototype.$api = API;
 export default {
   API
 };

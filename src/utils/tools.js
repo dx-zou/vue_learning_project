@@ -398,7 +398,7 @@ function _throttle(fn, wait = 1000, leading = true, trailing = true) {
 }
 /**
  * 判断鼠标移入的方向
- * @param(e) 鼠标事件对象
+ * @param{e} 鼠标事件对象
  */
 export const getMouseDirection = function(e) {
   /*以浏览器可视区域的左上角建立坐标系*/
