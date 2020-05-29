@@ -43,7 +43,6 @@
         <div class="img-box"></div>
       </div>
       <div class="c-center">
-        <h2>google</h2>
         <div class="google"></div>
       </div>
       <div class="c-right">
@@ -58,6 +57,7 @@
             鼠标移入方向
           </div>
         </div>
+        <div class="six"></div>
       </div>
     </div>
     <div class="bottom">
@@ -241,6 +241,7 @@ export default {
   }
 
   .center {
+    margin-top: 30px;
     @extend .flex;
 
     .c-left {
@@ -307,12 +308,13 @@ export default {
 
     .c-right {
       display: flex;
+      flex-wrap: wrap;
       flex: 1;
 
       .box {
         position: relative;
-        width: 200px;
-        height: 100px;
+        width: 300px;
+        height: 150px;
         border: 1px solid #ccc;
         overflow: hidden;
 
@@ -333,6 +335,24 @@ export default {
         }
         .trans {
           transition: all 0.2s ease-in-out 0s;
+        }
+      }
+      .six {
+        position: relative;
+        width: 200px;
+        height: 230px;
+        margin-left: 30px;
+        transform: rotate(-30deg) skewY(30deg) translateZ(-1px);
+        overflow: hidden;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background: orange;
+          transform: skewY(-30deg) rotate(60deg);
         }
       }
     }

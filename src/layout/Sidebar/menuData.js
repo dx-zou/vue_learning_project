@@ -167,8 +167,8 @@ const MENU = [
       },
       {
         id: 53,
-        index: "editor",
-        title: "editor"
+        index: "quill-editor",
+        title: "quill-editor"
       },
       {
         id: 54,

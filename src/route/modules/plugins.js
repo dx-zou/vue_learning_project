@@ -8,13 +8,13 @@ export default [
     sort: 5,
     children: [
       {
-        path: "editor",
-        name: "editor",
+        path: "quill-editor",
+        name: "quill-editor",
         component: () =>
           import(
             /* webpackChunkName: "plugins-group" */ "@/views/plugins/quill-editor"
           ),
-        meta: { breadcrumbs: ["plugins", "editor"] }
+        meta: { breadcrumbs: ["plugins", "quill-editor"] }
       },
       {
         path: "cropper",
