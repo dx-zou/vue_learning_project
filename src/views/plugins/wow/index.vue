@@ -19,6 +19,7 @@
     <div class="box wow slideInLeft"></div>
     <div class="box wow slideInLeft"></div>
     <div class="box wow slideInLeft"></div>
+    <el-button type="primary" @click="toTop">回到顶部</el-button>
   </div>
 </template>
 
@@ -46,6 +47,14 @@ export default {
         scrollContainer: ".app-main" // optional scroll container selector, otherwise use window
       });
       wow.init();
+    },
+    toTop() {
+      const el = document.querySelector(".app-main");
+      let scrollTop = el.scrollTop;
+      if (scrollTop > 0) {
+        requestAnimationFrame(this.toTop);
+        el.scrollTo(0, scrollTop - scrollTop / 3);
+      }
     }
   }
 };
