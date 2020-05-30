@@ -31,7 +31,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         // 共享sass 全局变量
-        data: `@import "~@/styles/variables.scss"; @import "~@/styles/app-theme.scss";`
+        prependData: `@import "~@/styles/variables.scss"; @import "~@/styles/app-theme.scss";`
       },
       postcss: {
         plugins: [

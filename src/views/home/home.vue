@@ -20,7 +20,7 @@
       <el-tab-pane label="疫情地图" name="1">
         <el-row :gutter="12">
           <el-col :span="10">
-            <virus-map ref="chart1" />
+            <!-- <virus-map ref="chart1" /> -->
           </el-col>
           <el-col :span="14">
             <common-table
@@ -34,7 +34,7 @@
         </el-row>
       </el-tab-pane>
       <el-tab-pane label="全国范围统计图表" name="2">
-        <virus-chart :chart-data="chartData" ref="chart2" />
+        <!-- <virus-chart :chart-data="chartData" ref="chart2" /> -->
       </el-tab-pane>
       <el-tab-pane label="数据" name="3">
         <common-table
@@ -60,8 +60,8 @@ import {
 } from "./data";
 // import VirusChart from "./VirusChart";
 // import VirusMap from "./VirusMap";
-const VirusMap = () => import("./VirusMap");
-const VirusChart = () => import("./VirusChart");
+// const VirusMap = () => import("./VirusMap");
+// const VirusChart = () => import("./VirusChart");
 import tools from "@/utils/tools";
 export default {
   data() {
@@ -70,10 +70,10 @@ export default {
       activeName: "1"
     };
   },
-  components: {
-    VirusChart,
-    VirusMap
-  },
+  // components: {
+  //   VirusChart,
+  //   VirusMap
+  // },
   computed: {
     chartData() {
       return virusChartData;
