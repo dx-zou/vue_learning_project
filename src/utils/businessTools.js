@@ -1,5 +1,4 @@
 import { Notification, MessageBox } from "element-ui";
-import Vue from "vue";
 
 /**
  * @description 全局toast提示方法
@@ -8,7 +7,7 @@ import Vue from "vue";
  * @param {*} message
  * @returns
  */
-function toast(type, message) {
+function toast(message = "", type = "success") {
   return Notification({
     duration: 2000,
     type,

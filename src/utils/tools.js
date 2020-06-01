@@ -130,7 +130,7 @@ const $ajax = function(
 const deepClone = function(obj) {
   let result = obj.constructor === Array ? [] : {};
   for (let key of obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       result[key] =
         typeof obj[key] === "object" ? deepClone(obj[key]) : obj[key];
     }
@@ -447,5 +447,11 @@ export default {
   _myBind,
   _deepClone,
   _debounce,
-  _throttle
+  _throttle,
+  commafy,
+  findMaxStr,
+  transToUpperCase,
+  _call,
+  _myApply,
+  _bind
 };

@@ -1,6 +1,6 @@
 import router from "./route";
 import NProgress from "nprogress";
-import store from "./store";
+// import store from "./store";
 
 const getPageTitle = pageTitle => {
   const title = "前端学习管理系统";
@@ -15,15 +15,15 @@ const getPageTitle = pageTitle => {
  * @param {*} to
  * @returns
  */
-const checkPermission = to => {
-  const menuNames = store.getters.menuName;
-  const noAuthPath = ["/dashboard", "/login"];
-  return (
-    menuNames.includes(to.name) ||
-    menuNames.includes(to.meta.parentName) ||
-    noAuthPath.includes(to.path)
-  );
-};
+// const checkPermission = to => {
+//   const menuNames = store.getters.menuName;
+//   const noAuthPath = ["/dashboard", "/login"];
+//   return (
+//     menuNames.includes(to.name) ||
+//     menuNames.includes(to.meta.parentName) ||
+//     noAuthPath.includes(to.path)
+//   );
+// };
 
 /**
  * @description 根据权限调整路由
@@ -31,14 +31,14 @@ const checkPermission = to => {
  * @param {*} to
  * @param {*} next
  */
-const permissionControl = (to, next) => {
-  if (checkPermission(to)) {
-    next();
-  } else {
-    to.path === "/404" ? next() : next("/404");
-  }
-  NProgress.done();
-};
+// const permissionControl = (to, next) => {
+//   if (checkPermission(to)) {
+//     next();
+//   } else {
+//     to.path === "/404" ? next() : next("/404");
+//   }
+//   NProgress.done();
+// };
 
 // 全局前置守卫
 router.beforeEach((to, from, next) => {

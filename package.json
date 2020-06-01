@@ -13,6 +13,7 @@
     "@johmun/vue-tags-input": "^2.1.0",
     "animate.css": "^4.1.0",
     "axios": "^0.19.2",
+    "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "cropperjs": "^1.5.7",
     "dayjs": "^1.8.28",

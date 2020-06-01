@@ -96,12 +96,12 @@ export default {
     }
   },
   watch: {
-    activeName(v) {
-      if (v === "3") return;
-      this.$nextTick(() => {
-        this.$refs[`chart${v}`].$refs["chart"].echarts.resize();
-      });
-    }
+    // activeName(v) {
+    //   if (v === "3") return;
+    //   this.$nextTick(() => {
+    //     this.$refs[`chart${v}`].$refs["chart"].echarts.resize();
+    //   });
+    // }
   },
   methods: {
     handleTest() {

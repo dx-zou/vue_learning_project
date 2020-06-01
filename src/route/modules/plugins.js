@@ -38,16 +38,14 @@ export default [
         component: () =>
           import(/* webpackChunkName: "plugins-group" */ "@/views/plugins/pdf"),
         meta: { breadcrumbs: ["plugins", "pdf"] }
+      },
+      {
+        path: "other",
+        name: "other",
+        component: () =>
+          import(/*webpackChunkName: "plugins-group"*/  "@/views/plugins/other"),
+        meta: { breadcrumbs: ["plugins", "other"] }
       }
-      // {
-      //   path: "chat",
-      //   name: "chat",
-      //   component: () =>
-      //     import(
-      //        webpackChunkName: "plugins-group"  "@/views/plugins/chat"
-      //     ),
-      //   meta: { breadcrumbs: ["plugins", "chat"] }
-      // }
     ]
   }
 ];

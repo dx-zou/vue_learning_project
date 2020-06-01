@@ -179,12 +179,12 @@ const MENU = [
         id: 55,
         index: "wow",
         title: "wow"
+      },
+      {
+        id: 56,
+        index: "other",
+        title: "other"
       }
-      // {
-      //   id: 54,
-      //   index: "5-4",
-      //   title: "chat"
-      // }
     ]
   },
   {

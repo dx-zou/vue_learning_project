@@ -49,8 +49,8 @@ const state = {
 const mutations = {
   // 改变状态
   [CHANGE_SETTING]: (state, { key }) => {
-    if (state.hasOwnProperty(key)) {
-      state[key] = !state[key];
+    state[key] = !state[key];
+    if (Object.prototype.hasOwnProperty.call(state, key)) {
       state[key] ? Cookies.set(key, 1) : Cookies.set(key, 0);
     }
   },
