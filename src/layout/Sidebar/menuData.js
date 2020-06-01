@@ -50,6 +50,11 @@ const MENU = [
     svg: "css",
     children: [
       {
+        id: 20,
+        index: "palette",
+        title: "palette"
+      },
+      {
         id: 21,
         index: "color",
         title: "color"

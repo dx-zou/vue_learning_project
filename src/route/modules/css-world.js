@@ -19,6 +19,17 @@ export default [
         }
       },
       {
+        path: "palette",
+        name: "palette",
+        component: () =>
+          import(
+            /* webpackChunkName: "css-world" */ "@/views/css-world/css-color/palette"
+          ),
+        meta: {
+          breadcrumbs: ["css-world", "palette"]
+        }
+      },
+      {
         path: "skill",
         name: "skill",
         component: () =>
