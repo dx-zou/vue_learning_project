@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :class="!sideLayout && 'menu-container'"
+    :class="!sideLayout && 'horizontal-menu-container'"
     :mode="sideLayout ? 'vertical' : 'horizontal'"
     :collapse="sideLayout && sidebarCollapse"
     :background-color="menuBgColor"
@@ -104,18 +104,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.menu-container {
+<style lang="scss">
+.horizontal-menu-container {
   margin-left: 20px;
-  /deep/ .el-submenu__title {
-    padding: 0 15px !important;
+  .el-submenu__title {
+    padding: 0 10px !important;
   }
-  /deep/ .svg-icon {
+  .svg-icon {
     margin-right: 5px;
   }
-  /deep/ .el-icon-arrow-down {
+  .el-icon-arrow-down {
     margin-left: 10px !important;
-    margin-top: -1px !important;
   }
 }
 </style>

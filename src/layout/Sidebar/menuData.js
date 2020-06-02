@@ -79,15 +79,8 @@ const MENU = [
       },
       {
         id: 28,
-        index: "28-1",
-        title: "animation",
-        children: [
-          {
-            id: 281,
-            index: "animation",
-            title: "animation"
-          }
-        ]
+        index: "animation",
+        title: "animation"
       }
     ]
   },
