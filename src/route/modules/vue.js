@@ -18,7 +18,9 @@ export default [
         path: "transition",
         name: "transition",
         component: () =>
-          import(/* webpackChunkName: "vue-group" */ "@/views/vue/transition"),
+          import(
+            /* webpackChunkName: "vue-group" */ "@/views/vue/vue-transiton"
+          ),
         meta: {
           breadcrumbs: ["vue", "transiton"]
         }
