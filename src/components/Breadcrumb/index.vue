@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-container">
+  <fade-transition class="tab-container" group>
     <div
       v-for="item in tabsData"
       :key="item.title"
@@ -21,7 +21,7 @@
         @click="handleTabRemove(item.index)"
       ></i>
     </div>
-  </div>
+  </fade-transition>
 </template>
 
 <script>

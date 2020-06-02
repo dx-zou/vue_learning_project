@@ -22,8 +22,8 @@
       </div>
     </div>
     <transition
-      enter-active-class="animated bounceInDown"
-      leave-active-class="animated zoomOutRight"
+      enter-active-class="animate__animated animate__bounceInDown"
+      leave-active-class="animate__animated animate__zoomOutRight"
     >
       <message-box v-if="showMsgBox" />
     </transition>

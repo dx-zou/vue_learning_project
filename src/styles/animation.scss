@@ -12,13 +12,13 @@
 
 .app-enter-active,
 .app-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 /* breadcrumb transition */
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
-  transition: all .5s;
+  transition: all .3s;
 }
 
 .breadcrumb-enter,
@@ -28,7 +28,7 @@
 }
 
 .breadcrumb-move {
-  transition: all .5s;
+  transition: all .3s;
 }
 
 .breadcrumb-leave-active {

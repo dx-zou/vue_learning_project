@@ -53,13 +53,16 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(-50px);
 }
 
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.3s;
 }
-
+.fade-leave-active {
+  position: absolute;
+}
 .fade-move {
   transition: transform 0.3s ease-out;
 }
