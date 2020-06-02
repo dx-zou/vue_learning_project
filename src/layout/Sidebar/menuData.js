@@ -1,17 +1,10 @@
 const MENU = [
   {
     id: 0,
-    index: "首页",
-    title: "首页",
+    index: "dashboard",
+    title: "dashboard",
     icon: "icon-vue",
-    svg: "home",
-    children: [
-      {
-        id: 10,
-        index: "dashboard",
-        title: "dashboard"
-      }
-    ]
+    svg: "home"
   },
   {
     id: 1,
@@ -136,6 +129,11 @@ const MENU = [
             title: "canvas-2"
           }
         ]
+      },
+      {
+        id: 35,
+        index: "drag",
+        title: "drag"
       }
     ]
   },

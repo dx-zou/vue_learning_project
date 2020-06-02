@@ -3,11 +3,11 @@ const layout = () => import("@/layout");
 export default [
   // 首页
   {
-    path: "/dashboard",
+    path: "/",
     component: layout,
     children: [
       {
-        path: "",
+        path: "dashboard",
         name: "dashboard",
         component: () =>
           import(/* webpackChunkName: "dashboard" */ "@/views/home/home"),

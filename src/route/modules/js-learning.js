@@ -52,6 +52,15 @@ export default [
         meta: {
           breadcrumbs: ["js-learning", "upload"]
         }
+      },
+      {
+        path: "drag",
+        name: "drag",
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/drag"),
+        meta: {
+          breadcrumbs: ["js-learning", "drag"]
+        }
       }
     ]
   }
