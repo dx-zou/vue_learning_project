@@ -17,15 +17,6 @@ export default [
         meta: { breadcrumbs: ["plugins", "quill-editor"] }
       },
       {
-        path: "cropper",
-        name: "cropper",
-        component: () =>
-          import(
-            /* webpackChunkName: "plugins-group" */ "@/views/plugins/cropper"
-          ),
-        meta: { breadcrumbs: ["plugins", "cropper"] }
-      },
-      {
         path: "wow",
         name: "wow",
         component: () =>
@@ -43,7 +34,7 @@ export default [
         path: "other",
         name: "other",
         component: () =>
-          import(/*webpackChunkName: "plugins-group"*/  "@/views/plugins/other"),
+          import(/*webpackChunkName: "plugins-group"*/ "@/views/plugins/other"),
         meta: { breadcrumbs: ["plugins", "other"] }
       }
     ]

@@ -157,11 +157,6 @@ const MENU = [
     svg: "plugin",
     children: [
       {
-        id: 52,
-        index: "cropper",
-        title: "cropper"
-      },
-      {
         id: 53,
         index: "quill-editor",
         title: "quill-editor"

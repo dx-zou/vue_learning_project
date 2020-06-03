@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <h1 slot="header">jspdf</h1>
+    <h1 slot="header">jspdf 保存pdf</h1>
     <el-button type="primary" @click="initJspdf">保存pdf</el-button>
   </el-card>
 </template>

@@ -2,19 +2,22 @@
   <div class="other-container">
     <clipboard />
     <js-pdf />
+    <Cropper />
   </div>
 </template>
 
 <script>
 import Clipboard from "./components/Clipboard";
 import JsPdf from "./components/JsPdf";
+import Cropper from "./components/cropper";
 export default {
   data() {
     return {};
   },
   components: {
     Clipboard,
-    JsPdf
+    JsPdf,
+    Cropper
   },
   mounted() {},
   methods: {}
@@ -23,14 +26,16 @@ export default {
 
 <style lang="scss" scoped>
 .other-container {
-  height: 100%;
+  min-height: 100%;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   background: #fff;
   .el-card {
     width: 350px;
-    margin-right: 15px;
+    height: 400px;
+    margin: 0 15px 15px 0;
+    overflow: auto;
   }
 }
 </style>
