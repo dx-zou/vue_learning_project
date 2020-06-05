@@ -129,7 +129,8 @@ $login-color: #ff5d48;
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/login-bg.jpg") no-repeat bottom/100% 100%;
+  background: url("../../assets/images/login/login3.jpg") no-repeat bottom/100%
+    100%;
   .login-container {
     position: absolute;
     width: 460px;
@@ -138,7 +139,7 @@ $login-color: #ff5d48;
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5px;
-    // box-shadow: 2px 3px 5px #34495e;
+    box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.3);
     background-color: #fff;
   }
   .title {

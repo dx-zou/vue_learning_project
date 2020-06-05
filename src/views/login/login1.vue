@@ -89,7 +89,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    background: #348cb2 url("../../assets/images/bg.jpg") bottom left;
+    background: #348cb2 url("../../assets/images/login/login4.jpg") bottom left;
     background-repeat: repeat-x;
     background-size: 2250px auto;
     animation: bg-move 60s linear infinite;
