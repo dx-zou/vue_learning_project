@@ -97,7 +97,9 @@ export default [
         path: "shape",
         name: "shape",
         component: () =>
-          import(/* webpackChunkName: "css-world" */ "@/views/css-world/shape"),
+          import(
+            /* webpackChunkName: "css-world" */ "@/views/css-world/shape/shape"
+          ),
         meta: {
           breadcrumbs: ["css-world", "shape"]
         }

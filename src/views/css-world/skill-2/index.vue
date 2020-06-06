@@ -57,7 +57,6 @@
             鼠标移入方向
           </div>
         </div>
-        <div class="six"></div>
       </div>
     </div>
     <div class="bottom">
@@ -335,24 +334,6 @@ export default {
         }
         .trans {
           transition: all 0.2s ease-in-out 0s;
-        }
-      }
-      .six {
-        position: relative;
-        width: 200px;
-        height: 230px;
-        margin-left: 30px;
-        transform: rotate(-30deg) skewY(30deg) translateZ(-1px);
-        overflow: hidden;
-        &::before {
-          position: absolute;
-          content: "";
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
-          background: orange;
-          transform: skewY(-30deg) rotate(60deg);
         }
       }
     }
