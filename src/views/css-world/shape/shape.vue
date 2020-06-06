@@ -3,6 +3,7 @@
     <triangle />
     <c-polygon />
     <c-loading />
+    <wave />
   </flex-container>
 </template>
 
@@ -10,6 +11,7 @@
 import triangle from "./components/triangle";
 import CPolygon from "./components/polygon";
 import CLoading from "./components/loading";
+import wave from "./components/wave";
 export default {
   data() {
     return {};
@@ -17,7 +19,8 @@ export default {
   components: {
     triangle,
     CPolygon,
-    CLoading
+    CLoading,
+    wave
   }
 };
 </script>
