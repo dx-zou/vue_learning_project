@@ -12,7 +12,6 @@
     @select="handleSelect"
     id="sidebar"
   >
-    <!-- <sidebar-item v-for="item in MenuList" :item="item" :key="item.id" /> -->
     <template v-for="item in MenuList">
       <el-menu-item v-if="!item.children" :key="item.title" :index="item.index">
         <router-link :to="{ name: item.title }">

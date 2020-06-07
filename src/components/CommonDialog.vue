@@ -9,10 +9,12 @@
     custom-class="common-dialog"
   >
     <slot></slot>
-    <div slot="footer">
+    <div slot="footer" v-if="showFooter">
       <slot name="footer">
-        <el-button @click="close">取 消</el-button>
-        <el-button type="primary" @click="handleConfirm">确 定</el-button>
+        <el-button size="small" @click="close">取 消</el-button>
+        <el-button size="small" type="primary" @click="handleConfirm"
+          >确 定</el-button
+        >
       </slot>
     </div>
   </el-dialog>
@@ -32,6 +34,10 @@ export default {
     center: {
       type: Boolean,
       default: false
+    },
+    showFooter: {
+      type: Boolean,
+      default: true
     },
     width: {
       type: String,

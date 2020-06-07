@@ -1,21 +1,5 @@
 <template>
-  <div class="app-mian_wrapper">
-    <table-toolbar
-      :tool-buttons="toolButtons"
-      @handleToolClick="handleToolClick"
-    >
-      <template>
-        <el-form-item>
-          <el-input
-            size="small"
-            v-model="queryForm.title"
-            clearable
-            prefix-icon="el-icon-search"
-            placeholder="请输入"
-          />
-        </el-form-item>
-      </template>
-    </table-toolbar>
+  <div class="app-main_wrapper">
     <common-table
       :table-data="tableData"
       :table-columns="tableColumns"
@@ -24,6 +8,21 @@
       @toEdit="toEdit"
       @toDelete="toDelete"
     >
+      <template #searchCustom>
+        <el-form-item label="查询条件">
+          <el-input
+            size="small"
+            v-model="queryForm.name"
+            placeholder="请输入"
+          ></el-input>
+        </el-form-item>
+      </template>
+      <template #operateCustom>
+        <el-button size="small" type="primary">新增</el-button>
+        <el-button size="small" type="danger" @click="showLogin = true"
+          >登录</el-button
+        >
+      </template>
       <template #toTop="row">
         <el-switch
           :value="row.scope.isTop"
@@ -41,11 +40,11 @@
       @handlePageChange="handlePageChange"
       @handleSizeChange="handleSizeChange"
     />
-    <el-dialog
+    <common-dialog
       :visible.sync="showLogin"
       title="博客系统登录"
       width="39%"
-      custom-class="commom-dialog"
+      @handleConfirm="toLogin"
     >
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules">
         <el-form-item label="用户名" prop="username">
@@ -66,11 +65,7 @@
           />
         </el-form-item>
       </el-form>
-      <div slot="footer">
-        <el-button size="small" @click="showLogin = false">取消</el-button>
-        <el-button type="primary" size="small" @click="toLogin">登录</el-button>
-      </div>
-    </el-dialog>
+    </common-dialog>
   </div>
 </template>
 
@@ -170,16 +165,6 @@ export default {
           this.tableData = res.data.rows;
           this.pageOptions.total = res.data.total;
         });
-    },
-    /**
-     * @description 处理工具栏按钮点击事件
-     */
-    handleToolClick(type) {
-      if (type === "login") {
-        this.showLogin = true;
-      } else if (type === "add") {
-        this.$router.push({ name: "addBlog" });
-      }
     },
     /**
      * @description 登录
