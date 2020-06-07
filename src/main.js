@@ -17,6 +17,8 @@ import "animate.css";
 import "./permission";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
+// import Chat from "jwchat";
+// Vue.use(Chat);
 // use
 Vue.use(mavonEditor);
 NProgress.configure({
