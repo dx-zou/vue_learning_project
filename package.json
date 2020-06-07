@@ -1,6 +1,6 @@
 {
-  "name": "vue-cli4-app",
-  "version": "0.1.0",
+  "name": "fe-learning-admin",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "npm run serve",

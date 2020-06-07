@@ -112,7 +112,6 @@
                   type="primary"
                   icon="el-icon-edit"
                   size="mini"
-                  circle
                 ></el-button>
               </el-tooltip>
               <el-tooltip effect="light" content="删除" placement="top">
@@ -121,7 +120,6 @@
                   type="danger"
                   icon="el-icon-delete"
                   size="mini"
-                  circle
                 ></el-button>
               </el-tooltip>
             </el-button-group>
@@ -192,7 +190,7 @@ export default {
     // 表格高度
     tableHeight: {
       type: String,
-      default: "calc(100vh - 280px)"
+      default: "calc(100vh - 320px)"
     },
     // 多选
     showSelection: {
@@ -270,6 +268,7 @@ export default {
       const h = this.showSearchForm
         ? "calc(100vh - 280px)"
         : "calc(100vh - 240px)";
+      this.$emit;
       this.tableHeight = h;
     }
   }

@@ -1,11 +1,11 @@
 const MENU = [
-  {
-    id: 0,
-    index: "dashboard",
-    title: "dashboard",
-    icon: "icon-vue",
-    svg: "home"
-  },
+  // {
+  //   id: 0,
+  //   index: "dashboard",
+  //   title: "dashboard",
+  //   icon: "icon-vue",
+  //   svg: "home"
+  // },
   {
     id: 1,
     index: "Vue",

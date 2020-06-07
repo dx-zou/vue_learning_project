@@ -78,7 +78,7 @@ export default {
       return (
         this.$store.getters.activeIndex ||
         sessionStorage.getItem("activeIndex") ||
-        "0"
+        "dashboard"
       );
     }
   },
@@ -91,12 +91,9 @@ export default {
       this.$store.commit("app/CHANGE_ACTIVEINDEX", key);
       sessionStorage.setItem("activeIndex", key);
       // 更新页签
+      if (key === "dashboard") return;
       this.tabs.push({ title: key, index: this.activeIndex });
       const list = tools._uniqueMap(this.tabs, "index");
-      // 最多同时显示11个页签
-      if (list.length > this.maxTabs) {
-        list.splice(0, 1);
-      }
       this.$store.commit("app/CHANGE_TABS", list);
     }
   }

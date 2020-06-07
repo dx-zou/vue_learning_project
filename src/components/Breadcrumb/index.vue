@@ -1,27 +1,32 @@
 <template>
-  <fade-transition class="tab-container" group>
-    <div
-      v-for="item in tabsData"
-      :key="item.title"
-      :class="[
-        'tab-item',
-        (activeTab === item.index || active === item.index) && 'tab-active'
-      ]"
-      @mouseenter="handleMouseenter(item.index)"
-      @mouseleave="handleMouseleave(item.index)"
-      @click.capture="handleTabClick(item.index)"
+  <div class="tab-container">
+    <el-tabs
+      v-model="activeTab"
+      @tab-click="handleTabClick"
+      @tab-remove="handleTabRemove"
     >
-      <span>{{ item.title }}</span>
-      <i
-        class="el-icon-close tab-close"
-        v-show="
-          (activeTab === item.index || active === item.index) &&
-            tabsData.length > 1
-        "
-        @click="handleTabRemove(item.index)"
-      ></i>
+      <el-tab-pane label="dashboard" name="dashboard"> </el-tab-pane>
+      <el-tab-pane
+        v-for="item in tabsData"
+        :key="item.title"
+        :label="item.title"
+        :name="item.title"
+        closable
+      >
+      </el-tab-pane>
+    </el-tabs>
+    <div class="tab-menu">
+      <el-dropdown @command="handleMenuClick">
+        <el-button type="primary" size="mini">
+          更多<i class="el-icon-arrow-down el-icon--right"></i>
+        </el-button>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="other">关闭其它</el-dropdown-item>
+          <el-dropdown-item command="all">关闭所有</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
-  </fade-transition>
+  </div>
 </template>
 
 <script>
@@ -42,91 +47,95 @@ export default {
         ? JSON.parse(sessionStorage.tabsList)
         : [];
     },
-    activeTab() {
-      return this.activeIndex || sessionStorage.activeIndex;
+    activeTab: {
+      get: function() {
+        return this.activeIndex || sessionStorage.activeIndex;
+      },
+      set: function(value) {
+        if (value === this.activeIndex) return;
+        this.$store.commit("app/CHANGE_ACTIVEINDEX", value);
+        sessionStorage.setItem("activeIndex", value);
+        this.$router.push({ name: value });
+      }
     }
   },
   methods: {
-    handleMouseenter(index) {
-      this.active = index;
-    },
-    handleMouseleave() {
-      this.active = "";
-    },
-    handleTabClick(index) {
-      if (index === this.activeIndex) return;
-      // 更新菜单index
-      this.$store.commit("app/CHANGE_ACTIVEINDEX", index);
-      sessionStorage.setItem("activeIndex", index);
-      this.$router.push({ name: index });
+    /**
+     * 点击页签this.active
+     */
+    handleTabClick() {
+      // if (this.activeTab === this.activeIndex) return;
+      // this.$store.commit("app/CHANGE_ACTIVEINDEX", this.active);
+      // sessionStorage.setItem("activeIndex", this.active);
+      // this.$router.push({ name: this.active });
     },
     // 移除页签
     handleTabRemove(targetName) {
-      let tabs = this.tabsData;
+      const tabs = this.tabsData;
       let activeName = this.activeIndex;
       tabs.some((tab, index) => {
-        if (tab.index === targetName) {
-          let nextTab = tabs[index + 1] || tabs[index - 1];
+        if (tab.title === targetName) {
+          const nextTab = tabs[index + 1] || tabs[index - 1];
           if (nextTab) {
-            activeName = nextTab.index;
+            activeName = nextTab.title;
           }
           return true;
         }
       });
-      // 更新菜单index
-      this.$store.commit("app/CHANGE_ACTIVEINDEX", activeName);
-      sessionStorage.setItem("activeIndex", activeName);
       // 更新页签
-      this.$store.commit(
-        "app/CHANGE_TABS",
-        tabs.filter(tab => tab.index !== targetName)
-      );
-      this.$router.push({ name: activeName });
+      const list = tabs.filter(tab => tab.title !== targetName);
+      this.$store.commit("app/CHANGE_TABS", list);
+      const name = list.length === 0 ? "dashboard" : activeName;
+      // 更新菜单index
+      this.$store.commit("app/CHANGE_ACTIVEINDEX", name);
+      sessionStorage.setItem("activeIndex", name);
+      this.$router.push({ name });
+    },
+    handleMenuClick(command) {
+      if (command === "all") {
+        this.closeAll();
+      } else if (command === "other") {
+        this.closeOther();
+      }
+    },
+    closeAll() {
+      // 更新菜单index
+      this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
+      sessionStorage.setItem("activeIndex", "dashboard");
+      // 更新页签
+      this.$store.commit("app/CHANGE_TABS", []);
+      if (this.$route.name === "dashboard") return;
+      this.$router.push({ name: "dashboard" });
+    },
+    closeOther() {
+      const list = this.tabsData.filter(item => item.title === this.activeTab);
+      this.$store.commit("app/CHANGE_TABS", list);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-$border: 1px solid #e4e7ed;
 .tab-container {
   display: flex;
   align-items: center;
-  border: $border;
-  border-bottom: none;
-  border-radius: 5px;
-  transition: all 0.3s;
-  .tab-item {
-    height: 40px;
-    line-height: 40px;
-    border-left: $border;
-    border-bottom: $border;
-    padding: 0 15px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
-      padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    &:first-child {
-      border-left: none;
+  justify-content: space-between;
+  // height: 43px;
+  padding: 0 10px;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+  .el-tabs {
+    width: 90%;
+    ::v-deep .el-tabs__header {
+      margin-bottom: 0 !important;
+    }
+    ::v-deep .el-tabs__nav-prev,
+    .el-tabs__nav-next {
+      font-size: 15px !important;
+      color: $--color-primary !important;
     }
   }
-  .tab-close {
-    font-size: 14px;
-    margin-left: 10px;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-    &:hover {
-      border-radius: 50%;
-      color: #fff;
-      background-color: #ccc;
-    }
-  }
-  .tab-active {
-    color: #0283d6;
-    border-bottom: none;
-    padding: 0 20px;
-  }
+}
+::v-deep .el-tabs__item {
+  color: #ccc;
 }
 </style>

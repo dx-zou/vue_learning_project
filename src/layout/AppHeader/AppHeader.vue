@@ -10,7 +10,7 @@
       <template v-if="sideLayout">
         <sidebar-logo v-if="fullHeader" />
         <hamburger />
-        <breadcrumb />
+        <!-- <breadcrumb /> -->
       </template>
       <template v-else>
         <sidebar-logo v-if="showLogo" />
@@ -29,7 +29,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb";
+// import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
 import FlipClock from "@/components/FlipClock";
 import UserDropdown from "@/components/UserDropdown";
@@ -43,7 +43,7 @@ export default {
   },
   components: {
     FlipClock,
-    Breadcrumb,
+    // Breadcrumb,
     Hamburger,
     SidebarLogo,
     AppMenu,

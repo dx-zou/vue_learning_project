@@ -12,6 +12,7 @@
     <div :class="['main-container', !fixedHeader && 'scroll-header-main']">
       <side-bar v-if="sideLayout && fullHeader" />
       <app-header v-if="!sideLayout || (sideLayout && !fullHeader)" />
+      <Breadcrumb />
       <div class="app-main">
         <transition name="app">
           <keep-alive v-if="$route.meta.keepAlive">
@@ -38,6 +39,7 @@ import SideBar from "./Sidebar/Sidebar";
 import ResizeHandler from "@/mixins/ResizeHandler";
 import MessageBox from "@/components/MessageBox";
 import AppSettings from "@/components/AppSettings";
+import Breadcrumb from "@/components/Breadcrumb";
 import { mapGetters } from "vuex";
 export default {
   name: "Layout",
@@ -45,7 +47,8 @@ export default {
     AppHeader,
     SideBar,
     MessageBox,
-    AppSettings
+    AppSettings,
+    Breadcrumb
   },
   mixins: [ResizeHandler],
   computed: {

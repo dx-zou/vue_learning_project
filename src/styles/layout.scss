@@ -21,7 +21,7 @@
   }
   .app-main {
     margin-left: $sideBarWidth !important;
-    height: calc(100vh - 65px) !important;
+    height: calc(100vh - 105px) !important;
     overflow-y: auto !important;
   }
 }
@@ -57,8 +57,8 @@
 }
 
 /* 导航栏固定后 */
-.fixed-header+.app-main {
-  height: calc(100vh - 65px);
+.fixed-header+.tab-container+.app-main {
+  height: calc(100vh - 105px);
   overflow-y: auto;
 }
 
