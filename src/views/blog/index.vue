@@ -5,7 +5,8 @@
       :table-columns="tableColumns"
       :is-loading="false"
       v-bind="queryForm"
-      @toEdit="toEdit"
+      @toAdd="showForm"
+      @toEdit="showForm"
       @toDelete="toDelete"
     >
       <template #searchCustom>
@@ -18,8 +19,8 @@
         </el-form-item>
       </template>
       <template #operateCustom>
-        <el-button size="small" type="primary">新增</el-button>
-        <el-button size="small" type="danger" @click="showLogin = true"
+        <el-button size="small" type="danger">删除</el-button>
+        <el-button size="small" type="warning" @click="showLogin = true"
           >登录</el-button
         >
       </template>
@@ -66,15 +67,30 @@
         </el-form-item>
       </el-form>
     </common-dialog>
+    <blog-form ref="blogForm" />
   </div>
 </template>
 
 <script>
+import blogForm from "./blog-form";
 export default {
   data() {
     return {
       queryForm: {},
-      tableData: [{}],
+      tableData: [
+        {
+          id: 1
+        },
+        {
+          id: 2
+        },
+        {
+          id: 3
+        },
+        {
+          id: 4
+        }
+      ],
       tableColumns: [
         {
           prop: "title",
@@ -136,6 +152,9 @@ export default {
       }
     };
   },
+  components: {
+    blogForm
+  },
   mounted() {
     this.getTableData();
   },
@@ -191,8 +210,10 @@ export default {
     /**
      * @description 去编辑页面
      */
-    toEdit(row) {
-      this.$router.push(`/blog/edit-blog/${row.id}`);
+    showForm(row) {
+      let params = "";
+      row && (params = row.id);
+      this.$refs.blogForm.show(params);
     },
     /**
      * @description 删除数据

@@ -26,9 +26,10 @@
     <!-- 顶部操作栏 -->
     <div class="table-operate_bar">
       <div class="bar-l">
-        <slot name="operateCustom">
-          <el-button size="small" type="primary">新增</el-button>
-        </slot>
+        <el-button size="small" type="primary" v-if="showAdd" @click="toAdd"
+          >新增</el-button
+        >
+        <slot name="operateCustom"> </slot>
       </div>
       <div class="bar-r">
         <el-tooltip class="item" effect="dark" content="刷新" placement="top">
@@ -55,7 +56,7 @@
     <!-- table -->
     <el-table
       :data="tableData"
-      :height="tableHeight || null"
+      :height="tHeight || null"
       :border="showBorder"
       :header-row-style="{ height: '30px' }"
       :header-cell-style="{ backgroundColor: '#fafafa', color: '#000' }"
@@ -182,6 +183,11 @@ export default {
       type: Boolean,
       default: true
     },
+    // 新增按钮
+    showAdd: {
+      type: Boolean,
+      default: true
+    },
     // 操作栏宽度
     operateWidth: {
       type: String,
@@ -206,6 +212,17 @@ export default {
     expandAll: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    tHeight: {
+      get() {
+        return this.tableHeight;
+      },
+      set(value) {
+        console.log(value);
+        // this.tHeight = value;
+      }
     }
   },
   data() {
@@ -239,6 +256,9 @@ export default {
       // 调用父组件方法
       this.$emit("handleSelectionChange", val);
     },
+    toAdd() {
+      this.$emit("toAdd");
+    },
     // 修改行数据
     toEdit(row) {
       this.$emit("toEdit", row);
@@ -266,10 +286,10 @@ export default {
     toggleSearch() {
       this.showSearchForm = !this.showSearchForm;
       const h = this.showSearchForm
-        ? "calc(100vh - 280px)"
-        : "calc(100vh - 240px)";
-      this.$emit;
-      this.tableHeight = h;
+        ? "calc(100vh - 320px)"
+        : "calc(100vh - 280px)";
+      this.tHeight = h;
+      console.log(this.tHeight);
     }
   }
 };
