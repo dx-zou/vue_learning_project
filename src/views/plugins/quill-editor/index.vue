@@ -79,7 +79,7 @@ export default {
         this.$toast("图片大小不能超过5MB!", "warning");
       }
     },
-    uploadSuccess(res, file) {
+    uploadSuccess(res) {
       // 获取富文本组件实例
       let quill = this.$refs.myQuillEditor.quill;
       // 获取光标所在位置
@@ -90,9 +90,9 @@ export default {
       quill.setSelection(length + 1);
     },
     uploadError() {},
-    onEditorBlur(e) {},
-    onEditorFocus(e) {},
-    onEditorReady(e) {}
+    onEditorBlur() {},
+    onEditorFocus() {},
+    onEditorReady() {}
   }
 };
 </script>

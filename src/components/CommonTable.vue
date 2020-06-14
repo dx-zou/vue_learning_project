@@ -5,7 +5,7 @@
       inline
       :class="['table-search-form', !showSearchForm && 'form-hidden']"
     >
-      <slot name="searchCustom"></slot>
+      <slot name="tableSearch"></slot>
       <slot name="searchDefault">
         <el-form-item>
           <el-button
@@ -29,7 +29,7 @@
         <el-button size="small" type="primary" v-if="showAdd" @click="toAdd"
           >新增</el-button
         >
-        <slot name="operateCustom"> </slot>
+        <slot name="tableOperate"> </slot>
       </div>
       <div class="bar-r">
         <el-tooltip class="item" effect="dark" content="刷新" placement="top">
@@ -105,26 +105,23 @@
         label="操作"
       >
         <template #default="{row}">
-          <slot :scope="row" name="default">
-            <el-button-group>
-              <el-tooltip effect="light" content="编辑" placement="top">
-                <el-button
-                  @click="toEdit(row)"
-                  type="primary"
-                  icon="el-icon-edit"
-                  size="mini"
-                ></el-button>
-              </el-tooltip>
-              <el-tooltip effect="light" content="删除" placement="top">
-                <el-button
-                  @click="toDelete(row)"
-                  type="danger"
-                  icon="el-icon-delete"
-                  size="mini"
-                ></el-button>
-              </el-tooltip>
-            </el-button-group>
-          </slot>
+          <el-button
+            @click="toEdit(row)"
+            type="text"
+            icon="el-icon-edit"
+            size="mini"
+            v-if="showEdit"
+            >编辑</el-button
+          >
+          <el-button
+            @click="toDelete(row)"
+            type="text"
+            icon="el-icon-delete"
+            size="mini"
+            v-if="showDelete"
+            >删除</el-button
+          >
+          <slot :scope="row" name="default"></slot>
         </template>
       </el-table-column>
     </el-table>
