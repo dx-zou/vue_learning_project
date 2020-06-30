@@ -1,6 +1,11 @@
 <template>
   <div class="reg-container">
-    <el-input id="input_value" v-model="regExp" placeholder="请输入正则表达式" clearable />
+    <el-input
+      id="input_value"
+      v-model="regExp"
+      placeholder="请输入正则表达式"
+      clearable
+    />
   </div>
 </template>
 

@@ -48,10 +48,10 @@ export default {
         : [];
     },
     activeTab: {
-      get: function() {
+      get() {
         return this.activeIndex || sessionStorage.activeIndex;
       },
-      set: function(value) {
+      set(value) {
         if (value === this.activeIndex) return;
         this.$store.commit("app/CHANGE_ACTIVEINDEX", value);
         sessionStorage.setItem("activeIndex", value);

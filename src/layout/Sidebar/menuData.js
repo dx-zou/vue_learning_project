@@ -98,8 +98,8 @@ const MENU = [
     children: [
       {
         id: 31,
-        index: "lodash",
-        title: "lodash"
+        index: "richEditor",
+        title: "richEditor"
       },
       {
         id: 32,

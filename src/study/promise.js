@@ -3,9 +3,9 @@
  * all的用法：谁跑的慢，以谁为准执行回调。all接收一个数组参数，里面的值最终都算返回Promise对象
  *
  */
-let Promise1 = new Promise(function(resolve, reject) {});
-let Promise2 = new Promise(function(resolve, reject) {});
-let Promise3 = new Promise(function(resolve, reject) {});
+let Promise1 = new Promise(function() {});
+let Promise2 = new Promise(function() {});
+let Promise3 = new Promise(function() {});
 
 let p = Promise.all([Promise1, Promise2, Promise3]);
 

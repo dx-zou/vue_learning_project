@@ -3,25 +3,26 @@
     :class="[
       'app-header',
       fixedHeader && 'fixed-header',
-      !sideLayout && darkTheme && 'dark-theme'
+      darkTheme && 'dark-theme'
     ]"
   >
     <div class="app-header_l">
       <template v-if="sideLayout">
         <sidebar-logo v-if="fullHeader" />
         <hamburger />
-        <!-- <breadcrumb /> -->
       </template>
       <template v-else>
         <sidebar-logo v-if="showLogo" />
         <app-menu />
       </template>
     </div>
+    <div>
+      <el-input placeholder="搜索..."></el-input>
+    </div>
     <div class="app-header_r">
-      <flip-clock />
-      <el-badge is-dot id="message">
+      <!-- <el-badge is-dot id="message">
         <i class="el-icon-message-solid" @click="toggleMsgBox"></i>
-      </el-badge>
+      </el-badge> -->
       <user-dropdown />
     </div>
   </header>
@@ -29,9 +30,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-// import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
-import FlipClock from "@/components/FlipClock";
 import UserDropdown from "@/components/UserDropdown";
 import SidebarLogo from "../Sidebar/Logo";
 import AppMenu from "../Sidebar/AppMenu";
@@ -42,8 +41,6 @@ export default {
     return {};
   },
   components: {
-    FlipClock,
-    // Breadcrumb,
     Hamburger,
     SidebarLogo,
     AppMenu,

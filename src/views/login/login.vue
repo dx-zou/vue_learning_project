@@ -70,8 +70,8 @@ export default {
   data() {
     return {
       userinfo: {
-        username: undefined,
-        password: undefined
+        username: "admin",
+        password: "123"
       },
       nameBlur: true,
       passBlur: true,
@@ -101,6 +101,7 @@ export default {
         this.isLoading = true;
         if (username === "admin" && password === "123") {
           sessionStorage.setItem("userToken", "isLogin");
+          this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
         } else {
           this.$toast("warning", "用户名或密码错误");

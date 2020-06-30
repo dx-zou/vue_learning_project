@@ -20,6 +20,7 @@ import "mavon-editor/dist/css/index.css";
 // import Chat from "jwchat";
 // Vue.use(Chat);
 // use
+
 Vue.use(mavonEditor);
 NProgress.configure({
   showSpinner: false
@@ -30,6 +31,7 @@ Vue.prototype.$deleteConfirm = businessToos.deleteConfirm;
 Vue.prototype.$api = API;
 Vue.prototype.$http = service;
 
+// 设置为 false 以阻止 vue 在启动时生成生产提示
 Vue.config.productionTip = false;
 
 new Vue({
