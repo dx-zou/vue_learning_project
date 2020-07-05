@@ -54,6 +54,15 @@ export default [
         }
       },
       {
+        path: "snake",
+        name: "snake",
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/snake"),
+        meta: {
+          breadcrumbs: ["js-learning", "snake"]
+        }
+      },
+      {
         path: "drag",
         name: "drag",
         component: () =>

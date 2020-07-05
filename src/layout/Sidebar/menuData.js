@@ -112,6 +112,11 @@ const MENU = [
         title: "upload"
       },
       {
+        id: 36,
+        index: "snake",
+        title: "snake"
+      },
+      {
         id: 34,
         index: "canvas",
         title: "canvas",
