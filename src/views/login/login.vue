@@ -71,13 +71,17 @@ export default {
     return {
       userinfo: {
         username: "admin",
-        password: "123"
+        password: "admin"
       },
       nameBlur: true,
       passBlur: true,
       showPass: false,
       isLoading: false
     };
+  },
+  mounted() {
+    this.userinfo.username && (this.nameBlur = false);
+    this.userinfo.password && (this.passBlur = false);
   },
   methods: {
     handleFocus(value) {
@@ -99,7 +103,7 @@ export default {
         if (!username || !password)
           return this.$toast("warning", "请输入用户名和密码");
         this.isLoading = true;
-        if (username === "admin" && password === "123") {
+        if (username === "admin" && password === "admin") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
