@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrapper">
     <div class="login-container">
-      <div class="title">我的学习系统</div>
+      <div class="title">我的学习管理系统</div>
       <div class="login-text">登录</div>
       <div class="input-box">
         <label
@@ -70,8 +70,8 @@ export default {
   data() {
     return {
       userinfo: {
-        username: "admin",
-        password: "admin"
+        username: "",
+        password: ""
       },
       nameBlur: true,
       passBlur: true,
@@ -101,14 +101,14 @@ export default {
       function() {
         const { username, password } = this.userinfo;
         if (!username || !password)
-          return this.$toast("warning", "请输入用户名和密码");
+          return this.$toast("请输入用户名和密码", "warning");
         this.isLoading = true;
         if (username === "admin" && password === "admin") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
         } else {
-          this.$toast("warning", "用户名或密码错误");
+          this.$toast("用户名或密码错误", "warning");
           this.isLoading = false;
         }
         // this.$store.dispatch("user/_login", this.userinfo).then(res => {
@@ -134,8 +134,7 @@ $login-color: #ff5d48;
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/login/login3.jpg") no-repeat bottom/100%
-    100%;
+  background: url("../../assets/images/login/login3.jpg") no-repeat top/cover;
   .login-container {
     position: absolute;
     width: 460px;

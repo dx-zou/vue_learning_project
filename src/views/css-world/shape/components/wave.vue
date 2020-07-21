@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <h2 slot="header">音乐播放</h2>
-    <audio :src="audioSrc" controls :cover="cover" id="audio"></audio>
+    <!-- <audio :src="audioSrc" controls :cover="cover" id="audio"></audio> -->
     <div id="canvas-container"></div>
   </el-card>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      audioSrc: require("@/assets/童话镇.mp3"),
+      // audioSrc: require("@/assets/童话镇.mp3"),
       cover: require("@/assets/images/avatar.jpg")
     };
   },

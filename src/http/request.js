@@ -1,10 +1,9 @@
 // import Vue from "vue";
 import axios from "axios";
-// import BASE_URL from "./api";
+import api from "./api";
 // console.log(process.env.VUE_APP_BASE_API);
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
-  // baseURL: "https://easy-mock.com/mock/5c949a926811807c6b28d8c0/feng/",
+  baseURL: api.BASE_URL,
   // baseURL: BASE_URL,
   withCredentials: true,
   timeout: 30000
