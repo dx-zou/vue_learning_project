@@ -103,7 +103,7 @@ export default {
         if (!username || !password)
           return this.$toast("请输入用户名和密码", "warning");
         this.isLoading = true;
-        if (username === "admin" && password === "admin") {
+        if (username === "admin" && password === "654321") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
