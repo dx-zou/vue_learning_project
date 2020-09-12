@@ -1,72 +1,73 @@
-@import "./app-theme.scss";
+@import './app-theme.scss';
 @import './variables.scss';
 @import './animation.scss';
 @import './sidebar.scss';
 @import './lightSidebar.scss';
 @import './layout.scss';
-@import "./add.scss";
+@import './add.scss';
+@import './elementTheme/index.css';
 
 body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  // font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
-  color: #000;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 16px;
+	box-sizing: border-box;
+	font-size: 16px;
 }
 
 #app {
-  position: relative;
-  width: 100%;
-  // max-width: 1920px;
-  height: 100vh;
-  margin: auto;
-  font-size: 16px;
-  overflow-x: hidden;
+	position: relative;
+	width: 100%;
+	// max-width: 1920px;
+	height: 100vh;
+	margin: auto;
+	font-size: 16px;
+	overflow-x: hidden;
 }
 
 *,
 *:before,
 *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 a:focus,
 a:active {
-  outline: none;
+	outline: none;
 }
 
 a,
 a:focus,
 a:hover {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+	text-decoration: none;
 }
 
 div:focus {
-  outline: none;
+	outline: none;
 }
 
 /* 表情包弹出框样式 */
 .el-popover.el-popper {
-  padding-left: 20px;
-  padding-bottom: 0;
-  box-sizing: border-box;
+	padding-left: 20px;
+	padding-bottom: 0;
+	box-sizing: border-box;
 }
 
 .face-img {
-  margin: 0 10px 10px 0;
-  cursor: pointer;
+	margin: 0 10px 10px 0;
+	cursor: pointer;
 }
 
 #driver-popover-item .driver-popover-footer {
-  font-size: 14px;
+	font-size: 14px;
 }

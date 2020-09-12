@@ -32,8 +32,6 @@ npm run lint
 
 ### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 ### 引入的组件插件
 
 - vue-sticky： 吸顶插件
