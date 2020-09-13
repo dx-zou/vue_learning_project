@@ -9,15 +9,6 @@ export default [
     sort: 3,
     children: [
       {
-        path: "richEditor",
-        name: "richEditor",
-        component: () =>
-          import(/* webpackChunkName: "js-group" */ "@/views/js/editor"),
-        meta: {
-          breadcrumbs: ["js-learning", "tinymce"]
-        }
-      },
-      {
         path: "regExp",
         name: "regExp",
         component: () =>

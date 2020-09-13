@@ -1,11 +1,11 @@
-const MENU = [
-  // {
-  //   id: 0,
-  //   index: "dashboard",
-  //   title: "dashboard",
-  //   icon: "icon-vue",
-  //   svg: "home"
-  // },
+export default [
+  {
+    id: 0,
+    index: "dashboard",
+    title: "dashboard",
+    icon: "icon-vue",
+    svg: "home"
+  },
   {
     id: 1,
     index: "Vue",
@@ -97,11 +97,6 @@ const MENU = [
     svg: "js",
     children: [
       {
-        id: 31,
-        index: "richEditor",
-        title: "richEditor"
-      },
-      {
         id: 32,
         index: "regExp",
         title: "regExp"
@@ -168,8 +163,8 @@ const MENU = [
     children: [
       {
         id: 53,
-        index: "quill-editor",
-        title: "quill-editor"
+        index: "richEditor",
+        title: "richEditor"
       },
       {
         id: 54,
@@ -217,5 +212,3 @@ const MENU = [
     ]
   }
 ];
-
-export default MENU;

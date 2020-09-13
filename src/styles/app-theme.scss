@@ -31,3 +31,20 @@ $--color-warning: #f1b53d;
 	box-shadow: 0 14px 26px -12px rgba(241, 181, 61, 0.4),
 		0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(241, 181, 61, 0.2);
 }
+
+/* el-tab 公共样式 */
+
+.el-tabs.el-tabs--card {
+	.el-tabs__header.is-top {
+		margin-bottom: 10px;
+	}
+	.el-tabs__item {
+		height: 35px !important;
+		line-height: 35px !important;
+		padding: 0 15px !important;
+	}
+	.el-tabs__header .el-tabs__item.is-active {
+		background: $--color-primary;
+		color: #fff;
+	}
+}

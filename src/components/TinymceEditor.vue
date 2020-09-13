@@ -1,7 +1,7 @@
 <template>
   <div class="tinymce-editor">
     <editor
-      v-model="editorData"
+      v-model="content"
       :init="init"
       :disabled="disabled"
       @onClick="onClick"
@@ -14,6 +14,18 @@
 <script>
 import tinymce from "tinymce/tinymce";
 import Editor from "@tinymce/tinymce-vue";
+import "tinymce/themes/silver/theme";
+import "tinymce/plugins/image";
+import "tinymce/plugins/media"; // 插入视频插件
+import "tinymce/plugins/link";
+import "tinymce/plugins/code";
+import "tinymce/plugins/table";
+import "tinymce/plugins/lists";
+import "tinymce/plugins/contextmenu";
+import "tinymce/plugins/wordcount";
+import "tinymce/plugins/colorpicker";
+import "tinymce/plugins/textcolor";
+import "tinymce/icons/default";
 export default {
   name: "RichEditor",
   components: {
@@ -42,7 +54,6 @@ export default {
 
   data() {
     return {
-      editorData: this.value,
       //初始化配置
       init: {
         language_url: "/tinymce/langs/zh_CN.js",
@@ -54,7 +65,7 @@ export default {
         toolbar: this.toolbar,
         branding: false,
         menubar: false,
-        paste_data_images: true, //可以保留图片
+        paste_data_images: true, // 可以保留图片
         powerpaste_word_import: "merge", // 是否保留word粘贴样式  clean | merge
         images_upload_handler: async (blobInfo, success, failure) => {
           const file = blobInfo.blob();
@@ -71,12 +82,14 @@ export default {
       }
     };
   },
-  watch: {
-    value(newValue) {
-      this.editorData = newValue;
-    },
-    editorData(newValue) {
-      this.$emit("input", newValue);
+  computed: {
+    content: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit("input", value);
+      }
     }
   },
   mounted() {
@@ -105,17 +118,13 @@ export default {
     //点击获取富文本的光标及内容
     onClick(e) {
       this.$emit("onClick", e, tinymce);
-    },
-    //可以添加一些自己的自定义事件，如清空内容
-    clear() {
-      this.myValue = "";
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-/deep/.ck-editor__editable {
+::v-deep .ck-editor__editable {
   min-height: 350px;
 }
 .tinymce-editor {
