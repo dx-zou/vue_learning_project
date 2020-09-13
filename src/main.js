@@ -6,7 +6,8 @@ import router from "./route/index";
 import service from "./http/request";
 import API from "./http/api";
 import businessToos from "./utils/businessTools";
-import i18n from "./utils/i18n";
+// import i18n from "./utils/i18n";
+import "./utils/elementConf";
 import NProgress from "nprogress";
 import "./components";
 import "./styles/common.scss";
@@ -17,10 +18,6 @@ import "animate.css";
 import "./permission";
 import mavonEditor from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
-// import Chat from "jwchat";
-// Vue.use(Chat);
-// use
-
 Vue.use(mavonEditor);
 NProgress.configure({
   showSpinner: false
@@ -36,7 +33,7 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  i18n,
+  // i18n,
   store,
   render: h => h(App)
 }).$mount("#app");
