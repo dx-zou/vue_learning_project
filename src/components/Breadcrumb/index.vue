@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-container">
+  <div :class="tabsClass">
     <el-tabs
       v-model="activeTab"
       @tab-click="handleTabClick"
@@ -39,7 +39,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["tabsList", "activeIndex"]),
+    ...mapGetters([
+      "tabsList",
+      "activeIndex",
+      "sidebarCollapse",
+      "fullHeader",
+      "sideLayout"
+    ]),
     tabsData() {
       return this.tabsList.length
         ? this.tabsList
@@ -57,6 +63,13 @@ export default {
         sessionStorage.setItem("activeIndex", value);
         this.$router.push({ name: value });
       }
+    },
+    tabsClass() {
+      return {
+        "tab-container": true,
+        "margin-210": this.fullHeader && this.sideLayout,
+        "margin-60": this.fullHeader && this.sideLayout && this.sidebarCollapse
+      };
     }
   },
   methods: {
@@ -120,9 +133,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // height: 43px;
   padding: 0 10px;
   box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+  transition: margin 0.3s;
   .el-tabs {
     width: 90%;
     ::v-deep .el-tabs__header {
@@ -134,6 +147,12 @@ export default {
       color: $--color-primary !important;
     }
   }
+}
+.margin-210 {
+  margin-left: 210px;
+}
+.margin-60 {
+  margin-left: 60px;
 }
 ::v-deep .el-tabs__item {
   color: #ccc;
