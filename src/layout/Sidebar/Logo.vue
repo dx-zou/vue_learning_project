@@ -57,8 +57,8 @@ export default {
 
 .sidebar-logo-container {
   position: relative;
-  height: 65px;
-  line-height: 65px;
+  height: 50px;
+  line-height: 50px;
   background: $menuBg;
   text-align: center;
   overflow: hidden;
@@ -69,8 +69,8 @@ export default {
 
     & .sidebar-logo {
       display: inline-block;
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
       margin-right: 10px;
       vertical-align: middle;
       /*box-shadow: 0 0 0 2px #fd9495;*/
@@ -83,7 +83,7 @@ export default {
     & .sidebar-title {
       display: inline-block;
       font-weight: bold;
-      line-height: 60px;
+      line-height: 50px;
       font-size: 20px;
       color: #fff;
     }

@@ -1,11 +1,5 @@
 <template>
-  <header
-    :class="[
-      'app-header',
-      fixedHeader && 'fixed-header',
-      darkTheme && 'dark-theme'
-    ]"
-  >
+  <header :class="['app-header', fixedHeader && 'fixed-header']">
     <div class="app-header_l">
       <template v-if="sideLayout">
         <sidebar-logo v-if="fullHeader" />
@@ -15,9 +9,6 @@
         <sidebar-logo v-if="showLogo" />
         <app-menu />
       </template>
-    </div>
-    <div>
-      <el-input placeholder="搜索..."></el-input>
     </div>
     <div class="app-header_r">
       <!-- <el-badge is-dot id="message">
@@ -67,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .app-header {
   display: flex;
-  height: 65px;
+  height: 50px;
   padding: 0 10px;
   justify-content: space-between;
   align-items: center;
@@ -79,7 +70,7 @@ export default {
     align-items: center;
   }
   .right-menu {
-    line-height: 65px;
+    line-height: 50px;
     border: none;
   }
   .is-collapse {
@@ -95,8 +86,5 @@ export default {
       cursor: pointer;
     }
   }
-}
-.dark-theme {
-  background-color: $subMenuBg;
 }
 </style>

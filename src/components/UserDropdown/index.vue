@@ -103,7 +103,7 @@ export default {
 <style lang="scss" scoped>
 .el-dropdown-link {
   .avatar {
-    height: 60px;
+    height: 45px;
     border-radius: 50%;
     vertical-align: middle;
     cursor: pointer;
