@@ -97,6 +97,10 @@ export default [
     svg: "js",
     children: [
       {
+        index: "ES6",
+        title: "ES6"
+      },
+      {
         id: 32,
         index: "regExp",
         title: "regExp"

@@ -1,5 +1,4 @@
-const layout = () => import("@/layout");
-
+import layout from "@/layout";
 export default [
   // js-learning
   {
@@ -8,6 +7,15 @@ export default [
     name: "js-learning",
     sort: 3,
     children: [
+      {
+        path: "ES6",
+        name: "ES6",
+        component: () =>
+          import(/* webpackChunkName: "js-group" */ "@/views/js/es6"),
+        meta: {
+          breadcrumbs: ["js-learning", "ES6"]
+        }
+      },
       {
         path: "regExp",
         name: "regExp",

@@ -1,4 +1,4 @@
-const layout = () => import("@/layout");
+import layout from "@/layout";
 export default [
   {
     path: "/blog",

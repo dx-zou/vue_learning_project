@@ -1,5 +1,4 @@
-const layout = () => import("@/layout");
-
+import layout from "@/layout";
 export default [
   // 首页
   {
