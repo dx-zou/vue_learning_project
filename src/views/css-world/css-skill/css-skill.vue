@@ -281,12 +281,8 @@ export default {
     color: #000;
   }
   .none-select {
-    margin-top: 0.3rem;
+    margin-top: 30px;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    /*-khtml-user-select: none;*/
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
   .tri {
