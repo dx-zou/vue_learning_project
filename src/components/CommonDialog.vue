@@ -10,10 +10,10 @@
   >
     <div class="cus-dialog-header" slot="title">
       <span class="cus-dialog_title">{{ title }}</span>
-      <i
+      <!-- <i
         class="el-icon-full-screen cus-dialog_fullicon"
         @click="fullscreen = !fullscreen"
-      ></i>
+      ></i> -->
     </div>
     <slot></slot>
     <div slot="footer" v-if="showFooter">
@@ -77,26 +77,29 @@ export default {
 <style lang="scss">
 .common-dialog {
   border-radius: 5px;
+  font-size: 16px;
+  .cus-dialog_close {
+    font-size: 25px;
+    color: $--color-primary;
+    cursor: pointer;
+  }
   .cus-dialog {
     &-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      &_title {
-        font-size: 18px;
-      }
-      &_fullicon {
-        margin-right: 15px;
-        color: #909399;
-      }
+      font-size: 18px !important;
     }
+  }
+  .el-checkbox {
+    margin-bottom: 6px;
   }
   .el-dialog__body,
   .el-dialog__footer {
     padding: 10px 20px;
   }
   .el-dialog__header {
-    padding: 20px 30px;
+    padding: 10px 20px;
   }
 }
 </style>

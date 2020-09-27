@@ -1,10 +1,9 @@
 // import Vue from "vue";
 import axios from "axios";
 import api from "./api";
-// console.log(process.env.VUE_APP_BASE_API);
 const service = axios.create({
   baseURL: api.BASE_URL,
-  // baseURL: BASE_URL,
+  // baseURL: process.env.VUE_APP_BASE_API,
   withCredentials: true,
   timeout: 30000
 });
@@ -25,8 +24,6 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
   response => {
-    console.log(response.headers);
-
     // 保存响应头返回的token
     if (response.headers.Authorization) {
       sessionStorage.setItem("token", response.headers.Authorization);

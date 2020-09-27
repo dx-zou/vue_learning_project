@@ -1,74 +1,75 @@
 <template>
   <div class="table-container">
-    <!-- 搜索栏 -->
-    <el-form
-      inline
-      :class="['table-search-form', !showSearchForm && 'form-hidden']"
-    >
-      <slot name="tableSearch"></slot>
-      <slot name="searchDefault">
-        <el-form-item>
+    <div class="table-top-bar" v-if="showForm || showAdd">
+      <el-form inline class="table-search-form" v-if="showForm">
+        <slot name="tableSearch"></slot>
+        <slot name="searchDefault">
+          <el-form-item v-if="showSearch">
+            <el-button-group>
+              <el-button
+                type="primary"
+                icon="el-icon-search"
+                size="small"
+                @click="searchTable"
+                >搜索</el-button
+              >
+              <el-button icon="el-icon-delete" size="small" @click="resetSearch"
+                >重置</el-button
+              >
+            </el-button-group>
+          </el-form-item>
+        </slot>
+      </el-form>
+      <div class="table-operate_bar" v-if="showAdd">
+        <el-button-group>
+          <slot name="tableAdd"></slot>
           <el-button
+            v-if="showToggleColumn"
+            size="small"
             type="primary"
-            icon="el-icon-search"
-            size="small"
-            @click="searchTable"
-            >查询</el-button
-          >
-        </el-form-item>
-        <el-form-item>
-          <el-button icon="el-icon-delete" size="small" @click="resetSearch"
-            >重置</el-button
-          >
-        </el-form-item>
-      </slot>
-    </el-form>
-    <!-- 顶部操作栏 -->
-    <div class="table-operate_bar">
-      <div class="bar-l">
-        <el-button size="small" type="primary" v-if="showAdd" @click="toAdd"
-          >新增</el-button
-        >
-        <slot name="tableOperate"> </slot>
-      </div>
-      <div class="bar-r">
-        <el-tooltip class="item" effect="dark" content="刷新" placement="top">
-          <el-button size="small" icon="el-icon-refresh" circle></el-button>
-        </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="显隐" placement="top">
-          <el-button
-            size="small"
-            icon="el-icon-view"
-            circle
+            icon="el-icon-s-operation"
             @click="showSet = true"
-          ></el-button>
-        </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="搜索" placement="top">
+            >展示列</el-button
+          >
           <el-button
+            v-if="showExpandRow"
             size="small"
-            icon="el-icon-search"
-            circle
-            @click="toggleSearch"
-          ></el-button>
-        </el-tooltip>
+            type="primary"
+            @click="expandRow"
+            icon="el-icon-sort"
+            >{{ defaultExpandRow ? "全部折叠" : "全部展开" }}</el-button
+          >
+        </el-button-group>
       </div>
     </div>
-    <!-- table -->
+    <slot name="tableCenter"></slot>
     <el-table
       :data="tableData"
-      :height="tHeight || null"
+      :max-height="tHeight || null"
+      size="mini"
+      :cell-style="{ padding: '3px 0', fontSize: '14px' }"
       :border="showBorder"
-      :header-row-style="{ height: '30px' }"
-      :header-cell-style="{ backgroundColor: '#fafafa', color: '#000' }"
-      :default-expand-all="expandAll"
+      :header-cell-style="{
+        backgroundColor: '#d7e3f2',
+        color: 'black',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        padding: '2px 0'
+      }"
+      :lazy="lazy"
+      :load="load"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-      row-key="id"
+      :row-key="rowKey"
+      :highlight-current-row="highlightCurrentRow"
+      :default-expand-all="defaultExpandRow"
       tooltip-effect="light"
-      v-loading="isLoading"
+      v-loading="loading"
       element-loading-text="加载中..."
       @selection-change="handleSelectionChange"
+      @current-change="currentRowChange"
       @filter-change="handleFilterChange"
-      @sort-change="handleSort"
+      @row-dblclick="handleRowDblclick"
+      @sort-change="handleColumnSort"
       style="width: 100%"
       ref="multipleTable"
     >
@@ -76,32 +77,44 @@
         v-if="showSelection"
         align="center"
         type="selection"
-        width="55"
+        width="65"
       ></el-table-column>
       <el-table-column
-        v-for="item in columnList"
+        v-if="showIndex"
+        align="center"
+        type="index"
+        label="序号"
+        width="65"
+      ></el-table-column>
+      <el-table-column
+        v-for="(item, index) in columnList"
         :key="item.prop"
-        :column-key="item.columnKey"
-        :prop="item.prop"
+        :type="item.type"
+        :prop="columnListCopy[index].prop"
+        :column-key="columnListCopy[index].columnKey"
         :label="item.label"
         :show-overflow-tooltip="item.showTooltip || false"
-        :align="item.align || 'center'"
-        :header-align="item.headerAlign || 'center'"
-        :width="item.width || ''"
-        :sortable="item.sortable || false"
+        :align="item.align || globalAlign || 'left'"
+        :header-align="item.headerAlign || globalAlign || 'left'"
+        :min-width="item.width || ''"
+        :sortable="globalSortable || !item.sortable"
         :filters="item.filters || null"
         :formatter="item.formatter || null"
       >
+        <template #header="{row}" v-if="item.headerSlotName">
+          <slot :name="item.headerSlotName || ''" :scope="row"></slot>
+        </template>
         <template #default="{row}" v-if="item.slotName">
-          <slot :name="item.slotName || ''" :scope="row">
-            {{ row[item.prop] }}
-          </slot>
+          <slot :name="item.slotName || ''" :scope="row">{{
+            row[item.prop]
+          }}</slot>
         </template>
       </el-table-column>
       <el-table-column
         v-if="showOperate"
         :width="operateWidth"
-        align="center"
+        align="left"
+        headerAlign="left"
         label="操作"
       >
         <template #default="{row}">
@@ -125,13 +138,21 @@
         </template>
       </el-table-column>
     </el-table>
+    <pagination
+      :page-options="page"
+      @handlePageChange="handlePageChange"
+      @handleSizeChange="handleSizeChange"
+    />
     <common-dialog
       title="选择表格列"
       :visible.sync="showSet"
       :show-footer="false"
-      width="35%"
+      width="40%"
     >
-      <el-checkbox-group v-model="columnLabel" @change="handleColumnChange">
+      <el-checkbox-group
+        v-model="selectedColumnList"
+        @change="handleColumnChange"
+      >
         <el-checkbox
           v-for="item in tableColumns"
           :key="item.label"
@@ -144,26 +165,49 @@
 </template>
 
 <script>
+import Sortable from "sortablejs";
+
 export default {
   name: "CommonTable",
   props: {
+    tableUrl: {
+      type: String
+    },
     // 表头字段
     tableColumns: {
       type: Array
     },
-    // 表格数据
-    tableData: {
-      type: Array
+    // 分页
+    page: {
+      type: Object,
+      default() {
+        return {
+          total: 10,
+          pageSize: 3,
+          pageNum: 1
+        };
+      }
     },
-    // 加载动画
-    isLoading: {
-      type: Boolean,
-      default: true
+    // 搜索数据
+    queryForm: {
+      type: Object,
+      default() {
+        return {};
+      }
+    },
+    // 懒加载树形表格数据
+    load: {
+      type: Function
     },
     // 边框
     showBorder: {
       type: Boolean,
       default: true
+    },
+    // 树形数据懒加载
+    lazy: {
+      type: Boolean,
+      default: false
     },
     // 显示操作栏
     showOperate: {
@@ -185,18 +229,36 @@ export default {
       type: Boolean,
       default: true
     },
+    // 表格行唯一标识
+    rowKey: {
+      type: String,
+      default: "id"
+    },
+    // 全局表格对齐方式
+    globalAlign: {
+      type: String
+    },
+    // 全局列排序
+    globalSortable: {
+      type: [String, Boolean]
+    },
     // 操作栏宽度
     operateWidth: {
       type: String,
-      default: "150"
+      default: "200"
     },
     // 表格高度
     tableHeight: {
       type: String,
-      default: "calc(100vh - 320px)"
+      default: "500px"
     },
     // 多选
     showSelection: {
+      type: Boolean,
+      default: false
+    },
+    // 序号
+    showIndex: {
       type: Boolean,
       default: false
     },
@@ -209,50 +271,176 @@ export default {
     expandAll: {
       type: Boolean,
       default: false
+    },
+    // 显示展示列按钮
+    showToggleColumn: {
+      type: Boolean,
+      default: true
+    },
+    showExpandRow: {
+      type: Boolean,
+      default: false
+    },
+    // 是否展示搜索框
+    showForm: {
+      type: Boolean,
+      default: true
+    },
+    highlightCurrentRow: {
+      type: Boolean,
+      default: true
+    },
+    // 表格列是否可拖动
+    columnDragable: {
+      type: Boolean,
+      default: false
     }
+  },
+  data() {
+    return {
+      tableData: [],
+      multipleSelection: [], // 已选择的行数据
+      columnList: [], // 列数据
+      columnListCopy: [],
+      selectedColumnList: [], // 展示的列
+      showSet: false,
+      loading: true,
+      defaultExpandRow: false, // 默认展开树形表格行
+      formData: {} // 搜索数据
+    };
   },
   computed: {
     tHeight: {
       get() {
         return this.tableHeight;
       },
-      set(value) {
-        console.log(value);
+      set() {
         // this.tHeight = value;
       }
     }
   },
-  data() {
-    return {
-      multipleSelection: [],
-      authBtnList: [],
-      columnList: [],
-      columnLabel: [],
-      showSet: false,
-      showSearchForm: true
-    };
-  },
   mounted() {
-    this.columnList = this.tableColumns;
-    this.columnLabel = this.columnList.map(item => item.label);
-    // this.getAuthBtn();
+    this.handleColumnShow();
+    this.columnDragable && this.handleColumnDrag();
+    this.getTableData();
   },
   methods: {
-    // 获取有操作权限的按钮
-    getAuthBtn() {
-      let authButton = this.$store.getters.authButton || {};
-      for (let key in authButton) {
-        if (key === this.$route.name) {
-          authButton[key].forEach(item => this.authBtnList.push(item.name));
-          break;
+    // 处理列的显示
+    handleColumnShow() {
+      // 阻止默认行为
+      document.body.ondrop = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+      };
+      const res = [...this.tableColumns].filter(col => !col.hiddenColumn);
+      this.columnList = [...res];
+      this.columnListCopy = [...res];
+      // 默认不展示的列不选中
+      this.selectedColumnList = this.columnList.map(
+        item => !item.hiddenColumn && item.label
+      );
+    },
+    // 选择表格显示的列
+    handleColumnChange(value) {
+      this.columnList = this.tableColumns.filter(item => {
+        if (value.includes(item.label)) {
+          item.hiddenColumn = false;
+          return item;
         }
+      });
+      this.columnListCopy = [...this.columnList];
+    },
+
+    // 列拖拽方法
+    handleColumnDrag() {
+      const wrapperTr = document.querySelectorAll(
+        ".el-table__header-wrapper tr"
+      );
+      for (const ele of Array.from(wrapperTr)) {
+        Sortable.create(ele, {
+          animation: 180,
+          delay: 0,
+          onEnd: evt => {
+            if (this.showSelection || this.showIndex) {
+              const oldItem = this.columnListCopy[evt.oldIndex - 1];
+              this.columnListCopy.splice(evt.oldIndex - 1, 1);
+              this.columnListCopy.splice(evt.newIndex - 1, 0, oldItem);
+            } else {
+              const oldItem = this.columnListCopy[evt.oldIndex];
+              this.columnListCopy.splice(evt.oldIndex, 1);
+              this.columnListCopy.splice(evt.newIndex, 0, oldItem);
+            }
+          }
+        });
       }
+    },
+    /**
+     * @description 获取表格数据
+     */
+    getTableData() {
+      this.loading = true;
+      let { pageNum, pageSize } = this.page;
+      this.$http
+        .get(this.tableUrl, { params: { pageNum, pageSize } })
+        .then(res => {
+          this.tableData = res.data.rows;
+          this.page.total = res.data.total;
+          this.loading = false;
+        });
+    },
+    /**
+     * @description 当前页码数变化
+     */
+    handlePageChange(val) {
+      this.page.pageNum = val;
+      this.getTableData();
+    },
+    /**
+     * @description 每页条数变化
+     */
+    handleSizeChange(val) {
+      this.page.pageSize = val;
+      this.getTableData();
+    },
+    // 搜索表格
+    searchTable() {
+      Object.assign(this.queryForm, this.formData);
+      this.getTableData();
+    },
+    // 重置搜索条件
+    resetSearch() {
+      this.$emit("resetSearch");
+    },
+    // 树结构展开与折叠
+    expandRow() {
+      this.defaultExpandRow = !this.defaultExpandRow;
+      this.$nextTick(() => {
+        this.forArr(this.tableData, this.defaultExpandRow);
+      });
+    },
+    // 遍历
+    forArr(arr, isExpand) {
+      arr.forEach(i => {
+        // toggleRowExpansion(i, isExpand)用于多选表格，
+        // 切换某一行的选中状态，如果使用了第二个参数，
+        // 则是设置这一行选中与否（selected 为 true 则选中）
+        this.$refs.multipleTable.toggleRowExpansion(i, isExpand);
+        if (i.children) {
+          this.forArr(i.children, isExpand);
+        }
+      });
     },
     // 多选框多选
     handleSelectionChange(val) {
+      this.multipleSelection = val;
       // 调用父组件方法
       this.$emit("handleSelectionChange", val);
     },
+    // 选中行
+    currentRowChange(val) {
+      this.$emit("currentRowChange", val);
+    },
+    // 新增
     toAdd() {
       this.$emit("toAdd");
     },
@@ -261,32 +449,25 @@ export default {
       this.$emit("toEdit", row);
     },
     // 删除行数据
-    toDelete(id) {
-      this.$emit("toDelete", id);
+    toDelete(row) {
+      this.$emit("toDelete", row);
     },
     // 列过滤
     handleFilterChange(filters) {
       this.$emit("handleFilterChange", filters);
     },
+    // 双击表格行
+    handleRowDblclick(row, column, event) {
+      this.$emit("handleRowDblclick", row, column, event);
+    },
     // 列排序
-    handleSort(val) {
-      this.$emit("handleSort", val);
-    },
-    // 选择表格显示的列
-    handleColumnChange(value) {
-      this.columnList = this.tableColumns.filter(item =>
-        value.includes(item.label)
-      );
-    },
-    searchTable() {},
-    resetSearch() {},
-    toggleSearch() {
-      this.showSearchForm = !this.showSearchForm;
-      const h = this.showSearchForm
-        ? "calc(100vh - 320px)"
-        : "calc(100vh - 280px)";
-      this.tHeight = h;
-      console.log(this.tHeight);
+    handleColumnSort({ order }) {
+      if (this.globalSortable === "custom") {
+        // 自定义列排序
+        if (order) {
+          this.searchTable();
+        }
+      }
     }
   }
 };
@@ -294,29 +475,22 @@ export default {
 <style lang="scss">
 .table-container {
   padding: 10px;
-  .el-form {
-    height: 50px;
-    padding: 0 20px 10px;
-    overflow: hidden;
-    transition: all 0.3s;
-    .el-form-item {
-      margin-bottom: 0;
+  .table-top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .table-search-form {
+      flex: 1;
+      .el-form-item {
+        margin-bottom: 5px;
+      }
     }
   }
-  .form-hidden {
-    height: 0;
-    padding: 0 20px;
+  .el-table {
+    margin: 10px 0;
   }
   .column-check {
     margin-bottom: 10px;
-  }
-}
-.table-operate_bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  .el-button + .el-button {
-    margin-left: 10px;
   }
 }
 </style>

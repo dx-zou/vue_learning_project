@@ -1,4 +1,6 @@
-const API = {
+const BASE_URL = "http://127.0.0.1:3000";
+export default {
+  BASE_URL,
   // 登录
   login: "/pc_blog/user/login",
   // 获取用户菜单栏
@@ -13,7 +15,4 @@ const API = {
   updateBlog: `/pc_blog/blog/update-blog`,
   // 删除
   deleteBlog: `/pc_blog/blog/delete-blog`
-};
-export default {
-  API
 };

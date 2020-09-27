@@ -113,7 +113,6 @@ export default {
               this.id
                 ? this.$toast("success", "编辑成功")
                 : this.$toast("success", "新增成功");
-              this.$router.go(-1);
             }
           });
         }

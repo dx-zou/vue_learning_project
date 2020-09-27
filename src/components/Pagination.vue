@@ -75,6 +75,6 @@ export default {
 </script>
 <style lang="scss">
 .pagination-container {
-  text-align: center;
+  text-align: right;
 }
 </style>

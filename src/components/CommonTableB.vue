@@ -30,9 +30,9 @@
       :prop="item.prop"
       :label="item.label"
       :show-overflow-tooltip="item.showTooltip || false"
-      :align="item.align || 'center'"
-      :header-align="item.headerAlign || 'center'"
-      :width="item.width || ''"
+      :align="item.align || 'left'"
+      :header-align="item.headerAlign || 'left'"
+      :min-width="item.width || ''"
       :sortable="item.sortable || false"
       :filters="item.filters || null"
       :formatter="item.formatter || null"
@@ -179,27 +179,27 @@ export default {
 };
 </script>
 <style lang="scss">
-.el-table {
-  margin: 10px 0;
-  .operate-icon {
-    width: 26px;
-    height: 26px;
-    vertical-align: middle;
-    cursor: pointer;
-  }
-}
+// .el-table {
+//   margin: 10px 0;
+//   .operate-icon {
+//     width: 26px;
+//     height: 26px;
+//     vertical-align: middle;
+//     cursor: pointer;
+//   }
+// }
 
-.btn-popover {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 0;
+// .btn-popover {
+//   display: flex;
+//   flex-direction: column;
+//   padding-bottom: 0;
 
-  .el-button {
-    margin-bottom: 10px;
-  }
+//   .el-button {
+//     margin-bottom: 10px;
+//   }
 
-  .el-button + .el-button {
-    margin-left: 0;
-  }
-}
+//   .el-button + .el-button {
+//     margin-left: 0;
+//   }
+// }
 </style>

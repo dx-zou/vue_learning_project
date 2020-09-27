@@ -1,25 +1,25 @@
 <template>
   <div class="app-main_wrapper">
     <common-table
-      :table-data="tableData"
       :table-columns="tableColumns"
-      :is-loading="false"
-      v-bind="queryForm"
+      :query-form="queryForm"
+      :table-url="this.$api.getBlogList"
       @toAdd="showForm"
       @toEdit="showForm"
       @toDelete="toDelete"
+      ref="commonTable"
     >
       <template #tableSearch>
-        <el-form-item label="查询条件">
+        <el-form-item label="标题">
           <el-input
             size="small"
-            v-model="queryForm.name"
+            v-model.trim="queryForm.name"
             placeholder="请输入"
           ></el-input>
         </el-form-item>
       </template>
-      <template #tableOperate>
-        <el-button size="small" type="danger">删除</el-button>
+      <template #tableAdd>
+        <el-button size="small" type="primary">新增</el-button>
         <el-button size="small" type="warning" @click="showLogin = true"
           >登录</el-button
         >
@@ -49,11 +49,7 @@
         >
       </template>
     </common-table>
-    <pagination
-      :page-options="pageOptions"
-      @handlePageChange="handlePageChange"
-      @handleSizeChange="handleSizeChange"
-    />
+
     <common-dialog
       :visible.sync="showLogin"
       title="博客系统登录"
@@ -110,16 +106,6 @@ export default {
           id: 2,
           soundUrl:
             "http://res.iciba.com/resource/amp3/1/0/18/d6/18d6769919266cd0bd6cd78aa405d5d0.mp3"
-        },
-        {
-          id: 3,
-          soundUrl:
-            "http://res.iciba.com/resource/amp3/1/0/64/85/648513eb3465901d6a18a76299d3dd15.mp3"
-        },
-        {
-          id: 4,
-          soundUrl:
-            "http://res.iciba.com/resource/amp3/1/0/6b/16/6b1628b016dff46e6fa35684be6acc96.mp3"
         }
       ],
       tableColumns: [
@@ -175,35 +161,13 @@ export default {
         }
       ],
       loginForm: {},
-      showLogin: false,
-      pageOptions: {
-        total: 0,
-        pageSize: 3,
-        pageNo: 1
-      }
+      showLogin: false
     };
   },
   components: {
     blogForm
   },
-  mounted() {
-    // this.getTableData();
-  },
   methods: {
-    /**
-     * @description 当前页码数变化
-     */
-    handlePageChange(val) {
-      this.pageOptions.pageNo = val;
-      this.getTableData();
-    },
-    /**
-     * @description 每页条数变化
-     */
-    handleSizeChange(val) {
-      this.pageOptions.pageSize = val;
-      this.getTableData();
-    },
     // 试听发音
     toPlay({ id, soundUrl }) {
       const audio = this.$refs.audio;
@@ -216,18 +180,7 @@ export default {
     handleEnded() {
       this.playing = false;
     },
-    /**
-     * @description 获取表格数据
-     */
-    getTableData() {
-      let { pageNo, pageSize } = this.pageOptions;
-      this.$http
-        .get(this.$api.getBlogList, { params: { pageNo, pageSize } })
-        .then(res => {
-          this.tableData = res.data.rows;
-          this.pageOptions.total = res.data.total;
-        });
-    },
+
     /**
      * @description 登录
      */

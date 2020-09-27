@@ -15,6 +15,7 @@
           type="text"
           name="name"
           id="name"
+          autocomplete="off"
           v-model="userinfo.username"
           @focus="handleFocus('name')"
           @blur="handleBlur('name')"
@@ -38,6 +39,7 @@
           :type="showPass ? 'text' : 'password'"
           id="password"
           name="password"
+          autocomplete="off"
           v-model="userinfo.password"
           @focus="handleFocus('pass')"
           @blur="handleBlur('pass')"
@@ -103,7 +105,7 @@ export default {
         if (!username || !password)
           return this.$toast("请输入用户名和密码", "warning");
         this.isLoading = true;
-        if (username === "admin" && password === "654321") {
+        if (username === "feng" && password === "654321") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
