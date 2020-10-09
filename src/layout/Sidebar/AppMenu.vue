@@ -16,9 +16,7 @@
       <el-menu-item v-if="!item.children" :key="item.title" :index="item.index">
         <router-link :to="{ name: item.title }">
           <svg-icon v-if="item.svg" :icon-class="item.svg" />
-          <span>
-            {{ item.title }}
-          </span>
+          <span>{{ item.title }}</span>
         </router-link>
       </el-menu-item>
       <el-submenu v-else :key="item.title" :index="item.index">

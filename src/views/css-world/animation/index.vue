@@ -22,6 +22,9 @@
       <div class="second position"></div>
       <div class="center"></div>
     </div>
+    <div class="mouse-box" @mousemove="onMouseMove">
+      <div class="target" ref="target"></div>
+    </div>
   </div>
 </template>
 
@@ -35,11 +38,27 @@ export default {
     };
   },
   mounted() {},
-  methods: {}
+  methods: {
+    onMouseMove(e) {
+      const x = e.clientX - this.$refs.target.offsetLeft;
+      const y = e.clientY - this.$refs.target.offsetTop;
+      document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.mouse-box {
+  height: 200px;
+}
+.target {
+  width: 100px;
+  height: 100px;
+  background: #4ec0e9;
+  transform: translate(var(--mouse-x), var(--mouse-y));
+}
 .ball {
   position: relative;
   width: 100px;
