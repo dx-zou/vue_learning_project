@@ -1,4 +1,4 @@
-// import Vue from "vue";
+import Vue from "vue";
 import axios from "axios";
 import api from "./api";
 const service = axios.create({
@@ -30,8 +30,13 @@ service.interceptors.response.use(
     }
     // 对响应数据先做一层处理
     // 请求成功后返回的数据
-    // if (response.data.code === 0) {
-    // }
+    if (response.data.code === 400) {
+      Vue.prototype.$notify({
+        type: "fail",
+        duration: 2000,
+        message: response.data.msg
+      });
+    }
     return response.data;
   },
   error => {

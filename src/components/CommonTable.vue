@@ -304,7 +304,7 @@ export default {
       columnListCopy: [],
       selectedColumnList: [], // 展示的列
       showSet: false,
-      loading: true,
+      loading: false,
       defaultExpandRow: false, // 默认展开树形表格行
       formData: {} // 搜索数据
     };
@@ -314,9 +314,7 @@ export default {
       get() {
         return this.tableHeight;
       },
-      set() {
-        // this.tHeight = value;
-      }
+      set() {}
     }
   },
   mounted() {
@@ -378,6 +376,7 @@ export default {
      * @description 获取表格数据
      */
     getTableData() {
+      if (!this.tableUrl) return;
       this.loading = true;
       let { pageNum, pageSize } = this.page;
       this.$http

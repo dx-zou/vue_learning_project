@@ -1,8 +1,8 @@
 <template>
   <div class="login-wrapper">
     <div class="login-container">
-      <div class="title">我的学习管理系统</div>
-      <div class="login-text">登录</div>
+      <div class="title">Welcome !</div>
+      <div class="login-text"></div>
       <div class="input-box">
         <label
           :class="['label', nameBlur ? 'blur' : 'focus']"
@@ -72,8 +72,8 @@ export default {
   data() {
     return {
       userinfo: {
-        username: "",
-        password: ""
+        username: "666",
+        password: "654321"
       },
       nameBlur: true,
       passBlur: true,
@@ -105,7 +105,7 @@ export default {
         if (!username || !password)
           return this.$toast("请输入用户名和密码", "warning");
         this.isLoading = true;
-        if (username === "feng" && password === "654321") {
+        if (username === "666" && password === "654321") {
           sessionStorage.setItem("userToken", "isLogin");
           this.$store.commit("app/CHANGE_ACTIVEINDEX", "dashboard");
           this.$router.push("/dashboard");
@@ -136,7 +136,8 @@ $login-color: #ff5d48;
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/login/login3.jpg") no-repeat top/cover;
+  background: #bebdc2;
+  // background: url("../../assets/images/login/login1.png");
   .login-container {
     position: absolute;
     width: 460px;

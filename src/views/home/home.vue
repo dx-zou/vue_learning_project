@@ -62,7 +62,7 @@ import {
 // import VirusMap from "./VirusMap";
 // const VirusMap = () => import("./VirusMap");
 // const VirusChart = () => import("./VirusChart");
-import tools from "@/utils/tools";
+// import tools from "@/utils/tools";
 export default {
   data() {
     return {
@@ -103,15 +103,7 @@ export default {
     //   });
     // }
   },
-  methods: {
-    handleTest() {
-      tools
-        .$ajax("https://finworkflow.totole.com.cn/approval/getPendingList")
-        .then(res => {
-          console.log(res);
-        });
-    }
-  }
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>

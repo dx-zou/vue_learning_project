@@ -118,7 +118,7 @@ export default {
           label: "作者"
         },
         {
-          prop: "createTime",
+          prop: "createAt",
           label: "创建时间"
         },
         {
@@ -194,11 +194,11 @@ export default {
               password
             })
             .then(res => {
-              if (res.code) {
-                this.showLogin = false;
-                this.getTableData();
-                this.$toast("success", "登录成功");
+              if (res.code === 200) {
+                this.$refs.commonTable.getTableData();
+                this.$toast("登录成功");
               }
+              this.showLogin = false;
             });
         }
       });
@@ -220,7 +220,7 @@ export default {
         this.$http.delete(this.$api.deleteBlog + `/${row.id}`).then(res => {
           if (res.code === 1) {
             this.$toast("success", "删除成功");
-            this.getTableData();
+            this.$refs.commonTable.getTableData();
           }
         });
       }

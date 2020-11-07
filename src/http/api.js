@@ -2,17 +2,19 @@ const BASE_URL = "http://127.0.0.1:3000";
 export default {
   BASE_URL,
   // 登录
-  login: "/pc_blog/user/login",
+  login: "/blog/user/login",
+  // 注册
+  register: "/blog/user/register",
   // 获取用户菜单栏
   getUserMenu: "getUserMenu",
   // 博客列表
-  getBlogList: `/pc_blog/blog/list`,
+  getBlogList: `/blog/api/list`,
   // 新增
-  addBlog: `/pc_blog/blog/add-blog`,
+  addBlog: `/blog/api/add-blog`,
   // 详情
-  getBlogDetail: `/pc_blog/blog/blog-detail`,
+  getBlogDetail: `/blog/api/blog-detail`,
   // 更新
-  updateBlog: `/pc_blog/blog/update-blog`,
+  updateBlog: `/blog/api/update-blog`,
   // 删除
-  deleteBlog: `/pc_blog/blog/delete-blog`
+  deleteBlog: `/blog/api/delete-blog`
 };

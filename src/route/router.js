@@ -1,4 +1,4 @@
-import login from "@/views/login/login";
+import login from "@/layout/login";
 
 let constant_routes = [
   {
@@ -8,6 +8,7 @@ let constant_routes = [
   },
   {
     path: "/",
+    name: "0",
     redirect: "/dashboard"
   }
 ];
