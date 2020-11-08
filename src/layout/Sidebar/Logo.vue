@@ -7,16 +7,7 @@
     }"
   >
     <transition name="sidebarLogoFade">
-      <router-link
-        v-if="collapse"
-        key="collapse"
-        class="sidebar-logo-link"
-        to="/"
-      >
-        <img src="@/assets/images/logo.png" class="sidebar-logo" />
-      </router-link>
-      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img src="@/assets/images/logo.png" class="sidebar-logo" />
+      <router-link key="expand" class="sidebar-logo-link" to="/">
         <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>

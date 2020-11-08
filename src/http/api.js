@@ -1,20 +1,22 @@
-const BASE_URL = "http://127.0.0.1:3000";
+const { origin } = window.location;
+const env = process.env.NODE_ENV;
+const BASE_URL = env === "development" ? "http://47.95.1.121:3000" : origin;
 export default {
   BASE_URL,
   // 登录
-  login: "/blog/user/login",
+  login: "/login",
   // 注册
-  register: "/blog/user/register",
+  register: "/register",
   // 获取用户菜单栏
   getUserMenu: "getUserMenu",
   // 博客列表
-  getBlogList: `/blog/api/list`,
+  getBlogList: `/api/blog/list`,
   // 新增
-  addBlog: `/blog/api/add-blog`,
+  addBlog: `/api/blog/add`,
   // 详情
-  getBlogDetail: `/blog/api/blog-detail`,
+  getBlogDetail: `/api/blog/detail`,
   // 更新
-  updateBlog: `/blog/api/update-blog`,
+  updateBlog: `/api/blog/update`,
   // 删除
-  deleteBlog: `/blog/api/delete-blog`
+  deleteBlog: `/api/blog/delete`
 };

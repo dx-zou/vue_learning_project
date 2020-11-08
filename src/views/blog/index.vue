@@ -219,7 +219,7 @@ export default {
       if (confirmed) {
         this.$http.delete(this.$api.deleteBlog + `/${row.id}`).then(res => {
           if (res.code === 1) {
-            this.$toast("success", "删除成功");
+            this.$toast("删除成功");
             this.$refs.commonTable.getTableData();
           }
         });

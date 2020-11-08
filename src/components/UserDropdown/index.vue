@@ -72,7 +72,7 @@ export default {
     logout() {
       sessionStorage.clear();
       this.$router.push("/login");
-      this.$toast("success", "已退出登录");
+      this.$toast("已退出登录");
     },
 
     // 点击下拉菜单项的回调
