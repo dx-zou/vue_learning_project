@@ -12,7 +12,7 @@
     <div :class="['main-container', !fixedHeader && 'scroll-header-main']">
       <side-bar v-if="sideLayout && fullHeader" />
       <app-header v-if="!sideLayout || (sideLayout && !fullHeader)" />
-      <Breadcrumb />
+      <breadcrumb />
       <div class="app-main">
         <transition name="app">
           <keep-alive v-if="$route.meta.keepAlive">

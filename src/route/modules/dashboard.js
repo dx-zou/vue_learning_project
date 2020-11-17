@@ -2,11 +2,11 @@ import layout from "@/layout";
 export default [
   // 首页
   {
-    path: "/",
+    path: "/dashboard",
     component: layout,
     children: [
       {
-        path: "dashboard",
+        path: "",
         name: "dashboard",
         component: () =>
           import(/* webpackChunkName: "dashboard" */ "@/views/home/home"),

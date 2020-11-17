@@ -1,22 +1,15 @@
 const { origin } = window.location;
 const env = process.env.NODE_ENV;
-const BASE_URL = env === "development" ? "http://47.95.1.121:3000" : origin;
+const BASE_URL = env === "development" ? "http://localhost:3000" : origin;
 export default {
   BASE_URL,
+  fileUpload: `${BASE_URL}/api/upload`,
   // 登录
-  login: "/login",
+  login: "/api/user/login",
   // 注册
-  register: "/register",
+  register: "/api/user/register",
   // 获取用户菜单栏
-  getUserMenu: "getUserMenu",
+  getUserMenu: "/api/user/getUserMenu",
   // 博客列表
-  getBlogList: `/api/blog/list`,
-  // 新增
-  addBlog: `/api/blog/add`,
-  // 详情
-  getBlogDetail: `/api/blog/detail`,
-  // 更新
-  updateBlog: `/api/blog/update`,
-  // 删除
-  deleteBlog: `/api/blog/delete`
+  blogQuery: `/api/blog/query`
 };

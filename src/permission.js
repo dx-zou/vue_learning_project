@@ -3,7 +3,7 @@ import NProgress from "nprogress";
 // import store from "./store";
 
 const getPageTitle = pageTitle => {
-  const title = "前端学习管理系统";
+  const title = "前端领域";
   if (pageTitle) {
     return `${pageTitle} - ${title}`;
   }

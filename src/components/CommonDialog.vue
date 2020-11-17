@@ -6,6 +6,8 @@
     :top="top"
     :fullscreen="fullscreen"
     :center="center"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
     custom-class="common-dialog"
   >
     <div class="cus-dialog-header" slot="title">
@@ -18,10 +20,10 @@
     <slot></slot>
     <div slot="footer" v-if="showFooter">
       <slot name="footer">
-        <el-button size="small" @click="close">取 消</el-button>
         <el-button size="small" type="primary" @click="handleConfirm"
           >确 定</el-button
         >
+        <el-button size="small" @click="close">取 消</el-button>
       </slot>
     </div>
   </el-dialog>

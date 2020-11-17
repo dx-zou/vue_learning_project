@@ -4,7 +4,7 @@ import api from "./api";
 const service = axios.create({
   baseURL: api.BASE_URL,
   // baseURL: process.env.VUE_APP_BASE_API,
-  withCredentials: true,
+  withCredentials: false,
   timeout: 30000
 });
 // 添加请求拦截
@@ -16,7 +16,6 @@ service.interceptors.request.use(
     return config;
   },
   error => {
-    // 对请求错误做些什么
     return Promise.reject(error);
   }
 );
@@ -24,28 +23,24 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
   response => {
+    const { authorization } = response.headers;
     // 保存响应头返回的token
-    if (response.headers.Authorization) {
-      sessionStorage.setItem("token", response.headers.Authorization);
+    if (authorization) {
+      sessionStorage.setItem("token", authorization);
     }
     // 对响应数据先做一层处理
     // 请求成功后返回的数据
-    if (response.data.code === 400) {
+    const data = response.data;
+    if (data.code === 400 || data.code === 401) {
       Vue.prototype.$notify({
-        type: "fail",
+        type: "error",
         duration: 2000,
         message: response.data.msg
       });
     }
-    return response.data;
+    return data;
   },
   error => {
-    // 对响应错误做统一处理
-    // Vue.prototype.$notify({
-    //   type: "fail",
-    //   duration: 1000,
-    //   message: error.response.data.errMsg
-    // });
     return Promise.reject(error);
   }
 );

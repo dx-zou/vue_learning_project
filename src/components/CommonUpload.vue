@@ -1,7 +1,7 @@
 <template>
   <el-upload
     class="c-upload"
-    name="multipartFile"
+    name="file"
     ref="upload"
     :action="uploadUrl"
     :list-type="listType"
@@ -40,8 +40,7 @@ export default {
     },
     // 上传地址
     action: {
-      type: String,
-      required: true
+      type: String
     },
     // 额外数据
     data: {
@@ -76,9 +75,7 @@ export default {
     return {
       uploading: false,
       headers: {
-        userId: localStorage.getItem("userId"),
-        userName: localStorage.getItem("userName"),
-        userType: localStorage.getItem("isAdmin") == "true" ? 2 : 1
+        Authorization: sessionStorage.getItem("token")
       },
       reflect: {
         image: ".jpg,.jpeg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.bmp,.BMP",
@@ -128,11 +125,7 @@ export default {
     // 上传成功
     handleSuccess(res) {
       this.uploading = false;
-      if (res.code === 0) {
-        this.$toast(res.msg, "error");
-      } else {
-        this.$toast("上传成功");
-      }
+      this.$toast(res.msg);
       this.clearFiles();
       this.$emit("handleUploadSuccess", res);
     },

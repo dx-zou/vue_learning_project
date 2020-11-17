@@ -5,41 +5,40 @@
         <slot name="tableSearch"></slot>
         <slot name="searchDefault">
           <el-form-item v-if="showSearch">
-            <el-button-group>
-              <el-button
-                type="primary"
-                icon="el-icon-search"
-                size="small"
-                @click="searchTable"
-                >搜索</el-button
-              >
-              <el-button icon="el-icon-delete" size="small" @click="resetSearch"
-                >重置</el-button
-              >
-            </el-button-group>
+            <el-button
+              type="primary"
+              icon="el-icon-search"
+              size="mini"
+              @click="searchTable"
+              >搜索</el-button
+            >
+            <el-button icon="el-icon-delete" size="mini" @click="resetSearch"
+              >重置</el-button
+            >
           </el-form-item>
         </slot>
       </el-form>
       <div class="table-operate_bar" v-if="showAdd">
-        <el-button-group>
-          <slot name="tableAdd"></slot>
-          <el-button
-            v-if="showToggleColumn"
-            size="small"
-            type="primary"
-            icon="el-icon-s-operation"
-            @click="showSet = true"
-            >展示列</el-button
-          >
-          <el-button
-            v-if="showExpandRow"
-            size="small"
-            type="primary"
-            @click="expandRow"
-            icon="el-icon-sort"
-            >{{ defaultExpandRow ? "全部折叠" : "全部展开" }}</el-button
-          >
-        </el-button-group>
+        <slot name="tableAdd"></slot>
+        <el-button size="mini" type="primary" icon="el-icon-plus" @click="toAdd"
+          >新增</el-button
+        >
+        <el-button
+          v-if="showToggleColumn"
+          size="mini"
+          type="primary"
+          icon="el-icon-s-operation"
+          @click="showSet = true"
+          >展示列</el-button
+        >
+        <el-button
+          v-if="showExpandRow"
+          size="mini"
+          type="primary"
+          @click="expandRow"
+          icon="el-icon-sort"
+          >{{ defaultExpandRow ? "全部折叠" : "全部展开" }}</el-button
+        >
       </div>
     </div>
     <slot name="tableCenter"></slot>
@@ -375,17 +374,20 @@ export default {
     /**
      * @description 获取表格数据
      */
-    getTableData() {
+    async getTableData() {
       if (!this.tableUrl) return;
       this.loading = true;
-      let { pageNum, pageSize } = this.page;
-      this.$http
-        .get(this.tableUrl, { params: { pageNum, pageSize } })
-        .then(res => {
-          this.tableData = res.data.rows;
-          this.page.total = res.data.total;
-          this.loading = false;
-        });
+      const { pageNum, pageSize } = this.page;
+      const params = {
+        pageNum,
+        pageSize
+      };
+      const res = await this.$http.get(this.tableUrl, { params });
+      if (res.code === 200) {
+        this.tableData = res.data.rows;
+        this.page.total = res.data.total;
+      }
+      this.loading = false;
     },
     /**
      * @description 当前页码数变化
@@ -441,7 +443,7 @@ export default {
     },
     // 新增
     toAdd() {
-      this.$emit("toAdd");
+      this.$emit("toAdd", "add");
     },
     // 修改行数据
     toEdit(row) {

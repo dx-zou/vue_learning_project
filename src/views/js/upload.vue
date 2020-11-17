@@ -12,6 +12,7 @@
     <el-divider content-position="left">大文件切片上传，断点续传</el-divider>
     <input type="file" @change="handleFileChange" />
     <el-button type="primary" @click="handleUpload">上传</el-button>
+    <common-upload />
   </div>
 </template>
 

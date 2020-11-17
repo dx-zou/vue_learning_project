@@ -24,6 +24,7 @@
           v-model.trim="formData.content"
           type="textarea"
           clearable
+          :autosize="{ minRows: 3, maxRows: 6 }"
           placeholder="请输入博客内容"
         ></el-input>
       </el-form-item>
@@ -83,17 +84,17 @@ export default {
       this.id = "";
     },
     // 显示弹窗
-    show(id) {
+    show(row) {
       this.showDialog = true;
-      if (id) {
-        this.id = id;
-        this.getDetail(id);
+      if (typeof row === "object") {
+        this.id = row.id;
+        this.getDetail(this.id);
       }
     },
     // 获取详情
     getDetail() {
       this.$http({
-        url: this.$api.getBlogDetail + `/${this.id}`
+        url: this.$api.blogQuery + `/${this.id}`
       }).then(res => {
         this.formData = res.data;
       });
@@ -104,15 +105,15 @@ export default {
         if (valid) {
           this.isSaving = true;
           this.$http({
-            url: this.id ? this.$api.updateBlog : this.$api.addBlog,
+            url: this.$api.blogQuery,
             method: this.id ? "patch" : "post",
             data: this.formData
           }).then(res => {
             this.isSaving = false;
-            if (res.code === 1) {
-              this.id
-                ? this.$toast("success", "编辑成功")
-                : this.$toast("success", "新增成功");
+            if (res.code === 200) {
+              this.$toast("操作成功");
+              this.showDialog = false;
+              this.$parent.getTableData();
             }
           });
         }
