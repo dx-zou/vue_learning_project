@@ -4,11 +4,13 @@
       :table-columns="tableColumns"
       :query-form="queryForm"
       :table-url="$api.blogQuery"
+      show-selection
       show-search-expand
       @toAdd="showForm('add')"
       @toEdit="showForm"
       @toDelete="toDelete"
       @resetSearch="resetSearch"
+      @handleSelectionChange="handleSelectionChange"
       ref="commonTable"
     >
       <template #tableSearch>
@@ -172,6 +174,7 @@ export default {
       ],
       loginForm: {},
       dateRange: [],
+      multipleSelection: [],
       showLogin: false
     };
   },
@@ -213,25 +216,32 @@ export default {
     getTableData() {
       this.$refs.commonTable.getTableData();
     },
+    // 多选
+    handleSelectionChange(val) {
+      this.multipleSelection = val.map(item => item.id);
+    },
     /**
-     * @description 去编辑页面
+     *  显示表单
      */
     showForm(row) {
       this.$refs.blogForm.show(row);
     },
     /**
-     * @description 删除数据
+     *  删除数据
      */
     async toDelete(row) {
-      let confirmed = await this.$deleteConfirm();
-      if (confirmed) {
-        const result = await this.$http.delete(
-          this.$api.blogQuery + `/${row.id}`
-        );
-        if (result.code === 200) {
-          this.$toast("删除成功");
-          this.getTableData();
-        }
+      if (row === "mul" && this.multipleSelection.length === 0) {
+        return this.$toast("请选择要删除数据", "warning");
+      }
+      const confirmed = await this.$deleteConfirm();
+      if (!confirmed) return;
+      const ids = row === "mul" ? this.multipleSelection : [row.id];
+      const result = await this.$http.delete(this.$api.blogQuery, {
+        data: ids
+      });
+      if (result.code === 200) {
+        this.$toast("删除成功");
+        this.getTableData();
       }
     },
     handleChange(value, row) {
@@ -240,5 +250,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

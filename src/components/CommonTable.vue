@@ -39,6 +39,13 @@
           >新增</el-button
         >
         <el-button
+          size="mini"
+          type="danger"
+          icon="el-icon-delete"
+          @click="toDelete('mul')"
+          >删除</el-button
+        >
+        <el-button
           v-if="showToggleColumn"
           size="mini"
           type="primary"
