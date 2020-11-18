@@ -3,6 +3,9 @@
     <div class="table-top-bar" v-if="showForm || showAdd">
       <el-form inline class="table-search-form" v-if="showForm">
         <slot name="tableSearch"></slot>
+        <span v-show="searchExpand">
+          <slot name="tableSearchMore"></slot>
+        </span>
         <slot name="searchDefault">
           <el-form-item v-if="showSearch">
             <el-button
@@ -12,8 +15,20 @@
               @click="searchTable"
               >搜索</el-button
             >
-            <el-button icon="el-icon-delete" size="mini" @click="resetSearch"
+            <el-button
+              icon="el-icon-refresh-right"
+              size="mini"
+              @click="resetSearch"
               >重置</el-button
+            >
+            <el-button
+              v-if="showSearchExpand"
+              :icon="
+                searchExpand ? 'el-icon-caret-top' : 'el-icon-caret-bottom'
+              "
+              size="mini"
+              @click="searchExpand = !searchExpand"
+              >{{ searchExpand ? "收起" : "展开" }}</el-button
             >
           </el-form-item>
         </slot>
@@ -96,7 +111,7 @@
         :align="item.align || globalAlign || 'left'"
         :header-align="item.headerAlign || globalAlign || 'left'"
         :min-width="item.width || ''"
-        :sortable="globalSortable || !item.sortable"
+        :sortable="item.sortable || globalSortable"
         :filters="item.filters || null"
         :formatter="item.formatter || null"
       >
@@ -203,6 +218,16 @@ export default {
       type: Boolean,
       default: true
     },
+    // 搜索栏展开
+    searchExpand: {
+      type: Boolean,
+      default: false
+    },
+    // 搜索栏展开按钮
+    showSearchExpand: {
+      type: Boolean,
+      default: false
+    },
     // 树形数据懒加载
     lazy: {
       type: Boolean,
@@ -239,7 +264,8 @@ export default {
     },
     // 全局列排序
     globalSortable: {
-      type: [String, Boolean]
+      type: [String, Boolean],
+      default: false
     },
     // 操作栏宽度
     operateWidth: {
@@ -305,7 +331,8 @@ export default {
       showSet: false,
       loading: false,
       defaultExpandRow: false, // 默认展开树形表格行
-      formData: {} // 搜索数据
+      formData: {}, // 搜索数据
+      columnOrder: {}
     };
   },
   computed: {
@@ -380,7 +407,9 @@ export default {
       const { pageNum, pageSize } = this.page;
       const params = {
         pageNum,
-        pageSize
+        pageSize,
+        ...this.queryForm,
+        ...this.columnOrder
       };
       const res = await this.$http.get(this.tableUrl, { params });
       if (res.code === 200) {
@@ -462,12 +491,13 @@ export default {
       this.$emit("handleRowDblclick", row, column, event);
     },
     // 列排序
-    handleColumnSort({ order }) {
-      if (this.globalSortable === "custom") {
-        // 自定义列排序
-        if (order) {
-          this.searchTable();
-        }
+    handleColumnSort({ order, prop }) {
+      if (order) {
+        this.columnOrder = {
+          orderType: order === "ascending" ? "ASC" : "DESC", // true 升序 false降序
+          orderColumn: prop
+        };
+        this.getTableData();
       }
     }
   }

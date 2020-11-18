@@ -4,18 +4,55 @@
       :table-columns="tableColumns"
       :query-form="queryForm"
       :table-url="$api.blogQuery"
+      show-search-expand
       @toAdd="showForm('add')"
       @toEdit="showForm"
       @toDelete="toDelete"
+      @resetSearch="resetSearch"
       ref="commonTable"
     >
       <template #tableSearch>
         <el-form-item label="标题">
           <el-input
-            size="small"
-            v-model.trim="queryForm.name"
-            placeholder="请输入"
+            v-model.trim="queryForm.title"
+            size="mini"
+            clearable
+            @change="getTableData"
+            placeholder="标题"
           ></el-input>
+        </el-form-item>
+        <el-form-item label="作者">
+          <el-input
+            v-model.trim="queryForm.author"
+            size="mini"
+            clearable
+            @change="getTableData"
+            placeholder="作者"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="置顶">
+          <el-select
+            v-model="queryForm.isTop"
+            @change="getTableData"
+            placeholder="请选择"
+          >
+            <el-option value="" label="全部" />
+            <el-option :value="1" label="是" />
+            <el-option :value="0" label="否" />
+          </el-select>
+        </el-form-item>
+      </template>
+      <template #tableSearchMore>
+        <el-form-item label="创建时间">
+          <el-date-picker
+            v-model="dateRange"
+            type="datetimerange"
+            range-separator="至"
+            start-placeholder="开始时间"
+            end-placeholder="结束时间"
+            @change="value => handleTimeChange(value, 'startTime', 'endTime')"
+          >
+          </el-date-picker>
         </el-form-item>
       </template>
       <template #tableAdd>
@@ -72,8 +109,14 @@ export default {
   },
   data() {
     return {
-      queryForm: {},
-      rowId: "",
+      queryForm: {
+        title: "",
+        author: "",
+        startTime: "",
+        endTime: "",
+        read: "",
+        isTop: ""
+      },
       tableColumns: [
         {
           prop: "title",
@@ -84,8 +127,9 @@ export default {
           label: "作者"
         },
         {
-          prop: "createdAt",
-          label: "创建时间"
+          prop: "createTime",
+          label: "创建时间",
+          sortable: "custom"
         },
         {
           prop: "read",
@@ -127,6 +171,7 @@ export default {
         }
       ],
       loginForm: {},
+      dateRange: [],
       showLogin: false
     };
   },
@@ -150,6 +195,20 @@ export default {
           this.showLogin = false;
         }
       });
+    },
+    // 时间范围搜索
+    handleTimeChange(value, start, end) {
+      this.queryForm[start] = value ? value[0] : "";
+      this.queryForm[end] = value ? value[1] : "";
+      this.getTableData();
+    },
+    // 重置搜索
+    resetSearch() {
+      for (let key in this.queryForm) {
+        this.queryForm[key] = "";
+      }
+      this.dateRange = [];
+      this.getTableData();
     },
     getTableData() {
       this.$refs.commonTable.getTableData();
