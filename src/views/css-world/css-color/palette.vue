@@ -1,13 +1,13 @@
 <template>
   <div class="palette-container">
-    <div class="palette-item" v-for="item in colors" :key="item.color">
-      <div :style="{ background: item.color }" class="color-panel"></div>
+    <div class="palette-item" v-for="color in colors" :key="color">
+      <div :style="{ background: color }" class="color-panel"></div>
       <p
-        :style="{ color: item.color }"
+        :style="{ color: color }"
         class="color-value"
-        :data-clipboard-text="item.color"
+        :data-clipboard-text="color"
       >
-        {{ item.color }}
+        {{ color }}
       </p>
     </div>
   </div>
@@ -19,23 +19,7 @@ import ClipboardJS from "clipboard";
 export default {
   data() {
     return {
-      colors: [
-        {
-          color: "#0283d6"
-        },
-        {
-          color: "#6c757d"
-        },
-        {
-          color: "#1bb99a"
-        },
-        {
-          color: "#ff5d48"
-        },
-        {
-          color: "#f1b53d"
-        }
-      ]
+      colors: ["#0283d6", "#6c757d", "#1bb99a", "#ff5d48", "#f1b53d", "#696969"]
     };
   },
   mounted() {
