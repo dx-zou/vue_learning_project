@@ -13,7 +13,9 @@
       <div class="gradient7">gradient</div>
       <div class="gradient8">conic-gradient</div>
       <div class="marching-ants"></div>
-      <div class="shape1">形状变换</div>
+      <div class="shape1">
+        <span>形状变换</span>
+      </div>
     </div>
     <div class="top" v-sticky>
       <div>1</div>
@@ -179,6 +181,7 @@ export default {
   width: 100px;
   height: 50px;
   margin-top: 50px;
+  color: red;
   // background: #58a;
   &::before {
     content: "";

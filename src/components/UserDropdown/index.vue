@@ -16,7 +16,8 @@
       >
     </el-dropdown-menu>
     <div class="el-dropdown-link">
-      <img src="../../assets/images/avatar.jpg" alt="头像" class="avatar" />
+      <span class="avatar">hello</span>
+      <!-- <img src="../../assets/images/avatar.jpg" alt="头像" class="avatar" /> -->
       <i class="el-icon-caret-bottom"></i>
     </div>
   </el-dropdown>
